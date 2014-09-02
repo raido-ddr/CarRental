@@ -15,24 +15,24 @@ public class Controller extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
+        processRequest(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
-        String path = request.getPathInfo();
+        processRequest(request, response);
+        /*String path = request.getPathInfo();
         request.setAttribute("pathName", path);
-        request.getRequestDispatcher("jsp/result.jsp").forward(request, response);
+        request.getRequestDispatcher("/jsp/result.jsp").forward(request, response);*/
     }
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         String path = request.getPathInfo();
-        //request.setAttribute("pathName", path);
-        request.getRequestDispatcher("jsp/result.jsp").forward(request, response);
+        request.setAttribute("pathName", path);
+        request.getRequestDispatcher("/jsp/result.jsp").forward(request, response);
 
 
         //Config.set( request, Config.FMT_LOCALE, new java.util.Locale("en_US") );

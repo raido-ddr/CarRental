@@ -6,13 +6,6 @@
     <title></title>
   </head>
   <body>
-    <%--<jsp:forward page="jsp/welcome.jsp" />--%>
-    <p>Index</p>
-    <form action="controller/register" method="post" >
-        <button type="submit">
-            <fmt:message key="login.button.txt" bundle="${welcome}" />
-            Test
-        </button>
-    </form>
-  </body>
+    <jsp:forward page="jsp/welcome.jsp" />
+</body>
 </html>

@@ -27,16 +27,24 @@
         </button>
     </form>
 
-    <p><button type="submit" formaction="controller/register" name="registerButton">
-        <fmt:message key="register.button.txt" bundle="${welcome}" />
-    </button> </p>
-    <p><button type="submit" formaction="controller/changeLocale/en" name="ruLocaleButton" value="RU">
-        <fmt:message key="ru.button.txt" bundle="${welcome}" />
-    </button> </p>
+    <form action="controller/register" method="post" >
+            <button type="submit">
+                <fmt:message key="register.button.txt" bundle="${welcome}" />
+            </button>
+    </form>
 
-    <p><button type="submit" formaction="controller/changeLocale/ru" name="enLocaleButton" value="EN">
-        <fmt:message key="en.button.txt" bundle="${welcome}" />
-    </button> </p>
+    <form action="controller/changeLocale/en" method="post" >
+        <button type="submit">
+            <fmt:message key="en.button.txt" bundle="${welcome}" />
+        </button>
+    </form>
+
+    <form action="controller/changeLocale/ru" method="post" >
+        <button type="submit">
+            <fmt:message key="ru.button.txt" bundle="${welcome}" />
+        </button>
+    </form>
+
 </div>
 </body>
 </html>

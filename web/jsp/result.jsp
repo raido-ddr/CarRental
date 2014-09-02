@@ -14,7 +14,7 @@
 <body>
 
 <h3>Result</h3>
-<c:out value="${path}" />
+<c:out value="${pathName}" />
 
 
 </body>
