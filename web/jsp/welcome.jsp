@@ -33,13 +33,13 @@
             </button>
     </form>
 
-    <form action="controller/changeLocale/en" method="post" >
+    <form action="controller/changeLocale?locale=en-US" method="post" >
         <button type="submit">
             <fmt:message key="en.button.txt" bundle="${welcome}" />
         </button>
     </form>
 
-    <form action="controller/changeLocale/ru" method="post" >
+    <form action="controller/changeLocale?locale=ru-RU" method="post" >
         <button type="submit">
             <fmt:message key="ru.button.txt" bundle="${welcome}" />
         </button>

@@ -22,9 +22,6 @@ public class Controller extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        /*String path = request.getPathInfo();
-        request.setAttribute("pathName", path);
-        request.getRequestDispatcher("/jsp/result.jsp").forward(request, response);*/
     }
 
     private void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -32,7 +29,13 @@ public class Controller extends HttpServlet {
 
         String path = request.getPathInfo();
         request.setAttribute("pathName", path);
+
+        String locale = request.getParameter("locale");
+        request.setAttribute("locale", locale);
+
         request.getRequestDispatcher("/jsp/result.jsp").forward(request, response);
+
+
 
 
         //Config.set( request, Config.FMT_LOCALE, new java.util.Locale("en_US") );
