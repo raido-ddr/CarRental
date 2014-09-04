@@ -7,7 +7,7 @@
 <body>
 
 <h3>Result</h3>
-<c:out value="${locale}" />
+<c:out value="${command}" />
 <br/>
 <c:out value="${pathName}" />
 

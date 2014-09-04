@@ -21,7 +21,7 @@
 <div>
     <%--<h3><fmt:message key="title" bundle="${welcome}" /> </h3>--%>
 
-    <form action="controller/login" method="post" >
+    <form action="controller/authorize" method="post" >
         <button type="submit">
             <fmt:message key="login.button.txt" bundle="${welcome}" />
         </button>

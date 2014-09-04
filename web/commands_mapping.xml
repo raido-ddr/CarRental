@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<commands>
+    <command>
+        <name>/changeLocale</name>
+        <class-name>com.raido.rental.logic.command.impl.ChangeLocaleCommand</class-name>
+    </command>
+    <command>
+        <name>/authorize</name>
+        <class-name>com.raido.rental.logic.command.impl.AuthorizeCommand</class-name>
+    </command>
+</commands>
