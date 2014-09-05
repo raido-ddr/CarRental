@@ -9,6 +9,12 @@ public class User {
 
     private int id;
 
+    private String login;
+
+    private String password;
+
+    private String role;
+
     private String firstName;
 
     private String lastName;
@@ -27,6 +33,30 @@ public class User {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public String getFirstName() {
@@ -91,22 +121,10 @@ public class User {
         if (id != user.id) {
             return false;
         }
-        if (!dateOfBirth.equals(user.dateOfBirth)) {
+        if (!login.equals(user.login)) {
             return false;
         }
-        if (!firstName.equals(user.firstName)) {
-            return false;
-        }
-        if (!lastName.equals(user.lastName)) {
-            return false;
-        }
-        if (!licenseExpiryDate.equals(user.licenseExpiryDate)) {
-            return false;
-        }
-        if (!licenseNumber.equals(user.licenseNumber)) {
-            return false;
-        }
-        if (!passportNumber.equals(user.passportNumber)) {
+        if (!password.equals(user.password)) {
             return false;
         }
 
@@ -116,6 +134,9 @@ public class User {
     @Override
     public int hashCode() {
         int result = id;
+        result = 31 * result + login.hashCode();
+        result = 31 * result + password.hashCode();
+        result = 31 * result + role.hashCode();
         result = 31 * result + firstName.hashCode();
         result = 31 * result + lastName.hashCode();
         result = 31 * result + dateOfBirth.hashCode();

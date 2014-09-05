@@ -23,6 +23,8 @@ public class Car {
 
     private int seatCount;
 
+    private float dailyCost;
+
     private boolean available;
 
     private boolean deleted;
@@ -99,6 +101,14 @@ public class Car {
         this.seatCount = seatCount;
     }
 
+    public float getDailyCost() {
+        return dailyCost;
+    }
+
+    public void setDailyCost(float dailyCost) {
+        this.dailyCost = dailyCost;
+    }
+
     public boolean isAvailable() {
         return available;
     }
@@ -144,6 +154,9 @@ public class Car {
         if (seatCount != car.seatCount) {
             return false;
         }
+        if (Float.compare(car.dailyCost, dailyCost) != 0) {
+            return false;
+        }
         if (!bodyStyle.equals(car.bodyStyle)) {
             return false;
         }
@@ -174,6 +187,7 @@ public class Car {
         result = 31 * result + transmissionType.hashCode();
         result = 31 * result + bodyStyle.hashCode();
         result = 31 * result + seatCount;
+        result = 31 * result + (dailyCost != +0.0f ? Float.floatToIntBits(dailyCost) : 0);
         result = 31 * result + (available ? 1 : 0);
         result = 31 * result + (deleted ? 1 : 0);
         return result;
