@@ -21,25 +21,25 @@
 <div>
     <%--<h3><fmt:message key="title" bundle="${welcome}" /> </h3>--%>
 
-    <form action="controller/authorize" method="post" >
+    <form action="/controller/authorize" method="get" >
         <button type="submit">
             <fmt:message key="login.button.txt" bundle="${welcome}" />
         </button>
     </form>
 
-    <form action="controller/register" method="post" >
+    <form action="controller/register" method="get" >
             <button type="submit">
                 <fmt:message key="register.button.txt" bundle="${welcome}" />
             </button>
     </form>
 
-    <form action="controller/changeLocale?locale=en-US" method="post" >
+    <form action="controller/changeLocale?locale=en-US" method="get" >
         <button type="submit">
             <fmt:message key="en.button.txt" bundle="${welcome}" />
         </button>
     </form>
 
-    <form action="controller/changeLocale?locale=ru-RU" method="post" >
+    <form action="controller/changeLocale?locale=ru-RU" method="get" >
         <button type="submit">
             <fmt:message key="ru.button.txt" bundle="${welcome}" />
         </button>

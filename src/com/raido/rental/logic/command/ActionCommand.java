@@ -1,12 +1,14 @@
 package com.raido.rental.logic.command;
 
-import com.raido.rental.logic.command.CommandException;
-import com.sun.deploy.net.HttpRequest;
+import com.raido.rental.logic.command.exception.CommandException;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import java.util.ResourceBundle;
 
 public abstract class ActionCommand {
+
+    protected static final ResourceBundle PAGE_NAME_BUNDLE =
+            ResourceBundle.getBundle("page_names");
 
     public abstract String execute(HttpServletRequest request)
             throws CommandException;

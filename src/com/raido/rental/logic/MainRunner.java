@@ -1,6 +1,7 @@
 package com.raido.rental.logic;
 
 import com.raido.rental.dao.AdminDao;
+import com.raido.rental.dao.UserDao;
 import com.raido.rental.dao.exception.DaoException;
 import com.raido.rental.dao.factory.DaoFactory;
 import com.raido.rental.dao.pool.ConnectionPool;
@@ -31,7 +32,7 @@ public class MainRunner {
             if(conn != null) System.out.println("conn established");
             //if(conn2 != null) System.out.println("conn2 established");
 
-            AdminDao adminDao = DaoFactory.getInstance().getAdminDao();
+            UserDao adminDao = DaoFactory.getInstance().getUserDao();
 
             User user = new User();
             user.setFirstName("Вася");
@@ -63,8 +64,8 @@ public class MainRunner {
             connectionPool.initPoolData();
             conn = connectionPool.takeConnection();
 
-            AdminDao adminDao = DaoFactory.getInstance().getAdminDao();
-            User user = adminDao.findUserById(1);
+            UserDao userDao = DaoFactory.getInstance().getUserDao();
+            User user = userDao.findUserById(1);
 
             System.out.println(user.getFirstName());
             System.out.println(user.getRole());

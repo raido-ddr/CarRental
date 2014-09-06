@@ -1,7 +1,7 @@
 package com.raido.rental.controller;
 
 import com.raido.rental.logic.command.ActionCommand;
-import com.raido.rental.logic.command.impl.AuthorizeCommand;
+import com.raido.rental.logic.command.exception.CommandException;
 import com.raido.rental.logic.command.resolver.CommandResolver;
 import com.raido.rental.logic.exception.LogicalException;
 import com.raido.rental.logic.exception.TechnicalException;
@@ -72,16 +72,23 @@ public class Controller extends HttpServlet {
         String requestPath = request.getPathInfo();
         request.setAttribute("pathName", requestPath);
 
-/*        String locale = request.getParameter("locale");u
-        request.setAttribute("locale", locale);*/
+        String locale = request.getParameter("locale");
+        request.setAttribute("locale", locale);
         CommandResolver commandResolver =
                 (CommandResolver) getServletContext().getAttribute(COMMAND_RESOLVER_ATTR);
-        ActionCommand command = new AuthorizeCommand();//commandResolver.resolveCommand(requestPath);
+        ActionCommand command = commandResolver.resolveCommand(requestPath); //new AuthorizeCommand();
 
         String commandName = command.getName();
         request.setAttribute("command", commandName);
 
-        request.getRequestDispatcher("/jsp/result.jsp").forward(request, response);
+        //request.getRequestDispatcher("/jsp/authorize.jsp").forward(request, response);
+
+        try {
+            String nextPage = command.execute(request);
+            request.getRequestDispatcher(nextPage).forward(request, response);
+        } catch (CommandException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 

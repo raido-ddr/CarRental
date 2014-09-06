@@ -1,4 +1,4 @@
-package com.raido.rental.logic.command;
+package com.raido.rental.logic.command.exception;
 
 /**
  * Created by Raido_DDR on 8/31/2014.

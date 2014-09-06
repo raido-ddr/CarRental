@@ -1,10 +1,9 @@
 package com.raido.rental.logic.command.impl;
 
 import com.raido.rental.logic.command.ActionCommand;
-import com.raido.rental.logic.command.CommandException;
+import com.raido.rental.logic.command.exception.CommandException;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 /**
  * Created by Raido_DDR on 8/31/2014.
