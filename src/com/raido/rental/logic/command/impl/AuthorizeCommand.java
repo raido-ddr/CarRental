@@ -61,8 +61,8 @@ public class AuthorizeCommand extends ActionCommand {
                 return PAGE_NAME_BUNDLE.getString("main.page");
             } else {
                 ResourceBundle bundle =
-                        ResourceBundle.getBundle("input_errors",
-                            (Locale) request.getAttribute("locale"));
+                        ResourceBundle.getBundle("input_errors");
+                            //(Locale) request.getAttribute("locale"));
                 request.setAttribute("authorizationError", bundle.getString("auth.error"));
                 return PAGE_NAME_BUNDLE.getString("authorization.page");
             }

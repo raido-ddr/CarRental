@@ -40,17 +40,7 @@ public class Controller extends HttpServlet {
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
 
-        CommandResolver commandResolver;
-        try {
-            commandResolver = new CommandResolver(getServletContext()
-                    .getRealPath("commands_mapping.xml"));
-        } catch (TechnicalException | LogicalException e) {
-            ResourceBundle bundle = ResourceBundle.getBundle("error_message");
-            LOGGER.fatal(bundle.getString("command_resolver_error"));
-            throw new ServletException(e);
-        }
 
-        getServletContext().setAttribute(COMMAND_RESOLVER_ATTR, commandResolver);
 
     }
 
