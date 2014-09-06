@@ -1,4 +1,4 @@
-package com.raido.rental.logic.util;
+package com.raido.rental.logic.util.hash;
 
 import com.raido.rental.dao.pool.ConnectionPool;
 import org.apache.log4j.Logger;

@@ -6,8 +6,7 @@ import com.raido.rental.dao.factory.DaoFactory;
 import com.raido.rental.entity.User;
 import com.raido.rental.logic.command.ActionCommand;
 import com.raido.rental.logic.command.exception.CommandException;
-import com.raido.rental.logic.util.MessageDigestHelper;
-import sun.security.provider.MD5;
+import com.raido.rental.logic.util.hash.MessageDigestHelper;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Locale;
@@ -50,8 +49,8 @@ public class AuthorizeCommand extends ActionCommand {
             return PAGE_NAME_BUNDLE.getString("authorization.page");
         }
 
-        String hashedPassword = password;
-                //MessageDigestHelper.getInstance().getMd5Hash(password);
+        String hashedPassword =
+                MessageDigestHelper.getInstance().getMd5Hash(password);
 
         UserDao userDao = DaoFactory.getInstance().getUserDao();
         try {

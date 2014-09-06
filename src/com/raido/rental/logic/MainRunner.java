@@ -7,8 +7,10 @@ import com.raido.rental.dao.factory.DaoFactory;
 import com.raido.rental.dao.pool.ConnectionPool;
 import com.raido.rental.dao.pool.exception.ConnectionPoolException;
 import com.raido.rental.entity.User;
+import com.raido.rental.logic.util.hash.MessageDigestHelper;
 
 import java.sql.*;
+import java.util.ResourceBundle;
 
 
 public class MainRunner {
@@ -18,7 +20,7 @@ public class MainRunner {
         conn = DriverManager.getConnection("jdbc:mysql://127.0.0.1/car_rental",
                 "raido", "1234");*/
 
-        getUser();
+        addUser();
 
     }
 
@@ -38,7 +40,7 @@ public class MainRunner {
             user.setFirstName("Вася");
             user.setLastName("Пупкин");
             user.setLogin("pupkin1");
-            user.setPassword("asdf");
+            user.setPassword(MessageDigestHelper.getInstance().getMd5Hash("asdf"));
             user.setRole("user");
             user.setDateOfBirth(Date.valueOf("1987-10-01"));
             user.setLicenseExpiryDate(Date.valueOf("2015-12-25"));
@@ -56,6 +58,8 @@ public class MainRunner {
         }
 
     }
+
+
 
     private static void getUser() {
         Connection conn;
