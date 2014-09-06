@@ -4,17 +4,22 @@ import com.raido.rental.logic.command.ActionCommand;
 import com.raido.rental.logic.command.exception.CommandException;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.util.Locale;
 
-/**
- * Created by Raido_DDR on 8/31/2014.
- */
+
 public class ChangeLocaleCommand extends ActionCommand {
 
 
     @Override
     public String execute(HttpServletRequest request)
             throws CommandException {
-        return null;
+
+        String locale = request.getParameter("locale");
+        request.getSession().setAttribute("locale", locale);
+
+
+        return PAGE_NAME_BUNDLE.getString("welcome.page");
     }
 
 

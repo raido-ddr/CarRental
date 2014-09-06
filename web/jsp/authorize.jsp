@@ -2,20 +2,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<c:set var="language" value="${not empty param.language
-    ? param.language
-    : not empty language
-        ? language
-        : pageContext.request.locale}" scope="session" />
-
 <fmt:requestEncoding value="UTF-8" />
 
 <fmt:setBundle basename="l10n.authorize" var="authorize" />
-<fmt:setLocale value="${language}" />
+<fmt:setLocale value="${sessionScope.locale}" />
 
 <html>
 <head>
-    <title><fmt:message key="enter.login" bundle="${authorize}" /></title>
+    <title><fmt:message key="title" bundle="${authorize}" /></title>
 </head>
 <body>
 

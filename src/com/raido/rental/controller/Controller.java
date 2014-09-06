@@ -62,6 +62,9 @@ public class Controller extends HttpServlet {
         String requestPath = request.getPathInfo();
         request.setAttribute("pathName", requestPath);
 
+        String url = request.getRequestURL().toString();
+        //String query = request.getQueryString().toString();
+
         String locale = request.getParameter("locale");
         request.setAttribute("locale", locale);
         CommandResolver commandResolver =
