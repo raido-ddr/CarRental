@@ -45,7 +45,6 @@ public class MainRunner {
             user.setDateOfBirth(Date.valueOf("1987-10-01"));
             user.setLicenseExpiryDate(Date.valueOf("2015-12-25"));
             user.setPassportNumber("DT392874");
-            user.setLicenseNumber("76823462");
 
             try {
                 adminDao.createUser(user);

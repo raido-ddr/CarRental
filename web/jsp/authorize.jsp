@@ -9,25 +9,23 @@
 
 <html>
 <head>
-    <title><fmt:message key="title" bundle="${authorize}" /></title>
+    <title><fmt:message key="page.title" bundle="${authorize}" /></title>
 </head>
 <body>
 
+    <div><fmt:message key="title" bundle="${authorize}" /></div>
     <div><c:out value="${authorizationError}" /> </div>
 
     <form name="loginForm" action="/controller/authorize" method="post" >
-        <label for="login">
-            <fmt:message key="enter.login" bundle="${authorize}" />
-        </label>
-        <input id="login" type="text" name="login">
+
+        <input id="login" type="text" name="login"
+               placeholder="<fmt:message key="enter.login" bundle="${authorize}" />" />
         <br/>
         <div><c:out value="${loginError}" /></div>
         <br/>
 
-        <label for="password">
-            <fmt:message key="enter.password" bundle="${authorize}" />
-        </label>
-        <input id="password" type="text" name="password">
+        <input id="password" type="text" name="password"
+               placeholder="<fmt:message key="enter.password" bundle="${authorize}" />" />
         <br/>
         <div><c:out value="${loginError}" /></div>
         <br/>

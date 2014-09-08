@@ -39,9 +39,6 @@ public class Controller extends HttpServlet {
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
-
-
-
     }
 
     @Override
@@ -65,8 +62,8 @@ public class Controller extends HttpServlet {
         String url = request.getRequestURL().toString();
         //String query = request.getQueryString().toString();
 
-        String locale = request.getParameter("locale");
-        request.setAttribute("locale", locale);
+        /*String locale = request.getParameter("locale");
+        request.setAttribute("locale", locale);*/
         CommandResolver commandResolver =
                 (CommandResolver) getServletContext().getAttribute(COMMAND_RESOLVER_ATTR);
         ActionCommand command = commandResolver.resolveCommand(requestPath); //new AuthorizeCommand();

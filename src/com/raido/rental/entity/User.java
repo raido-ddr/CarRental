@@ -2,9 +2,7 @@ package com.raido.rental.entity;
 
 import java.util.Date;
 
-/**
- *
- */
+
 public class User {
 
     private int id;
@@ -19,11 +17,11 @@ public class User {
 
     private String lastName;
 
+    private String email;
+
     private Date dateOfBirth;
 
     private String passportNumber;
-
-    private String licenseNumber;
 
     private Date licenseExpiryDate;
 
@@ -45,6 +43,14 @@ public class User {
 
     public String getPassword() {
         return password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public void setPassword(String password) {
@@ -91,14 +97,6 @@ public class User {
         this.passportNumber = passportNumber;
     }
 
-    public String getLicenseNumber() {
-        return licenseNumber;
-    }
-
-    public void setLicenseNumber(String licenseNumber) {
-        this.licenseNumber = licenseNumber;
-    }
-
     public Date getLicenseExpiryDate() {
         return licenseExpiryDate;
     }
@@ -139,9 +137,9 @@ public class User {
         result = 31 * result + role.hashCode();
         result = 31 * result + firstName.hashCode();
         result = 31 * result + lastName.hashCode();
+        result = 31 * result + email.hashCode();
         result = 31 * result + dateOfBirth.hashCode();
         result = 31 * result + passportNumber.hashCode();
-        result = 31 * result + licenseNumber.hashCode();
         result = 31 * result + licenseExpiryDate.hashCode();
         return result;
     }

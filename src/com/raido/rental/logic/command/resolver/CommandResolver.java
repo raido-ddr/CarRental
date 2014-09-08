@@ -34,6 +34,10 @@ public class CommandResolver {
         //String commandName = matcher.group(0);
 
         String commandClassName = commandMap.get(commandName);
+        if(commandClassName == null) {
+            return new ActionNotFoundCommand();
+        }
+
 
         ActionCommand command;
         try {

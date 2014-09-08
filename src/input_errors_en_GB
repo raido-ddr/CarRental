@@ -13,10 +13,7 @@ login.rule = Login should be from 3 to 20 characters long\
                 (latin letters, numbers, hyphen, period and underscore are appropriate).
 password.rule = Password should contain from 4 to 20 characters \
                   (latin letters, numbers, hyphen and underscore are appropriate).
-passport.rule = This field should contain only letters and numbers \
-                    (at least 9 characters).
-
-email.rule = Please, enter a valid e-mail address.
-dob.rule = Please, enter valid date.
-license.expiry.rule = Please, enter valid date.
-
+passport.rule = This field should contain only letters and numbers (at least 9 characters).
+email.rule=Please, enter a valid e-mail address.
+dob.rule=Please, enter valid date.
+license.expiry.rule=Please, enter valid date.

@@ -16,7 +16,7 @@
 
 <html>
 <head>
-    <title><fmt:message key="title" bundle="${welcome}" /></title>
+    <title><fmt:message key="page.title" bundle="${welcome}" /></title>
 </head>
 <body>
 <c:out value="${sessionScope.locale}" />
