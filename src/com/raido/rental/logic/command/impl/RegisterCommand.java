@@ -35,7 +35,7 @@ public class RegisterCommand extends ActionCommand {
                 userDao.createUser(user);
             } catch (DaoException e) {
                 ResourceBundle bundle =
-                        ResourceBundle.getBundle("exception_messages");
+                        ResourceBundle.getBundle("exception_message");
                 throw new CommandException(bundle.getString("database.error"));
             }
             request.setAttribute("currentUser", user);

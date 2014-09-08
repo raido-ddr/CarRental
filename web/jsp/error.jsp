@@ -14,6 +14,8 @@
     <title></title>
 </head>
 <body>
-    <div><c:out value="${exception.message}" /></div>
+<p>Error</p>
+    <div><c:out value="${pageContext.errorData.statusCode}" />: </div>
+    <div><c:out value="${pageContext.exception.message}" /></div>
 </body>
 </html>
