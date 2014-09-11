@@ -15,7 +15,9 @@ public class CarRentalSessionListener implements HttpSessionListener {
         HttpSession session = httpSessionEvent.getSession();
 
         ResourceBundle bundle = ResourceBundle.getBundle("locale");
-        session.setAttribute("locale", bundle.getString("default.locale"));
+
+        session.setAttribute("locale",
+                Locale.forLanguageTag(bundle.getString("default.locale")));
     }
 
     @Override

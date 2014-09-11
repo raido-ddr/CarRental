@@ -77,6 +77,7 @@ public class Controller extends HttpServlet {
             String nextPage = command.execute(request);
             request.getRequestDispatcher(nextPage).forward(request, response);
         } catch (CommandException e) {
+            //log
             throw new RuntimeException(e);
         }
 

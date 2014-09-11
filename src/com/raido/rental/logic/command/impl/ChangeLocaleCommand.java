@@ -15,7 +15,8 @@ public class ChangeLocaleCommand extends ActionCommand {
     public String execute(HttpServletRequest request)
             throws CommandException {
 
-        String locale = request.getParameter("locale");
+        String localeTag = request.getParameter("locale");
+        Locale locale = Locale.forLanguageTag(localeTag);
         request.getSession().setAttribute("locale", locale);
 
 

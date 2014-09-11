@@ -3,12 +3,13 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <fmt:requestEncoding value="UTF-8" />
+<fmt:setLocale value="${sessionScope.locale}" />
 
 <fmt:setBundle basename="l10n.register" var="register" />
 <fmt:setBundle basename="input_errors" var="errors" />
 <fmt:setBundle basename="html_regex" var="regex" />
 
-<fmt:setLocale value="${sessionScope.locale}" />
+
 
 <html>
 <head>

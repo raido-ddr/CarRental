@@ -3,9 +3,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <fmt:requestEncoding value="UTF-8" />
+<fmt:setLocale value="${locale}" />
 
 <fmt:setBundle basename="l10n.authorize" var="authorize" />
-<fmt:setLocale value="${sessionScope.locale}" />
 
 <html>
 <head>
@@ -13,6 +13,7 @@
 </head>
 <body>
 
+    <c:out value="${locale}" />
     <div><fmt:message key="title" bundle="${authorize}" /></div>
     <div><c:out value="${authorizationError}" /> </div>
 

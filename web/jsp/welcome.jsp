@@ -2,17 +2,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<%--<c:set var="language" value="${not empty sessionScope.language
-    ? sessionScope.language
-    : not empty language
-        ? language
-        : pageContext.request.locale}" scope="session" />--%>
-
 <fmt:requestEncoding value="UTF-8" />
-
-<fmt:setBundle basename="l10n.welcome" var="welcome" />
 <fmt:setLocale value="${sessionScope.locale}" />
 
+<fmt:setBundle basename="l10n.welcome" var="welcome" />
 
 <html>
 <head>
@@ -35,13 +28,13 @@
             </button>
     </form>
 
-    <form action="/controller/changeLocale?locale=en_GB" method="post" >
+    <form action="/controller/changeLocale?locale=en-GB" method="post" >
         <button type="submit">
             <fmt:message key="en.button.txt" bundle="${welcome}" />
         </button>
     </form>
 
-    <form action="/controller/changeLocale?locale=ru_RU" method="post" >
+    <form action="/controller/changeLocale?locale=ru-RU" method="post" >
         <button type="submit">
             <fmt:message key="ru.button.txt" bundle="${welcome}" />
         </button>
