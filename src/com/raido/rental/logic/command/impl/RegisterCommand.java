@@ -11,6 +11,7 @@ import com.raido.rental.logic.validator.DataValidator;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Date;
+import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -49,16 +50,32 @@ public class RegisterCommand extends ActionCommand {
 
         User user = createUserFromData(request);
         if(user != null) {
+
             UserDao userDao = DaoFactory.getInstance().getUserDao();
             try {
-                userDao.createUser(user);
+
+                if(userDao.isLoginUnique(user.getLogin())) {
+                    userDao.createUser(user);
+                } else {
+                    Locale locale =
+                            (Locale) request.getSession().getAttribute("locale");
+                    ResourceBundle bundle =
+                            ResourceBundle.getBundle("input_errors", locale);
+                    request.setAttribute("duplicateLoginError",
+                            bundle.getString("duplicate.login"));
+                    return PAGE_NAME_BUNDLE.getString("registration.page");
+                }
             } catch (DaoException e) {
+                Locale locale =
+                        (Locale) request.getSession().getAttribute("locale");
                 ResourceBundle bundle =
-                        ResourceBundle.getBundle("exception_message");
+                        ResourceBundle.getBundle("exception_message", locale);
                 throw new CommandException(bundle.getString("database.error"));
             }
+
             request.setAttribute("currentUser", user);
             return PAGE_NAME_BUNDLE.getString("main.page");
+
         } else {
             return PAGE_NAME_BUNDLE.getString("registration.page");
         }

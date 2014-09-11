@@ -18,6 +18,8 @@
 <body>
     <div><title><fmt:message key="title" bundle="${register}" /></title></div>
 
+    <div><c:out value="${duplicateLoginError}" /></div>
+
     <form name="registerForm" action="/controller/register" method="post">
         <label for="fName">
             <fmt:message key="enter.fname" bundle="${register}" />

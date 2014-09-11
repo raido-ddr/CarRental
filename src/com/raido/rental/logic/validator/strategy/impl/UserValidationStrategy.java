@@ -68,7 +68,6 @@ public class UserValidationStrategy implements ValidationStrategy {
         ResourceBundle bundle =
                 ResourceBundle.getBundle("input_errors", locale);
 
-
         boolean dataIsCorrect = true;
 
         //Set error message parameters if needed
