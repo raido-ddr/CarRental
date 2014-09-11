@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 public class UserValidationStrategy implements ValidationStrategy {
@@ -62,8 +63,11 @@ public class UserValidationStrategy implements ValidationStrategy {
         String email = request.getParameter("email");
         String passportNumber = request.getParameter("passport").trim();
 
+        Locale locale =
+                (Locale) request.getSession().getAttribute("locale");
         ResourceBundle bundle =
-                ResourceBundle.getBundle("input_errors");
+                ResourceBundle.getBundle("input_errors", locale);
+
 
         boolean dataIsCorrect = true;
 
