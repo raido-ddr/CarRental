@@ -11,6 +11,8 @@ import com.raido.rental.logic.util.hash.MessageDigestHelper;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Locale;
 import java.util.ResourceBundle;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * Created by Raido_DDR on 9/4/2014.
@@ -20,6 +22,24 @@ public class AuthorizeCommand extends ActionCommand {
     private static final String METHOD_POST = "POST";
 
     private static final String METHOD_GET = "GET";
+
+    private static volatile AuthorizeCommand instance;
+
+    private static Lock lock = new ReentrantLock();
+
+    private AuthorizeCommand() {}
+
+    public static AuthorizeCommand getInstance() {
+        if (instance == null) {
+            lock.lock();
+            if (instance == null) {
+                instance = new AuthorizeCommand();
+            }
+            lock.unlock();
+
+        }
+        return instance;
+    }
 
     @Override
     public String execute(HttpServletRequest request)
@@ -32,23 +52,6 @@ public class AuthorizeCommand extends ActionCommand {
         String login = request.getParameter("login");
         String password = request.getParameter("password");
 
-        if(! validateLogin(login)) {
-            ResourceBundle bundle =
-                    ResourceBundle.getBundle("input_errors",
-                        (Locale) request.getAttribute("locale"));
-            request.setAttribute("loginError", bundle.getString("incorrect.login"));
-            return PAGE_NAME_BUNDLE.getString("authorization.page");
-        }
-
-        if(! validatePassword(password)) {
-            ResourceBundle bundle =
-                    ResourceBundle.getBundle("input_errors",
-                        (Locale) request.getAttribute("locale"));
-            request.setAttribute("passwordError",
-                    bundle.getString("incorrect.password"));
-            return PAGE_NAME_BUNDLE.getString("authorization.page");
-        }
-
         String hashedPassword =
                 MessageDigestHelper.getInstance().getMd5Hash(password);
 
@@ -59,9 +62,10 @@ public class AuthorizeCommand extends ActionCommand {
                 request.setAttribute("currentUser", user);
                 return PAGE_NAME_BUNDLE.getString("main.page");
             } else {
+                Locale locale =
+                        (Locale) request.getSession().getAttribute("locale");
                 ResourceBundle bundle =
-                        ResourceBundle.getBundle("input_errors");
-                            //(Locale) request.getAttribute("locale"));
+                        ResourceBundle.getBundle("input_errors", locale);
                 request.setAttribute("authorizationError", bundle.getString("auth.error"));
                 return PAGE_NAME_BUNDLE.getString("authorization.page");
             }
@@ -71,11 +75,4 @@ public class AuthorizeCommand extends ActionCommand {
         }
     }
 
-    private boolean validateLogin(String login) {
-        return true;
-    }
-
-    private boolean validatePassword(String password) {
-        return true;
-    }
 }

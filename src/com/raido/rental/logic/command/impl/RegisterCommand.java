@@ -6,20 +6,39 @@ import com.raido.rental.dao.factory.DaoFactory;
 import com.raido.rental.entity.User;
 import com.raido.rental.logic.command.ActionCommand;
 import com.raido.rental.logic.command.exception.CommandException;
+import com.raido.rental.logic.util.hash.MessageDigestHelper;
 import com.raido.rental.logic.validator.DataValidator;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Date;
 import java.util.ResourceBundle;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
-/**
- * Created by Raido_DDR on 9/7/2014.
- */
+
 public class RegisterCommand extends ActionCommand {
 
     private static final String METHOD_POST = "POST";
 
     private static final String METHOD_GET = "GET";
+
+    private static volatile RegisterCommand instance;
+
+    private static Lock lock = new ReentrantLock();
+
+    private RegisterCommand () {}
+
+    public static RegisterCommand getInstance() {
+        if (instance == null) {
+            lock.lock();
+            if (instance == null) {
+                instance = new RegisterCommand ();
+            }
+            lock.unlock();
+
+        }
+        return instance;
+    }
 
     @Override
     public String execute(HttpServletRequest request) throws CommandException {
@@ -53,7 +72,9 @@ public class RegisterCommand extends ActionCommand {
             user.setFirstName(request.getParameter("firstName").trim());
             user.setLastName(request.getParameter("lastName".trim()));
             user.setLogin(request.getParameter("login").trim());
-            user.setPassword(request.getParameter("password").trim());
+            String password = request.getParameter("password").trim();
+            user.setPassword(
+                    MessageDigestHelper.getInstance().getMd5Hash(password));
             user.setEmail(request.getParameter("email").trim());
             user.setRole("user");
             user.setDateOfBirth(

@@ -6,6 +6,8 @@ import com.raido.rental.logic.command.xmlparser.XmlCommandBuilder;
 import com.raido.rental.logic.exception.LogicalException;
 import com.raido.rental.logic.exception.TechnicalException;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
@@ -35,17 +37,23 @@ public class CommandResolver {
 
         String commandClassName = commandMap.get(commandName);
         if(commandClassName == null) {
-            return new ActionNotFoundCommand();
+            return ActionNotFoundCommand.getInstance();
         }
 
 
         ActionCommand command;
         try {
-            command = (ActionCommand) Class.forName(commandClassName).newInstance();
+            Class commandClass = Class.forName(commandClassName);
+                    //(ActionCommand) Class.forName(commandClassName).newInstance();
+            Method getInstanceMethod = commandClass.getDeclaredMethod("getInstance");
+            command = (ActionCommand) getInstanceMethod.invoke(null, null);
         } catch (ClassNotFoundException
-                | InstantiationException
                 | IllegalAccessException e) {
-            command =  new ActionNotFoundCommand();
+            command =  ActionNotFoundCommand.getInstance();
+        } catch (NoSuchMethodException e) {
+            command =  ActionNotFoundCommand.getInstance();
+        } catch (InvocationTargetException e) {
+            command =  ActionNotFoundCommand.getInstance();
         }
 
         return command;

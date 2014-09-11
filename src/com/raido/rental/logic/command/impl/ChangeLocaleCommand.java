@@ -6,9 +6,29 @@ import com.raido.rental.logic.command.exception.CommandException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Locale;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 
 public class ChangeLocaleCommand extends ActionCommand {
+
+    private static volatile ChangeLocaleCommand instance;
+
+    private static Lock lock = new ReentrantLock();
+
+    private ChangeLocaleCommand() {}
+
+    public static ChangeLocaleCommand getInstance() {
+        if (instance == null) {
+            lock.lock();
+            if (instance == null) {
+                instance = new ChangeLocaleCommand();
+            }
+            lock.unlock();
+
+        }
+        return instance;
+    }
 
 
     @Override
