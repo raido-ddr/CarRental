@@ -8,9 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.xml.crypto.Data;
 import java.sql.Date;
 
-/**
- * Created by Raido_DDR on 9/7/2014.
- */
 public class DataValidator {
 
     private static class Holder {

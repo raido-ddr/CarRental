@@ -106,39 +106,57 @@ public class UserValidationStrategy implements ValidationStrategy {
         }
 
         //Validate dates
-        SimpleDateFormat formatter = new SimpleDateFormat(DATE_FORMAT);
-        try {
-            Date dateOfBirth = formatter.parse(request.getParameter("dob"));
-            Date licenseExpiryDate =
-                    formatter.parse(request.getParameter("licenseExpiry"));
+        String dobString = request.getParameter("dob");
+        String licenseExpiryDate = request.getParameter("licenseExpiry");
 
-            if (! validateDateOfBirth(dateOfBirth)) {
-                request.setAttribute("dobRule",
-                        bundle.getString("dob.rule"));
-                dataIsCorrect = false;
-            }
+        if (! validateDateOfBirth(dobString)) {
+            request.setAttribute("dobRule",
+                    bundle.getString("dob.rule"));
+            dataIsCorrect = false;
+        }
 
-            if (! validateLicenseExpiryDate(licenseExpiryDate)) {
-                request.setAttribute("licenseExpiryRule",
-                        bundle.getString("license.expiry.rule"));
-                dataIsCorrect = false;
-            }
-
-        } catch (ParseException e) {
+        if (! validateLicenseExpiryDate(licenseExpiryDate)) {
+            request.setAttribute("licenseExpiryRule",
+                    bundle.getString("license.expiry.rule"));
             dataIsCorrect = false;
         }
 
         return dataIsCorrect;
     }
 
-    private boolean validateLicenseExpiryDate(Date licenseExpiryDate) {
-        Date currentDate = new Date();
-        return licenseExpiryDate.after(currentDate);
+    private boolean validateLicenseExpiryDate(String licenseExpiryString) {
+
+        if(licenseExpiryString.isEmpty()) {
+            return false;
+        }
+
+        SimpleDateFormat formatter = new SimpleDateFormat(DATE_FORMAT);
+        try {
+            Date licenseExpiryDate = formatter.parse(licenseExpiryString);
+            Date currentDate = new Date();
+            return licenseExpiryDate.after(currentDate);
+
+        } catch (ParseException e) {
+            return false;
+        }
     }
 
-    private boolean validateDateOfBirth(Date dob) {
-        Date currentDate = new Date();
-        return (dob.before(currentDate));
+    private boolean validateDateOfBirth(String dobString) {
+
+        if(dobString.isEmpty()) {
+            return false;
+        }
+
+        SimpleDateFormat formatter = new SimpleDateFormat(DATE_FORMAT);
+        try {
+            Date dateOfBirth = formatter.parse(dobString);
+            Date currentDate = new Date();
+            return (dateOfBirth.before(currentDate));
+
+        } catch (ParseException e) {
+            return false;
+        }
+
     }
 
     private boolean validateEmail(String email) {
