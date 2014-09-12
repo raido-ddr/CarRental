@@ -3,8 +3,6 @@ package com.raido.rental.controller;
 import com.raido.rental.logic.command.ActionCommand;
 import com.raido.rental.logic.command.exception.CommandException;
 import com.raido.rental.logic.command.resolver.CommandResolver;
-import com.raido.rental.logic.exception.LogicalException;
-import com.raido.rental.logic.exception.TechnicalException;
 import org.apache.log4j.Level;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -17,7 +15,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ResourceBundle;
 
 @WebServlet("/controller/*")
 public class Controller extends HttpServlet {
@@ -77,7 +74,7 @@ public class Controller extends HttpServlet {
             String nextPage = command.execute(request);
             request.getRequestDispatcher(nextPage).forward(request, response);
         } catch (CommandException e) {
-            //log
+            LOGGER.fatal(e);
             throw new RuntimeException(e);
         }
 

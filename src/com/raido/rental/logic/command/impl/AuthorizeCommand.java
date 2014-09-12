@@ -59,7 +59,8 @@ public class AuthorizeCommand extends ActionCommand {
         try {
             User user = userDao.authorizeUser(login, hashedPassword);
             if(user != null) {
-                request.setAttribute("currentUser", user);
+                request.setAttribute("userId", user.getId());
+                request.setAttribute("role", user.getRole());
                 return PAGE_NAME_BUNDLE.getString("main.page");
             } else {
                 Locale locale =

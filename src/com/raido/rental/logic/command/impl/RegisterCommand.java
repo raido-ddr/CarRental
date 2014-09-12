@@ -16,7 +16,6 @@ import java.util.ResourceBundle;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-
 public class RegisterCommand extends ActionCommand {
 
     private static final String METHOD_POST = "POST";
@@ -73,7 +72,9 @@ public class RegisterCommand extends ActionCommand {
                 throw new CommandException(bundle.getString("database.error"));
             }
 
-            request.setAttribute("currentUser", user);
+            request.setAttribute("userId", user.getId());
+            request.setAttribute("role", user.getRole());
+
             return PAGE_NAME_BUNDLE.getString("main.page");
 
         } else {
