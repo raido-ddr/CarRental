@@ -15,9 +15,6 @@ import java.util.ResourceBundle;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-/**
- * Created by Raido_DDR on 9/4/2014.
- */
 public class AuthorizeCommand extends ActionCommand {
 
     private static final String METHOD_POST = "POST";
