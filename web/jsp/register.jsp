@@ -57,7 +57,7 @@
         <label for="password">
             <fmt:message key="enter.password" bundle="${register}" />
         </label>
-        <input id="password" type="text" name="password"
+        <input id="password" type="password" name="password"
                pattern="<fmt:message key="password.regex" bundle="${regex}" />"
                title="<fmt:message key="password.rule" bundle="${errors}" />"
                value="${param.password} "/>
