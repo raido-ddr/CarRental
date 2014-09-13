@@ -53,22 +53,13 @@ public class Controller extends HttpServlet {
     private void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String requestPath = request.getPathInfo();
-        request.setAttribute("pathName", requestPath);
-
-        String url = request.getRequestURL().toString();
-        //String query = request.getQueryString().toString();
-
-        /*String locale = request.getParameter("locale");
-        request.setAttribute("locale", locale);*/
         CommandResolver commandResolver =
                 (CommandResolver) getServletContext().getAttribute(COMMAND_RESOLVER_ATTR);
-        ActionCommand command = commandResolver.resolveCommand(requestPath); //new AuthorizeCommand();
+        ActionCommand command =
+                commandResolver.resolveCommand(request.getPathInfo());
 
         String commandName = command.getName();
         request.setAttribute("command", commandName);
-
-        //request.getRequestDispatcher("/jsp/authorize.jsp").forward(request, response);
 
         try {
             String nextPage = command.execute(request);

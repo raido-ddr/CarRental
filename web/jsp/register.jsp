@@ -9,8 +9,6 @@
 <fmt:setBundle basename="input_errors" var="errors" />
 <fmt:setBundle basename="html_regex" var="regex" />
 
-
-
 <html>
 <head>
     <title><fmt:message key="page.title" bundle="${register}" /></title>
