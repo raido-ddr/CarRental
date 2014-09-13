@@ -9,6 +9,7 @@ import com.raido.rental.logic.command.exception.CommandException;
 import com.raido.rental.logic.util.hash.MessageDigestHelper;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.concurrent.locks.Lock;
@@ -59,8 +60,7 @@ public class AuthorizeCommand extends ActionCommand {
         try {
             User user = userDao.authorizeUser(login, hashedPassword);
             if(user != null) {
-                request.setAttribute("userId", user.getId());
-                request.setAttribute("role", user.getRole());
+                setAuthorizationAttributes(request, user);
                 return PAGE_NAME_BUNDLE.getString("main.page");
             } else {
                 Locale locale =
@@ -74,6 +74,13 @@ public class AuthorizeCommand extends ActionCommand {
         } catch (DaoException e) {
             throw new CommandException(e);
         }
+    }
+
+    private void setAuthorizationAttributes(HttpServletRequest request,
+            User user) {
+        HttpSession session = request.getSession();
+        session.setAttribute("userId", user.getId());
+        session.setAttribute("role", user.getRole());
     }
 
 }

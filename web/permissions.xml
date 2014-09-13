@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<permissions>
+
+    <permission>
+        <command>/changeLocale</command>
+        <role>user</role>
+        <role>admin</role>
+        <role>guest</role>
+    </permission>
+
+    <permission>
+        <command>/authorize</command>
+        <role>guest</role>
+    </permission>
+
+    <permission>
+        <command>/register</command>
+        <role>user</role>
+        <role>admin</role>
+        <role>guest</role>
+    </permission>
+
+</permissions>

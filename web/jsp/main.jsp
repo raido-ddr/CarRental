@@ -16,7 +16,8 @@
 </head>
 <body>
     <p>Main</p>
-    <div><c:out value="${currentUser.login}" /></div>
+    <div><c:out value="${userId}" /></div>
+    <div><c:out value="${role}" /></div>
     <div><c:out value="${sessionScope.locale}" /></div>
 
 </body>
