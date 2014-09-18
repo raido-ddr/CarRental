@@ -1,6 +1,9 @@
 package com.raido.rental.entity;
 
+import com.raido.rental.entity.dbenum.BodyStyle;
 import com.raido.rental.entity.dbenum.CarStatus;
+import com.raido.rental.entity.dbenum.FuelType;
+import com.raido.rental.entity.dbenum.TransmissionType;
 
 /**
  *
@@ -17,15 +20,15 @@ public class Car {
 
     private float power;
 
-    private String fuelType;
+    private FuelType fuelType;
 
-    private String transmissionType;
+    private TransmissionType transmissionType;
 
     private int seatCount;
 
     private float dailyCost;
 
-    private String bodyStyle;
+    private BodyStyle bodyStyle;
 
     private CarStatus status;
 
@@ -69,27 +72,27 @@ public class Car {
         this.power = power;
     }
 
-    public String getFuelType() {
+    public FuelType getFuelType() {
         return fuelType;
     }
 
-    public void setFuelType(String fuelType) {
+    public void setFuelType(FuelType fuelType) {
         this.fuelType = fuelType;
     }
 
-    public String getTransmissionType() {
+    public TransmissionType getTransmissionType() {
         return transmissionType;
     }
 
-    public void setTransmissionType(String transmissionType) {
+    public void setTransmissionType(TransmissionType transmissionType) {
         this.transmissionType = transmissionType;
     }
 
-    public String getBodyStyle() {
+    public BodyStyle getBodyStyle() {
         return bodyStyle;
     }
 
-    public void setBodyStyle(String bodyStyle) {
+    public void setBodyStyle(BodyStyle bodyStyle) {
         this.bodyStyle = bodyStyle;
     }
 

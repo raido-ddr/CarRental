@@ -3,7 +3,10 @@ package com.raido.rental.dao.impl;
 import com.raido.rental.dao.CarDao;
 import com.raido.rental.dao.exception.DaoException;
 import com.raido.rental.entity.Car;
+import com.raido.rental.entity.dbenum.BodyStyle;
 import com.raido.rental.entity.dbenum.CarStatus;
+import com.raido.rental.entity.dbenum.FuelType;
+import com.raido.rental.entity.dbenum.TransmissionType;
 import org.apache.log4j.Logger;
 
 import java.sql.Connection;
@@ -27,7 +30,7 @@ public class MySqlCarDao extends CarDao {
     private static final String SQL_CREATE_CAR =
             "INSERT INTO cars (make, model, mileage, power," +
                     "fuel_type, transmission_type, seat_count," +
-                    "daily_cost, body_style, status" +
+                    "daily_cost, body_style, status)" +
                     "VALUES (?,?,?,?,?,?,?,?,?,?)";
 
     private static final String SQL_FIND_AVAILABLE =
@@ -72,11 +75,11 @@ public class MySqlCarDao extends CarDao {
             preparedStatement.setString(2, car.getModel());
             preparedStatement.setFloat(3, car.getMileage());
             preparedStatement.setFloat(4, car.getPower());
-            preparedStatement.setString(5, car.getFuelType());
-            preparedStatement.setString(6, car.getTransmissionType());
+            preparedStatement.setString(5, car.getFuelType().getStatusValue());
+            preparedStatement.setString(6, car.getTransmissionType().getStatusValue());
             preparedStatement.setInt(7, car.getSeatCount());
             preparedStatement.setFloat(8, car.getDailyCost());
-            preparedStatement.setString(9, car.getBodyStyle());
+            preparedStatement.setString(9, car.getBodyStyle().getStatusValue());
             preparedStatement.setString(10, car.getStatus().getStatusValue());
 
             int rowsCount = preparedStatement.executeUpdate();
@@ -89,7 +92,7 @@ public class MySqlCarDao extends CarDao {
         } catch (SQLException e) {
             ResourceBundle bundle =
                     ResourceBundle.getBundle("exception_message");
-            throw new DaoException(bundle.getString("database.error"), e);
+            throw new DaoException(bundle.getString("database.error"),e);
         } try {
             if(connection != null) {
                 connection.close();
@@ -153,12 +156,16 @@ public class MySqlCarDao extends CarDao {
         car.setModel(resultSet.getString(3));
         car.setMileage(resultSet.getFloat(4));
         car.setPower(resultSet.getFloat(5));
-        car.setFuelType(resultSet.getString(6));
-        car.setTransmissionType(resultSet.getString(7));
+        car.setFuelType(FuelType
+                .valueOf(resultSet.getString(6).toUpperCase()));
+        car.setTransmissionType(TransmissionType
+                .valueOf(resultSet.getString(7).toUpperCase()));
         car.setSeatCount(resultSet.getInt(8));
         car.setDailyCost(resultSet.getFloat(9));
-        car.setBodyStyle(resultSet.getString(10));
-        car.setStatus(CarStatus.valueOf(resultSet.getString(11)));
+        car.setBodyStyle(BodyStyle
+                .valueOf(resultSet.getString(10).toUpperCase()));
+        car.setStatus(CarStatus
+                .valueOf(resultSet.getString(11).toUpperCase()));
 
         return car;
     }

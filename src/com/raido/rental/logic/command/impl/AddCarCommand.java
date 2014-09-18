@@ -71,10 +71,16 @@ public class AddCarCommand extends ActionCommand {
                 throw new CommandException(bundle.getString("database.error"));
             }
 
-            return PAGE_NAME_BUNDLE.getString("add.car.page");
+            Locale locale =
+                    (Locale) request.getSession().getAttribute("locale");
+            ResourceBundle bundle =
+                    ResourceBundle.getBundle("success_message", locale);
+            request.setAttribute("successMessage", bundle.getString("add.car"));
+            return PAGE_NAME_BUNDLE.getString("admin.main.page");
+
 
         } else {
-            return PAGE_NAME_BUNDLE.getString("registration.page");
+            return PAGE_NAME_BUNDLE.getString("add.car.page");
         }
     }
 
@@ -82,28 +88,36 @@ public class AddCarCommand extends ActionCommand {
         Car car = new Car();
 
         if(DataValidator.getInstance().validateCar(request)) {
-            int id = Integer.valueOf(request.getParameter("id").trim());
-            car.setId(id);
+
             car.setMake(request.getParameter("make").trim());
             car.setModel(request.getParameter("model").trim());
+
             float mileage =
                     Float.valueOf(request.getParameter("mileage")
                             .trim());
             car.setMileage(mileage);
+
             float power =
                     Float.valueOf(request.getParameter("power")
                             .trim());
             car.setMileage(power);
-            car.setFuelType(request.getParameter("fuelType")
-                    .trim());
-            car.setTransmissionType(request.getParameter("transmissionType")
-                    .trim());
+
+            String fuelType = request.getParameter("fuelType").trim().toUpperCase();
+            car.setFuelType(FuelType.valueOf(fuelType));
+
+            String transmissionType =
+                    request.getParameter("transmissionType").trim().toUpperCase();
+            car.setTransmissionType(TransmissionType.valueOf(transmissionType));
+
             int seatCount =
                     Integer.valueOf(request.getParameter("seatCount").trim());
             car.setSeatCount(seatCount);
-            car.setBodyStyle(request.getParameter("bodyStyle").trim());
-            CarStatus status = CarStatus.valueOf(request.getParameter("status"));
-            car.setStatus(status);
+
+            String bodyStyle = request.getParameter("bodyStyle").trim().toUpperCase();
+            car.setBodyStyle(BodyStyle.valueOf(bodyStyle));
+
+            String status = request.getParameter("status").toUpperCase();
+            car.setStatus(CarStatus.valueOf(status));
         } else {
             car = null;
         }

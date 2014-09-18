@@ -64,7 +64,7 @@
         <label for="fuelType">
             <fmt:message key="enter.fuel.type" bundle="${addCar}" />
         </label>
-        <select id="fuelType">
+        <select id="fuelType" name="fuelType">
             <c:forEach var="type" items="${fuelTypes}">
                 <option value="<c:out value='${type}' />"
                         <c:if test="${param.fuelType == type})"> selected </c:if>  >
@@ -77,7 +77,7 @@
         <label for="transmissionType">
             <fmt:message key="enter.transmission" bundle="${addCar}" />
         </label>
-        <select id="transmissionType">
+        <select id="transmissionType" name="transmissionType">
             <c:forEach var="type" items="${transmissionTypes}">
                 <option value="<c:out value='${type}' />"
                         <c:if test="${param.transmissionType == type})"> selected </c:if>  >
@@ -90,7 +90,7 @@
         <label for="bodyStyle">
             <fmt:message key="enter.body.style" bundle="${addCar}" />
         </label>
-        <select id="bodyStyle">
+        <select id="bodyStyle" name="bodyStyle">
             <c:forEach var="style" items="${bodyStyles}">
                 <option value="<c:out value='${style}' />"
                         <c:if test="${param.bodyStyle == style})"> selected </c:if>  >
@@ -125,7 +125,7 @@
         <label for="status">
             <fmt:message key="enter.status" bundle="${addCar}" />
         </label>
-        <select id="status">
+        <select id="status" name="status">
             <c:forEach var="status" items="${statusOptions}">
                 <option value="<c:out value='${status}' />"
                         <c:if test="${param.bodyStyle == status})"> selected </c:if>  >

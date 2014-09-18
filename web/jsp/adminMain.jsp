@@ -13,15 +13,13 @@
 </head>
 <body>
 <div>
+    <div><c:out value="${successMessage}" /></div>
 
     <form action="/controller/addCar" method="get" >
         <button type="submit">
             <fmt:message key="add.button.txt" bundle="${main}" />
         </button>
     </form>
-
-
-
 
 </div>
 </body>
