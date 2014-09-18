@@ -5,7 +5,7 @@ public enum TransmissionType {
     AUTOMATIC,
     MANUAL;
 
-    public String getStatusValue() {
+    public String getValue() {
         return this.toString().toLowerCase();
     }
 }

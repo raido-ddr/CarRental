@@ -75,12 +75,12 @@ public class MySqlCarDao extends CarDao {
             preparedStatement.setString(2, car.getModel());
             preparedStatement.setFloat(3, car.getMileage());
             preparedStatement.setFloat(4, car.getPower());
-            preparedStatement.setString(5, car.getFuelType().getStatusValue());
-            preparedStatement.setString(6, car.getTransmissionType().getStatusValue());
+            preparedStatement.setString(5, car.getFuelType().getValue());
+            preparedStatement.setString(6, car.getTransmissionType().getValue());
             preparedStatement.setInt(7, car.getSeatCount());
             preparedStatement.setFloat(8, car.getDailyCost());
-            preparedStatement.setString(9, car.getBodyStyle().getStatusValue());
-            preparedStatement.setString(10, car.getStatus().getStatusValue());
+            preparedStatement.setString(9, car.getBodyStyle().getValue());
+            preparedStatement.setString(10, car.getStatus().getValue());
 
             int rowsCount = preparedStatement.executeUpdate();
             if(rowsCount != 1) {
@@ -221,7 +221,7 @@ public class MySqlCarDao extends CarDao {
             preparedStatement = connection.prepareStatement(SQL_FIND_BY_STATUS,
                     ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY);
 
-            preparedStatement.setString(1, status.getStatusValue());
+            preparedStatement.setString(1, status.getValue());
 
             resultSet = preparedStatement.executeQuery();
 
@@ -263,7 +263,7 @@ public class MySqlCarDao extends CarDao {
             preparedStatement = connection.prepareStatement(SQL_FIND_BY_STATUS,
                     ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY);
 
-            preparedStatement.setString(1, status.getStatusValue());
+            preparedStatement.setString(1, status.getValue());
 
             resultSet = preparedStatement.executeQuery();
 

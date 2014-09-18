@@ -5,7 +5,6 @@ import com.raido.rental.entity.dbenum.BodyStyle;
 import com.raido.rental.entity.dbenum.CarStatus;
 import com.raido.rental.entity.dbenum.FuelType;
 import com.raido.rental.entity.dbenum.TransmissionType;
-import com.raido.rental.logic.command.ActionCommand;
 import com.raido.rental.logic.validator.DataValidator;
 
 import javax.servlet.http.HttpServletRequest;
@@ -31,7 +30,7 @@ public abstract class CarCommand extends ActionCommand {
             float power =
                     Float.valueOf(request.getParameter("power")
                             .trim());
-            car.setMileage(power);
+            car.setPower(power);
 
             String fuelType = request.getParameter("fuelType").trim().toUpperCase();
             car.setFuelType(FuelType.valueOf(fuelType));
@@ -40,12 +39,15 @@ public abstract class CarCommand extends ActionCommand {
                     request.getParameter("transmissionType").trim().toUpperCase();
             car.setTransmissionType(TransmissionType.valueOf(transmissionType));
 
-            int seatCount =
-                    Integer.valueOf(request.getParameter("seatCount").trim());
-            car.setSeatCount(seatCount);
+            String seatCount =
+                    request.getParameter("seatCount").trim();
+            car.setSeatCount(Integer.valueOf(seatCount));
 
             String bodyStyle = request.getParameter("bodyStyle").trim().toUpperCase();
             car.setBodyStyle(BodyStyle.valueOf(bodyStyle));
+
+            String dailyCost = request.getParameter("dailyCost").trim();
+            car.setDailyCost(Float.parseFloat(dailyCost));
 
             String status = request.getParameter("status").toUpperCase();
             car.setStatus(CarStatus.valueOf(status));
@@ -60,25 +62,25 @@ public abstract class CarCommand extends ActionCommand {
 
         List<String> statusOptions = new ArrayList<>();
         for(CarStatus status : CarStatus.values()) {
-            statusOptions.add(status.getStatusValue());
+            statusOptions.add(status.getValue());
         }
         request.setAttribute("statusOptions", statusOptions);
 
         List<String> fuelTypes = new ArrayList<>();
         for(FuelType type : FuelType.values()) {
-            fuelTypes.add(type.getStatusValue());
+            fuelTypes.add(type.getValue());
         }
         request.setAttribute("fuelTypes", fuelTypes);
 
         List<String> bodyStyles = new ArrayList<>();
         for(BodyStyle style : BodyStyle.values()) {
-            bodyStyles.add(style.getStatusValue());
+            bodyStyles.add(style.getValue());
         }
         request.setAttribute("bodyStyles", bodyStyles);
 
         List<String> transmissionTypes = new ArrayList<>();
         for(TransmissionType type : TransmissionType .values()) {
-            transmissionTypes.add(type.getStatusValue());
+            transmissionTypes.add(type.getValue());
         }
         request.setAttribute("transmissionTypes", transmissionTypes);
     }

@@ -7,7 +7,7 @@ public enum FuelType {
     GASOLINE,
     DIESEL;
 
-    public String getStatusValue() {
+    public String getValue() {
         return this.toString().toLowerCase();
     }
 }

@@ -24,4 +24,9 @@
         <name>/editCar</name>
         <class-name>com.raido.rental.logic.command.impl.EditCarCommand</class-name>
     </command>
+
+    <command>
+        <name>/viewAllCars</name>
+        <class-name>com.raido.rental.logic.command.impl.ViewAllCarsCommand</class-name>
+    </command>
 </commands>

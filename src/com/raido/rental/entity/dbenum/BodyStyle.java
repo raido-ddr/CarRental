@@ -7,7 +7,7 @@ public enum BodyStyle {
     MPV,
     SUV;
 
-    public String getStatusValue() {
+    public String getValue() {
         return this.toString().toLowerCase();
     }
 }

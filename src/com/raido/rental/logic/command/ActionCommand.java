@@ -26,4 +26,8 @@ public abstract class ActionCommand {
         return (Locale) request.getSession().getAttribute("locale");
     }
 
+    public String getCurrentUserRole(HttpServletRequest request) {
+        return (String) request.getSession().getAttribute("role");
+    }
+
 }

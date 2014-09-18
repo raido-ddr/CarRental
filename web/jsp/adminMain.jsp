@@ -21,6 +21,12 @@
         </button>
     </form>
 
+    <form action="/controller/viewAllCars" method="get" >
+        <button type="submit">
+            <fmt:message key="view.button.txt" bundle="${main}" />
+        </button>
+    </form>
+
 </div>
 </body>
 </html>
