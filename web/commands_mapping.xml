@@ -19,4 +19,9 @@
         <name>/addCar</name>
         <class-name>com.raido.rental.logic.command.impl.AddCarCommand</class-name>
     </command>
+
+    <command>
+        <name>/editCar</name>
+        <class-name>com.raido.rental.logic.command.impl.EditCarCommand</class-name>
+    </command>
 </commands>

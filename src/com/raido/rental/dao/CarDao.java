@@ -2,6 +2,7 @@ package com.raido.rental.dao;
 
 import com.raido.rental.dao.exception.DaoException;
 import com.raido.rental.entity.Car;
+import com.raido.rental.entity.dbenum.CarStatus;
 
 import java.util.List;
 
@@ -11,8 +12,10 @@ public abstract class CarDao extends Dao {
 
     public abstract Car findCarById(int id) throws DaoException;
 
-    public abstract List<Car> getDamagedCars() throws DaoException;
+    public abstract List<Car> selectAllCars() throws DaoException;
 
-    public abstract List<Car> getAvailableCars() throws DaoException;
+    public abstract List<Car> findCarsByStatus(CarStatus status) throws DaoException;
+
+    public abstract void editCar(int id) throws DaoException;
 
 }

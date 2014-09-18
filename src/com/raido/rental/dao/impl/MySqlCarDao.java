@@ -33,11 +33,11 @@ public class MySqlCarDao extends CarDao {
                     "daily_cost, body_style, status)" +
                     "VALUES (?,?,?,?,?,?,?,?,?,?)";
 
-    private static final String SQL_FIND_AVAILABLE =
-            "SELECT * FROM cars WHERE is_available=?";
+    private static final String SQL_FIND_BY_STATUS =
+            "SELECT * FROM cars WHERE status=?";
 
-    private static final String SQL_FIND_DAMAGED =
-            "SELECT * FROM cars WHERE is_damaged=?";
+    private static final String SQL_SELECT_ALL =
+            "SELECT * FROM cars";
 
     private static volatile MySqlCarDao instance;
 
@@ -147,6 +147,46 @@ public class MySqlCarDao extends CarDao {
         }
     }
 
+    @Override
+    public List<Car> selectAllCars() throws DaoException {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = getPooledConnection();
+            preparedStatement = connection.prepareStatement(SQL_SELECT_ALL,
+                    ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY);
+
+            resultSet = preparedStatement.executeQuery();
+
+            List<Car> cars = new ArrayList<>();
+            while(resultSet.next()) {
+                Car car = createCarFromResultSet(resultSet);
+                cars.add(car);
+            }
+            return cars;
+
+        } catch (SQLException e) {
+            ResourceBundle bundle =
+                    ResourceBundle.getBundle("exception_message");
+            throw new DaoException(bundle.getString("database.error"), e);
+        } finally {
+            try {
+                if(preparedStatement != null) {
+                    preparedStatement.close();
+                }
+                if(connection != null) {
+                    connection.close();
+                }
+
+            } catch (SQLException e) {
+                LOGGER.error(e);
+            }
+        }
+    }
+
+
     private Car createCarFromResultSet(ResultSet resultSet)
             throws SQLException {
         Car car = new Car();
@@ -170,27 +210,27 @@ public class MySqlCarDao extends CarDao {
         return car;
     }
 
-    @Override
-    public List<Car> getAvailableCars() throws DaoException {
+
+    public List<Car> findCarsByStatus(CarStatus status) throws DaoException {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
 
         try {
             connection = getPooledConnection();
-            preparedStatement = connection.prepareStatement(SQL_FIND_AVAILABLE,
+            preparedStatement = connection.prepareStatement(SQL_FIND_BY_STATUS,
                     ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY);
 
-            preparedStatement.setBoolean(1, true);
+            preparedStatement.setString(1, status.getStatusValue());
 
             resultSet = preparedStatement.executeQuery();
 
-            List<Car> damagedCars = new ArrayList<>();
+            List<Car> cars = new ArrayList<>();
             while(resultSet.next()) {
                 Car car = createCarFromResultSet(resultSet);
-                damagedCars.add(car);
+                cars.add(car);
             }
-            return damagedCars;
+            return cars;
 
         } catch (SQLException e) {
             ResourceBundle bundle =
@@ -209,29 +249,30 @@ public class MySqlCarDao extends CarDao {
                 LOGGER.error(e);
             }
         }
+
     }
 
     @Override
-    public List<Car> getDamagedCars() throws DaoException {
-        Connection connection = null;
+    public void editCar(int id) throws DaoException {
+        /*Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
 
         try {
             connection = getPooledConnection();
-            preparedStatement = connection.prepareStatement(SQL_FIND_DAMAGED,
+            preparedStatement = connection.prepareStatement(SQL_FIND_BY_STATUS,
                     ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY);
 
-            preparedStatement.setBoolean(1, true);
+            preparedStatement.setString(1, status.getStatusValue());
 
             resultSet = preparedStatement.executeQuery();
 
-            List<Car> availableCars = new ArrayList<>();
+            List<Car> cars = new ArrayList<>();
             while(resultSet.next()) {
                 Car car = createCarFromResultSet(resultSet);
-                availableCars.add(car);
+                cars.add(car);
             }
-            return availableCars;
+            return cars;
 
         } catch (SQLException e) {
             ResourceBundle bundle =
@@ -249,9 +290,8 @@ public class MySqlCarDao extends CarDao {
             } catch (SQLException e) {
                 LOGGER.error(e);
             }
-        }
+        }*/
     }
-
 
 
 }

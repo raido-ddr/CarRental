@@ -20,23 +20,22 @@ import java.util.ResourceBundle;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class AddCarCommand extends ActionCommand {
-
-    private static final String METHOD_POST = "POST";
-
-    private static final String METHOD_GET = "GET";
+/**
+ * Created by Raido_DDR on 18.09.2014.
+ */
+public class EditCarCommand extends ActionCommand {
 
     private static Lock lock = new ReentrantLock();
 
-    private static AddCarCommand instance;
+    private static EditCarCommand instance;
 
-    private AddCarCommand () {}
+    private EditCarCommand () {}
 
-    public static AddCarCommand getInstance() {
+    public static EditCarCommand getInstance() {
         if (instance == null) {
             lock.lock();
             if (instance == null) {
-                instance = new AddCarCommand ();
+                instance = new EditCarCommand ();
             }
             lock.unlock();
 
@@ -45,19 +44,31 @@ public class AddCarCommand extends ActionCommand {
     }
 
     @Override
-    public String execute(HttpServletRequest request)
-            throws CommandException {
+    public String execute(HttpServletRequest request) throws CommandException {
 
         if(METHOD_GET.equals(request.getMethod())) {
+            int id = Integer.parseInt(request.getParameter("id"));
+            CarDao carDao = DaoFactory.getInstance().getCarDao();
 
-            setEnumAttributes(request);
-            return PAGE_NAME_BUNDLE.getString("add.car.page");
+            try {
+                Car car = carDao.findCarById(id);
+                setEnumAttributes(request);
+                request.setAttribute("car", car);
+                return PAGE_NAME_BUNDLE.getString("add.car.page");
+            } catch (DaoException e) {
+                Locale locale =
+                        (Locale) request.getSession().getAttribute("locale");
+                ResourceBundle bundle =
+                        ResourceBundle.getBundle("exception_message", locale);
+                throw new CommandException(bundle.getString("database.error"));
+            }
+
         }
 
         Car car = createCarFromData(request);
         if(car != null) {
 
-            CarDao carDao = DaoFactory.getInstance().getCarDao();
+            /*CarDao carDao = DaoFactory.getInstance().getCarDao();
             try {
                 carDao.createCar(car);
             } catch (DaoException e) {
@@ -73,7 +84,7 @@ public class AddCarCommand extends ActionCommand {
             ResourceBundle bundle =
                     ResourceBundle.getBundle("success_message", locale);
             request.setAttribute("successMessage", bundle.getString("add.car"));
-
+*/
             return PAGE_NAME_BUNDLE.getString("admin.main.page");
 
 
