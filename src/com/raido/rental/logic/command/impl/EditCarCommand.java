@@ -23,7 +23,7 @@ import java.util.concurrent.locks.ReentrantLock;
 /**
  * Created by Raido_DDR on 18.09.2014.
  */
-public class EditCarCommand extends ActionCommand {
+public class EditCarCommand extends CarCommand {
 
     private static Lock lock = new ReentrantLock();
 
@@ -94,71 +94,5 @@ public class EditCarCommand extends ActionCommand {
         }
     }
 
-    private Car createCarFromData(HttpServletRequest request) {
-        Car car = new Car();
 
-        if(DataValidator.getInstance().validateCar(request)) {
-
-            car.setMake(request.getParameter("make").trim());
-            car.setModel(request.getParameter("model").trim());
-
-            float mileage =
-                    Float.valueOf(request.getParameter("mileage")
-                            .trim());
-            car.setMileage(mileage);
-
-            float power =
-                    Float.valueOf(request.getParameter("power")
-                            .trim());
-            car.setMileage(power);
-
-            String fuelType = request.getParameter("fuelType").trim().toUpperCase();
-            car.setFuelType(FuelType.valueOf(fuelType));
-
-            String transmissionType =
-                    request.getParameter("transmissionType").trim().toUpperCase();
-            car.setTransmissionType(TransmissionType.valueOf(transmissionType));
-
-            int seatCount =
-                    Integer.valueOf(request.getParameter("seatCount").trim());
-            car.setSeatCount(seatCount);
-
-            String bodyStyle = request.getParameter("bodyStyle").trim().toUpperCase();
-            car.setBodyStyle(BodyStyle.valueOf(bodyStyle));
-
-            String status = request.getParameter("status").toUpperCase();
-            car.setStatus(CarStatus.valueOf(status));
-        } else {
-            car = null;
-        }
-
-        return car;
-    }
-
-    private void setEnumAttributes(HttpServletRequest request) {
-
-        List<String> statusOptions = new ArrayList<>();
-        for(CarStatus status : CarStatus.values()) {
-            statusOptions.add(status.getStatusValue());
-        }
-        request.setAttribute("statusOptions", statusOptions);
-
-        List<String> fuelTypes = new ArrayList<>();
-        for(FuelType type : FuelType.values()) {
-            fuelTypes.add(type.getStatusValue());
-        }
-        request.setAttribute("fuelTypes", fuelTypes);
-
-        List<String> bodyStyles = new ArrayList<>();
-        for(BodyStyle style : BodyStyle.values()) {
-            bodyStyles.add(style.getStatusValue());
-        }
-        request.setAttribute("bodyStyles", bodyStyles);
-
-        List<String> transmissionTypes = new ArrayList<>();
-        for(TransmissionType type : TransmissionType .values()) {
-            transmissionTypes.add(type.getStatusValue());
-        }
-        request.setAttribute("transmissionTypes", transmissionTypes);
-    }
 }
