@@ -3,6 +3,7 @@ package com.raido.rental.logic.command;
 import com.raido.rental.logic.command.exception.CommandException;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Locale;
 import java.util.ResourceBundle;
 
 public abstract class ActionCommand {
@@ -19,6 +20,10 @@ public abstract class ActionCommand {
 
     public String getName() {
         return this.getClass().getSimpleName();
+    }
+
+    public Locale getCurrentLocale(HttpServletRequest request) {
+        return (Locale) request.getSession().getAttribute("locale");
     }
 
 }

@@ -60,8 +60,7 @@ public class AuthorizeCommand extends ActionCommand {
                 setAuthorizationAttributes(request, user);
                 return PAGE_NAME_BUNDLE.getString("main.page");
             } else {
-                Locale locale =
-                        (Locale) request.getSession().getAttribute("locale");
+                Locale locale = getCurrentLocale(request);
                 ResourceBundle bundle =
                         ResourceBundle.getBundle("input_errors", locale);
                 request.setAttribute("authorizationError", bundle.getString("auth.error"));

@@ -1,4 +1,4 @@
-package com.raido.rental.logic.command.impl;
+package com.raido.rental.logic.command;
 
 import com.raido.rental.entity.Car;
 import com.raido.rental.entity.dbenum.BodyStyle;

@@ -4,17 +4,10 @@ import com.raido.rental.dao.CarDao;
 import com.raido.rental.dao.exception.DaoException;
 import com.raido.rental.dao.factory.DaoFactory;
 import com.raido.rental.entity.Car;
-import com.raido.rental.entity.dbenum.BodyStyle;
-import com.raido.rental.entity.dbenum.CarStatus;
-import com.raido.rental.entity.dbenum.FuelType;
-import com.raido.rental.entity.dbenum.TransmissionType;
-import com.raido.rental.logic.command.ActionCommand;
+import com.raido.rental.logic.command.CarCommand;
 import com.raido.rental.logic.command.exception.CommandException;
-import com.raido.rental.logic.validator.DataValidator;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.concurrent.locks.Lock;
@@ -30,7 +23,7 @@ public class AddCarCommand extends CarCommand {
 
     private static AddCarCommand instance;
 
-    private AddCarCommand () {}
+    private AddCarCommand() {}
 
     public static AddCarCommand getInstance() {
         if (instance == null) {
@@ -68,8 +61,7 @@ public class AddCarCommand extends CarCommand {
                 throw new CommandException(bundle.getString("database.error"));
             }
 
-            Locale locale =
-                    (Locale) request.getSession().getAttribute("locale");
+            Locale locale = getCurrentLocale(request);
             ResourceBundle bundle =
                     ResourceBundle.getBundle("success_message", locale);
             request.setAttribute("successMessage", bundle.getString("add.car"));

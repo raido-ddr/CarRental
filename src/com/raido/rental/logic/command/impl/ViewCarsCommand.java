@@ -8,27 +8,26 @@ import com.raido.rental.logic.command.CarCommand;
 import com.raido.rental.logic.command.exception.CommandException;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-/**
- * Created by Raido_DDR on 18.09.2014.
- */
-public class EditCarCommand extends CarCommand {
+
+public class ViewCarsCommand extends CarCommand {
 
     private static Lock lock = new ReentrantLock();
 
-    private static EditCarCommand instance;
+    private static ViewCarsCommand instance;
 
-    private EditCarCommand() {}
+    private ViewCarsCommand() {}
 
-    public static EditCarCommand getInstance() {
+    public static ViewCarsCommand getInstance() {
         if (instance == null) {
             lock.lock();
             if (instance == null) {
-                instance = new EditCarCommand ();
+                instance = new ViewCarsCommand ();
             }
             lock.unlock();
 
@@ -39,15 +38,12 @@ public class EditCarCommand extends CarCommand {
     @Override
     public String execute(HttpServletRequest request) throws CommandException {
 
-        if(METHOD_GET.equals(request.getMethod())) {
-            int id = Integer.parseInt(request.getParameter("id"));
-            CarDao carDao = DaoFactory.getInstance().getCarDao();
+        Car car = createCarFromData(request);
+        if(car != null) {
 
+            CarDao carDao = DaoFactory.getInstance().getCarDao();
             try {
-                Car car = carDao.findCarById(id);
-                setEnumAttributes(request);
-                request.setAttribute("car", car);
-                return PAGE_NAME_BUNDLE.getString("add.car.page");
+                List<Car> cars = carDao.selectAllCars();
             } catch (DaoException e) {
                 Locale locale = getCurrentLocale(request);
                 ResourceBundle bundle =
@@ -55,28 +51,11 @@ public class EditCarCommand extends CarCommand {
                 throw new CommandException(bundle.getString("database.error"));
             }
 
-        }
-
-        Car car = createCarFromData(request);
-        if(car != null) {
-
-            /*CarDao carDao = DaoFactory.getInstance().getCarDao();
-            try {
-                carDao.createCar(car);
-            } catch (DaoException e) {
-                Locale locale =
-                        (Locale) request.getSession().getAttribute("locale");
-                ResourceBundle bundle =
-                        ResourceBundle.getBundle("exception_message", locale);
-                throw new CommandException(bundle.getString("database.error"));
-            }
-
-            Locale locale =
-                    (Locale) request.getSession().getAttribute("locale");
+            Locale locale = getCurrentLocale(request);
             ResourceBundle bundle =
                     ResourceBundle.getBundle("success_message", locale);
             request.setAttribute("successMessage", bundle.getString("add.car"));
-*/
+
             return PAGE_NAME_BUNDLE.getString("admin.main.page");
 
 
@@ -84,7 +63,6 @@ public class EditCarCommand extends CarCommand {
             setEnumAttributes(request);
             return PAGE_NAME_BUNDLE.getString("add.car.page");
         }
+
     }
-
-
 }

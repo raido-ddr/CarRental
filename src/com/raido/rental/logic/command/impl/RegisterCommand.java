@@ -62,8 +62,7 @@ public class RegisterCommand extends ActionCommand {
                     return PAGE_NAME_BUNDLE.getString("registration.page");
                 }
             } catch (DaoException e) {
-                Locale locale =
-                        (Locale) request.getSession().getAttribute("locale");
+                Locale locale = getCurrentLocale(request);
                 ResourceBundle bundle =
                         ResourceBundle.getBundle("exception_message", locale);
                 throw new CommandException(bundle.getString("database.error"));
