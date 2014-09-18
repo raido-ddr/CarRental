@@ -1,5 +1,7 @@
 package com.raido.rental.entity;
 
+import com.raido.rental.entity.dbenum.CarStatus;
+
 /**
  *
  */
@@ -19,15 +21,13 @@ public class Car {
 
     private String transmissionType;
 
-    private String bodyStyle;
-
     private int seatCount;
 
     private float dailyCost;
 
-    private boolean available;
+    private String bodyStyle;
 
-    private boolean deleted;
+    private CarStatus status;
 
     public int getId() {
         return id;
@@ -109,20 +109,12 @@ public class Car {
         this.dailyCost = dailyCost;
     }
 
-    public boolean isAvailable() {
-        return available;
+    public CarStatus getStatus() {
+        return status;
     }
 
-    public void setAvailable(boolean available) {
-        this.available = available;
-    }
-
-    public boolean isDeleted() {
-        return deleted;
-    }
-
-    public void setDeleted(boolean deleted) {
-        this.deleted = deleted;
+    public void setStatus(CarStatus status) {
+        this.status = status;
     }
 
     @Override
@@ -136,10 +128,7 @@ public class Car {
 
         Car car = (Car) o;
 
-        if (available != car.available) {
-            return false;
-        }
-        if (deleted != car.deleted) {
+        if (Float.compare(car.dailyCost, dailyCost) != 0) {
             return false;
         }
         if (id != car.id) {
@@ -154,9 +143,6 @@ public class Car {
         if (seatCount != car.seatCount) {
             return false;
         }
-        if (Float.compare(car.dailyCost, dailyCost) != 0) {
-            return false;
-        }
         if (!bodyStyle.equals(car.bodyStyle)) {
             return false;
         }
@@ -167,6 +153,9 @@ public class Car {
             return false;
         }
         if (!model.equals(car.model)) {
+            return false;
+        }
+        if (!status.equals(car.status)) {
             return false;
         }
         if (!transmissionType.equals(car.transmissionType)) {
@@ -185,11 +174,10 @@ public class Car {
         result = 31 * result + (power != +0.0f ? Float.floatToIntBits(power) : 0);
         result = 31 * result + fuelType.hashCode();
         result = 31 * result + transmissionType.hashCode();
-        result = 31 * result + bodyStyle.hashCode();
         result = 31 * result + seatCount;
         result = 31 * result + (dailyCost != +0.0f ? Float.floatToIntBits(dailyCost) : 0);
-        result = 31 * result + (available ? 1 : 0);
-        result = 31 * result + (deleted ? 1 : 0);
+        result = 31 * result + bodyStyle.hashCode();
+        result = 31 * result + status.hashCode();
         return result;
     }
 }

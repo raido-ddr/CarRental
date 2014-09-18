@@ -1,9 +1,9 @@
 package com.raido.rental.dao.factory.impl;
 
-import com.raido.rental.dao.AdminDao;
+import com.raido.rental.dao.CarDao;
 import com.raido.rental.dao.UserDao;
 import com.raido.rental.dao.factory.DaoFactory;
-import com.raido.rental.dao.impl.MySqlAdminDao;
+import com.raido.rental.dao.impl.MySqlCarDao;
 import com.raido.rental.dao.impl.MySqlUserDao;
 
 import java.util.concurrent.locks.Lock;
@@ -40,7 +40,9 @@ public class MySqlDaoFactory extends DaoFactory {
     }
 
     @Override
-    public AdminDao getAdminDao() {
-        return MySqlAdminDao.getInstance();
+    public CarDao getCarDao() {
+        return MySqlCarDao.getInstance();
     }
+
+
 }

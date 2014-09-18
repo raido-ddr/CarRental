@@ -1,6 +1,6 @@
 package com.raido.rental.logic;
 
-import com.raido.rental.dao.AdminDao;
+import com.raido.rental.dao.CarDao;
 import com.raido.rental.dao.UserDao;
 import com.raido.rental.dao.exception.DaoException;
 import com.raido.rental.dao.factory.DaoFactory;
@@ -10,7 +10,6 @@ import com.raido.rental.entity.User;
 import com.raido.rental.logic.util.hash.MessageDigestHelper;
 
 import java.sql.*;
-import java.util.ResourceBundle;
 
 
 public class MainRunner {
@@ -93,7 +92,7 @@ public class MainRunner {
             if(conn != null) System.out.println("conn established");
             //if(conn2 != null) System.out.println("conn2 established");
 
-            AdminDao adminDao = DaoFactory.getInstance().getAdminDao();
+            CarDao carDao = DaoFactory.getInstance().getCarDao();
 
 
             Statement st = conn.createStatement();

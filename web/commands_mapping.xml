@@ -4,12 +4,19 @@
         <name>/changeLocale</name>
         <class-name>com.raido.rental.logic.command.impl.ChangeLocaleCommand</class-name>
     </command>
+
     <command>
         <name>/authorize</name>
         <class-name>com.raido.rental.logic.command.impl.AuthorizeCommand</class-name>
     </command>
+
     <command>
         <name>/register</name>
         <class-name>com.raido.rental.logic.command.impl.RegisterCommand</class-name>
+    </command>
+
+    <command>
+        <name>/addCar</name>
+        <class-name>com.raido.rental.logic.command.impl.AddCarCommand</class-name>
     </command>
 </commands>

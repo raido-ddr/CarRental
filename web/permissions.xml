@@ -20,4 +20,9 @@
         <role>guest</role>
     </permission>
 
+    <permission>
+        <command>/addCar</command>
+        <role>admin</role>
+    </permission>
+
 </permissions>

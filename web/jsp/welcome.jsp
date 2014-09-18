@@ -12,7 +12,6 @@
     <title><fmt:message key="page.title" bundle="${welcome}" /></title>
 </head>
 <body>
-<c:out value="${sessionScope.locale}" />
 <div>
     <%--<h3><fmt:message key="title" bundle="${welcome}" /> </h3>--%>
 
@@ -37,6 +36,12 @@
     <form action="/controller/changeLocale?locale=ru-RU" method="post" >
         <button type="submit">
             <fmt:message key="ru.button.txt" bundle="${welcome}" />
+        </button>
+    </form>
+
+    <form action="/controller/addCar" method="get" >
+        <button type="submit">
+            <fmt:message key="add.button.txt" bundle="${welcome}" />
         </button>
     </form>
 

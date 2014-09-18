@@ -4,14 +4,14 @@ import com.raido.rental.dao.exception.DaoException;
 import com.raido.rental.entity.User;
 
 
-public interface UserDao {
+public abstract class UserDao extends Dao {
 
-    void createUser(User user) throws DaoException;
+    public abstract void createUser(User user) throws DaoException;
 
-    User findUserById(int id) throws DaoException;
+    public abstract User findUserById(int id) throws DaoException;
 
-    User authorizeUser(String login, String hashedPassword) throws DaoException;
+    public abstract User authorizeUser(String login, String hashedPassword) throws DaoException;
 
-    boolean isLoginUnique(String login) throws DaoException;
+    public abstract boolean isLoginUnique(String login) throws DaoException;
 
 }

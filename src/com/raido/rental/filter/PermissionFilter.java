@@ -11,9 +11,9 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ResourceBundle;
 
-@WebFilter(urlPatterns = {"/controller/*"},
+/*@WebFilter(urlPatterns = {"/controller*//*"},
         servletNames = {"ControllerServlet"}
-    )
+    )*/
 public class PermissionFilter implements Filter {
 
     private FilterConfig filterConfig;

@@ -12,7 +12,7 @@ import java.util.ResourceBundle;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class MySqlUserDao implements UserDao {
+public class MySqlUserDao extends UserDao {
 
     private static final Logger LOGGER =
             Logger.getLogger(MySqlUserDao.class);
@@ -35,10 +35,6 @@ public class MySqlUserDao implements UserDao {
     private static volatile MySqlUserDao instance;
 
     private static Lock lock = new ReentrantLock();
-
-    private static ConnectionPool connectionPool =
-            ConnectionPool.getInstance();
-
 
     private MySqlUserDao() {}
 
@@ -332,23 +328,6 @@ public class MySqlUserDao implements UserDao {
         return user;
     }
 
-    /**
-     * Requests pool to provide a connection
-     * and processes possible errors.
-     *
-     * @return Connection
-     * @throws DaoException
-     */
-    private Connection getPooledConnection() throws DaoException {
 
-        try {
-            return connectionPool.takeConnection();
-        } catch (ConnectionPoolException e) {
-            ResourceBundle bundle =
-                    ResourceBundle.getBundle("exception_message");
-            throw new DaoException(
-                    bundle.getString("database.error"), e);
-        }
-    }
 
 }
