@@ -53,7 +53,7 @@ public class AddCarCommand extends ActionCommand {
 
         if(METHOD_GET.equals(request.getMethod())) {
 
-           setEnumAttributes(request);
+            setEnumAttributes(request);
             return PAGE_NAME_BUNDLE.getString("add.car.page");
         }
 
@@ -76,10 +76,12 @@ public class AddCarCommand extends ActionCommand {
             ResourceBundle bundle =
                     ResourceBundle.getBundle("success_message", locale);
             request.setAttribute("successMessage", bundle.getString("add.car"));
+
             return PAGE_NAME_BUNDLE.getString("admin.main.page");
 
 
         } else {
+            setEnumAttributes(request);
             return PAGE_NAME_BUNDLE.getString("add.car.page");
         }
     }
