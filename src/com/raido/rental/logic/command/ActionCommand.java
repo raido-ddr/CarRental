@@ -19,7 +19,26 @@ public abstract class ActionCommand {
     protected RequestParameterHelper parameterHelper =
             RequestParameterHelper.getInstance();
 
-    public abstract String execute(HttpServletRequest request)
+    public final String execute(HttpServletRequest request)
+            throws CommandException {
+
+        switch (request.getMethod()) {
+        case METHOD_GET:
+            return processGetRequest(request);
+        case METHOD_POST:
+            return processPostRequest(request);
+        default:
+            Locale locale = getCurrentLocale(request);
+            ResourceBundle bundle =
+                    ResourceBundle.getBundle("exception_message", locale);
+            throw new CommandException(bundle.getString("unsupported.method"));
+        }
+    }
+
+    protected abstract String processGetRequest(HttpServletRequest request)
+            throws CommandException;
+
+    protected abstract String processPostRequest(HttpServletRequest request)
             throws CommandException;
 
     public String getName() {

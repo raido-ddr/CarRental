@@ -35,25 +35,28 @@ public class EditCarCommand extends CarCommand {
     }
 
     @Override
-    public String execute(HttpServletRequest request) throws CommandException {
+    protected String processGetRequest(HttpServletRequest request)
+            throws CommandException {
 
-        if(METHOD_GET.equals(request.getMethod())) {
-            int id = Integer.parseInt(request.getParameter("id"));
-            CarDao carDao = DaoFactory.getInstance().getCarDao();
+        int id = Integer.parseInt(request.getParameter("id"));
+        CarDao carDao = DaoFactory.getInstance().getCarDao();
 
-            try {
-                Car car = carDao.findCarById(id);
-                setEnumAttributes(request);
-                request.setAttribute("car", car);
-                return PAGE_NAME_BUNDLE.getString("edit.car.page");
-            } catch (DaoException e) {
-                Locale locale = getCurrentLocale(request);
-                ResourceBundle bundle =
-                        ResourceBundle.getBundle("exception_message", locale);
-                throw new CommandException(bundle.getString("database.error"));
-            }
-
+        try {
+            Car car = carDao.findCarById(id);
+            setEnumAttributes(request);
+            request.setAttribute("car", car);
+            return PAGE_NAME_BUNDLE.getString("edit.car.page");
+        } catch (DaoException e) {
+            Locale locale = getCurrentLocale(request);
+            ResourceBundle bundle =
+                    ResourceBundle.getBundle("exception_message", locale);
+            throw new CommandException(bundle.getString("database.error"));
         }
+    }
+
+    @Override
+    protected String processPostRequest(HttpServletRequest request)
+            throws CommandException {
 
         Car car = createCarFromData(request);
         if(car != null) {

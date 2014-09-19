@@ -34,15 +34,18 @@ public class RegisterCommand extends UserCommand {
     }
 
     @Override
-    public String execute(HttpServletRequest request) throws CommandException {
+    protected String processGetRequest(HttpServletRequest request)
+            throws CommandException {
+        return PAGE_NAME_BUNDLE.getString("registration.page");
+    }
 
-        if(METHOD_GET.equals(request.getMethod())) {
-            return PAGE_NAME_BUNDLE.getString("registration.page");
-        }
+    @Override
+    protected String processPostRequest(HttpServletRequest request)
+            throws CommandException {
 
         User user = createUserFromData(request);
-        if(user != null) {
 
+        if(user != null) {
             UserDao userDao = DaoFactory.getInstance().getUserDao();
             try {
 
@@ -70,7 +73,6 @@ public class RegisterCommand extends UserCommand {
         } else {
             return PAGE_NAME_BUNDLE.getString("registration.page");
         }
-
     }
 
 

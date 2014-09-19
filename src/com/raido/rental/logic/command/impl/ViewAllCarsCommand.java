@@ -35,7 +35,19 @@ public class ViewAllCarsCommand extends CarCommand {
     }
 
     @Override
-    public String execute(HttpServletRequest request) throws CommandException {
+    protected String processGetRequest(HttpServletRequest request)
+            throws CommandException {
+        return processRequest(request);
+    }
+
+    @Override
+    protected String processPostRequest(HttpServletRequest request)
+            throws CommandException {
+        return processRequest(request);
+    }
+
+    private String processRequest(HttpServletRequest request)
+            throws CommandException {
 
         List<Car> cars;
         CarDao carDao = DaoFactory.getInstance().getCarDao();
@@ -61,7 +73,5 @@ public class ViewAllCarsCommand extends CarCommand {
                     ResourceBundle.getBundle("exception_message", locale);
             throw new CommandException(bundle.getString("permission.denied"));
         }
-
-
     }
 }

@@ -35,13 +35,12 @@ public class AuthorizeCommand extends UserCommand {
     }
 
     @Override
-    public String execute(HttpServletRequest request)
-            throws CommandException {
+    protected String processGetRequest(HttpServletRequest request) {
+        return PAGE_NAME_BUNDLE.getString("authorization.page");
+    }
 
-        if(METHOD_GET.equals(request.getMethod())) {
-            return PAGE_NAME_BUNDLE.getString("authorization.page");
-        }
-
+    @Override
+    protected String processPostRequest(HttpServletRequest request) throws CommandException {
         String login = request.getParameter("login");
         String password = request.getParameter("password");
 

@@ -29,8 +29,12 @@ public class ActionNotFoundCommand extends ActionCommand {
     }
 
     @Override
-    public String execute(HttpServletRequest request)
-            throws CommandException {
+    protected String processPostRequest(HttpServletRequest request) {
+        return null;
+    }
+
+    @Override
+    protected String processGetRequest(HttpServletRequest request) {
         return null;
     }
 

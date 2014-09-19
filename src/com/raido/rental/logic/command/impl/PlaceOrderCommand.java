@@ -29,14 +29,12 @@ public class PlaceOrderCommand extends OrderCommand {
     }
 
     @Override
-    public String execute(HttpServletRequest request) throws CommandException {
+    protected String processGetRequest(HttpServletRequest request) throws CommandException {
+        return PAGE_NAME_BUNDLE.getString("place.order.page");
+    }
 
-        if(METHOD_GET.equals(request.getMethod())) {
-            //set id and cost attr???
-
-            return PAGE_NAME_BUNDLE.getString("place.order.page");
-        }
-
+    @Override
+    protected String processPostRequest(HttpServletRequest request) throws CommandException {
         Order order = createOrderFromData(request);
         if(order != null) {
 

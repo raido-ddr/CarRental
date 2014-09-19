@@ -30,11 +30,17 @@ public class ChangeLocaleCommand extends ActionCommand {
         return instance;
     }
 
+    @Override
+    protected String processGetRequest(HttpServletRequest request) {
+        return processRequest(request);
+    }
 
     @Override
-    public String execute(HttpServletRequest request)
-            throws CommandException {
+    protected String processPostRequest(HttpServletRequest request) throws CommandException {
+        return processRequest(request);
+    }
 
+    private String processRequest(HttpServletRequest request) {
         String localeTag = request.getParameter("locale");
         Locale locale = Locale.forLanguageTag(localeTag);
         request.getSession().setAttribute("locale", locale);
@@ -42,7 +48,6 @@ public class ChangeLocaleCommand extends ActionCommand {
 
         return PAGE_NAME_BUNDLE.getString("welcome.page");
     }
-
 
 
 }

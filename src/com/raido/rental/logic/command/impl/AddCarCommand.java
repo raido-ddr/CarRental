@@ -15,10 +15,6 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class AddCarCommand extends CarCommand {
 
-    private static final String METHOD_POST = "POST";
-
-    private static final String METHOD_GET = "GET";
-
     private static Lock lock = new ReentrantLock();
 
     private static AddCarCommand instance;
@@ -38,14 +34,8 @@ public class AddCarCommand extends CarCommand {
     }
 
     @Override
-    public String execute(HttpServletRequest request)
+    protected String processPostRequest(HttpServletRequest request)
             throws CommandException {
-
-        if(METHOD_GET.equals(request.getMethod())) {
-
-            setEnumAttributes(request);
-            return PAGE_NAME_BUNDLE.getString("add.car.page");
-        }
 
         Car car = createCarFromData(request);
         if(car != null) {
@@ -73,6 +63,14 @@ public class AddCarCommand extends CarCommand {
             setEnumAttributes(request);
             return PAGE_NAME_BUNDLE.getString("add.car.page");
         }
+
+
+    }
+
+    @Override
+    protected String processGetRequest(HttpServletRequest request) {
+        setEnumAttributes(request);
+        return PAGE_NAME_BUNDLE.getString("add.car.page");
     }
 
 
