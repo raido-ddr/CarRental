@@ -3,10 +3,8 @@ package com.raido.rental.logic.command.impl;
 import com.raido.rental.entity.Order;
 import com.raido.rental.logic.command.OrderCommand;
 import com.raido.rental.logic.command.exception.CommandException;
-import com.raido.rental.logic.validator.DataValidator;
 
 import javax.servlet.http.HttpServletRequest;
-import java.sql.Date;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 

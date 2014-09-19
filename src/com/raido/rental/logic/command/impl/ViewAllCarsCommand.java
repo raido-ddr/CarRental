@@ -54,7 +54,7 @@ public class ViewAllCarsCommand extends CarCommand {
         case "admin":
             return PAGE_NAME_BUNDLE.getString("admin.view.cars.page");
         case "user":
-            return PAGE_NAME_BUNDLE.getString("user.main.page");
+            return PAGE_NAME_BUNDLE.getString("user.view.cars.page");
         default:
             Locale locale = getCurrentLocale(request);
             ResourceBundle bundle =

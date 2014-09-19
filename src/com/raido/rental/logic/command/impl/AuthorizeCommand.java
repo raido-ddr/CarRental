@@ -53,7 +53,19 @@ public class AuthorizeCommand extends UserCommand {
             User user = userDao.authorizeUser(login, hashedPassword);
             if(user != null) {
                 setAuthorizationAttributes(request, user);
-                return PAGE_NAME_BUNDLE.getString("main.page");
+
+                switch (getCurrentUserRole(request)) {
+                case "user":
+                    return PAGE_NAME_BUNDLE.getString("user.main.page");
+                case "admin":
+                    return PAGE_NAME_BUNDLE.getString("admin.main.page");
+                default:
+                    Locale locale = getCurrentLocale(request);
+                    ResourceBundle bundle =
+                            ResourceBundle.getBundle("exception_message", locale);
+                    throw new CommandException(bundle.getString("permission.denied"));
+                }
+
             } else {
                 Locale locale = getCurrentLocale(request);
                 ResourceBundle bundle =
