@@ -9,7 +9,9 @@ public enum CarStatus {
     DAMAGED,
     DELETED;
 
+    private String value = this.toString().toLowerCase();
+
     public String getValue() {
-        return this.toString().toLowerCase();
+        return value;
     }
 }
