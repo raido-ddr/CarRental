@@ -4,18 +4,17 @@ import com.raido.rental.dao.UserDao;
 import com.raido.rental.dao.exception.DaoException;
 import com.raido.rental.dao.factory.DaoFactory;
 import com.raido.rental.entity.User;
-import com.raido.rental.logic.command.ActionCommand;
+import com.raido.rental.logic.command.UserCommand;
 import com.raido.rental.logic.command.exception.CommandException;
 import com.raido.rental.logic.util.hash.MessageDigestHelper;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-public class AuthorizeCommand extends ActionCommand {
+public class AuthorizeCommand extends UserCommand {
 
     private static final String METHOD_POST = "POST";
 
@@ -72,11 +71,5 @@ public class AuthorizeCommand extends ActionCommand {
         }
     }
 
-    private void setAuthorizationAttributes(HttpServletRequest request,
-            User user) {
-        HttpSession session = request.getSession();
-        session.setAttribute("userId", user.getId());
-        session.setAttribute("role", user.getRole());
-    }
 
 }

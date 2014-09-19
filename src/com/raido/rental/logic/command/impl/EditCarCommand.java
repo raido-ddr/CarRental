@@ -13,9 +13,7 @@ import java.util.ResourceBundle;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-/**
- * Created by Raido_DDR on 18.09.2014.
- */
+
 public class EditCarCommand extends CarCommand {
 
     private static Lock lock = new ReentrantLock();
