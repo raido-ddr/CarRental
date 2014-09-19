@@ -13,32 +13,30 @@ import java.sql.Date;
  */
 public abstract class UserCommand extends ActionCommand {
 
-    public User createUserFromData(HttpServletRequest request) {
+    private static final String DEFAULT_REGISTRATION_ROLE = "user";
 
-        User user = new User();
+    protected User createUserFromData(HttpServletRequest request) {
+        User user = null;
+
         if (DataValidator.getInstance().validateUser(request)) {
-            user.setFirstName(request.getParameter("firstName").trim());
-            user.setLastName(request.getParameter("lastName".trim()));
-            user.setLogin(request.getParameter("login").trim());
-            String password = request.getParameter("password").trim();
+            user = new User();
+            user.setFirstName(parameterHelper.getString(request, "firstName"));
+            user.setLastName(parameterHelper.getString(request, "lastName"));
+            user.setLogin(parameterHelper.getString(request, "login"));
+            String password = parameterHelper.getString(request, "password");
             user.setPassword(
                     MessageDigestHelper.getInstance().getMd5Hash(password));
-            user.setEmail(request.getParameter("email").trim());
-            user.setRole("user");
-            user.setDateOfBirth(
-                    Date.valueOf(request.getParameter("dob")));
-            user.setLicenseExpiryDate(
-                    Date.valueOf(request.getParameter("licenseExpiry")));
-            user.setPassportNumber(request.getParameter("passport").trim());
-
-        } else {
-            user = null;
+            user.setEmail(parameterHelper.getString(request, "email"));
+            user.setRole(DEFAULT_REGISTRATION_ROLE);
+            user.setDateOfBirth(parameterHelper.getDate(request, "dob"));
+            user.setLicenseExpiryDate(parameterHelper.getDate(request, "licenseExpiry"));
+            user.setPassportNumber(parameterHelper.getString(request, "passport"));
         }
 
         return user;
     }
 
-    public void setAuthorizationAttributes(HttpServletRequest request,
+    protected void setAuthorizationAttributes(HttpServletRequest request,
             User user) {
         HttpSession session = request.getSession();
         session.setAttribute("userId", user.getId());

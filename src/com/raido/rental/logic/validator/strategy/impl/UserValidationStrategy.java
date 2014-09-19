@@ -1,5 +1,6 @@
 package com.raido.rental.logic.validator.strategy.impl;
 
+import com.raido.rental.logic.util.hash.MessageDigestHelper;
 import com.raido.rental.logic.validator.strategy.ValidationStrategy;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,7 +10,7 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-public class UserValidationStrategy implements ValidationStrategy {
+public class UserValidationStrategy extends ValidationStrategy {
 
     private static final String FIRST_NAME_REGEX;
 
@@ -56,12 +57,19 @@ public class UserValidationStrategy implements ValidationStrategy {
     public boolean validate(HttpServletRequest request) {
 
         //Validate text data
-        String firstName = request.getParameter("firstName").trim();
+        String firstName = parameterHelper.getString(request, "firstName");
+        String lastName = parameterHelper.getString(request, "lastName");
+        String login = parameterHelper.getString(request, "login");
+        String password = parameterHelper.getString(request, "password");
+        String email = parameterHelper.getString(request, "email");
+        String passportNumber = parameterHelper.getString(request, "passport");
+
+/*        String firstName = request.getParameter("firstName").trim();
         String lastName = request.getParameter("lastName").trim();
         String login = request.getParameter("login").trim();
         String password = request.getParameter("password").trim();
         String email = request.getParameter("email");
-        String passportNumber = request.getParameter("passport").trim();
+        String passportNumber = request.getParameter("passport").trim();*/
 
         Locale locale =
                 (Locale) request.getSession().getAttribute("locale");

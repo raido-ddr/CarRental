@@ -1,11 +1,13 @@
 package com.raido.rental.logic.validator.strategy;
 
+import com.raido.rental.logic.util.requestparam.RequestParameterHelper;
+
 import javax.servlet.http.HttpServletRequest;
 
-/**
- * Created by Raido_DDR on 9/7/2014.
- */
-public interface ValidationStrategy {
+public abstract class ValidationStrategy {
 
-    boolean validate(HttpServletRequest request);
+    public RequestParameterHelper parameterHelper =
+            RequestParameterHelper.getInstance();
+
+    public abstract boolean validate(HttpServletRequest request);
 }

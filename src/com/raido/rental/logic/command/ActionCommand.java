@@ -1,6 +1,7 @@
 package com.raido.rental.logic.command;
 
 import com.raido.rental.logic.command.exception.CommandException;
+import com.raido.rental.logic.util.requestparam.RequestParameterHelper;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Locale;
@@ -15,6 +16,9 @@ public abstract class ActionCommand {
     protected static final ResourceBundle PAGE_NAME_BUNDLE =
             ResourceBundle.getBundle("page_names");
 
+    protected RequestParameterHelper parameterHelper =
+            RequestParameterHelper.getInstance();
+
     public abstract String execute(HttpServletRequest request)
             throws CommandException;
 
@@ -22,11 +26,11 @@ public abstract class ActionCommand {
         return this.getClass().getSimpleName();
     }
 
-    public Locale getCurrentLocale(HttpServletRequest request) {
+    protected Locale getCurrentLocale(HttpServletRequest request) {
         return (Locale) request.getSession().getAttribute("locale");
     }
 
-    public String getCurrentUserRole(HttpServletRequest request) {
+    protected String getCurrentUserRole(HttpServletRequest request) {
         return (String) request.getSession().getAttribute("role");
     }
 

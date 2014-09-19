@@ -1,12 +1,15 @@
 package com.raido.rental.logic.validator.strategy.impl;
 
+import com.raido.rental.entity.dbenum.BodyStyle;
+import com.raido.rental.entity.dbenum.FuelType;
+import com.raido.rental.entity.dbenum.TransmissionType;
 import com.raido.rental.logic.validator.strategy.ValidationStrategy;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-public class CarValidationStrategy implements ValidationStrategy {
+public class CarValidationStrategy extends ValidationStrategy {
 
     private static class Holder {
         static final CarValidationStrategy INSTANCE
@@ -47,12 +50,23 @@ public class CarValidationStrategy implements ValidationStrategy {
     @Override
     public boolean validate(HttpServletRequest request) {
 
-        String make = request.getParameter("make").trim();
+        String make = parameterHelper.getString(request, "make");
+        String model = parameterHelper.getString(request, "model");
+        String mileage =
+                parameterHelper.getString(request, "mileage");
+        String power =
+                parameterHelper.getString(request, "power");
+        String seatCount =
+                parameterHelper.getString(request, "seatCount");
+        String dailyCost =
+                parameterHelper.getString(request, "dailyCost");
+
+        /*String make = request.getParameter("make").trim();
         String model = request.getParameter("model").trim();
         String mileage = request.getParameter("mileage").trim();
         String power = request.getParameter("power").trim();
         String seatCount = request.getParameter("seatCount").trim();
-        String dailyCost = request.getParameter("dailyCost").trim();
+        String dailyCost = request.getParameter("dailyCost").trim();*/
 
         Locale locale =
                 (Locale) request.getSession().getAttribute("locale");

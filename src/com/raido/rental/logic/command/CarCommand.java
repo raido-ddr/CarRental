@@ -14,51 +14,52 @@ import java.util.List;
 
 public abstract class CarCommand extends ActionCommand {
 
-    public Car createCarFromData(HttpServletRequest request) {
-        Car car = new Car();
+    protected Car createCarFromData(HttpServletRequest request) {
+        Car car = null;
 
         if(DataValidator.getInstance().validateCar(request)) {
+            car = new Car();
 
-            car.setMake(request.getParameter("make").trim());
-            car.setModel(request.getParameter("model").trim());
+            car.setMake(parameterHelper.getString(request, "make"));
+            car.setModel(parameterHelper.getString(request, "model"));
 
             float mileage =
-                    Float.valueOf(request.getParameter("mileage")
-                            .trim());
+                    parameterHelper.getFloat(request, "mileage");
             car.setMileage(mileage);
 
             float power =
-                    Float.valueOf(request.getParameter("power")
-                            .trim());
+                    parameterHelper.getFloat(request, "power");
             car.setPower(power);
 
-            String fuelType = request.getParameter("fuelType").trim().toUpperCase();
+            String fuelType =
+                    parameterHelper.getUpperCaseString(request, "fuelType");
             car.setFuelType(FuelType.valueOf(fuelType));
 
             String transmissionType =
-                    request.getParameter("transmissionType").trim().toUpperCase();
+                    parameterHelper.getUpperCaseString(request, "transmissionType");
             car.setTransmissionType(TransmissionType.valueOf(transmissionType));
 
-            String seatCount =
-                    request.getParameter("seatCount").trim();
-            car.setSeatCount(Integer.valueOf(seatCount));
+            int seatCount =
+                    parameterHelper.getInt(request, "seatCount");
+            car.setSeatCount(seatCount);
 
-            String bodyStyle = request.getParameter("bodyStyle").trim().toUpperCase();
+            String bodyStyle =
+                    parameterHelper.getUpperCaseString(request, "bodyStyle");
             car.setBodyStyle(BodyStyle.valueOf(bodyStyle));
 
-            String dailyCost = request.getParameter("dailyCost").trim();
-            car.setDailyCost(Float.parseFloat(dailyCost));
+            float dailyCost =
+                    parameterHelper.getFloat(request, "dailyCost");
+            car.setDailyCost(dailyCost);
 
-            String status = request.getParameter("status").toUpperCase();
+            String status =
+                    parameterHelper.getUpperCaseString(request, "status");
             car.setStatus(CarStatus.valueOf(status));
-        } else {
-            car = null;
         }
 
         return car;
     }
 
-    public void setEnumAttributes(HttpServletRequest request) {
+    protected void setEnumAttributes(HttpServletRequest request) {
 
         List<String> statusOptions = new ArrayList<>();
         for(CarStatus status : CarStatus.values()) {

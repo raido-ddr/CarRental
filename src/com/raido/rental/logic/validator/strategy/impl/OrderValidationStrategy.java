@@ -5,7 +5,7 @@ import com.raido.rental.logic.validator.strategy.ValidationStrategy;
 import javax.servlet.http.HttpServletRequest;
 
 
-public class OrderValidationStrategy implements ValidationStrategy {
+public class OrderValidationStrategy extends ValidationStrategy {
 
     private static class Holder {
         static final OrderValidationStrategy INSTANCE
