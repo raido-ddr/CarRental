@@ -1,10 +1,8 @@
 package com.raido.rental.entity;
 
-import java.util.Date;
+import com.raido.rental.entity.dbenum.OrderStatus;
 
-/**
- *
- */
+import java.util.Date;
 
 public class Order {
 
@@ -18,9 +16,9 @@ public class Order {
 
     private Date returnDate;
 
-    private boolean confirmed;
+    private OrderStatus status;
 
-    private boolean payed;
+    private float value;
 
     private int rejectionId;
 
@@ -66,20 +64,20 @@ public class Order {
         this.returnDate = returnDate;
     }
 
-    public boolean isConfirmed() {
-        return confirmed;
+    public OrderStatus getStatus() {
+        return status;
     }
 
-    public void setConfirmed(boolean confirmed) {
-        this.confirmed = confirmed;
+    public void setStatus(OrderStatus status) {
+        this.status = status;
     }
 
-    public boolean isPayed() {
-        return payed;
+    public float getValue() {
+        return value;
     }
 
-    public void setPayed(boolean payed) {
-        this.payed = payed;
+    public void setValue(float value) {
+        this.value = value;
     }
 
     public int getRejectionId() {
@@ -96,61 +94,5 @@ public class Order {
 
     public void setDamageId(int damageId) {
         this.damageId = damageId;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-
-        Order order = (Order) o;
-
-        if (carId != order.carId) {
-            return false;
-        }
-        if (confirmed != order.confirmed) {
-            return false;
-        }
-        if (damageId != order.damageId) {
-            return false;
-        }
-        if (id != order.id) {
-            return false;
-        }
-        if (payed != order.payed) {
-            return false;
-        }
-        if (rejectionId != order.rejectionId) {
-            return false;
-        }
-        if (userId != order.userId) {
-            return false;
-        }
-        if (!returnDate.equals(order.returnDate)) {
-            return false;
-        }
-        if (!startDate.equals(order.startDate)) {
-            return false;
-        }
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + userId;
-        result = 31 * result + carId;
-        result = 31 * result + startDate.hashCode();
-        result = 31 * result + returnDate.hashCode();
-        result = 31 * result + (confirmed ? 1 : 0);
-        result = 31 * result + (payed ? 1 : 0);
-        result = 31 * result + rejectionId;
-        result = 31 * result + damageId;
-        return result;
     }
 }

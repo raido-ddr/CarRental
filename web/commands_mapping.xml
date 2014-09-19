@@ -29,4 +29,9 @@
         <name>/viewAllCars</name>
         <class-name>com.raido.rental.logic.command.impl.ViewAllCarsCommand</class-name>
     </command>
+
+    <command>
+        <name>/placeOrder</name>
+        <class-name>com.raido.rental.logic.command.impl.PlaceOrderCommand</class-name>
+    </command>
 </commands>

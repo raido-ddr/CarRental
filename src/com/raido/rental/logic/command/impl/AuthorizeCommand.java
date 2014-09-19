@@ -16,10 +16,6 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class AuthorizeCommand extends UserCommand {
 
-    private static final String METHOD_POST = "POST";
-
-    private static final String METHOD_GET = "GET";
-
     private static volatile AuthorizeCommand instance;
 
     private static Lock lock = new ReentrantLock();
