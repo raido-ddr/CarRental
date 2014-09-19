@@ -16,6 +16,6 @@ public abstract class CarDao extends Dao {
 
     public abstract List<Car> findCarsByStatus(CarStatus status) throws DaoException;
 
-    public abstract void editCar(int id) throws DaoException;
+    public abstract void editCar(Car car) throws DaoException;
 
 }

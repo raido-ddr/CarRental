@@ -23,7 +23,7 @@
     <input id="make" type="text" name="make"
            pattern="<fmt:message key="make.regex" bundle="${regex}" />"
            title="<fmt:message key="make.rule" bundle="${errors}" />"
-           value="${make} "/>
+           value="${car.make} "/>
     <br />
     <div><c:out value="${makeRule}" /></div>
     <br />
@@ -34,7 +34,7 @@
     <input id="model" type="text" name="model"
            pattern="<fmt:message key="model.regex" bundle="${regex}" />"
            title="<fmt:message key="model.rule" bundle="${errors}" />"
-           value="${model} "/>
+           value="${car.model} "/>
     <br />
     <div><c:out value="${modelRule}" /></div>
     <br />
@@ -45,7 +45,7 @@
     <input id="mileage" type="text" name="mileage"
            pattern="<fmt:message key="mileage.regex" bundle="${regex}" />"
            title="<fmt:message key="mileage.rule" bundle="${errors}" />"
-           value="${mileage} "/>
+           value="${car.mileage} "/>
     <br />
     <div><c:out value="${mileageRule}" /></div>
     <br />
@@ -56,7 +56,7 @@
     <input id="power" type="text" name="power"
            pattern="<fmt:message key="power.regex" bundle="${regex}" />"
            title="<fmt:message key="power.rule" bundle="${errors}" />"
-           value="${power} "/>
+           value="${car.power} "/>
     <br />
     <div><c:out value="${powerRule}" /></div>
     <br />
@@ -67,7 +67,7 @@
     <select id="fuelType" name="fuelType">
         <c:forEach var="type" items="${fuelTypes}">
             <option value="<c:out value='${type}' />"
-                    <c:if test="${fuelType == type})"> selected </c:if>  >
+                    <c:if test="${car.fuelType.value == type})"> selected </c:if>  >
                 <c:out value="${type}" />
             </option>
         </c:forEach>
@@ -80,7 +80,7 @@
     <select id="transmissionType" name="transmissionType">
         <c:forEach var="type" items="${transmissionTypes}">
             <option value="<c:out value='${type}' />"
-                    <c:if test="${transmissionType == type})"> selected </c:if>  >
+                    <c:if test="${car.transmissionType.value == type})"> selected </c:if>  >
                 <c:out value="${type}" />
             </option>
         </c:forEach>
@@ -93,7 +93,7 @@
     <select id="bodyStyle" name="bodyStyle">
         <c:forEach var="style" items="${bodyStyles}">
             <option value="<c:out value='${style}' />"
-                    <c:if test="${bodyStyle == style})"> selected </c:if>  >
+                    <c:if test="${car.bodyStyle.value == style})"> selected </c:if>  >
                 <c:out value="${style}" />
             </option>
         </c:forEach>
@@ -106,7 +106,7 @@
     <input id="seatCount" type="text" name="seatCount"
            pattern="<fmt:message key="seat.count.regex" bundle="${regex}" />"
            title="<fmt:message key="seat.count.rule" bundle="${errors}" />"
-           value="${power} "/>
+           value="${car.seatCount} "/>
     <br />
     <div><c:out value="${seatCountRule}" /></div>
     <br />
@@ -117,7 +117,7 @@
     <input id="dailyCost" type="text" name="dailyCost"
            pattern="<fmt:message key="daily.cost.regex" bundle="${regex}" />"
            title="<fmt:message key="daily.cost.rule" bundle="${errors}" />"
-           value="${dailyCost} "/>
+           value="${car.dailyCost} "/>
     <br />
     <div><c:out value="${dailyCostRule}" /></div>
     <br />
@@ -128,7 +128,7 @@
     <select id="status" name="status">
         <c:forEach var="status" items="${statusOptions}">
             <option value="<c:out value='${status}' />"
-                    <c:if test="${bodyStyle == status})"> selected </c:if>  >
+                    <c:if test="${car.status.value == status})"> selected </c:if>  >
                 <c:out value="${status}" />
             </option>
         </c:forEach>

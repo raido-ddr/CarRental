@@ -106,7 +106,7 @@
         <input id="seatCount" type="text" name="seatCount"
                pattern="<fmt:message key="seat.count.regex" bundle="${regex}" />"
                title="<fmt:message key="seat.count.rule" bundle="${errors}" />"
-               value="${param.power} "/>
+               value="${param.seatCount} "/>
         <br />
         <div><c:out value="${seatCountRule}" /></div>
         <br />
@@ -128,7 +128,7 @@
         <select id="status" name="status">
             <c:forEach var="status" items="${statusOptions}">
                 <option value="<c:out value='${status}' />"
-                        <c:if test="${param.bodyStyle == status})"> selected </c:if>  >
+                        <c:if test="${param.status == status})"> selected </c:if>  >
                     <c:out value="${status}" />
                 </option>
             </c:forEach>

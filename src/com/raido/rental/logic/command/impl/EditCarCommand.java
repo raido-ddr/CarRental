@@ -47,7 +47,7 @@ public class EditCarCommand extends CarCommand {
                 Car car = carDao.findCarById(id);
                 setEnumAttributes(request);
                 request.setAttribute("car", car);
-                return PAGE_NAME_BUNDLE.getString("add.car.page");
+                return PAGE_NAME_BUNDLE.getString("edit.car.page");
             } catch (DaoException e) {
                 Locale locale = getCurrentLocale(request);
                 ResourceBundle bundle =
@@ -60,25 +60,22 @@ public class EditCarCommand extends CarCommand {
         Car car = createCarFromData(request);
         if(car != null) {
 
-            /*CarDao carDao = DaoFactory.getInstance().getCarDao();
+            CarDao carDao = DaoFactory.getInstance().getCarDao();
             try {
-                carDao.createCar(car);
+                carDao.editCar(car);
             } catch (DaoException e) {
-                Locale locale =
-                        (Locale) request.getSession().getAttribute("locale");
+                Locale locale = getCurrentLocale(request);
                 ResourceBundle bundle =
                         ResourceBundle.getBundle("exception_message", locale);
                 throw new CommandException(bundle.getString("database.error"));
             }
 
-            Locale locale =
-                    (Locale) request.getSession().getAttribute("locale");
+            Locale locale = getCurrentLocale(request);
             ResourceBundle bundle =
                     ResourceBundle.getBundle("success_message", locale);
             request.setAttribute("successMessage", bundle.getString("add.car"));
-*/
-            return PAGE_NAME_BUNDLE.getString("admin.main.page");
 
+            return PAGE_NAME_BUNDLE.getString("admin.main.page");
 
         } else {
             setEnumAttributes(request);

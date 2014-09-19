@@ -39,6 +39,8 @@ public class MySqlCarDao extends CarDao {
     private static final String SQL_SELECT_ALL =
             "SELECT * FROM cars";
 
+    private static final String SQL_UPDATE_CAR = "";
+
     private static volatile MySqlCarDao instance;
 
     private static Lock lock = new ReentrantLock();
@@ -253,26 +255,32 @@ public class MySqlCarDao extends CarDao {
     }
 
     @Override
-    public void editCar(int id) throws DaoException {
-        /*Connection connection = null;
+    public void editCar(Car car) throws DaoException {
+        Connection connection = null;
         PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
 
         try {
             connection = getPooledConnection();
-            preparedStatement = connection.prepareStatement(SQL_FIND_BY_STATUS,
+            preparedStatement = connection.prepareStatement(SQL_UPDATE_CAR,
                     ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY);
 
-            preparedStatement.setString(1, status.getValue());
+            preparedStatement.setString(1, car.getMake());
+            preparedStatement.setString(2, car.getModel());
+            preparedStatement.setFloat(3, car.getMileage());
+            preparedStatement.setFloat(4, car.getPower());
+            preparedStatement.setString(5, car.getFuelType().getValue());
+            preparedStatement.setString(6, car.getTransmissionType().getValue());
+            preparedStatement.setInt(7, car.getSeatCount());
+            preparedStatement.setFloat(8, car.getDailyCost());
+            preparedStatement.setString(9, car.getBodyStyle().getValue());
+            preparedStatement.setString(10, car.getStatus().getValue());
 
-            resultSet = preparedStatement.executeQuery();
-
-            List<Car> cars = new ArrayList<>();
-            while(resultSet.next()) {
-                Car car = createCarFromResultSet(resultSet);
-                cars.add(car);
+            int rowsCount = preparedStatement.executeUpdate();
+            if(rowsCount != 1) {
+                ResourceBundle bundle =
+                        ResourceBundle.getBundle("exception_message");
+                throw new DaoException(bundle.getString("database.error"));
             }
-            return cars;
 
         } catch (SQLException e) {
             ResourceBundle bundle =
@@ -290,7 +298,7 @@ public class MySqlCarDao extends CarDao {
             } catch (SQLException e) {
                 LOGGER.error(e);
             }
-        }*/
+        }
     }
 
 
