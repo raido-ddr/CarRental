@@ -5,11 +5,11 @@
 <fmt:requestEncoding value="UTF-8" />
 <fmt:setLocale value="${sessionScope.locale}" />
 
-<fmt:setBundle basename="l10n.admin_main" var="viewCars"/>
+<fmt:setBundle basename="l10n.admin_main" var="chooseCar"/>
 
 <html>
 <head>
-    <title><fmt:message key="page.title" bundle="${viewCars}" /></title>
+    <title><fmt:message key="page.title" bundle="${chooseCar}" /></title>
 </head>
 <body>
 <div>
@@ -17,13 +17,13 @@
 
     <form action="/controller/addCar" method="get" >
         <button type="submit">
-            <fmt:message key="add.button.txt" bundle="${viewCars}" />
+            <fmt:message key="add.button.txt" bundle="${chooseCar}" />
         </button>
     </form>
 
     <form action="/controller/viewAllCars" method="get" >
         <button type="submit">
-            <fmt:message key="view.button.txt" bundle="${viewCars}" />
+            <fmt:message key="view.button.txt" bundle="${chooseCar}" />
         </button>
     </form>
 

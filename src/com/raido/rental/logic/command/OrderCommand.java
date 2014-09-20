@@ -1,46 +1,43 @@
 package com.raido.rental.logic.command;
 
 import com.raido.rental.entity.Order;
+import com.raido.rental.entity.dbenum.OrderStatus;
 import com.raido.rental.logic.validator.DataValidator;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Date;
 
-/**
- * Created by Raido_DDR on 19.09.2014.
- */
 public abstract class OrderCommand extends ActionCommand {
 
     protected int getCurrentUserId(HttpServletRequest request) {
-        String userIdString = (String)request.getSession().getAttribute("userId");
-        return Integer.parseInt(userIdString);
+       /* String userIdString = (String) request.getSession().getAttribute("userId");
+        return Integer.parseInt(userIdString);*/
+        return (int) request.getSession().getAttribute("userId");
     }
 
     protected Order createOrderFromData(HttpServletRequest request) {
-        Order order = null;
 
-        if(DataValidator.getInstance().validateOrder(request)) {
+        Order order = new Order();
+        order.setUserId(getCurrentUserId(request));
 
-            order = new Order();
-            order.setUserId(getCurrentUserId(request));
+        int carId =
+                parameterHelper.getInt(request, "carId");
+        order.setCarId(carId);
 
-            int carId =
-                    parameterHelper.getInt(request, "carId");
-            order.setCarId(carId);
+        Date startDate =
+                parameterHelper.getDate(request, "startDate");
+        order.setStartDate(startDate);
 
-            Date startDate =
-                    parameterHelper.getDate(request, "startDate");
-            order.setStartDate(startDate);
+        Date returnDate =
+                parameterHelper.getDate(request, "returnDate");
+        order.setReturnDate(returnDate);
 
-            Date returnDate =
-                    parameterHelper.getDate(request, "returnDate");
-            order.setReturnDate(returnDate);
+        String statusString =
+                parameterHelper.getUpperCaseString(request, "status");
+        order.setStatus(OrderStatus.valueOf(statusString));
 
-            float dailyCost =
-                    parameterHelper.getFloat(request, "dailyCost");
-            float orderValue = calculateOrderValue(dailyCost, startDate, returnDate);
-            order.setValue(orderValue);
-        }
+        float orderValue = parameterHelper.getFloat(request, "orderValue");
+        order.setValue(orderValue);
 
         return order;
     }

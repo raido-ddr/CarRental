@@ -24,8 +24,6 @@ public class UserValidationStrategy extends ValidationStrategy {
 
     private static final String PASSPORT_REGEX;
 
-    private static final String DATE_FORMAT;
-
     static {
         ResourceBundle bundle =
                 ResourceBundle.getBundle("regex");
@@ -36,9 +34,6 @@ public class UserValidationStrategy extends ValidationStrategy {
         PASSWORD_REGEX = bundle.getString("password.regex");
         EMAIL_REGEX = bundle.getString("email.regex");
         PASSPORT_REGEX = bundle.getString("passport.regex");
-
-        DATE_FORMAT =
-                ResourceBundle.getBundle("date").getString("date.format");
 
     }
 
@@ -63,13 +58,6 @@ public class UserValidationStrategy extends ValidationStrategy {
         String password = parameterHelper.getString(request, "password");
         String email = parameterHelper.getString(request, "email");
         String passportNumber = parameterHelper.getString(request, "passport");
-
-/*        String firstName = request.getParameter("firstName").trim();
-        String lastName = request.getParameter("lastName").trim();
-        String login = request.getParameter("login").trim();
-        String password = request.getParameter("password").trim();
-        String email = request.getParameter("email");
-        String passportNumber = request.getParameter("passport").trim();*/
 
         Locale locale =
                 (Locale) request.getSession().getAttribute("locale");

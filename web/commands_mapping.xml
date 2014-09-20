@@ -31,6 +31,11 @@
     </command>
 
     <command>
+        <name>/chooseRentalPeriod</name>
+        <class-name>com.raido.rental.logic.command.impl.ChooseRentalPeriodCommand</class-name>
+    </command>
+
+    <command>
         <name>/placeOrder</name>
         <class-name>com.raido.rental.logic.command.impl.PlaceOrderCommand</class-name>
     </command>

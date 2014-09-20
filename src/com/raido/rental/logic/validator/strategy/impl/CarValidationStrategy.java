@@ -61,13 +61,6 @@ public class CarValidationStrategy extends ValidationStrategy {
         String dailyCost =
                 parameterHelper.getString(request, "dailyCost");
 
-        /*String make = request.getParameter("make").trim();
-        String model = request.getParameter("model").trim();
-        String mileage = request.getParameter("mileage").trim();
-        String power = request.getParameter("power").trim();
-        String seatCount = request.getParameter("seatCount").trim();
-        String dailyCost = request.getParameter("dailyCost").trim();*/
-
         Locale locale =
                 (Locale) request.getSession().getAttribute("locale");
         ResourceBundle bundle =

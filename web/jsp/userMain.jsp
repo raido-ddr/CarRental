@@ -15,7 +15,7 @@
 <div>
     <div><c:out value="${successMessage}" /></div>
 
-    <form action="/controller/viewAllCars" method="get" >
+    <form action="/controller/chooseRentalPeriod" method="get" >
         <button type="submit">
             <fmt:message key="rent.button.txt" bundle="${main}" />
         </button>

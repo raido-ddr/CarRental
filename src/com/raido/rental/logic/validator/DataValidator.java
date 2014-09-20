@@ -2,6 +2,7 @@ package com.raido.rental.logic.validator;
 
 import com.raido.rental.logic.validator.strategy.impl.CarValidationStrategy;
 import com.raido.rental.logic.validator.strategy.impl.OrderValidationStrategy;
+import com.raido.rental.logic.validator.strategy.impl.RentalPeriodValidationStrategy;
 import com.raido.rental.logic.validator.strategy.impl.UserValidationStrategy;
 
 import javax.servlet.http.HttpServletRequest;
@@ -31,6 +32,13 @@ public class DataValidator {
     public boolean validateOrder(HttpServletRequest request) {
         ValidationContext context =
                 new ValidationContext(OrderValidationStrategy.getInstance());
+
+        return context.executeStrategy(request);
+    }
+
+    public boolean validateRentalPeriod(HttpServletRequest request) {
+        ValidationContext context =
+                new ValidationContext(RentalPeriodValidationStrategy.getInstance());
 
         return context.executeStrategy(request);
     }

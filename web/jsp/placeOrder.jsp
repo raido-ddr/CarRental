@@ -6,38 +6,48 @@
 <fmt:setLocale value="${sessionScope.locale}" />
 
 <fmt:setBundle basename="l10n.place_order" var="placeOrder" />
-<fmt:setBundle basename="input_errors" var="errors" />
-<fmt:setBundle basename="html_regex" var="regex" />
+
 <html>
 <head>
     <title><fmt:message key="page.title" bundle="${placeOrder}" /></title>
 </head>
 <body>
 
-    <form name="placeOrderForm"
-          action="/controller/placeOrder?carId=${param.carId}&dailyCost=${param.dailyCost}"
-          method="post">
+    <div>
+        <div><fmt:message key="page.title" bundle="${placeOrder}" /></div>
+    </div>
 
-        <label for="startDate">
-            <fmt:message key="enter.start.date" bundle="${placeOrder}" />
-        </label>
-        <input id="startDate" type="date" name="startDate" value="${param.startDate}" />
-        <br />
-        <div><c:out value="${startDateRule}" /></div>
-        <br />
+    <div>
+        <div>
+            <strong><fmt:message key="caption.car" bundle="${placeOrder}" /></strong>
+            <div><c:out value="${param.make} ${param.model}" /></div>
+        </div>
+        <div>
+            <strong><fmt:message key="caption.start.date" bundle="${placeOrder}" /></strong>
+            <div><c:out value="${param.startDate}" /></div>
+        </div>
+        <div>
+            <strong><fmt:message key="caption.return.date" bundle="${placeOrder}" /></strong>
+            <div><c:out value="${param.returnDate}" /></div>
+        </div>
+        <div>
+            <strong><fmt:message key="caption.value" bundle="${placeOrder}" /></strong>
+            <div><c:out value="${orderValue}" /></div>
+        </div>
+    </div>
 
-        <label for="returnDate">
-            <fmt:message key="enter.return.date" bundle="${placeOrder}" />
-        </label>
-        <input id="returnDate" type="date" name="returnDate" value="${param.returnDate}" />
-        <br />
-        <div><c:out value="${returnDateRule}" /></div>
-        <br />
-
-        <button type="submit" formmethod="post">
-            <fmt:message key="order.button.txt" bundle="${placeOrder}"/>
+    <form name="submitOrderForm" action="/controller/placeOrder" method="post">
+        <input type="hidden" name="carId" value="${param.carId}">
+        <input type="hidden" name="startDate" value="${param.startDate}">
+        <input type="hidden" name="returnDate" value="${param.returnDate}">
+        <input type="hidden" name="orderValue" value="${orderValue}">
+        <input type="hidden" name="status" value="new" />
+        <button type="submit">
+            <fmt:message key="submit.button.txt" bundle="${placeOrder}"/>
         </button>
     </form>
+
+
 
 </body>
 </html>

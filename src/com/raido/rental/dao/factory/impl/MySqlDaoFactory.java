@@ -1,9 +1,11 @@
 package com.raido.rental.dao.factory.impl;
 
 import com.raido.rental.dao.CarDao;
+import com.raido.rental.dao.OrderDao;
 import com.raido.rental.dao.UserDao;
 import com.raido.rental.dao.factory.DaoFactory;
 import com.raido.rental.dao.impl.MySqlCarDao;
+import com.raido.rental.dao.impl.MySqlOrderDao;
 import com.raido.rental.dao.impl.MySqlUserDao;
 
 import java.util.concurrent.locks.Lock;
@@ -42,6 +44,11 @@ public class MySqlDaoFactory extends DaoFactory {
     @Override
     public CarDao getCarDao() {
         return MySqlCarDao.getInstance();
+    }
+
+    @Override
+    public OrderDao getOrderDao() {
+        return MySqlOrderDao.getInstance();
     }
 
 

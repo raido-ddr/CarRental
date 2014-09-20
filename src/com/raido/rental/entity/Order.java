@@ -2,7 +2,7 @@ package com.raido.rental.entity;
 
 import com.raido.rental.entity.dbenum.OrderStatus;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Order {
 
@@ -94,5 +94,11 @@ public class Order {
 
     public void setDamageId(int damageId) {
         this.damageId = damageId;
+    }
+
+    public boolean overlayPeriod(Date startDate, Date returnDate) {
+
+        return ! ((startDate.after(this.returnDate))
+            || returnDate.before(this.startDate));
     }
 }

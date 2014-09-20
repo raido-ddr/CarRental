@@ -3,11 +3,17 @@ package com.raido.rental.logic.validator.strategy;
 import com.raido.rental.logic.util.requestparam.RequestParameterHelper;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ResourceBundle;
 
 public abstract class ValidationStrategy {
 
-    public RequestParameterHelper parameterHelper =
+    protected static final String DATE_FORMAT =
+            ResourceBundle.getBundle("date").getString("date.format");
+
+    protected RequestParameterHelper parameterHelper =
             RequestParameterHelper.getInstance();
+
+
 
     public abstract boolean validate(HttpServletRequest request);
 }

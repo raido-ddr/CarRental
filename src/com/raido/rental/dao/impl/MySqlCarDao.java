@@ -1,18 +1,18 @@
 package com.raido.rental.dao.impl;
 
 import com.raido.rental.dao.CarDao;
+import com.raido.rental.dao.OrderDao;
 import com.raido.rental.dao.exception.DaoException;
+import com.raido.rental.dao.factory.DaoFactory;
 import com.raido.rental.entity.Car;
+import com.raido.rental.entity.Order;
 import com.raido.rental.entity.dbenum.BodyStyle;
 import com.raido.rental.entity.dbenum.CarStatus;
 import com.raido.rental.entity.dbenum.FuelType;
 import com.raido.rental.entity.dbenum.TransmissionType;
 import org.apache.log4j.Logger;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -188,31 +188,6 @@ public class MySqlCarDao extends CarDao {
         }
     }
 
-
-    private Car createCarFromResultSet(ResultSet resultSet)
-            throws SQLException {
-        Car car = new Car();
-
-        car.setId(resultSet.getInt(1));
-        car.setMake(resultSet.getString(2));
-        car.setModel(resultSet.getString(3));
-        car.setMileage(resultSet.getFloat(4));
-        car.setPower(resultSet.getFloat(5));
-        car.setFuelType(FuelType
-                .valueOf(resultSet.getString(6).toUpperCase()));
-        car.setTransmissionType(TransmissionType
-                .valueOf(resultSet.getString(7).toUpperCase()));
-        car.setSeatCount(resultSet.getInt(8));
-        car.setDailyCost(resultSet.getFloat(9));
-        car.setBodyStyle(BodyStyle
-                .valueOf(resultSet.getString(10).toUpperCase()));
-        car.setStatus(CarStatus
-                .valueOf(resultSet.getString(11).toUpperCase()));
-
-        return car;
-    }
-
-
     public List<Car> findCarsByStatus(CarStatus status) throws DaoException {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -299,6 +274,60 @@ public class MySqlCarDao extends CarDao {
                 LOGGER.error(e);
             }
         }
+    }
+
+    @Override
+    public List<Car> findCarsForPeriod(Date startDate, Date returnDate)
+            throws DaoException {
+
+        List<Car> cars = findCarsByStatus(CarStatus.AVAILABLE);
+
+        List<Car> availableCars = new ArrayList<>();
+        for(Car car : cars) {
+            if( isCarAvailableForPeriod(car.getId(), startDate, returnDate)) {
+                availableCars.add(car);
+            }
+        }
+        return availableCars;
+    }
+
+    private boolean isCarAvailableForPeriod(int carId,
+            Date startDate, Date returnDate) throws DaoException {
+
+        boolean isAvailable = true;
+        OrderDao orderDao = DaoFactory.getInstance().getOrderDao();
+        List<Order> carOrders = orderDao.findOrdersByCarId(carId);
+        for(Order order : carOrders) {
+            if(order.overlayPeriod(startDate, returnDate)) {
+                isAvailable = false;
+                break;
+            }
+        }
+
+        return isAvailable;
+    }
+
+    private Car createCarFromResultSet(ResultSet resultSet)
+            throws SQLException {
+        Car car = new Car();
+
+        car.setId(resultSet.getInt(1));
+        car.setMake(resultSet.getString(2));
+        car.setModel(resultSet.getString(3));
+        car.setMileage(resultSet.getFloat(4));
+        car.setPower(resultSet.getFloat(5));
+        car.setFuelType(FuelType
+                .valueOf(resultSet.getString(6).toUpperCase()));
+        car.setTransmissionType(TransmissionType
+                .valueOf(resultSet.getString(7).toUpperCase()));
+        car.setSeatCount(resultSet.getInt(8));
+        car.setDailyCost(resultSet.getFloat(9));
+        car.setBodyStyle(BodyStyle
+                .valueOf(resultSet.getString(10).toUpperCase()));
+        car.setStatus(CarStatus
+                .valueOf(resultSet.getString(11).toUpperCase()));
+
+        return car;
     }
 
 
