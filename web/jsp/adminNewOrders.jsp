@@ -55,14 +55,15 @@
                             </div>
 
                             <div class="form-group">
-                                <form class="form-inline" name="submitOrderForm"
+                                <form role="form" name="submitOrderForm"
                                       action="/controller/changeOrderStatus" method="post">
                                     <div>
                                         <input type="hidden" name="orderId" value="${summary.orderId}">
                                         <input type="hidden" name="status" value="rejected" />
                                         <div class="form-group">
-                                            <textarea class="form-control custom-control" rows="3" cols="35"
-                                                      style="resize:none" name="rejectionReason">
+                                            <textarea class="form-control" rows="3" cols="35"
+                                                      style="resize:none" name="rejectionReason"
+                                                      placeholder="<fmt:message key="rejection.reason" bundle="${newOrders}" />">
                                             </textarea>
                                         </div>
                                         <div class="form-group">
