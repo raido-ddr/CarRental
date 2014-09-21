@@ -1,5 +1,7 @@
 package com.raido.rental.logic.util.requestparam;
 
+import com.raido.rental.entity.dbenum.OrderStatus;
+
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Date;
 import java.util.concurrent.locks.Lock;
@@ -54,6 +56,12 @@ public class RequestParameterHelper {
             String name) {
         String paramString = request.getParameter(name).trim();
         return Date.valueOf(paramString);
+    }
+
+    public OrderStatus getOrderStatus(HttpServletRequest request,
+            String name) {
+        String statusString = request.getParameter(name);
+        return OrderStatus.valueOf(statusString.toUpperCase());
     }
 
 

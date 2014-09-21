@@ -23,15 +23,11 @@
         </label>
         <input id="startDate" type="date" name="startDate" value="${param.startDate}" />
         <br />
-        <div><c:out value="${startDateRule}" /></div>
-        <br />
 
         <label for="returnDate">
             <fmt:message key="enter.return.date" bundle="${rentalPeriod}" />
         </label>
         <input id="returnDate" type="date" name="returnDate" value="${param.returnDate}" />
-        <br />
-        <div><c:out value="${returnDateRule}" /></div>
         <br />
 
         <button type="submit" formmethod="post">
@@ -39,7 +35,7 @@
         </button>
     </form>
 
-    <div>${resultMessage}</div>
+    <div><c:out value="${rentalPeriodRule}" /></div>
 
 </body>
 </html>

@@ -28,8 +28,6 @@ public class RentalPeriodValidationStrategy extends ValidationStrategy {
     @Override
     public boolean validate(HttpServletRequest request) {
 
-        boolean dataIsCorrect = true;
-
         String startDateString = parameterHelper.getString(request, "startDate");
         String returnDateString = parameterHelper.getString(request, "returnDate");
 
@@ -45,26 +43,27 @@ public class RentalPeriodValidationStrategy extends ValidationStrategy {
             Date currentDate = new Date();
 
             if(! validateStartDate(startDate, currentDate)) {
-                dataIsCorrect = false;
                 request.setAttribute("rentalPeriodRule",
                         bundle.getString("bad.start.date"));
+
+                return false;
 
             }
 
             if(! validateReturnDate(startDate, returnDate)) {
-                dataIsCorrect = false;
                 request.setAttribute("rentalPeriodRule",
                         bundle.getString("bad.return.date"));
+                return false;
 
             }
 
         } catch (ParseException e) {
-            dataIsCorrect = false;
             request.setAttribute("rentalPeriodRule",
                     bundle.getString("bad.period"));
+            return false;
         }
 
-        return dataIsCorrect;
+        return true;
     }
 
     private boolean validateStartDate(Date startDate, Date currentDate) {

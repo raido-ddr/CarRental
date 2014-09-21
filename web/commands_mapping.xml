@@ -39,4 +39,14 @@
         <name>/placeOrder</name>
         <class-name>com.raido.rental.logic.command.impl.PlaceOrderCommand</class-name>
     </command>
+
+    <command>
+        <name>/viewOrders</name>
+        <class-name>com.raido.rental.logic.command.impl.ViewOrdersCommand</class-name>
+    </command>
+
+    <command>
+        <name>/changeOrderStatus</name>
+        <class-name>com.raido.rental.logic.command.impl.ChangeOrderStatusCommand</class-name>
+    </command>
 </commands>

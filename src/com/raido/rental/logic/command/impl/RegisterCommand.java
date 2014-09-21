@@ -68,7 +68,7 @@ public class RegisterCommand extends UserCommand {
             }
 
             setAuthorizationAttributes(request, user);
-            return PAGE_NAME_BUNDLE.getString("main.page");
+            return PAGE_NAME_BUNDLE.getString("user.main.page");
 
         } else {
             return PAGE_NAME_BUNDLE.getString("registration.page");

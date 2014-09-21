@@ -5,8 +5,11 @@ public enum OrderStatus {
 
     NEW,
     CONFIRMED,
+    ACTIVE,
     REJECTED,
-    ARCHIVED;
+    DAMAGED,
+    ARCHIVED,
+    DELETED;
 
     private String value = this.toString().toLowerCase();
 

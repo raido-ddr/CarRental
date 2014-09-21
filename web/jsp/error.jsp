@@ -5,7 +5,7 @@
 <fmt:requestEncoding value="UTF-8" />
 <fmt:setLocale value="${sessionScope.locale}" />
 
-<fmt:setBundle basename="l10n.main" var="chooseCar" />
+<fmt:setBundle basename="l10n.main" var="main" />
 <fmt:setBundle basename="input_errors" var="errors" />
 
 

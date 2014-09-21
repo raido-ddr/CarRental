@@ -3,7 +3,8 @@ package com.raido.rental.entity.dbenum;
 public enum TransmissionType {
 
     AUTOMATIC,
-    MANUAL;
+    MANUAL,
+    DSG;
 
     private String value = this.toString().toLowerCase();
 
