@@ -7,48 +7,88 @@
 
 <fmt:setBundle basename="l10n.admin_new_orders" var="confirmedOrders"/>
 
+
 <html>
 <head>
     <title><fmt:message key="page.title" bundle="${confirmedOrders}" /></title>
+    <link href="<c:url value="/css/bootstrap.min.css" />"
+          rel="stylesheet" type="text/css" />
+    <link href="<c:url value="/css/bootstrap-responsive.min.css" />"
+          rel="stylesheet" type="text/css" />
+    <link href="<c:url value="/css/bootstrap-theme.min.css" />"
+          rel="stylesheet" type="text/css" />
+    <script src="../js/bootstrap.min.js" language="JavaScript"></script>
+
+
 </head>
 <body>
 
-    <div>
-        <div><fmt:message key="page.title" bundle="${confirmedOrders}" /></div>
-    </div>
 
-    <div>
-        <c:out value="${emptyCategoryMessage}" />
-    </div>
-
-    <div>
-        <c:forEach items="${summaries}" var="summary">
-
-            <%@include file="orderSummary.jsp"%>
-
-            <div>
-                <form name="confirmOrderForm" action="/controller/changeOrderStatus" method="post">
-                    <input type="hidden" name="orderId" value="${summary.orderId}">
-                    <input type="hidden" name="status" value="confirmed" />
-                    <button type="submit">
-                        <fmt:message key="confirm.button.txt" bundle="${confirmedOrders}"/>
-                    </button>
-                </form>
-
-                <form name="submitOrderForm" action="/controller/changeOrderStatus" method="post">
-                    <input type="hidden" name="orderId" value="${summary.orderId}">
-                    <input type="hidden" name="status" value="rejected" />
-                    <button type="submit">
-                        <fmt:message key="reject.button.txt" bundle="${confirmedOrders}"/>
-                    </button>
-                    <div>
-                        <textarea name="rejectionReason"></textarea>
-                    </div>
-                </form>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-6 col-lg-offset-4">
+                    <h3><fmt:message key="page.title" bundle="${confirmedOrders}" /></h3>
+                </div>
             </div>
-        </c:forEach>
-    </div>
+        </div>
 
+        <div class="panel-body">
+            <div>
+                <c:out value="${emptyCategoryMessage}" />
+            </div>
+
+            <table class="table">
+                    <c:forEach items="${summaries}" var="summary">
+                        <tr><td>
+                        <div class="row">
+                            <div class="col-lg-5 col-lg-offset-4">
+                            <%@include file="orderSummary.jsp"%>
+
+                            <div role="form">
+                                <div class="form-group">
+                                    <form name="confirmOrderForm" action="/controller/changeOrderStatus" method="post">
+                                        <input type="hidden" name="orderId" value="${summary.orderId}">
+                                        <input type="hidden" name="status" value="confirmed" />
+                                        <button class="btn btn-success" type="submit">
+                                            <fmt:message key="confirm.button.txt" bundle="${confirmedOrders}"/>
+                                        </button>
+                                    </form>
+                                </div>
+
+                                <div class="form-group">
+                                    <form class="form-inline" name="submitOrderForm"
+                                          action="/controller/changeOrderStatus" method="post">
+
+                                        <div>
+                                            <input type="hidden" name="orderId" value="${summary.orderId}">
+                                            <input type="hidden" name="status" value="rejected" />
+                                            <div class="form-group">
+                                                <textarea class="form-control custom-control" rows="3" cols="35"
+                                                          style="resize:none" name="rejectionReason">
+                                                </textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <button class="btn btn-danger" type="submit">
+                                                    <fmt:message key="reject.button.txt" bundle="${confirmedOrders}"/>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                        </div>
+                        </td></tr>
+                    </c:forEach>
+
+
+            </table>
+        </div>
+
+    </div>
 
 </body>
 </html>

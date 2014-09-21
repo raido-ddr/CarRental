@@ -1,42 +1,78 @@
 <fmt:setBundle basename="l10n.order_summary" var="captions" />
 
 <html>
-    <div>
-        <div>
-            <strong><fmt:message key="caption.order.id" bundle="${captions}" /></strong>
-            <div><c:out value="${summary.orderId}" /></div>
-        </div>
-        <div>
-            <strong><fmt:message key="caption.real.name" bundle="${captions}" /></strong>
-            <div><c:out value="${summary.userFirstName} ${summary.userLastName}" /></div>
-        </div>
-        <div>
-            <strong><fmt:message key="caption.email" bundle="${captions}" /></strong>
-            <div><c:out value="${summary.userEmail}" /></div>
-        </div>
-        <div>
-            <strong><fmt:message key="caption.dob" bundle="${captions}" /></strong>
-            <div><c:out value="${summary.userDateOfBirth}" /></div>
-        </div>
-        <div>
-            <strong><fmt:message key="caption.license.expiry" bundle="${captions}" /></strong>
-            <div><c:out value="${summary.licenseExpiryDate}" /></div>
-        </div>
-        <div>
-            <strong><fmt:message key="caption.car" bundle="${captions}" /></strong>
-            <div><c:out value="${summary.carMake} ${summary.carModel}" /></div>
-        </div>
-        <div>
-            <strong><fmt:message key="caption.start.date" bundle="${captions}" /></strong>
-            <div><c:out value="${summary.startDate}" /></div>
-        </div>
-        <div>
-            <strong><fmt:message key="caption.return.date" bundle="${captions}" /></strong>
-            <div><c:out value="${summary.returnDate}" /></div>
-        </div>
-        <div>
-            <strong><fmt:message key="caption.order.value" bundle="${captions}" /></strong>
-            <div><c:out value="${summary.orderValue}" /></div>
-        </div>
-    </div>
+    <table class="table table-bordered">
+        <tr>
+            <td>
+                <dl class="dl-horizontal">
+                    <dt><fmt:message key="caption.order.id" bundle="${captions}" /></dt>
+                    <dd><c:out value="${summary.orderId}" /></dd>
+                </dl>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <dl class="dl-horizontal">
+                    <dt><fmt:message key="caption.real.name" bundle="${captions}" /></dt>
+                    <dd><c:out value="${summary.userFirstName} ${summary.userLastName}" /></dd>
+                </dl>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <dl class="dl-horizontal">
+                    <dt><fmt:message key="caption.email" bundle="${captions}" /></dt>
+                    <dd><c:out value="${summary.userEmail}" /></dd>
+                </dl>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <dl class="dl-horizontal">
+                    <dt><fmt:message key="caption.dob" bundle="${captions}" /></dt>
+                    <dd><c:out value="${summary.userDateOfBirth}" /></dd>
+                </dl>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <dl class="dl-horizontal">
+                    <dt><fmt:message key="caption.license.expiry" bundle="${captions}" /></dt>
+                    <dd><c:out value="${summary.licenseExpiryDate}" /></dd>
+                </dl>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <dl class="dl-horizontal">
+                    <dt><fmt:message key="caption.car" bundle="${captions}" /></dt>
+                    <dd><c:out value="${summary.carMake} ${summary.carModel}" /></dd>
+                </dl>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <dl class="dl-horizontal">
+                    <dt><fmt:message key="caption.start.date" bundle="${captions}" /></dt>
+                    <dd><c:out value="${summary.startDate}" /></dd>
+                </dl>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <dl class="dl-horizontal">
+                    <dt><fmt:message key="caption.return.date" bundle="${captions}" /></dt>
+                    <dd><c:out value="${summary.returnDate}" /></dd>
+                </dl>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <dl class="dl-horizontal">
+                    <dt><fmt:message key="caption.order.value" bundle="${captions}" /></dt>
+                    <dd><c:out value="${summary.orderValue}" /></dd>
+                </dl>
+            </td>
+        </tr>
+    </table>
 </html>
