@@ -73,14 +73,14 @@ public class ChangeOrderStatusCommand extends OrderCommand {
             throws CommandException {
 
         changeOrderStatus(request, OrderStatus.DELETED);
-        return PAGE_NAME_BUNDLE.getString("admin.active.orders.page");
+        return PAGE_NAME_BUNDLE.getString("admin.main.page");
     }
 
     private String processArchivedOrder(HttpServletRequest request)
             throws CommandException {
 
        changeOrderStatus(request, OrderStatus.ARCHIVED);
-        return PAGE_NAME_BUNDLE.getString("admin.active.orders.page");
+        return PAGE_NAME_BUNDLE.getString("admin.main.page");
 
     }
 
@@ -102,7 +102,7 @@ public class ChangeOrderStatusCommand extends OrderCommand {
             throw new CommandException(bundle.getString("database.error"));
         }
 
-        return PAGE_NAME_BUNDLE.getString("admin.damaged.orders.page");
+        return PAGE_NAME_BUNDLE.getString("admin.main.page");
     }
 
     private String  processRejectedOrder(HttpServletRequest request)
@@ -121,21 +121,21 @@ public class ChangeOrderStatusCommand extends OrderCommand {
             throw new CommandException(bundle.getString("database.error"));
         }
 
-        return PAGE_NAME_BUNDLE.getString("admin.rejected.orders.page");
+        return PAGE_NAME_BUNDLE.getString("admin.main.page");
     }
 
     private String processActiveOrder(HttpServletRequest request)
             throws CommandException {
 
         changeOrderStatus(request, OrderStatus.ACTIVE);
-        return PAGE_NAME_BUNDLE.getString("user.new.orders.page");
+        return PAGE_NAME_BUNDLE.getString("user.main.page");
     }
 
     private String processConfirmedOrder(HttpServletRequest request)
             throws CommandException {
 
         changeOrderStatus(request, OrderStatus.CONFIRMED);
-        return PAGE_NAME_BUNDLE.getString("admin.new.orders.page");
+        return PAGE_NAME_BUNDLE.getString("admin.main.page");
     }
 
     private void changeOrderStatus(HttpServletRequest request,

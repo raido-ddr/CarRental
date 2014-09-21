@@ -5,33 +5,33 @@
 <fmt:requestEncoding value="UTF-8" />
 <fmt:setLocale value="${sessionScope.locale}" />
 
-<fmt:setBundle basename="l10n.place_order" var="confirmedOrders" />
+<fmt:setBundle basename="l10n.place_order" var="newOrders" />
 
 <html>
 <head>
-    <title><fmt:message key="page.title" bundle="${confirmedOrders}" /></title>
+    <title><fmt:message key="page.title" bundle="${newOrders}" /></title>
 </head>
 <body>
 
     <div>
-        <div><fmt:message key="page.title" bundle="${confirmedOrders}" /></div>
+        <div><fmt:message key="page.title" bundle="${newOrders}" /></div>
     </div>
 
     <div>
         <div>
-            <strong><fmt:message key="caption.car" bundle="${confirmedOrders}" /></strong>
+            <strong><fmt:message key="caption.car" bundle="${newOrders}" /></strong>
             <div><c:out value="${param.make} ${param.model}" /></div>
         </div>
         <div>
-            <strong><fmt:message key="caption.start.date" bundle="${confirmedOrders}" /></strong>
+            <strong><fmt:message key="caption.start.date" bundle="${newOrders}" /></strong>
             <div><c:out value="${param.startDate}" /></div>
         </div>
         <div>
-            <strong><fmt:message key="caption.return.date" bundle="${confirmedOrders}" /></strong>
+            <strong><fmt:message key="caption.return.date" bundle="${newOrders}" /></strong>
             <div><c:out value="${param.returnDate}" /></div>
         </div>
         <div>
-            <strong><fmt:message key="caption.value" bundle="${confirmedOrders}" /></strong>
+            <strong><fmt:message key="caption.value" bundle="${newOrders}" /></strong>
             <div><c:out value="${orderValue}" /></div>
         </div>
     </div>
@@ -43,7 +43,7 @@
         <input type="hidden" name="orderValue" value="${orderValue}">
         <input type="hidden" name="status" value="new" />
         <button type="submit">
-            <fmt:message key="submit.button.txt" bundle="${confirmedOrders}"/>
+            <fmt:message key="submit.button.txt" bundle="${newOrders}"/>
         </button>
     </form>
 
