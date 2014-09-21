@@ -28,7 +28,9 @@ public class MySqlOrderDao extends OrderDao {
                     "status, order_value) VALUES(?,?,?,?,?,?)";
 
     private static final java.lang.String SQL_FIND_BY_CAR_ID =
-            "SELECT * FROM orders WHERE car_id=?";
+            "SELECT id, user_id, car_id, start_date, return_date," +
+                    "status, order_value, rejection_reason, " +
+                    "damage_description, penalty_amount FROM orders WHERE car_id=?";
 
     private static final java.lang.String SQL_UPDATE_STATUS =
             "UPDATE orders SET status=? WHERE id=?";
@@ -377,27 +379,32 @@ public class MySqlOrderDao extends OrderDao {
             throws SQLException {
         Order order = new Order();
 
-        order.setId(resultSet.getInt(1));
-        order.setUserId(resultSet.getInt(2));
-        order.setCarId(resultSet.getInt(3));
-        order.setStartDate(resultSet.getDate(4));
-        order.setReturnDate(resultSet.getDate(5));
+        order.setId(resultSet.getInt("id"));
+        order.setUserId(resultSet.getInt("user_id"));
+        order.setCarId(resultSet.getInt("car_id"));
+        order.setStartDate(resultSet.getDate("start_date"));
+        order.setReturnDate(resultSet.getDate("return_date"));
         order.setStatus(OrderStatus
-                .valueOf(resultSet.getString(6).toUpperCase()));
+                .valueOf(resultSet.getString("status").toUpperCase()));
 
-        order.setValue(resultSet.getFloat(7));
+        order.setValue(resultSet.getFloat("order_value"));
         if(resultSet.wasNull()) {
             order.setValue(0);
         }
 
-        order.setDamageId(resultSet.getInt(8));
+        order.setRejectionReason(resultSet.getString("rejection_reason"));
         if(resultSet.wasNull()) {
-            order.setDamageId(0);
+            order.setRejectionReason(null);
         }
 
-        order.setRejectionId(resultSet.getInt(9));
+        order.setDamageDescription(resultSet.getString("damage_description"));
         if(resultSet.wasNull()) {
-            order.setRejectionId(0);
+            order.setDamageDescription(null);
+        }
+
+        order.setPenaltyAmount(resultSet.getFloat("penalty_amount"));
+        if(resultSet.wasNull()) {
+            order.setPenaltyAmount(0);
         }
 
         return order;

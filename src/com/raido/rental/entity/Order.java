@@ -20,9 +20,11 @@ public class Order {
 
     private float value;
 
-    private int rejectionId;
+    private String rejectionReason;
 
-    private int damageId;
+    private String damageDescription;
+
+    private float penaltyAmount;
 
     public int getId() {
         return id;
@@ -80,25 +82,93 @@ public class Order {
         this.value = value;
     }
 
-    public int getRejectionId() {
-        return rejectionId;
+    public String getRejectionReason() {
+        return rejectionReason;
     }
 
-    public void setRejectionId(int rejectionId) {
-        this.rejectionId = rejectionId;
+    public void setRejectionReason(String rejectionReason) {
+        this.rejectionReason = rejectionReason;
     }
 
-    public int getDamageId() {
-        return damageId;
+    public String getDamageDescription() {
+        return damageDescription;
     }
 
-    public void setDamageId(int damageId) {
-        this.damageId = damageId;
+    public void setDamageDescription(String damageDescription) {
+        this.damageDescription = damageDescription;
+    }
+
+    public float getPenaltyAmount() {
+        return penaltyAmount;
+    }
+
+    public void setPenaltyAmount(float penaltyAmount) {
+        this.penaltyAmount = penaltyAmount;
     }
 
     public boolean overlayPeriod(Date startDate, Date returnDate) {
 
         return ! ((startDate.after(this.returnDate))
             || returnDate.before(this.startDate));
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+
+        Order order = (Order) o;
+
+        if (carId != order.carId) {
+            return false;
+        }
+        if (id != order.id) {
+            return false;
+        }
+        if (Float.compare(order.penaltyAmount, penaltyAmount) != 0) {
+            return false;
+        }
+        if (userId != order.userId) {
+            return false;
+        }
+        if (Float.compare(order.value, value) != 0) {
+            return false;
+        }
+        if (damageDescription != null ? !damageDescription.equals(order.damageDescription) : order.damageDescription != null) {
+            return false;
+        }
+        if (rejectionReason != null ? !rejectionReason.equals(order.rejectionReason) : order.rejectionReason != null) {
+            return false;
+        }
+        if (!returnDate.equals(order.returnDate)) {
+            return false;
+        }
+        if (!startDate.equals(order.startDate)) {
+            return false;
+        }
+        if (status != order.status) {
+            return false;
+        }
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + userId;
+        result = 31 * result + carId;
+        result = 31 * result + startDate.hashCode();
+        result = 31 * result + returnDate.hashCode();
+        result = 31 * result + status.hashCode();
+        result = 31 * result + (value != +0.0f ? Float.floatToIntBits(value) : 0);
+        result = 31 * result + (rejectionReason != null ? rejectionReason.hashCode() : 0);
+        result = 31 * result + (damageDescription != null ? damageDescription.hashCode() : 0);
+        result = 31 * result + (penaltyAmount != +0.0f ? Float.floatToIntBits(penaltyAmount) : 0);
+        return result;
     }
 }
