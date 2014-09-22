@@ -38,7 +38,7 @@ public class ViewOrdersCommand extends OrderCommand {
     @Override
     protected String processGetRequest(HttpServletRequest request)
             throws CommandException {
-        return null;
+        return PAGE_NAME_BUNDLE.getString("admin.main.page");
     }
 
     @Override

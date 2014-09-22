@@ -10,76 +10,87 @@
 <html>
 <head>
     <title><fmt:message key="page.title" bundle="${main}" /></title>
+    <link href="<c:url value="/css/bootstrap.min.css" />"
+          rel="stylesheet" type="text/css" />
+    <link href="<c:url value="/css/bootstrap-responsive.min.css" />"
+          rel="stylesheet" type="text/css" />
+    <link href="<c:url value="/css/bootstrap-theme.min.css" />"
+          rel="stylesheet" type="text/css" />
+    <script src="/js/jquery-1.9.1.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div>
-    <div><c:out value="${successMessage}" /></div>
 
-    <form action="/controller/addCar" method="get" >
-        <button type="submit">
-            <fmt:message key="add.button.txt" bundle="${main}" />
-        </button>
-    </form>
-
-    <form action="/controller/viewAllCars" method="get" >
-        <button type="submit">
-            <fmt:message key="view.button.txt" bundle="${main}" />
-        </button>
-    </form>
-
-    <div>
-        <form action="/controller/viewOrders" method="post" >
-            <input type="hidden" name="status" value="new">
-            <button type="submit">
-                <fmt:message key="new.orders.button.txt" bundle="${main}" />
-            </button>
-        </form>
+<div class="container col-lg-4 col-lg-offset-4">
+    <div class="row">
+        <div class="alert-success"><c:out value="${successMessage}" /></div>
     </div>
 
-    <div>
-        <form action="/controller/viewOrders" method="post" >
-            <input type="hidden" name="status" value="confirmed">
-            <button type="submit">
-                <fmt:message key="confirmed.orders.button.txt" bundle="${main}" />
-            </button>
-        </form>
+    <div class="row">
+        <div class="list-group col-lg-4">
+            <div class="list-group-item active">
+                <h4><fmt:message key="manage.cars" bundle="${main}" /></h4>
+            </div>
+            <form class="list-group-item" action="/controller/addCar" method="get" >
+                <button class="btn btn-success btn-lg btn-block" type="submit">
+                    <fmt:message key="add.button.txt" bundle="${main}" />
+                </button>
+            </form>
+            <form class="list-group-item" action="/controller/viewAllCars" method="get" >
+                <button class="btn btn-info btn-lg btn-block" type="submit">
+                    <fmt:message key="view.button.txt" bundle="${main}" />
+                </button>
+            </form>
+        </div>
     </div>
 
-    <div>
-        <form action="/controller/viewOrders" method="post" >
-            <input type="hidden" name="status" value="rejected">
-            <button type="submit">
-                <fmt:message key="rejected.orders.button.txt" bundle="${main}" />
-            </button>
-        </form>
+    <div class="row">
+        <div class="list-group col-lg-4">
+            <div class="list-group-item active">
+                <h4><fmt:message key="manage.orders" bundle="${main}" /></h4>
+            </div>
+            <form class="list-group-item" action="/controller/viewOrders" method="post" >
+                <input type="hidden" name="status" value="new">
+                <button class="btn btn-info btn-lg btn-block" type="submit">
+                    <fmt:message key="new.orders.button.txt" bundle="${main}" />
+                </button>
+            </form>
+            <form class="list-group-item" action="/controller/viewOrders" method="post" >
+                <input type="hidden" name="status" value="confirmed">
+                <button class="btn btn-success btn-lg btn-block" type="submit">
+                    <fmt:message key="confirmed.orders.button.txt" bundle="${main}" />
+                </button>
+            </form>
+            <form class="list-group-item" action="/controller/viewOrders" method="post" >
+                <input type="hidden" name="status" value="rejected">
+                <button class="btn btn-danger btn-lg btn-block" type="submit">
+                    <fmt:message key="rejected.orders.button.txt" bundle="${main}" />
+                </button>
+            </form>
+            <form class="list-group-item" action="/controller/viewOrders" method="post" >
+                <input type="hidden" name="status" value="active">
+                <button class="btn btn-info btn-lg btn-block" type="submit">
+                    <fmt:message key="active.orders.button.txt" bundle="${main}" />
+                </button>
+            </form>
+            <form class="list-group-item" action="/controller/viewOrders" method="post" >
+                <input type="hidden" name="status" value="damaged">
+                <button class="btn btn-warning btn-lg btn-block" type="submit">
+                    <fmt:message key="damaged.orders.button.txt" bundle="${main}" />
+                </button>
+            </form>
+            <form class="list-group-item" action="/controller/viewOrders" method="post" >
+                <input type="hidden" name="status" value="archived">
+                <button class="btn btn-default btn-lg btn-block" type="submit">
+                    <fmt:message key="archived.orders.button.txt" bundle="${main}" />
+                </button>
+            </form>
+        </div>
     </div>
 
-    <div>
-        <form action="/controller/viewOrders" method="post" >
-            <input type="hidden" name="status" value="active">
-            <button type="submit">
-                <fmt:message key="active.orders.button.txt" bundle="${main}" />
-            </button>
-        </form>
-    </div>
 
-    <div>
-        <form action="/controller/viewOrders" method="post" >
-            <input type="hidden" name="status" value="damaged">
-            <button type="submit">
-                <fmt:message key="damaged.orders.button.txt" bundle="${main}" />
-            </button>
-        </form>
-    </div>
 
-    <div>
-        <form action="/controller/viewOrders" method="post" >
-            <input type="hidden" name="status" value="archived">
-            <button type="submit">
-                <fmt:message key="archived.orders.button.txt" bundle="${main}" />
-            </button>
-        </form>
-    </div>
+
 
 
 

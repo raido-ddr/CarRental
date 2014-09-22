@@ -8,7 +8,6 @@ import com.raido.rental.logic.command.OrderCommand;
 import com.raido.rental.logic.command.exception.CommandException;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
