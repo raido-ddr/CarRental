@@ -57,7 +57,7 @@ public class MySqlOrderDao extends OrderDao {
                     "o.rejection_reason, o.damage_description," +
                     "o.penalty_amount, u.first_name, u.last_name," +
                     "u.dob, u.email, u.license_expiry, c.make, c.model " +
-                    "FROM orders o INNER JOIN users.u ON u.id=o.user_id " +
+                    "FROM orders o INNER JOIN users u ON u.id=o.user_id " +
                     "INNER JOIN cars c ON c.id=o.car_id " +
                     "WHERE u.id=? AND o.status=?";
 

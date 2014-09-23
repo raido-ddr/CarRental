@@ -79,7 +79,7 @@ public class ViewOrdersCommand extends OrderCommand {
             request.setAttribute("emptyCategoryMessage",
                     bundle.getString("empty.order.category"));
         }
-        return resolveViewPage(status);
+        return resolveAdminViewPage(status);
 
     }
 
@@ -100,7 +100,7 @@ public class ViewOrdersCommand extends OrderCommand {
             throw new CommandException(bundle.getString("database.error"));
         }
 
-        if(summaries != null) {
+        if(! summaries.isEmpty()) {
             request.setAttribute("summaries", summaries);
         } else {
             ResourceBundle bundle =
@@ -108,10 +108,30 @@ public class ViewOrdersCommand extends OrderCommand {
             request.setAttribute("emptyCategoryMessage",
                     bundle.getString("empty.order.category"));
         }
-        return resolveViewPage(status);
+        return resolveUserViewPage(status);
     }
 
-    private String resolveViewPage(OrderStatus status) {
+    private String resolveUserViewPage(OrderStatus status) {
+        switch (status) {
+
+        case NEW:
+            return PAGE_NAME_BUNDLE.getString("user.new.orders.page");
+        case CONFIRMED:
+            return PAGE_NAME_BUNDLE.getString("user.confirmed.orders.page");
+        case ACTIVE:
+            return PAGE_NAME_BUNDLE.getString("user.active.orders.page");
+        case REJECTED:
+            return PAGE_NAME_BUNDLE.getString("user.rejected.orders.page");
+        case DAMAGED:
+            return PAGE_NAME_BUNDLE.getString("user.damaged.orders.page");
+        case ARCHIVED:
+            return PAGE_NAME_BUNDLE.getString("user.archived.orders.page");
+        default:
+            return PAGE_NAME_BUNDLE.getString("user.main.page");
+        }
+    }
+
+    private String resolveAdminViewPage(OrderStatus status) {
         switch (status) {
 
         case NEW:

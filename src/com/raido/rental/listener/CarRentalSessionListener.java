@@ -20,6 +20,9 @@ public class CarRentalSessionListener implements HttpSessionListener {
                 Locale.forLanguageTag(bundle.getString("default.locale")));
 
         session.setAttribute("role", "user");
+
+        //remove - for debug only
+        session.setAttribute("userId", 2);
     }
 
     @Override
