@@ -51,14 +51,6 @@
                                                value="${summary.rejectionReason}" disabled>
                                     </div>
                                 </form>
-                                <form role="form" name="archiveOrderForm"
-                                      action="/controller/changeOrderStatus" method="post">
-                                    <input type="hidden" name="orderId" value="${summary.orderId}">
-                                    <input type="hidden" name="status" value="archived" />
-                                    <button class="btn btn-success" type="submit">
-                                        <fmt:message key="archive.button.txt" bundle="${rejectedOrders}"/>
-                                    </button>
-                                </form>
                             </div>
 
                         </div>

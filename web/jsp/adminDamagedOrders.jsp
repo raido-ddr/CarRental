@@ -5,7 +5,7 @@
 <fmt:requestEncoding value="UTF-8" />
 <fmt:setLocale value="${sessionScope.locale}" />
 
-<fmt:setBundle basename="l10n.user_damaged_orders" var="damagedOrders"/>
+<fmt:setBundle basename="l10n.admin_damaged_orders" var="damagedOrders"/>
 
 
 <html>
