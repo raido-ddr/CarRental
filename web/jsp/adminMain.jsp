@@ -22,7 +22,7 @@
 <body>
 
 <div class="container col-lg-4 col-lg-offset-4">
-    <div class="row">
+    <div class="row col-lg-4 col-lg-offset-4">
         <div class="alert-success"><c:out value="${successMessage}" /></div>
     </div>
 

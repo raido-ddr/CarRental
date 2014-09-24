@@ -135,6 +135,8 @@
     </select>
     <br />
 
+    <input type="hidden" name="carId" value="${car.id}" />
+
     <button type="submit" formmethod="post">
         <fmt:message key="confirm.button.txt" bundle="${editCar}"/>
     </button>

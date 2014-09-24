@@ -38,7 +38,7 @@ public class EditCarCommand extends CarCommand {
     protected String processGetRequest(HttpServletRequest request)
             throws CommandException {
 
-        int id = Integer.parseInt(request.getParameter("id"));
+        int id = Integer.parseInt(request.getParameter("carId"));
         CarDao carDao = DaoFactory.getInstance().getCarDao();
 
         try {
@@ -74,7 +74,7 @@ public class EditCarCommand extends CarCommand {
             Locale locale = getCurrentLocale(request);
             ResourceBundle bundle =
                     ResourceBundle.getBundle("success_message", locale);
-            request.setAttribute("successMessage", bundle.getString("add.car"));
+            request.setAttribute("successMessage", bundle.getString("save.car"));
 
             return PAGE_NAME_BUNDLE.getString("admin.main.page");
 

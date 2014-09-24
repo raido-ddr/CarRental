@@ -6,6 +6,6 @@
     <title></title>
 </head>
 <body>
-    <jsp:forward page="/jsp/userMain.jsp" />
+    <jsp:forward page="/jsp/adminMain.jsp" />
 </body>
 </html>

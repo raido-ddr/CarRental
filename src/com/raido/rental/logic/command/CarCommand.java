@@ -20,6 +20,7 @@ public abstract class CarCommand extends ActionCommand {
         if(DataValidator.getInstance().validateCar(request)) {
             car = new Car();
 
+            car.setId(parameterHelper.getInt(request, "carId"));
             car.setMake(parameterHelper.getString(request, "make"));
             car.setModel(parameterHelper.getString(request, "model"));
 

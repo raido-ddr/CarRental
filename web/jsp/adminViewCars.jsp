@@ -63,7 +63,7 @@
             </div>
             <div>
                 <form name="editActionForm" action="/controller/editCar" method="get" >
-                    <input type="hidden" name="id" value="${car.id}" />
+                    <input type="hidden" name="carId" value="${car.id}" />
                     <button type="submit">
                         <fmt:message key="edit.button.txt" bundle="${main}" />
                     </button>

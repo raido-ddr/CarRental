@@ -39,7 +39,11 @@ public class MySqlCarDao extends CarDao {
     private static final String SQL_SELECT_ALL =
             "SELECT * FROM cars";
 
-    private static final String SQL_UPDATE_CAR = "";
+    private static final String SQL_UPDATE_CAR =
+            "UPDATE cars set make=?, model=?, mileage=?," +
+                    "power=?, fuel_type=?, transmission_type=?," +
+                    "seat_count=?, daily_cost=?, body_style=?," +
+                    "status=? WHERE id=?";
 
     private static volatile MySqlCarDao instance;
 
@@ -249,6 +253,7 @@ public class MySqlCarDao extends CarDao {
             preparedStatement.setFloat(8, car.getDailyCost());
             preparedStatement.setString(9, car.getBodyStyle().getValue());
             preparedStatement.setString(10, car.getStatus().getValue());
+            preparedStatement.setInt(11, car.getId());
 
             int rowsCount = preparedStatement.executeUpdate();
             if(rowsCount != 1) {
