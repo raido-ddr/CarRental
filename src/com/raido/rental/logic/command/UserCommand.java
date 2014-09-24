@@ -6,11 +6,8 @@ import com.raido.rental.logic.validator.DataValidator;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.sql.Date;
 
-/**
- * Created by Raido_DDR on 19.09.2014.
- */
+
 public abstract class UserCommand extends ActionCommand {
 
     private static final String DEFAULT_REGISTRATION_ROLE = "user";

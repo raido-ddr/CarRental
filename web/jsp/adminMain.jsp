@@ -6,6 +6,7 @@
 <fmt:setLocale value="${sessionScope.locale}" />
 
 <fmt:setBundle basename="l10n.admin_main" var="main"/>
+<fmt:setBundle basename="l10n.navbar" var="navbar"/>
 
 <html>
 <head>
@@ -16,10 +17,15 @@
           rel="stylesheet" type="text/css" />
     <link href="<c:url value="/css/bootstrap-theme.min.css" />"
           rel="stylesheet" type="text/css" />
+    <link href="<c:url value="/css/custom_style.css" />"
+          rel="stylesheet" type="text/css" />
     <script src="/js/jquery-1.9.1.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
 </head>
-<body>
+
+<body id="admin_main">
+
+<%@include file="admin_navbar.jsp"%>
 
 <div class="container col-lg-4 col-lg-offset-4">
     <div class="row col-lg-4">
