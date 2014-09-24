@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <fmt:requestEncoding value="UTF-8" />
 <fmt:setLocale value="${sessionScope.locale}" />
@@ -46,9 +47,15 @@
 
                 </td></tr>
             </c:forEach>
-
-
         </table>
+
+        <c:if test="${fn:length(summaries) > 0}">
+            <div class="panel-footer">
+                <div class="alert-success text-center">
+                    <fmt:message key="acknowledgement" bundle="${archivedOrders}" />
+                </div>
+            </div>
+        </c:if>
     </div>
 
 </div>
