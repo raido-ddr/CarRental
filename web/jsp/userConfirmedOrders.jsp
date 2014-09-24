@@ -47,7 +47,7 @@
                                     <input type="hidden" name="status" value="active" />
                                     <input class="form-control" type="text" name="creditCardNumber"
                                             placeholder="<fmt:message key="card.number" bundle="${confirmedOrders}" />" />
-                                    <button class="btn btn-success" type="submit">
+                                    <button class="form-control btn btn-success" type="submit">
                                         <fmt:message key="pay.button.txt" bundle="${confirmedOrders}"/>
                                     </button>
                                 </form>

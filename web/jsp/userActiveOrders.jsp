@@ -41,20 +41,6 @@
                 <div class="row">
                     <div class="col-lg-5 col-lg-offset-4">
                         <%@include file="orderSummary.jsp"%>
-
-                        <div class="form-group">
-                            <div class="form-group">
-                                <form  role="form" name="archiveOrderForm" action="/controller/changeOrderStatus"
-                                       method="post">
-                                    <input type="hidden" name="orderId" value="${summary.orderId}">
-                                    <input type="hidden" name="status" value="archived" />
-                                    <button class="btn btn-success" type="submit">
-                                        <fmt:message key="archive.button.txt" bundle="${activeOrders}"/>
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
     </div>
