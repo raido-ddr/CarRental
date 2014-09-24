@@ -68,15 +68,15 @@
                 </form>
             </div>
 
-        <div class="row">
-            <div class="list-group col-lg-4 col-lg-offset-4">
-                <form class="list-group-item" action="/controller/chooseRentalPeriod" method="get" >
-                    <button class="btn btn-success btn-lg btn-block" type="submit">
-                        <fmt:message key="rent.button.txt" bundle="${main}" />
-                    </button>
-                </form>
+            <div class="row">
+                <div class="list-group col-lg-4 col-lg-offset-4">
+                    <form class="list-group-item" action="/controller/chooseRentalPeriod" method="get" >
+                        <button class="btn btn-success btn-lg btn-block" type="submit">
+                            <fmt:message key="rent.button.txt" bundle="${main}" />
+                        </button>
+                    </form>
+                </div>
             </div>
-        </div>
 
 
         </div>

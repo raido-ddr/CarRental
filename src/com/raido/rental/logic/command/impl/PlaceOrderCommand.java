@@ -50,9 +50,6 @@ public class PlaceOrderCommand extends OrderCommand {
     @Override
     protected String processPostRequest(HttpServletRequest request) throws CommandException {
 
-       /* int carId = parameterHelper.getInt(request, "carId");
-        int userId = parameterHelper.getInt(request, "userId");*/
-
         String carId = request.getParameter("carId");
         String userId = request.getParameter("userId");
         Date startDate = parameterHelper.getDate(request, "startDate");

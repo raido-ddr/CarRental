@@ -5,12 +5,12 @@
 <fmt:requestEncoding value="UTF-8" />
 <fmt:setLocale value="${sessionScope.locale}" />
 
-<fmt:setBundle basename="l10n.admin_new_orders" var="damagedOrders"/>
+<fmt:setBundle basename="l10n.admin_new_orders" var="placeOrder"/>
 
 
 <html>
 <head>
-    <title><fmt:message key="page.title" bundle="${damagedOrders}" /></title>
+    <title><fmt:message key="page.title" bundle="${placeOrder}" /></title>
     <link href="<c:url value="/css/bootstrap.min.css" />"
           rel="stylesheet" type="text/css" />
     <link href="<c:url value="/css/bootstrap-responsive.min.css" />"
@@ -24,7 +24,7 @@
         <div class="panel-heading">
             <div class="row">
                 <div class="col-lg-6 col-lg-offset-5">
-                    <h3><fmt:message key="page.title" bundle="${damagedOrders}" /></h3>
+                    <h3><fmt:message key="page.title" bundle="${placeOrder}" /></h3>
                 </div>
             </div>
         </div>
@@ -49,7 +49,7 @@
                                     <input type="hidden" name="orderId" value="${summary.orderId}">
                                     <input type="hidden" name="status" value="confirmed" />
                                     <button class="btn btn-success" type="submit">
-                                        <fmt:message key="confirm.button.txt" bundle="${damagedOrders}"/>
+                                        <fmt:message key="confirm.button.txt" bundle="${placeOrder}"/>
                                     </button>
                                 </form>
                             </div>
@@ -63,12 +63,12 @@
                                         <div class="form-group">
                                             <textarea class="form-control" rows="3" cols="35"
                                                       style="resize:none" name="rejectionReason"
-                                                      placeholder="<fmt:message key="rejection.reason" bundle="${damagedOrders}" />">
+                                                      placeholder="<fmt:message key="rejection.reason" bundle="${placeOrder}" />">
                                             </textarea>
                                         </div>
                                         <div class="form-group">
                                             <button class="btn btn-danger" type="submit">
-                                                <fmt:message key="reject.button.txt" bundle="${damagedOrders}"/>
+                                                <fmt:message key="reject.button.txt" bundle="${placeOrder}"/>
                                             </button>
                                         </div>
                                     </div>

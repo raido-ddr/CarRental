@@ -11,7 +11,7 @@ import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 import java.util.ResourceBundle;
 
-//@WebListener
+@WebListener
 public class PermissionContextListener implements ServletContextListener {
 
     private static final Logger LOGGER =

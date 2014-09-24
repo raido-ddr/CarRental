@@ -10,10 +10,36 @@
 <html>
 <head>
     <title><fmt:message key="page.title" bundle="${welcome}" /></title>
+    <link href="<c:url value="/css/bootstrap.min.css" />"
+          rel="stylesheet" type="text/css" />
+    <link href="<c:url value="/css/bootstrap-responsive.min.css" />"
+          rel="stylesheet" type="text/css" />
+    <link href="<c:url value="/css/bootstrap-theme.min.css" />"
+          rel="stylesheet" type="text/css" />
+    <link rel="icon" href="<c:url value="/favicon.ico" />"  type="image/x-icon"  />
 </head>
 <body>
 <div>
-    <%--<h3><fmt:message key="title" bundle="${welcome}" /> </h3>--%>
+
+   <%-- <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">
+                <fmt:message key="brand" bundle="${welcome}" />
+            </a>
+        </div>
+        <ul class="dropdown">
+            <li>
+                <a href="/controller/changeLocale?locale=ru-RU">
+                    <fmt:message key="en.button.txt" bundle="${welcome}" />
+                </a>
+            </li>
+            <li>
+                <a href="/controller/changeLocale?locale=en-GB">
+                    <fmt:message key="ru.button.txt" bundle="${welcome}" />
+                </a>
+            </li>
+        </ul>
+    </div>--%>
 
     <form action="/controller/authorize" method="get" >
         <button type="submit">
@@ -27,23 +53,30 @@
             </button>
     </form>
 
-    <form action="/controller/changeLocale?locale=en-GB" method="post" >
+
+
+
+
+    <form action="/controller/changeLocale" method="get" >
+        <input type="hidden" name="locale" value="en-GB" />
         <button type="submit">
             <fmt:message key="en.button.txt" bundle="${welcome}" />
         </button>
     </form>
 
-    <form action="/controller/changeLocale?locale=ru-RU" method="post" >
+
+    <form action="/controller/changeLocale" method="get" >
+        <input type="hidden" name="locale" value="ru-RU" />
         <button type="submit">
             <fmt:message key="ru.button.txt" bundle="${welcome}" />
         </button>
     </form>
 
-    <form action="/controller/addCar" method="get" >
+<%--    <form action="/controller/changeLocale?locale=ru-RU" method="get" >
         <button type="submit">
-            <fmt:message key="add.button.txt" bundle="${welcome}" />
+            <fmt:message key="ru.button.txt" bundle="${welcome}" />
         </button>
-    </form>
+    </form>--%>
 
 </div>
 </body>

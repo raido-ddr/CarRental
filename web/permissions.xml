@@ -15,13 +15,49 @@
 
     <permission>
         <command>/register</command>
-        <role>user</role>
-        <role>admin</role>
         <role>guest</role>
     </permission>
 
     <permission>
+        <command>/logout</command>
+        <role>user</role>
+        <role>admin</role>
+    </permission>
+
+    <permission>
         <command>/addCar</command>
+        <role>admin</role>
+    </permission>
+
+    <permission>
+        <command>/editCar</command>
+        <role>admin</role>
+    </permission>
+
+    <permission>
+        <command>/changeOrderStatus</command>
+        <role>user</role>
+        <role>admin</role>
+    </permission>
+
+    <permission>
+        <command>/chooseRentalPeriod</command>
+        <role>user</role>
+    </permission>
+
+    <permission>
+        <command>/placeOrder</command>
+        <role>user</role>
+    </permission>
+
+    <permission>
+        <command>/viewAllCars</command>
+        <role>admin</role>
+    </permission>
+
+    <permission>
+        <command>/viewOrders</command>
+        <role>user</role>
         <role>admin</role>
     </permission>
 

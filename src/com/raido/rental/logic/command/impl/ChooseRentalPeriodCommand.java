@@ -1,9 +1,11 @@
 package com.raido.rental.logic.command.impl;
 
 import com.raido.rental.dao.CarDao;
+import com.raido.rental.dao.UserDao;
 import com.raido.rental.dao.exception.DaoException;
 import com.raido.rental.dao.factory.DaoFactory;
 import com.raido.rental.entity.Car;
+import com.raido.rental.entity.User;
 import com.raido.rental.logic.command.OrderCommand;
 import com.raido.rental.logic.command.exception.CommandException;
 import com.raido.rental.logic.validator.DataValidator;
@@ -39,6 +41,7 @@ public class ChooseRentalPeriodCommand extends OrderCommand {
     @Override
     protected String processGetRequest(HttpServletRequest request)
             throws CommandException {
+
         return PAGE_NAME_BUNDLE.getString("rental.period.page");
     }
 
@@ -49,6 +52,15 @@ public class ChooseRentalPeriodCommand extends OrderCommand {
         if(DataValidator.getInstance().validateRentalPeriod(request)) {
             Date startDate = parameterHelper.getDate(request, "startDate");
             Date returnDate = parameterHelper.getDate(request, "returnDate");
+
+            if(! checkLicenseValidity(request)) {
+                Locale locale = getCurrentLocale(request);
+                ResourceBundle bundle =
+                        ResourceBundle.getBundle("input_errors", locale);
+                request.setAttribute("rentalPeriodRule",
+                        bundle.getString("invalid.license"));
+                return PAGE_NAME_BUNDLE.getString("rental.period.page");
+            }
 
             //look for cars available for requested period
             List<Car> cars;
@@ -82,5 +94,28 @@ public class ChooseRentalPeriodCommand extends OrderCommand {
             return PAGE_NAME_BUNDLE.getString("rental.period.page");
         }
 
+    }
+
+    private boolean checkLicenseValidity(HttpServletRequest request)
+            throws CommandException {
+
+        UserDao userDao = DaoFactory.getInstance().getUserDao();
+        int userId = getCurrentUserId(request);
+
+        User user;
+        try {
+            user = userDao.findUserById(userId);
+        } catch (DaoException e) {
+            Locale locale = getCurrentLocale(request);
+            ResourceBundle bundle =
+                    ResourceBundle.getBundle("exception_message", locale);
+            throw new CommandException(bundle.getString("database.error"));
+        }
+
+        Date returnDate = parameterHelper.getDate(request, "returnDate");
+        Date licenseExpiryDate = (Date) user.getLicenseExpiryDate();
+
+        return (licenseExpiryDate.after(returnDate)
+                || licenseExpiryDate.equals(returnDate));
     }
 }
