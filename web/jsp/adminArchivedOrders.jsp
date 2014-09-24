@@ -42,6 +42,42 @@
                         <div class="col-lg-5 col-lg-offset-4">
                             <%@include file="orderSummary.jsp"%>
 
+                            <c:if test="${not empty summary.damageDescription}">
+                                <div class="form-group">
+                                    <form role="form">
+                                        <div class="form-group">
+                                            <label for="description" class="text-warning">
+                                                <fmt:message key="damage.description"
+                                                             bundle="${archivedOrders}"/>
+                                            </label>
+                                            <input class="form-control" id="description"
+                                                   value="${summary.damageDescription}" disabled>
+                                            <label for="amount" class="text-warning">
+                                                <fmt:message key="penalty.amount"
+                                                             bundle="${archivedOrders}"/>
+                                            </label>
+                                            <p id="amount" class="form-control">
+                                                <c:out value="${summary.penaltyAmount}" />
+                                            </p>
+                                        </div>
+                                    </form>
+                                </div>
+                            </c:if>
+
+                            <c:if test="${not empty summary.rejectionReason}">
+                                <div class="form-group">
+                                    <form role="form">
+                                        <div class="form-group">
+                                            <label for="reason" class="text-danger">
+                                                <fmt:message key="rejection.reason" bundle="${archivedOrders}"/>
+                                            </label>
+                                            <input class="form-control" id="reason"
+                                                   value="${summary.rejectionReason}" disabled>
+                                        </div>
+                                    </form>
+                                </div>
+                            </c:if>
+
                             <div class="form-group">
                                 <form role="form" name="confirmOrderForm"
                                       action="/controller/changeOrderStatus" method="post">

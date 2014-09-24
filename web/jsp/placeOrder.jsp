@@ -5,33 +5,33 @@
 <fmt:requestEncoding value="UTF-8" />
 <fmt:setLocale value="${sessionScope.locale}" />
 
-<fmt:setBundle basename="l10n.place_order" var="newOrders" />
+<fmt:setBundle basename="l10n.place_order" var="damagedOrders" />
 
 <html>
 <head>
-    <title><fmt:message key="page.title" bundle="${newOrders}" /></title>
+    <title><fmt:message key="page.title" bundle="${damagedOrders}" /></title>
 </head>
 <body>
 
     <div>
-        <div><fmt:message key="page.title" bundle="${newOrders}" /></div>
+        <div><fmt:message key="page.title" bundle="${damagedOrders}" /></div>
     </div>
 
     <div>
         <div>
-            <strong><fmt:message key="caption.car" bundle="${newOrders}" /></strong>
+            <strong><fmt:message key="caption.car" bundle="${damagedOrders}" /></strong>
             <div><c:out value="${param.make} ${param.model}" /></div>
         </div>
         <div>
-            <strong><fmt:message key="caption.start.date" bundle="${newOrders}" /></strong>
+            <strong><fmt:message key="caption.start.date" bundle="${damagedOrders}" /></strong>
             <div><c:out value="${param.startDate}" /></div>
         </div>
         <div>
-            <strong><fmt:message key="caption.return.date" bundle="${newOrders}" /></strong>
+            <strong><fmt:message key="caption.return.date" bundle="${damagedOrders}" /></strong>
             <div><c:out value="${param.returnDate}" /></div>
         </div>
         <div>
-            <strong><fmt:message key="caption.value" bundle="${newOrders}" /></strong>
+            <strong><fmt:message key="caption.value" bundle="${damagedOrders}" /></strong>
             <div><c:out value="${orderValue}" /></div>
         </div>
     </div>
@@ -43,7 +43,7 @@
         <input type="hidden" name="orderValue" value="${orderValue}">
         <input type="hidden" name="status" value="new" />
         <button type="submit">
-            <fmt:message key="submit.button.txt" bundle="${newOrders}"/>
+            <fmt:message key="submit.button.txt" bundle="${damagedOrders}"/>
         </button>
     </form>
 

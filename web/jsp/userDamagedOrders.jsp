@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <fmt:requestEncoding value="UTF-8" />
 <fmt:setLocale value="${sessionScope.locale}" />
@@ -48,7 +49,7 @@
                                             <fmt:message key="damage.description" bundle="${damagedOrders}"/>
                                         </label>
                                         <input class="form-control" id="description"
-                                                value="${summary.damageDescription}" disabled>
+                                               value="${summary.damageDescription}" disabled>
                                         <label for="amount" class="text-warning">
                                             <fmt:message key="penalty.amount" bundle="${damagedOrders}"/>
                                         </label>
@@ -58,31 +59,34 @@
                                     </div>
                                 </form>
 
-                                <form role="form" name="archiveOrderForm"
+                                <form role="form" name="payOrderForm"
                                       action="/controller/changeOrderStatus" method="post">
                                     <input type="hidden" name="orderId" value="${summary.orderId}">
                                     <input type="hidden" name="status" value="archived" />
-                                    <button class="btn btn-success" type="submit">
-                                        <fmt:message key="archive.button.txt" bundle="${damagedOrders}"/>
+                                    <input class="form-control" type="text" name="creditCardNumber"
+                                           placeholder="<fmt:message key="card.number" bundle="${damagedOrders}" />" />
+                                    <button class="form-control btn btn-success" type="submit">
+                                        <fmt:message key="pay.button.txt" bundle="${damagedOrders}"/>
                                     </button>
                                 </form>
                             </div>
-
                         </div>
                     </div>
-
                 </td></tr>
             </c:forEach>
-
-
         </table>
+
+        <c:if test="${fn:length(summaries) > 0}">
+            <div class="panel-footer">
+                <div class="alert-danger text-center">
+                    <fmt:message key="warning" bundle="${damagedOrders}" />
+                </div>
+            </div>
+        </c:if>
+
     </div>
 
 </div>
 
 </body>
 </html>
-
-
-
-
