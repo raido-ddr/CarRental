@@ -8,6 +8,7 @@ import com.raido.rental.logic.command.OrderCommand;
 import com.raido.rental.logic.command.exception.CommandException;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -37,7 +38,10 @@ public class ChangeOrderStatusCommand extends OrderCommand {
     @Override
     protected String processGetRequest(HttpServletRequest request)
             throws CommandException {
-        return null;
+        Locale locale = getCurrentLocale(request);
+        ResourceBundle bundle =
+                ResourceBundle.getBundle("exception_message", locale);
+        throw new CommandException(bundle.getString("unsupported.method"));
 
     }
 
@@ -79,7 +83,21 @@ public class ChangeOrderStatusCommand extends OrderCommand {
             throws CommandException {
 
        changeOrderStatus(request, OrderStatus.ARCHIVED);
-        return PAGE_NAME_BUNDLE.getString("admin.main.page");
+
+        Locale locale = getCurrentLocale(request);
+        switch (getCurrentUserRole(request)) {
+        case "user":
+            ResourceBundle bundle =
+                    ResourceBundle.getBundle("success_message", locale);
+            request.setAttribute("successMessage", bundle.getString("successful.payment"));
+            return PAGE_NAME_BUNDLE.getString("user.main.page");
+        case "admin":
+            return PAGE_NAME_BUNDLE.getString("admin.main.page");
+        default:
+            ResourceBundle errorBundle =
+                    ResourceBundle.getBundle("exception_message", locale);
+            throw new CommandException(errorBundle.getString("permission.denied"));
+        }
 
     }
 
@@ -127,6 +145,10 @@ public class ChangeOrderStatusCommand extends OrderCommand {
             throws CommandException {
 
         changeOrderStatus(request, OrderStatus.ACTIVE);
+        Locale locale = getCurrentLocale(request);
+        ResourceBundle bundle =
+                ResourceBundle.getBundle("success_message", locale);
+        request.setAttribute("successMessage", bundle.getString("successful.payment"));
         return PAGE_NAME_BUNDLE.getString("user.main.page");
     }
 

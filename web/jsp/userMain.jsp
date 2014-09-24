@@ -19,11 +19,10 @@
 </head>
 <body>
 <div>
-    <div class="alert-success"><c:out value="${successMessage}" /></div>
 
     <div class="container col-lg-8">
         <div class="row">
-            <div class="alert-success"><c:out value="${successMessage}" /></div>
+            <div class="alert-success text-center"><c:out value="${successMessage}" /></div>
         </div>
 
         <div class="row">
