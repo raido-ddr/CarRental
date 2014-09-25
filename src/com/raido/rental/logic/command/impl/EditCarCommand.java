@@ -59,6 +59,8 @@ public class EditCarCommand extends CarCommand {
             throws CommandException {
 
         Car car = createCarFromData(request);
+        car.setId(parameterHelper.getInt(request, "carId"));
+
         if(car != null) {
 
             CarDao carDao = DaoFactory.getInstance().getCarDao();

@@ -38,6 +38,92 @@
                     <fmt:message key="home" bundle="${navbar}" />
                 </a>
             </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <fmt:message key="orders" bundle="${navbar}" />
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu navbar-inverse">
+                    <li class="navbar-inverse">
+                        <form class="list-group-item navbar-inverse" action="/controller/viewOrders" method="post" >
+                            <input type="hidden" name="status" value="new">
+                            <button class="btn btn-info btn-sm btn-block" type="submit">
+                                <fmt:message key="new.orders.button.txt" bundle="${navbar}" />
+                            </button>
+                        </form>
+                    </li>
+                    <li>
+                        <form class="list-group-item navbar-inverse" action="/controller/viewOrders" method="post" >
+                            <input type="hidden" name="status" value="confirmed">
+                            <button class="btn btn-success btn-sm btn-block" type="submit">
+                                <fmt:message key="confirmed.orders.button.txt" bundle="${navbar}" />
+                            </button>
+                        </form>
+                    </li>
+                    <li>
+                        <form class="list-group-item navbar-inverse" action="/controller/viewOrders"
+                              method="post" >
+                            <input type="hidden" name="status" value="rejected">
+                            <button class="btn btn-danger btn-sm btn-block" type="submit">
+                                <fmt:message key="rejected.orders.button.txt" bundle="${navbar}" />
+                            </button>
+                        </form>
+                    </li>
+                    <li>
+                        <form class="list-group-item navbar-inverse" action="/controller/viewOrders"
+                              method="post" >
+                            <input type="hidden" name="status" value="active">
+                            <button class="btn btn-info btn-sm btn-block" type="submit">
+                                <fmt:message key="active.orders.button.txt" bundle="${navbar}" />
+                            </button>
+                        </form>
+                    </li>
+                    <li>
+                        <form class="list-group-item navbar-inverse" action="/controller/viewOrders"
+                              method="post" >
+                            <input type="hidden" name="status" value="damaged">
+                            <button class="btn btn-warning btn-sm btn-block" type="submit">
+                                <fmt:message key="damaged.orders.button.txt" bundle="${navbar}" />
+                            </button>
+                        </form>
+                    </li>
+                    <li>
+                        <form class="list-group-item navbar-inverse" action="/controller/viewOrders"
+                              method="post" >
+                            <input type="hidden" name="status" value="archived">
+                            <button class="btn btn-default btn-sm btn-block" type="submit">
+                                <fmt:message key="archived.orders.button.txt" bundle="${navbar}" />
+                            </button>
+                        </form>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <fmt:message key="cars" bundle="${navbar}" />
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu navbar-inverse">
+                    <li>
+                        <form class="list-group-item navbar-inverse" action="/controller/addCar"
+                              method="get" >
+                            <button class="btn btn-success btn-sm btn-block" type="submit">
+                                <fmt:message key="add.button.txt" bundle="${navbar}" />
+                            </button>
+                        </form>
+                    </li>
+                    <li>
+                        <form class="list-group-item navbar-inverse" action="/controller/viewAllCars"
+                              method="get" >
+                            <button class="btn btn-info btn-sm btn-block" type="submit">
+                                <fmt:message key="view.button.txt" bundle="${navbar}" />
+                            </button>
+                        </form>
+                    </li>
+                </ul>
+            </li>
+
             <li>
                 <form class="navbar-form navbar-left" action="/controller/logout" method="get" >
                     <button class="btn btn-warning" type="submit">

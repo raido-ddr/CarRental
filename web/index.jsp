@@ -9,6 +9,6 @@
     <link rel="icon" href="<c:url value="/favicon.ico" />"   type="image/x-icon" />
 </head>
 <body>
-    <jsp:forward page="/jsp/welcome.jsp" />
+    <jsp:forward page="/jsp/adminMain.jsp" />
 </body>
 </html>

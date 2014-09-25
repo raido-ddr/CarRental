@@ -5,7 +5,16 @@
     height: 100%;
 }
 
+.form-background {
+    background-image: url(../images/form_black.png);
+    background-repeat: repeat;
+}
+
 #admin_main {
-    background-image: url(../images/welcome_background.jpg);
+    background-image: url(../images/admin_main.jpg);
+}
+
+#add_car {
+    background: url(../images/admin_main.jpg);
 }
 body { padding-top: 50px; }
