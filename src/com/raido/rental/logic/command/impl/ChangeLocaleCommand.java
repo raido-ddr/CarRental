@@ -4,7 +4,6 @@ import com.raido.rental.logic.command.ActionCommand;
 import com.raido.rental.logic.command.exception.CommandException;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.util.Locale;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -46,7 +45,23 @@ public class ChangeLocaleCommand extends ActionCommand {
         request.getSession().setAttribute("locale", locale);
 
 
-        return PAGE_NAME_BUNDLE.getString("welcome.page");
+        String pageName = determineMainPageName(request);
+        return PAGE_NAME_BUNDLE.getString(pageName);
+    }
+
+    private String determineMainPageName(HttpServletRequest request) {
+
+        String role = (String) request.getSession().getAttribute("role");
+
+        switch (role)
+        {
+        case "user":
+            return "user.main.page";
+        case "admin":
+            return "admin.main.page";
+        default:
+            return "welcome.page";
+        }
     }
 
 
