@@ -11,12 +11,10 @@ import com.raido.rental.dao.impl.MySqlUserDao;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-/**
- * Created by Raido_DDR on 9/5/2014.
- */
+
 public class MySqlDaoFactory extends DaoFactory {
 
-    private static volatile MySqlDaoFactory instance;
+    private static  MySqlDaoFactory instance;
 
     private static Lock lock = new ReentrantLock();
 

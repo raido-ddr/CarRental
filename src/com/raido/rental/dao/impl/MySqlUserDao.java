@@ -5,6 +5,7 @@ import com.raido.rental.dao.exception.DaoException;
 import com.raido.rental.dao.pool.ConnectionPool;
 import com.raido.rental.dao.pool.exception.ConnectionPoolException;
 import com.raido.rental.entity.User;
+import com.raido.rental.logic.resourcemanager.MessageBundle;
 import org.apache.log4j.Logger;
 
 import java.sql.*;
@@ -81,25 +82,15 @@ public class MySqlUserDao extends UserDao {
 
             int rowsCount = preparedStatement.executeUpdate();
             if(rowsCount != 1) {
-                ResourceBundle bundle =
-                        ResourceBundle.getBundle("exception_message");
-                throw new DaoException(bundle.getString("database.error"));
+                throw new DaoException(MessageBundle
+                        .getString("exception_message", "database.error"));
             }
 
         } catch (SQLException e) {
-            ResourceBundle bundle =
-                    ResourceBundle.getBundle("exception_message");
-            throw new DaoException(bundle.getString("database.error"), e);
-        } try {
-            if(connection != null) {
-                connection.close();
-            }
-            if(preparedStatement != null) {
-                preparedStatement.close();
-            }
-
-        } catch (SQLException e) {
-            LOGGER.error(e);
+            throw new DaoException(MessageBundle
+                    .getString("exception_message", "database.error"),e);
+        } finally {
+            closePooledConnection(connection, preparedStatement);
         }
 
     }
@@ -133,21 +124,10 @@ public class MySqlUserDao extends UserDao {
             return user;
 
         } catch (SQLException e) {
-            ResourceBundle bundle =
-                    ResourceBundle.getBundle("exception_message");
-            throw new DaoException(bundle.getString("database.error"), e);
+            throw new DaoException(MessageBundle
+                    .getString("exception_message", "database.error"),e);
         } finally {
-            try {
-                if(preparedStatement != null) {
-                    preparedStatement.close();
-                }
-                if(connection != null) {
-                    connection.close();
-                }
-
-            } catch (SQLException e) {
-                LOGGER.error(e);
-            }
+            closePooledConnection(connection, preparedStatement);
         }
 
     }
@@ -197,20 +177,10 @@ public class MySqlUserDao extends UserDao {
             return user;
 
         } catch (SQLException e) {
-            ResourceBundle bundle =
-                    ResourceBundle.getBundle("exception_message");
-            throw new DaoException(bundle.getString("database.error"), e);
+            throw new DaoException(MessageBundle
+                    .getString("exception_message", "database.error"),e);
         } finally {
-            try {
-                if(preparedStatement != null) {
-                    preparedStatement.close();
-                }
-                if(connection != null) {
-                    connection.close();
-                }
-            } catch (SQLException e) {
-                LOGGER.error(e);
-            }
+            closePooledConnection(connection, preparedStatement);
         }
     }
 
@@ -242,18 +212,10 @@ public class MySqlUserDao extends UserDao {
             return user;
 
         } catch (SQLException e) {
-            ResourceBundle bundle =
-                    ResourceBundle.getBundle("exception_message");
-            throw new DaoException(bundle.getString("database.error"), e);
+            throw new DaoException(MessageBundle
+                    .getString("exception_message", "database.error"),e);
         } finally {
-            try {
-                if(preparedStatement != null) {
-                    preparedStatement.close();
-                }
-
-            } catch (SQLException e) {
-                LOGGER.error(e);
-            }
+            closePooledConnection(connection, preparedStatement);
         }
     }
 
@@ -284,20 +246,10 @@ public class MySqlUserDao extends UserDao {
             return (! resultSet.next());
 
         } catch (SQLException e) {
-            ResourceBundle bundle =
-                    ResourceBundle.getBundle("exception_message");
-            throw new DaoException(bundle.getString("database.error"), e);
+            throw new DaoException(MessageBundle
+                    .getString("exception_message", "database.error"),e);
         } finally {
-            try {
-                if(preparedStatement != null) {
-                    preparedStatement.close();
-                }
-                if(connection != null) {
-                    connection.close();
-                }
-            } catch (SQLException e) {
-                LOGGER.error(e);
-            }
+            closePooledConnection(connection, preparedStatement);
         }
 
 

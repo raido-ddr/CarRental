@@ -13,7 +13,6 @@
 </head>
 <body>
 
-    <c:out value="${locale}" />
     <div><fmt:message key="title" bundle="${authorize}" /></div>
     <div><c:out value="${authorizationError}" /> </div>
 

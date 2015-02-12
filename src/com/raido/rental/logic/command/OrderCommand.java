@@ -10,8 +10,6 @@ import java.sql.Date;
 public abstract class OrderCommand extends ActionCommand {
 
     protected int getCurrentUserId(HttpServletRequest request) {
-       /* String userIdString = (String) request.getSession().getAttribute("userId");
-        return Integer.parseInt(userIdString);*/
         return (int) request.getSession().getAttribute("userId");
     }
 

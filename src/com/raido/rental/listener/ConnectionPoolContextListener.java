@@ -2,6 +2,7 @@ package com.raido.rental.listener;
 
 import com.raido.rental.dao.pool.ConnectionPool;
 import com.raido.rental.dao.pool.exception.ConnectionPoolException;
+import com.raido.rental.logic.resourcemanager.MessageBundle;
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletContextEvent;
@@ -29,9 +30,9 @@ public class ConnectionPoolContextListener
              */
             connectionPool.initPoolData();
         } catch (ConnectionPoolException e) {
-            ResourceBundle bundle = ResourceBundle.getBundle("error_message");
             LOGGER.fatal(e);
-            throw new RuntimeException(bundle.getString("app.unavailable"));
+            throw new RuntimeException(MessageBundle
+                    .getString("error_message", "app.unavailable"));
         }
 
     }

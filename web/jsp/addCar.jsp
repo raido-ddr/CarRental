@@ -25,7 +25,7 @@
 </head>
 
 <body id="add_car">
-    <%@include file="admin_navbar.jsp"%>
+    <%@include file="adminNavbar.jsp"%>
 
     <div class="container col-md-4 col-md-offset-4 " >
         <div class="panel col-md-4 form-background">

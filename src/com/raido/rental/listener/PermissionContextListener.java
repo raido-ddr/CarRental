@@ -3,6 +3,7 @@ package com.raido.rental.listener;
 import com.raido.rental.logic.command.resolver.PermissionResolver;
 import com.raido.rental.logic.exception.LogicalException;
 import com.raido.rental.logic.exception.TechnicalException;
+import com.raido.rental.logic.resourcemanager.MessageBundle;
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletContext;
@@ -30,9 +31,9 @@ public class PermissionContextListener implements ServletContextListener {
             permissionResolver =
                     new PermissionResolver(context.getRealPath("permissions.xml"));
         } catch (TechnicalException | LogicalException e) {
-            ResourceBundle bundle = ResourceBundle.getBundle("error_message");
             LOGGER.fatal(e);
-            throw new RuntimeException(bundle.getString("app.unavailable"));
+            throw new RuntimeException(MessageBundle
+                    .getString("error_message", "app.unavailable"));
         }
 
         context.setAttribute(PERMISSION_RESOLVER_ATTR, permissionResolver);

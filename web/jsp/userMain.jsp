@@ -16,8 +16,13 @@
           rel="stylesheet" type="text/css" />
     <link href="<c:url value="/css/bootstrap-theme.min.css" />"
           rel="stylesheet" type="text/css" />
+    <script src="/js/jquery-1.9.1.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
 </head>
 <body>
+
+<%@include file="userNavbar.jsp"%>
+
 <div>
 
     <div class="container col-lg-8">

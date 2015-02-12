@@ -6,6 +6,7 @@ import com.raido.rental.dao.factory.DaoFactory;
 import com.raido.rental.entity.Car;
 import com.raido.rental.logic.command.CarCommand;
 import com.raido.rental.logic.command.exception.CommandException;
+import com.raido.rental.logic.resourcemanager.MessageBundle;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -55,9 +56,8 @@ public class ViewAllCarsCommand extends CarCommand {
             cars = carDao.selectAllCars();
         } catch (DaoException e) {
             Locale locale = getCurrentLocale(request);
-            ResourceBundle bundle =
-                    ResourceBundle.getBundle("exception_message", locale);
-            throw new CommandException(bundle.getString("database.error"));
+            throw new CommandException(MessageBundle
+                    .getString("exception_message", "database.error"));
         }
 
         request.setAttribute("cars", cars);
@@ -69,9 +69,8 @@ public class ViewAllCarsCommand extends CarCommand {
             return PAGE_NAME_BUNDLE.getString("user.view.cars.page");
         default:
             Locale locale = getCurrentLocale(request);
-            ResourceBundle bundle =
-                    ResourceBundle.getBundle("exception_message", locale);
-            throw new CommandException(bundle.getString("permission.denied"));
+            throw new CommandException(MessageBundle
+                    .getString("exception_message", "permission.denied"));
         }
     }
 }

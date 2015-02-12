@@ -6,6 +6,7 @@ import com.raido.rental.dao.factory.DaoFactory;
 import com.raido.rental.entity.User;
 import com.raido.rental.logic.command.UserCommand;
 import com.raido.rental.logic.command.exception.CommandException;
+import com.raido.rental.logic.resourcemanager.MessageBundle;
 import com.raido.rental.logic.util.hash.MessageDigestHelper;
 
 import javax.servlet.http.HttpServletRequest;
@@ -67,9 +68,8 @@ public class AuthorizeCommand extends UserCommand {
 
             } else {
                 Locale locale = getCurrentLocale(request);
-                ResourceBundle bundle =
-                        ResourceBundle.getBundle("input_errors", locale);
-                request.setAttribute("authorizationError", bundle.getString("auth.error"));
+                request.setAttribute("authorizationError",
+                        MessageBundle.getString("input_errors", "auth.error", locale));
                 return PAGE_NAME_BUNDLE.getString("authorization.page");
             }
 

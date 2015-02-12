@@ -9,7 +9,7 @@ import java.util.ResourceBundle;
 
 public abstract class DaoFactory {
 
-    public static DaoFactory getInstance() {  //type can be stored in properties
+    public static DaoFactory getInstance() {
         ResourceBundle bundle = ResourceBundle.getBundle("dao_type");
         String daoType = bundle.getString("current.dao.type");
 

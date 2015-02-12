@@ -6,6 +6,7 @@ import com.raido.rental.dao.factory.DaoFactory;
 import com.raido.rental.entity.Car;
 import com.raido.rental.logic.command.CarCommand;
 import com.raido.rental.logic.command.exception.CommandException;
+import com.raido.rental.logic.resourcemanager.MessageBundle;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Locale;
@@ -46,18 +47,15 @@ public class AddCarCommand extends CarCommand {
             } catch (DaoException e) {
                 Locale locale =
                         (Locale) request.getSession().getAttribute("locale");
-                ResourceBundle bundle =
-                        ResourceBundle.getBundle("exception_message", locale);
-                throw new CommandException(bundle.getString("database.error"));
+                throw new CommandException(MessageBundle
+                        .getString("exception_message", "database.error", locale));
             }
 
             Locale locale = getCurrentLocale(request);
-            ResourceBundle bundle =
-                    ResourceBundle.getBundle("success_message", locale);
-            request.setAttribute("successMessage", bundle.getString("add.car"));
+            request.setAttribute("successMessage",
+                    MessageBundle.getString("success_message", "add.car", locale));
 
             return PAGE_NAME_BUNDLE.getString("admin.main.page");
-
 
         } else {
             setEnumAttributes(request);

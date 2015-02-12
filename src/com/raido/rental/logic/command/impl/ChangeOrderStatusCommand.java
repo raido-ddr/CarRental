@@ -6,6 +6,7 @@ import com.raido.rental.dao.factory.DaoFactory;
 import com.raido.rental.entity.dbenum.OrderStatus;
 import com.raido.rental.logic.command.OrderCommand;
 import com.raido.rental.logic.command.exception.CommandException;
+import com.raido.rental.logic.resourcemanager.MessageBundle;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Locale;
@@ -39,9 +40,8 @@ public class ChangeOrderStatusCommand extends OrderCommand {
     protected String processGetRequest(HttpServletRequest request)
             throws CommandException {
         Locale locale = getCurrentLocale(request);
-        ResourceBundle bundle =
-                ResourceBundle.getBundle("exception_message", locale);
-        throw new CommandException(bundle.getString("unsupported.method"));
+        throw new CommandException(MessageBundle
+                .getString("exception_message", "unsupported.method", locale));
 
     }
 
@@ -87,16 +87,14 @@ public class ChangeOrderStatusCommand extends OrderCommand {
         Locale locale = getCurrentLocale(request);
         switch (getCurrentUserRole(request)) {
         case "user":
-            ResourceBundle bundle =
-                    ResourceBundle.getBundle("success_message", locale);
-            request.setAttribute("successMessage", bundle.getString("successful.payment"));
+            request.setAttribute("successMessage",
+                    MessageBundle.getString("success_message", "successful.payment", locale));
             return PAGE_NAME_BUNDLE.getString("user.main.page");
         case "admin":
             return PAGE_NAME_BUNDLE.getString("admin.main.page");
         default:
-            ResourceBundle errorBundle =
-                    ResourceBundle.getBundle("exception_message", locale);
-            throw new CommandException(errorBundle.getString("permission.denied"));
+            throw new CommandException(MessageBundle
+                    .getString("exception_message", "permission.denied", locale));
         }
 
     }
@@ -114,9 +112,8 @@ public class ChangeOrderStatusCommand extends OrderCommand {
         try {
             orderDao.reportDamage(orderId, damageDescription, penaltyAmount);
         } catch (DaoException e) {
-            ResourceBundle bundle =
-                    ResourceBundle.getBundle("exception_message", getCurrentLocale(request));
-            throw new CommandException(bundle.getString("database.error"));
+            throw new CommandException(MessageBundle
+                    .getString("exception_message", "database.error"));
         }
 
         return PAGE_NAME_BUNDLE.getString("admin.main.page");
@@ -133,9 +130,8 @@ public class ChangeOrderStatusCommand extends OrderCommand {
         try {
             orderDao.rejectOrder(orderId, rejectionReason);
         } catch (DaoException e) {
-            ResourceBundle bundle =
-                    ResourceBundle.getBundle("exception_message", getCurrentLocale(request));
-            throw new CommandException(bundle.getString("database.error"));
+            throw new CommandException(MessageBundle
+                    .getString("exception_message", "database.error"));
         }
 
         return PAGE_NAME_BUNDLE.getString("admin.main.page");
@@ -146,9 +142,8 @@ public class ChangeOrderStatusCommand extends OrderCommand {
 
         changeOrderStatus(request, OrderStatus.ACTIVE);
         Locale locale = getCurrentLocale(request);
-        ResourceBundle bundle =
-                ResourceBundle.getBundle("success_message", locale);
-        request.setAttribute("successMessage", bundle.getString("successful.payment"));
+        request.setAttribute("successMessage",
+                MessageBundle.getString("success_message", "successful.payment", locale));
         return PAGE_NAME_BUNDLE.getString("user.main.page");
     }
 
@@ -168,9 +163,8 @@ public class ChangeOrderStatusCommand extends OrderCommand {
         try {
             orderDao.changeOrderStatus(orderId, status);
         } catch (DaoException e) {
-            ResourceBundle bundle =
-                    ResourceBundle.getBundle("exception_message", getCurrentLocale(request));
-            throw new CommandException(bundle.getString("database.error"));
+            throw new CommandException(MessageBundle
+                    .getString("exception_message", "database.error"));
         }
 
     }

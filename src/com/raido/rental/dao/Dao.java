@@ -3,13 +3,11 @@ package com.raido.rental.dao;
 import com.raido.rental.dao.exception.DaoException;
 import com.raido.rental.dao.pool.ConnectionPool;
 import com.raido.rental.dao.pool.exception.ConnectionPoolException;
+import com.raido.rental.logic.resourcemanager.MessageBundle;
 
+import java.sql.Statement;
 import java.sql.Connection;
-import java.util.ResourceBundle;
 
-/**
- * Created by Raido_DDR on 9/13/2014.
- */
 public abstract class Dao {
 
     private static ConnectionPool connectionPool =
@@ -28,10 +26,13 @@ public abstract class Dao {
         try {
             return connectionPool.takeConnection();
         } catch (ConnectionPoolException e) {
-            ResourceBundle bundle =
-                    ResourceBundle.getBundle("exception_message");
-            throw new DaoException(
-                    bundle.getString("database.error"), e);
+            throw new DaoException( MessageBundle
+                    .getString("exception_message", "database.error"),e);
         }
+    }
+
+    protected void closePooledConnection(Connection connection,
+            Statement statement) {
+        connectionPool.closeConnection(connection, statement);
     }
 }

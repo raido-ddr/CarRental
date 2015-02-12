@@ -12,67 +12,172 @@
     <title>
         <fmt:message key="page.title" bundle="${main}" />
     </title>
+    <link href="<c:url value="/css/bootstrap.min.css" />"
+          rel="stylesheet" type="text/css" />
+    <link href="<c:url value="/css/bootstrap-responsive.min.css" />"
+          rel="stylesheet" type="text/css" />
+    <link href="<c:url value="/css/bootstrap-theme.min.css" />"
+          rel="stylesheet" type="text/css" />
+    <link href="<c:url value="/css/custom_style.css" />"
+          rel="stylesheet" type="text/css" />
+    <script src="/js/jquery-1.9.1.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
 </head>
+
 <body>
 
-    <div>
-        <fmt:message key="page.title" bundle="${main}" />
-    </div>
+<%@include file="adminNavbar.jsp"%>
 
-    <c:forEach items="${cars}" var="car">
-        <div>
-            <div>
-                <strong><fmt:message key="caption.make" bundle="${main}" /></strong>
-                <c:out value="${car.make}" />
-            </div>
-            <div>
-                <strong><fmt:message key="caption.model" bundle="${main}" /></strong>
-                <c:out value="${car.model}" />
-            </div>
-            <div>
-                <strong><fmt:message key="caption.mileage" bundle="${main}" /></strong>
-                <c:out value="${car.mileage}" />
-            </div>
-            <div>
-                <strong><fmt:message key="caption.power" bundle="${main}" /></strong>
-                <c:out value="${car.power}" />
-            </div>
-            <div>
-                <strong><fmt:message key="caption.fuel.type" bundle="${main}" /></strong>
-                <c:out value="${car.fuelType.value}" />
-            </div>
-            <div>
-                <strong><fmt:message key="caption.transmission" bundle="${main}" /></strong>
-                <c:out value="${car.transmissionType.value}" />
-            </div>
-            <div>
-                <strong><fmt:message key="caption.body.style" bundle="${main}" /></strong>
-                <c:out value="${car.bodyStyle.value}" />
-            </div>
-            <div>
-                <strong><fmt:message key="caption.seat.count" bundle="${main}" /></strong>
-                <c:out value="${car.seatCount}" />
-            </div>
-            <div>
-                <strong><fmt:message key="caption.daily.cost" bundle="${main}" /></strong>
-                <c:out value="${car.dailyCost}" />
-            </div>
-            <div>
-                <strong><fmt:message key="caption.status" bundle="${main}" /></strong>
-                <c:out value="${car.status.value}" />
-            </div>
-            <div>
-                <form name="editActionForm" action="/controller/editCar" method="get" >
-                    <input type="hidden" name="carId" value="${car.id}" />
-                    <button type="submit">
-                        <fmt:message key="edit.button.txt" bundle="${main}" />
-                    </button>
-                </form>
-            </div>
+<div class="container col-md-4 col-md-offset-4 " >
+    <div class="panel col-md-4 form-background">
+        <div class="panel-body">
+            <c:forEach items="${cars}" var="car">
+                <table class="table-bordered">
+                    <tr>
+                        <td>
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    <fmt:message key="caption.make" bundle="${main}" />
+                                </dt>
+                                <dd>
+                                    <c:out value="${car.make}" />
+                                </dd>
+                            </dl>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    <fmt:message key="caption.model" bundle="${main}" />
+                                </dt>
+                                <dd>
+                                    <c:out value="${car.model}" />
+                                </dd>
+                            </dl>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    <fmt:message key="caption.mileage" bundle="${main}" />
+                                </dt>
+                                <dd>
+                                    <c:out value="${car.mileage}" />
+                                </dd>
+                            </dl>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    <fmt:message key="caption.power" bundle="${main}" />
+                                </dt>
+                                <dd>
+                                    <c:out value="${car.power}" />
+                                </dd>
+                            </dl>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    <fmt:message key="caption.fuel.type" bundle="${main}" />
+                                </dt>
+                                <dd>
+                                    <c:out value="${car.fuelType.value}" />
+                                </dd>
+                            </dl>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    <fmt:message key="caption.transmission" bundle="${main}" />
+                                </dt>
+                                <dd>
+                                    <c:out value="${car.transmissionType.value}" />
+                                </dd>
+                            </dl>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    <fmt:message key="caption.body.style" bundle="${main}" />
+                                </dt>
+                                <dd>
+                                    <c:out value="${car.bodyStyle.value}" />
+                                </dd>
+                            </dl>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    <fmt:message key="caption.seat.count" bundle="${main}" />
+                                </dt>
+                                <dd>
+                                    <c:out value="${car.seatCount}" />
+                                </dd>
+                            </dl>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    <fmt:message key="caption.daily.cost" bundle="${main}" />
+                                </dt>
+                                <dd>
+                                    <c:out value="${car.dailyCost}" />
+                                </dd>
+                            </dl>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    <fmt:message key="caption.status" bundle="${main}" />
+                                </dt>
+                                <dd>
+                                    <c:out value="${car.status.value}" />
+                                </dd>
+                            </dl>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    <fmt:message key="caption.status" bundle="${main}" />
+                                </dt>
+                                <dd>
+                                    <c:out value="${car.status.value}" />
+                                </dd>
+                            </dl>
+                        </td>
+                    </tr>
+                </table>
+                <div>
+                    <form name="editActionForm" action="/controller/editCar" method="get" >
+                        <input type="hidden" name="carId" value="${car.id}" />
+                        <button type="submit">
+                            <fmt:message key="edit.button.txt" bundle="${main}" />
+                        </button>
+                    </form>
+                </div>
+            </c:forEach>
         </div>
-        <br />
-    </c:forEach>
-
+    </div>
+</div>
 
 </body>
 </html>

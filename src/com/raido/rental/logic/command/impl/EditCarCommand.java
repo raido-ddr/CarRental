@@ -6,6 +6,7 @@ import com.raido.rental.dao.factory.DaoFactory;
 import com.raido.rental.entity.Car;
 import com.raido.rental.logic.command.CarCommand;
 import com.raido.rental.logic.command.exception.CommandException;
+import com.raido.rental.logic.resourcemanager.MessageBundle;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Locale;
@@ -47,10 +48,8 @@ public class EditCarCommand extends CarCommand {
             request.setAttribute("car", car);
             return PAGE_NAME_BUNDLE.getString("edit.car.page");
         } catch (DaoException e) {
-            Locale locale = getCurrentLocale(request);
-            ResourceBundle bundle =
-                    ResourceBundle.getBundle("exception_message", locale);
-            throw new CommandException(bundle.getString("database.error"));
+            throw new CommandException(MessageBundle
+                    .getString("exception_message", "database.error"));
         }
     }
 
@@ -67,16 +66,13 @@ public class EditCarCommand extends CarCommand {
             try {
                 carDao.editCar(car);
             } catch (DaoException e) {
-                Locale locale = getCurrentLocale(request);
-                ResourceBundle bundle =
-                        ResourceBundle.getBundle("exception_message", locale);
-                throw new CommandException(bundle.getString("database.error"));
+                throw new CommandException(MessageBundle
+                        .getString("exception_message", "database.error"));
             }
 
             Locale locale = getCurrentLocale(request);
-            ResourceBundle bundle =
-                    ResourceBundle.getBundle("success_message", locale);
-            request.setAttribute("successMessage", bundle.getString("save.car"));
+            request.setAttribute("successMessage",
+                    MessageBundle.getString("success_message", "save.car", locale));
 
             return PAGE_NAME_BUNDLE.getString("admin.main.page");
 

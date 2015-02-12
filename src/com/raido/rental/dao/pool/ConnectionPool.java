@@ -4,7 +4,6 @@ import com.raido.rental.dao.pool.exception.ConnectionPoolException;
 import org.apache.log4j.Logger;
 
 import java.sql.*;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Properties;
 import java.util.ResourceBundle;
@@ -40,7 +39,7 @@ public final class ConnectionPool {
 
     private int poolSize;
 
-    private static volatile ConnectionPool instance;
+    private static ConnectionPool instance;
 
     private ConnectionPool() {
         DatabaseResourceManager databaseResourceManager = DatabaseResourceManager.getInstance();
@@ -71,7 +70,7 @@ public final class ConnectionPool {
     }
 
     public void initPoolData() throws ConnectionPoolException {
-        Locale.setDefault(Locale.ENGLISH);
+
 
         try {
             Class.forName(driverName);
@@ -123,17 +122,20 @@ public final class ConnectionPool {
     }
 
     public void closeConnection(Connection con, Statement st) {
-        try {
-            con.close();
-        } catch (SQLException e) {
-            LOGGER.error(e);
-        }
 
         try {
             st.close();
         } catch (SQLException e) {
             LOGGER.error(e);
         }
+
+        try {
+            con.close();
+        } catch (SQLException e) {
+            LOGGER.error(e);
+        }
+
+
     }
 
     private void closeConnectionsQueue(BlockingQueue<Connection> queue)

@@ -7,10 +7,9 @@ import com.raido.rental.entity.OrderSummary;
 import com.raido.rental.entity.dbenum.OrderStatus;
 import com.raido.rental.logic.command.OrderCommand;
 import com.raido.rental.logic.command.exception.CommandException;
-
+import com.raido.rental.logic.resourcemanager.MessageBundle;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
-import java.util.ResourceBundle;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -66,18 +65,15 @@ public class ViewOrdersCommand extends OrderCommand {
         try {
             summaries = orderDao.getOrderSummariesByStatus(status);
         } catch (DaoException e) {
-            ResourceBundle bundle =
-                    ResourceBundle.getBundle("exception_message", getCurrentLocale(request));
-            throw new CommandException(bundle.getString("database.error"));
+            throw new CommandException(MessageBundle
+                    .getString("exception_message", "database.error"));
         }
 
         if(! summaries.isEmpty()) {
             request.setAttribute("summaries", summaries);
         } else {
-            ResourceBundle bundle =
-                    ResourceBundle.getBundle("success_message", getCurrentLocale(request));
-            request.setAttribute("emptyCategoryMessage",
-                    bundle.getString("empty.order.category"));
+            request.setAttribute("emptyCategoryMessage", MessageBundle
+                            .getString("success_message", "empty.order.category"));
         }
         return resolveAdminViewPage(status);
 
@@ -95,18 +91,16 @@ public class ViewOrdersCommand extends OrderCommand {
             int userId = getCurrentUserId(request);
             summaries = orderDao.getOrderSummariesForUser(status, userId);
         } catch (DaoException e) {
-            ResourceBundle bundle =
-                    ResourceBundle.getBundle("exception_message", getCurrentLocale(request));
-            throw new CommandException(bundle.getString("database.error"));
+            throw new CommandException(MessageBundle
+                    .getString("exception_message", "database.error"));
         }
 
         if(! summaries.isEmpty()) {
             request.setAttribute("summaries", summaries);
         } else {
-            ResourceBundle bundle =
-                    ResourceBundle.getBundle("success_message", getCurrentLocale(request));
             request.setAttribute("emptyCategoryMessage",
-                    bundle.getString("empty.order.category"));
+                    MessageBundle
+                            .getString("success_message", "empty.order.category"));
         }
         return resolveUserViewPage(status);
     }

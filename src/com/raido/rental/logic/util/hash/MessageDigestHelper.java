@@ -16,7 +16,7 @@ public class MessageDigestHelper {
     private static final Logger LOGGER =
             Logger.getLogger(ConnectionPool.class);
 
-    private static volatile MessageDigestHelper instance;
+    private static  MessageDigestHelper instance;
 
     private static Lock lock = new ReentrantLock();
 

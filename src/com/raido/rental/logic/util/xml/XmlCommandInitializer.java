@@ -1,7 +1,9 @@
 package com.raido.rental.logic.util.xml;
 
+import com.raido.rental.logic.command.exception.CommandException;
 import com.raido.rental.logic.exception.LogicalException;
 import com.raido.rental.logic.exception.TechnicalException;
+import com.raido.rental.logic.resourcemanager.MessageBundle;
 import org.apache.log4j.Logger;
 
 import javax.xml.stream.XMLInputFactory;
@@ -58,22 +60,16 @@ public class XmlCommandInitializer {
                 }
             }
         } catch (FileNotFoundException e) {
-            ResourceBundle messageBundle =
-                    ResourceBundle.getBundle("exception_message");
-            throw new LogicalException(messageBundle.getString("file_not_found"));
+            throw new LogicalException(MessageBundle.getString("exception_message", "file_not_found"));
         } catch (XMLStreamException e1) {
-            ResourceBundle messageBundle =
-                    ResourceBundle.getBundle("exception_message");
-            throw new TechnicalException(messageBundle.getString("parsing_failed"));
+            throw new TechnicalException(MessageBundle.getString("exception_message", "parsing_failed"));
         } finally {
             try {
                 if (inputStream != null) {
                     inputStream.close();
                 }
             } catch (IOException e) {
-                ResourceBundle messageBundle =
-                        ResourceBundle.getBundle("exception_message");
-                LOGGER.error(messageBundle.getString("closing_failed"));
+                LOGGER.error(MessageBundle.getString("exception_message", "closing_failed"));
             }
         }
     }
@@ -107,10 +103,7 @@ public class XmlCommandInitializer {
                 break;
             }
         }
-
-        ResourceBundle messageBundle =
-                ResourceBundle.getBundle("exception_message");
-        throw new LogicalException(messageBundle.getString("unknown_tag"));
+        throw new LogicalException(MessageBundle.getString("exception_message", "unknown_tag"));
     }
 
     private String getXmlText(XMLStreamReader reader)

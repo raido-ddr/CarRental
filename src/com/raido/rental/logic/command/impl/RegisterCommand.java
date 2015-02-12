@@ -6,6 +6,7 @@ import com.raido.rental.dao.factory.DaoFactory;
 import com.raido.rental.entity.User;
 import com.raido.rental.logic.command.UserCommand;
 import com.raido.rental.logic.command.exception.CommandException;
+import com.raido.rental.logic.resourcemanager.MessageBundle;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Locale;
@@ -54,17 +55,14 @@ public class RegisterCommand extends UserCommand {
                 } else {
                     Locale locale =
                             (Locale) request.getSession().getAttribute("locale");
-                    ResourceBundle bundle =
-                            ResourceBundle.getBundle("input_errors", locale);
                     request.setAttribute("duplicateLoginError",
-                            bundle.getString("duplicate.login"));
+                            MessageBundle.getString("input_errors", "duplicate.login", locale));
                     return PAGE_NAME_BUNDLE.getString("registration.page");
                 }
             } catch (DaoException e) {
                 Locale locale = getCurrentLocale(request);
-                ResourceBundle bundle =
-                        ResourceBundle.getBundle("exception_message", locale);
-                throw new CommandException(bundle.getString("database.error"));
+                throw new CommandException(MessageBundle
+                        .getString("exception_message", "database.error"));
             }
 
             setAuthorizationAttributes(request, user);

@@ -6,6 +6,7 @@ import com.raido.rental.dao.factory.DaoFactory;
 import com.raido.rental.entity.Order;
 import com.raido.rental.logic.command.OrderCommand;
 import com.raido.rental.logic.command.exception.CommandException;
+import com.raido.rental.logic.resourcemanager.MessageBundle;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Date;
@@ -64,14 +65,12 @@ public class PlaceOrderCommand extends OrderCommand {
         try {
             orderDao.createOrder(order);
         } catch (DaoException e) {
-            ResourceBundle bundle =
-                    ResourceBundle.getBundle("exception_message", locale);
-            throw new CommandException(bundle.getString("database.error"));
+            throw new CommandException(MessageBundle
+                    .getString("exception_message", "database.error"));
         }
 
-        ResourceBundle bundle =
-                ResourceBundle.getBundle("success_message", locale);
-        request.setAttribute("successMessage", bundle.getString("place.order.success"));
+        request.setAttribute("successMessage",
+                MessageBundle.getString("success_message", "place.order.success", locale));
         return PAGE_NAME_BUNDLE.getString("user.main.page");
     }
 
