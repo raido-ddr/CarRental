@@ -17,7 +17,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class PlaceOrderCommand extends OrderCommand {
 
-    private static volatile PlaceOrderCommand instance;
+    private static PlaceOrderCommand instance;
 
     private static Lock lock = new ReentrantLock();
 

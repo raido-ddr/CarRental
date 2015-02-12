@@ -21,7 +21,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class ChooseRentalPeriodCommand extends OrderCommand {
 
-    private static volatile ChooseRentalPeriodCommand instance;
+    private static ChooseRentalPeriodCommand instance;
 
     private static Lock lock = new ReentrantLock();
 

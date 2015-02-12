@@ -11,7 +11,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class ChangeLocaleCommand extends ActionCommand {
 
-    private static volatile ChangeLocaleCommand instance;
+    private static ChangeLocaleCommand instance;
 
     private static Lock lock = new ReentrantLock();
 

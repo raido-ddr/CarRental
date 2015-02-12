@@ -10,7 +10,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class ActionNotFoundCommand extends ActionCommand {
 
-    private static volatile ActionNotFoundCommand instance;
+    private static ActionNotFoundCommand instance;
 
     private static Lock lock = new ReentrantLock();
 

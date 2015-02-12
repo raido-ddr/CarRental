@@ -9,9 +9,6 @@ import java.util.Locale;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
-/**
- * Created by Raido_DDR on 2/13/2015.
- */
 public class LogoutCommand extends UserCommand {
 
     private static Lock lock = new ReentrantLock();

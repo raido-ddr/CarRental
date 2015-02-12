@@ -16,7 +16,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class RegisterCommand extends UserCommand {
 
-    private static volatile RegisterCommand instance;
+    private static RegisterCommand instance;
 
     private static Lock lock = new ReentrantLock();
 

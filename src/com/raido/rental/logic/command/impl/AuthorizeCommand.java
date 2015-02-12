@@ -17,7 +17,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class AuthorizeCommand extends UserCommand {
 
-    private static volatile AuthorizeCommand instance;
+    private static AuthorizeCommand instance;
 
     private static Lock lock = new ReentrantLock();
 
