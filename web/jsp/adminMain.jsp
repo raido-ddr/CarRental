@@ -24,7 +24,7 @@
 
 <body id="admin_main">
 
-<%@include file="admin_navbar.jsp"%>
+<%@include file="adminNavbar.jsp"%>
 
 <div class="container col-lg-4 col-lg-offset-4">
     <div class="row col-lg-4">

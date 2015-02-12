@@ -9,7 +9,7 @@
 
 <div class="navbar navbar-inverse navbar-fixed-top"  role="navigation">
     <div class="navbar-header">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/jsp/userMain.jsp">
             <fmt:message key="brand" bundle="${navbar}" />
         </a>
     </div>
@@ -33,11 +33,7 @@
                     </li>
                 </ul>
             </li>
-            <li>
-                <a href="/jsp/adminMain.jsp" role="button">
-                    <fmt:message key="home" bundle="${navbar}" />
-                </a>
-            </li>
+
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     <fmt:message key="orders" bundle="${navbar}" />
@@ -99,29 +95,12 @@
                 </ul>
             </li>
 
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <fmt:message key="cars" bundle="${navbar}" />
-                    <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu navbar-inverse">
-                    <li>
-                        <form class="list-group-item navbar-inverse" action="/controller/addCar"
-                              method="get" >
-                            <button class="btn btn-success btn-sm btn-block" type="submit">
-                                <fmt:message key="add.button.txt" bundle="${navbar}" />
-                            </button>
-                        </form>
-                    </li>
-                    <li>
-                        <form class="list-group-item navbar-inverse" action="/controller/viewAllCars"
-                              method="get" >
-                            <button class="btn btn-info btn-sm btn-block" type="submit">
-                                <fmt:message key="view.button.txt" bundle="${navbar}" />
-                            </button>
-                        </form>
-                    </li>
-                </ul>
+            <li>
+                <form class="navbar-form navbar-left" action="/controller/chooseRentalPeriod" method="get" >
+                    <button class="btn btn-success" type="submit">
+                        <fmt:message key="rent.button.txt" bundle="${navbar}" />
+                    </button>
+                </form>
             </li>
 
             <li>
