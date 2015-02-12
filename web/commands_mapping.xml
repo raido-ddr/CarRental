@@ -11,6 +11,11 @@
     </command>
 
     <command>
+        <name>/logout</name>
+        <class-name>com.raido.rental.logic.command.impl.LogoutCommand</class-name>
+    </command>
+
+    <command>
         <name>/register</name>
         <class-name>com.raido.rental.logic.command.impl.RegisterCommand</class-name>
     </command>

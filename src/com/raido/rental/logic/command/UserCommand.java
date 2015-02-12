@@ -12,6 +12,8 @@ public abstract class UserCommand extends ActionCommand {
 
     private static final String DEFAULT_REGISTRATION_ROLE = "user";
 
+    private static final String DEFAULT_AUTHORIZATION_ROLE = "guest";
+
     protected User createUserFromData(HttpServletRequest request) {
         User user = null;
 
@@ -39,5 +41,13 @@ public abstract class UserCommand extends ActionCommand {
         session.setAttribute("userId", user.getId());
         session.setAttribute("role", user.getRole());
     }
+
+    protected void setDefaultAuthorizationAttributes(HttpServletRequest request)
+    {
+        HttpSession session = request.getSession();
+        session.setAttribute("userId", null);
+        session.setAttribute("role", DEFAULT_AUTHORIZATION_ROLE);
+    }
+
 
 }
