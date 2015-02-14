@@ -51,7 +51,8 @@ public class RegisterCommand extends UserCommand {
             try {
 
                 if(userDao.isLoginUnique(user.getLogin())) {
-                    userDao.createUser(user);
+                    int userId = userDao.createUser(user);
+                    user.setId(userId);
                 } else {
                     Locale locale =
                             (Locale) request.getSession().getAttribute("locale");

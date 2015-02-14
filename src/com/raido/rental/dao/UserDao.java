@@ -6,7 +6,7 @@ import com.raido.rental.entity.User;
 
 public abstract class UserDao extends Dao {
 
-    public abstract void createUser(User user) throws DaoException;
+    public abstract int createUser(User user) throws DaoException;
 
     public abstract User findUserById(int id) throws DaoException;
 

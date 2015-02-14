@@ -2,14 +2,11 @@ package com.raido.rental.dao.impl;
 
 import com.raido.rental.dao.UserDao;
 import com.raido.rental.dao.exception.DaoException;
-import com.raido.rental.dao.pool.ConnectionPool;
-import com.raido.rental.dao.pool.exception.ConnectionPoolException;
 import com.raido.rental.entity.User;
 import com.raido.rental.logic.resourcemanager.MessageBundle;
 import org.apache.log4j.Logger;
 
 import java.sql.*;
-import java.util.ResourceBundle;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -58,17 +55,18 @@ public class MySqlUserDao extends UserDao {
      * @param user
      * @throws DaoException
      */
-    public void createUser(User user) throws DaoException {
+    public int createUser(User user) throws DaoException {
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
+        int userId = 0;
 
         try {
             connection = getPooledConnection();
 
             preparedStatement =
                     connection.prepareStatement(SQL_CREATE_USER,
-                            ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY);
+                            Statement.RETURN_GENERATED_KEYS);
 
             preparedStatement.setString(1, user.getFirstName());
             preparedStatement.setString(2, user.getLastName());
@@ -86,12 +84,18 @@ public class MySqlUserDao extends UserDao {
                         .getString("exception_message", "database.error"));
             }
 
+            ResultSet keys = preparedStatement.getGeneratedKeys();
+            keys.next();
+            userId = keys.getInt(1);
+
         } catch (SQLException e) {
             throw new DaoException(MessageBundle
                     .getString("exception_message", "database.error"),e);
         } finally {
             closePooledConnection(connection, preparedStatement);
         }
+
+        return userId;
 
     }
 
