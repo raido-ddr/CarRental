@@ -51,7 +51,7 @@ public class MySqlOrderDao extends OrderDao {
                     "u.dob, u.email, u.license_expiry, c.make, c.model " +
                     "FROM orders o INNER JOIN users u ON u.id=o.user_id " +
                     "INNER JOIN cars c ON c.id=o.car_id " +
-                    "WHERE o.status=?";
+                    "WHERE o.status=? ORDER BY o.id DESC";
 
     private static final String SQL_SUMMARY_FOR_USER =
             "SELECT o.id, o.start_date, o.return_date, o.order_value," +
@@ -60,7 +60,7 @@ public class MySqlOrderDao extends OrderDao {
                     "u.dob, u.email, u.license_expiry, c.make, c.model " +
                     "FROM orders o INNER JOIN users u ON u.id=o.user_id " +
                     "INNER JOIN cars c ON c.id=o.car_id " +
-                    "WHERE u.id=? AND o.status=?";
+                    "WHERE u.id=? AND o.status=? ORDER BY o.id DESC";
 
     private static volatile MySqlOrderDao instance;
 
