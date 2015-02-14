@@ -22,3 +22,22 @@
     background: url(../images/admin_main.jpg);
 }
 body { padding-top: 50px; }
+
+/**
+Sign in form
+**/
+#auth-body {
+    background: url('/images/welcome_background.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#auth-panel-default {
+    opacity: 0.9;
+    margin-top:80px;
+}
+.form-group.last {
+    margin-bottom:0px;
+}

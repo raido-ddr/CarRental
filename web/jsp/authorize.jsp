@@ -10,35 +10,64 @@
 <html>
 <head>
     <title><fmt:message key="page.title" bundle="${authorize}" /></title>
+    <link href="<c:url value="/css/bootstrap.min.css" />"
+          rel="stylesheet" type="text/css" />
+    <link href="<c:url value="/css/bootstrap-responsive.min.css" />"
+          rel="stylesheet" type="text/css" />
+    <link href="<c:url value="/css/bootstrap-theme.min.css" />"
+          rel="stylesheet" type="text/css" />
+    <link href="<c:url value="/css/custom_style.css" />"
+          rel="stylesheet" type="text/css" />
 </head>
-<body>
 
-    <div><fmt:message key="title" bundle="${authorize}" /></div>
-    <div><c:out value="${authorizationError}" /> </div>
+<body id="auth-body">
 
-    <form name="loginForm" action="/controller/authorize" method="post" >
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="panel panel-default" id="auth-panel-default">
+                    <div class="panel-heading"><fmt:message key="title" bundle="${authorize}" /></div>
 
-        <input id="login" type="text" name="login"
-               placeholder="<fmt:message key="enter.login" bundle="${authorize}" />" />
-        <br/>
-        <div><c:out value="${loginError}" /></div>
-        <br/>
+                    <div class="panel-body">
 
-        <input id="password" type="password" name="password"
-               placeholder="<fmt:message key="enter.password" bundle="${authorize}" />" />
-        <br/>
-        <div><c:out value="${loginError}" /></div>
-        <br/>
+                        <div><c:out value="${authorizationError}" /> </div>
 
-        <button type="submit" formmethod="post">
-            <fmt:message key="login.button.txt" bundle="${authorize}"/>
-        </button>
-    </form>
+                        <form class="form-horizontal" role="form" action="/controller/authorize"
+                                method="post">
 
-    <br/>
-    <button type="submit" formaction="/controller/back">
-        <fmt:message key="back.button.txt" bundle="${authorize}" />
-    </button>
+                            <div class="form-group">
+                                <div class="col-sm-9">
+                                    <input type="text" name="login" class="form-control" id="login"
+                                           placeholder="<fmt:message key="enter.login" bundle="${authorize}" />">
+                                </div>
+                            </div>
+                            <div><c:out value="${loginError}" /></div>
+
+                            <div class="form-group">
+
+                                <div class="col-sm-9">
+                                    <input type="password" name="password" class="form-control" id="password"
+                                           placeholder="<fmt:message key="enter.password" bundle="${authorize}" />" >
+                                </div>
+                            </div>
+                            <div><c:out value="${passwordError}" /></div>
+
+                            <div class="form-group last">
+                                <div class="col-sm-offset-3 col-sm-9">
+                                    <button type="submit" class="btn btn-success btn-sm">
+                                        <fmt:message key="login.button.txt" bundle="${authorize}"/>
+                                    </button>
+                                    <button type="reset" class="btn btn-default btn-sm">
+                                        <fmt:message key="reset.button.txt" bundle="${authorize}"/>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 </body>
