@@ -12,8 +12,21 @@
 <html>
 <head>
     <title><fmt:message key="page.title" bundle="${register}" /></title>
+    <link href="<c:url value="/css/bootstrap.min.css" />"
+          rel="stylesheet" type="text/css" />
+    <link href="<c:url value="/css/bootstrap-responsive.min.css" />"
+          rel="stylesheet" type="text/css" />
+    <link href="<c:url value="/css/bootstrap-theme.min.css" />"
+          rel="stylesheet" type="text/css" />
+    <link href="<c:url value="/css/custom_style.css" />"
+          rel="stylesheet" type="text/css" />
+    <script src="/js/jquery-1.9.1.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
 </head>
+
 <body>
+<%@include file="welcomeNavbar.jsp"%>
+
     <div><title><fmt:message key="title" bundle="${register}" /></title></div>
 
     <div><c:out value="${duplicateLoginError}" /></div>
