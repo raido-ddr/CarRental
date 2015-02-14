@@ -26,11 +26,13 @@
 
 <%@include file="adminNavbar.jsp"%>
 
-<div class="container col-lg-4 col-lg-offset-4">
-    <div class="row col-lg-4">
-        <div class="alert alert-success"><c:out value="${successMessage}" /></div>
+<c:if test="${not empty successMessage}" >
+    <div class="row">
+        <div class="alert-success text-center"><c:out value="${successMessage}" /></div>
     </div>
-</div>
+</c:if>
+
+
 
 </body>
 </html>

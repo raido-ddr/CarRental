@@ -51,13 +51,14 @@
                                 </div>
                             </div>
 
+                            <c:if test="${not empty rentalPeriodRule}" >
+                                <div class="alert alert-danger"><c:out value="${rentalPeriodRule}" /></div>
+                            </c:if>
+
                             <div class="form-group last">
                                 <div class="col-sm-offset-3 col-sm-9">
                                     <button type="submit" class="btn btn-success btn-sm">
                                         <fmt:message key="proceed.button.txt" bundle="${rentalPeriod}"/>
-                                    </button>
-                                    <button type="reset" class="btn btn-default btn-sm">
-                                        <fmt:message key="reset.button.txt" bundle="${rentalPeriod}"/>
                                     </button>
                                 </div>
                             </div>
@@ -68,7 +69,8 @@
         </div>
     </div>
 
-    <div><c:out value="${rentalPeriodRule}" /></div>
+
+
 
 </body>
 </html>

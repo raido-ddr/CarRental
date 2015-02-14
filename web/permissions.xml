@@ -43,6 +43,7 @@
     <permission>
         <command>/chooseRentalPeriod</command>
         <role>user</role>
+        <role>guest</role>
     </permission>
 
     <permission>

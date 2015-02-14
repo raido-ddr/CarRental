@@ -29,9 +29,12 @@
 <div>
 
     <div class="container col-lg-8">
-        <div class="row">
-            <div class="alert-success text-center"><c:out value="${successMessage}" /></div>
-        </div>
+
+        <c:if test="${not empty successMessage}" >
+            <div class="row">
+                <div class="alert-success text-center"><c:out value="${successMessage}" /></div>
+            </div>
+        </c:if>
 
         <div class="row">
             <div class="list-group col-lg-4">

@@ -30,7 +30,9 @@
 
                     <div class="panel-body">
 
-                        <div><c:out value="${authorizationError}" /> </div>
+                        <c:if test="${not empty authorizationError}" >
+                            <div class="alert alert-danger"><c:out value="${authorizationError}" /></div>
+                        </c:if>
 
                         <form class="form-horizontal" role="form" action="/controller/authorize"
                                 method="post">
@@ -41,7 +43,9 @@
                                            placeholder="<fmt:message key="enter.login" bundle="${authorize}" />">
                                 </div>
                             </div>
-                            <div><c:out value="${loginError}" /></div>
+                            <c:if test="${not empty loginError}" >
+                                <div class="alert alert-danger"><c:out value="${loginError}" /></div>
+                            </c:if>
 
                             <div class="form-group">
 
@@ -50,7 +54,9 @@
                                            placeholder="<fmt:message key="enter.password" bundle="${authorize}" />" >
                                 </div>
                             </div>
-                            <div><c:out value="${passwordError}" /></div>
+                            <c:if test="${not empty passwordError}" >
+                                <div class="alert alert-danger"><c:out value="${passwordError}" /></div>
+                            </c:if>
 
                             <div class="form-group last">
                                 <div class="col-sm-offset-3 col-sm-9">
