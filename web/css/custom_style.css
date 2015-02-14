@@ -14,7 +14,11 @@
     background-image: url(../images/admin_main.jpg);
 }
 
-#add_car {
+#user_main {
+    background-image: url(../images/user_main.jpg);
+}
+
+#add-car {
     background: url(../images/admin_main.jpg);
 }
 body { padding-top: 50px; }

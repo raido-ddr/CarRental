@@ -16,10 +16,13 @@
           rel="stylesheet" type="text/css" />
     <link href="<c:url value="/css/bootstrap-theme.min.css" />"
           rel="stylesheet" type="text/css" />
+    <link href="/css/custom_style.css"
+          rel="stylesheet" type="text/css" />
     <script src="/js/jquery-1.9.1.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
 </head>
-<body>
+
+<body id="user_main">
 
 <%@include file="userNavbar.jsp"%>
 

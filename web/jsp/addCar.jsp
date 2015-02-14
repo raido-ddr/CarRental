@@ -24,7 +24,7 @@
     <script src="/js/bootstrap.min.js"></script>
 </head>
 
-<body id="add_car">
+<body id="add-car">
     <%@include file="adminNavbar.jsp"%>
 
     <div class="container col-md-4 col-md-offset-4 " >
