@@ -11,9 +11,21 @@
 <head>
     <title>
         <fmt:message key="page.title" bundle="${main}" />
+        <link href="<c:url value="/css/bootstrap.min.css" />"
+              rel="stylesheet" type="text/css" />
+        <link href="<c:url value="/css/bootstrap-responsive.min.css" />"
+              rel="stylesheet" type="text/css" />
+        <link href="<c:url value="/css/bootstrap-theme.min.css" />"
+              rel="stylesheet" type="text/css" />
+        <link href="/css/custom_style.css"
+              rel="stylesheet" type="text/css" />
+        <script src="/js/jquery-1.9.1.min.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
     </title>
 </head>
+
 <body>
+<%@include file="userNavbar.jsp"%>
 
 <div>
     <fmt:message key="page.title" bundle="${main}" />
