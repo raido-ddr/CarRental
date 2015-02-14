@@ -22,8 +22,6 @@
 </head>
 <body>
 
-
-
     <div class="container">
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
@@ -59,7 +57,7 @@
                                         <fmt:message key="proceed.button.txt" bundle="${rentalPeriod}"/>
                                     </button>
                                     <button type="reset" class="btn btn-default btn-sm">
-                                        Reset
+                                        <fmt:message key="reset.button.txt" bundle="${rentalPeriod}"/>
                                     </button>
                                 </div>
                             </div>
