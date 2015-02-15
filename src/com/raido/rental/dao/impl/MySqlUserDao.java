@@ -270,16 +270,16 @@ public class MySqlUserDao extends UserDao {
     private User createUserFromResultSet(ResultSet resultSet)
             throws SQLException {
         User user = new User();
-        user.setId(resultSet.getInt(1));
-        user.setFirstName(resultSet.getString(2));
-        user.setLastName(resultSet.getString(3));
-        user.setLogin(resultSet.getString(4));
-        user.setPassword(resultSet.getString(5));
-        user.setEmail(resultSet.getString(6));
-        user.setRole(resultSet.getString(7));
-        user.setDateOfBirth(resultSet.getDate(8));
-        user.setLicenseExpiryDate(resultSet.getDate(9));
-        user.setPassportNumber(resultSet.getString(10));
+        user.setId(resultSet.getInt("id"));
+        user.setFirstName(resultSet.getString("first_name"));
+        user.setLastName(resultSet.getString("last_name"));
+        user.setLogin(resultSet.getString("login"));
+        user.setPassword(resultSet.getString("password"));
+        user.setEmail(resultSet.getString("email"));
+        user.setRole(resultSet.getString("role"));
+        user.setDateOfBirth(resultSet.getDate("dob"));
+        user.setLicenseExpiryDate(resultSet.getDate("license_expiry"));
+        user.setPassportNumber(resultSet.getString("passport_number"));
 
         return user;
     }

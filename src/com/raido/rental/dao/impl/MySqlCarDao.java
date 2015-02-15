@@ -262,21 +262,21 @@ public class MySqlCarDao extends CarDao {
             throws SQLException {
         Car car = new Car();
 
-        car.setId(resultSet.getInt(1));
-        car.setMake(resultSet.getString(2));
-        car.setModel(resultSet.getString(3));
-        car.setMileage(resultSet.getFloat(4));
-        car.setPower(resultSet.getFloat(5));
+        car.setId(resultSet.getInt("id"));
+        car.setMake(resultSet.getString("make"));
+        car.setModel(resultSet.getString("model"));
+        car.setMileage(resultSet.getFloat("mileage"));
+        car.setPower(resultSet.getFloat("power"));
         car.setFuelType(FuelType
-                .valueOf(resultSet.getString(6).toUpperCase()));
+                .valueOf(resultSet.getString("fuel_type").toUpperCase()));
         car.setTransmissionType(TransmissionType
-                .valueOf(resultSet.getString(7).toUpperCase()));
-        car.setSeatCount(resultSet.getInt(8));
-        car.setDailyCost(resultSet.getFloat(9));
+                .valueOf(resultSet.getString("transmission_type").toUpperCase()));
+        car.setSeatCount(resultSet.getInt("seat_count"));
+        car.setDailyCost(resultSet.getFloat("daily_cost"));
         car.setBodyStyle(BodyStyle
-                .valueOf(resultSet.getString(10).toUpperCase()));
+                .valueOf(resultSet.getString("body_style").toUpperCase()));
         car.setStatus(CarStatus
-                .valueOf(resultSet.getString(11).toUpperCase()));
+                .valueOf(resultSet.getString("status").toUpperCase()));
 
         return car;
     }
