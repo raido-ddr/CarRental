@@ -42,10 +42,11 @@ public abstract class UserCommand extends ActionCommand {
         session.setAttribute("role", user.getRole());
     }
 
-    protected void setDefaultAuthorizationAttributes(HttpServletRequest request)
+
+    protected void clearAuthorizationAttributes(HttpServletRequest request)
     {
         HttpSession session = request.getSession();
-        session.setAttribute("userId", null);
+        session.removeAttribute("userId");
         session.setAttribute("role", DEFAULT_AUTHORIZATION_ROLE);
     }
 

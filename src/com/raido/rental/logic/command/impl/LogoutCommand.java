@@ -32,7 +32,7 @@ public class LogoutCommand extends UserCommand {
 
     @Override
     protected String processGetRequest(HttpServletRequest request) throws CommandException {
-        setDefaultAuthorizationAttributes(request);
+        clearAuthorizationAttributes(request);
         return PAGE_NAME_BUNDLE.getString("welcome.page");
     }
 

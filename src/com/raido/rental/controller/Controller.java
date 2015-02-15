@@ -58,8 +58,8 @@ public class Controller extends HttpServlet {
         ActionCommand command =
                 commandResolver.resolveCommand(request.getPathInfo());
 
-        String commandName = command.getName();
-        request.setAttribute("command", commandName);
+        //String commandName = command.getName();
+        //request.setAttribute("command", commandName);
 
         try {
             String nextPage = command.execute(request);
