@@ -5,11 +5,11 @@
 <fmt:requestEncoding value="UTF-8" />
 <fmt:setLocale value="${sessionScope.locale}" />
 
-<fmt:setBundle basename="l10n.authorize" var="authorize" />
+<fmt:setBundle basename="l10n.common_captions" var="authorize" />
 
 <html>
 <head>
-    <title><fmt:message key="page.title" bundle="${authorize}" /></title>
+    <title><fmt:message key="au.page.title" bundle="${authorize}" /></title>
     <link href="<c:url value="/css/bootstrap.min.css" />"
           rel="stylesheet" type="text/css" />
     <link href="<c:url value="/css/bootstrap-responsive.min.css" />"
@@ -29,7 +29,7 @@
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
                 <div class="panel panel-default" id="auth-panel-default">
-                    <div class="panel-heading"><fmt:message key="title" bundle="${authorize}" /></div>
+                    <div class="panel-heading"><fmt:message key="au.title" bundle="${authorize}" /></div>
 
                     <div class="panel-body">
 
@@ -43,7 +43,7 @@
                             <div class="form-group">
                                 <div class="col-sm-9">
                                     <input type="text" name="login" class="form-control" id="login"
-                                           placeholder="<fmt:message key="enter.login" bundle="${authorize}" />">
+                                           placeholder="<fmt:message key="au.enter.login" bundle="${authorize}" />">
                                 </div>
                             </div>
                             <c:if test="${not empty loginError}" >
@@ -54,7 +54,7 @@
 
                                 <div class="col-sm-9">
                                     <input type="password" name="password" class="form-control" id="password"
-                                           placeholder="<fmt:message key="enter.password" bundle="${authorize}" />" >
+                                           placeholder="<fmt:message key="au.enter.password" bundle="${authorize}" />" >
                                 </div>
                             </div>
                             <c:if test="${not empty passwordError}" >
@@ -64,10 +64,10 @@
                             <div class="form-group last">
                                 <div class="col-sm-offset-3 col-sm-9">
                                     <button type="submit" class="btn btn-success btn-sm">
-                                        <fmt:message key="login.button.txt" bundle="${authorize}"/>
+                                        <fmt:message key="au.login.button.txt" bundle="${authorize}"/>
                                     </button>
                                     <button type="reset" class="btn btn-default btn-sm">
-                                        <fmt:message key="reset.button.txt" bundle="${authorize}"/>
+                                        <fmt:message key="au.reset.button.txt" bundle="${authorize}"/>
                                     </button>
                                 </div>
                             </div>

@@ -5,13 +5,13 @@
 <fmt:requestEncoding value="UTF-8" />
 <fmt:setLocale value="${sessionScope.locale}" />
 
-<fmt:setBundle basename="l10n.register" var="register" />
+<fmt:setBundle basename="l10n.common_captions" var="register" />
 <fmt:setBundle basename="input_errors" var="errors" />
 <fmt:setBundle basename="html_regex" var="regex" />
 
 <html>
 <head>
-    <title><fmt:message key="page.title" bundle="${register}" /></title>
+    <title><fmt:message key="rg.page.title" bundle="${register}" /></title>
     <link href="<c:url value="/css/bootstrap.min.css" />"
           rel="stylesheet" type="text/css" />
     <link href="<c:url value="/css/bootstrap-responsive.min.css" />"
@@ -27,7 +27,7 @@
 <body>
 <%@include file="welcomeNavbar.jsp"%>
 
-    <div><title><fmt:message key="title" bundle="${register}" /></title></div>
+    <div><title><fmt:message key="rg.title" bundle="${register}" /></title></div>
 
     <div><c:out value="${duplicateLoginError}" /></div>
 
@@ -36,7 +36,7 @@
         <div class="col-md-6 col-md-offset-4">
             <div class="panel panel-default" id="auth-panel-default">
                 <div class="panel-heading">
-                    <fmt:message key="title" bundle="${register}" />
+                    <fmt:message key="rg.title" bundle="${register}" />
                 </div>
 
                 <div class="panel-body">
@@ -46,7 +46,7 @@
 
                     <div class="form-group">
                         <label for="fName" class="control-label col-sm-4">
-                            <fmt:message key="enter.fname" bundle="${register}" />
+                            <fmt:message key="rg.enter.fname" bundle="${register}" />
                         </label>
                         <input class="col-sm-6" id="fName" type="text" name="firstName"
                                pattern="<fmt:message key="first.name.regex" bundle="${regex}" />"
@@ -60,7 +60,7 @@
 
                     <div class="form-group">
                         <label for="lName" class="control-label col-sm-4">
-                            <fmt:message key="enter.lname" bundle="${register}" />
+                            <fmt:message key="rg.enter.lname" bundle="${register}" />
                         </label>
                         <input class="col-sm-6" id="lName" type="text" name="lastName"
                                pattern="<fmt:message key="last.name.regex" bundle="${regex}" />"
@@ -73,7 +73,7 @@
 
                     <div class="form-group">
                         <label for="login" class="control-label col-sm-4">
-                            <fmt:message key="enter.login" bundle="${register}" />
+                            <fmt:message key="rg.enter.login" bundle="${register}" />
                         </label>
                         <input class="col-sm-6" id="login" type="text" name="login"
                                pattern="<fmt:message key="login.regex" bundle="${regex}" />"
@@ -87,7 +87,7 @@
 
                     <div class="form-group">
                         <label for="password" class="control-label col-sm-4">
-                            <fmt:message key="enter.password" bundle="${register}" />
+                            <fmt:message key="rg.enter.password" bundle="${register}" />
                         </label>
                         <input class="col-sm-6" id="password" type="password" name="password"
                                pattern="<fmt:message key="password.regex" bundle="${regex}" />"
@@ -100,7 +100,7 @@
 
                     <div class="form-group">
                         <label for="email" class="control-label col-sm-4">
-                            <fmt:message key="enter.email" bundle="${register}" />
+                            <fmt:message key="rg.enter.email" bundle="${register}" />
                         </label>
                         <input class="col-sm-6" id="email" type="text" name="email"
                                pattern="<fmt:message key="email.regex" bundle="${regex}" />"
@@ -113,7 +113,7 @@
 
                     <div class="form-group">
                         <label for="dob" class="control-label col-sm-4">
-                            <fmt:message key="enter.dob" bundle="${register}" />
+                            <fmt:message key="rg.enter.dob" bundle="${register}" />
                         </label>
                         <input class="col-sm-6" id="dob" type="date" name="dob" value="${param.dob}" />
                     </div>
@@ -123,7 +123,7 @@
 
                     <div class="form-group">
                         <label for="passport" class="control-label col-sm-4">
-                            <fmt:message key="enter.passport" bundle="${register}" />
+                            <fmt:message key="rg.enter.passport" bundle="${register}" />
                         </label>
                         <input class="col-sm-6" id="passport" type="text" name="passport"
                                pattern="<fmt:message key="passport.regex" bundle="${regex}" />"
@@ -136,7 +136,7 @@
 
                     <div class="form-group">
                         <label for="license.expiry" class="control-label col-sm-4">
-                            <fmt:message key="enter.license.expiry" bundle="${register}" />
+                            <fmt:message key="rg.enter.license.expiry" bundle="${register}" />
                         </label>
                         <input class="col-sm-6" id="license.expiry" type="date" name="licenseExpiry"
                                 value="${param.licenseExpiry}"/>
@@ -148,10 +148,10 @@
                     <div class="form-group last">
                         <div class="col-sm-offset-2 col-sm-9">
                             <button type="submit" class="btn btn-info btn-sm">
-                                <fmt:message key="register.button.txt" bundle="${register}"/>
+                                <fmt:message key="rg.register.button.txt" bundle="${register}"/>
                             </button>
                             <button type="reset" class="btn btn-default btn-sm">
-                                <fmt:message key="reset.button.txt" bundle="${register}"/>
+                                <fmt:message key="rg.reset.button.txt" bundle="${register}"/>
                             </button>
                         </div>
                     </div>

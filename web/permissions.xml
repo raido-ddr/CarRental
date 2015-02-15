@@ -54,6 +54,7 @@
     <permission>
         <command>/viewAllCars</command>
         <role>admin</role>
+        <role>guest</role>
     </permission>
 
     <permission>
