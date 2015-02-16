@@ -6,12 +6,12 @@
 <fmt:requestEncoding value="UTF-8" />
 <fmt:setLocale value="${sessionScope.locale}" />
 
-<fmt:setBundle basename="l10n.user_new_orders" var="damagedOrders"/>
+<fmt:setBundle basename="l10n.user_captions" var="damagedOrders"/>
 
 
 <html>
 <head>
-    <title><fmt:message key="page.title" bundle="${damagedOrders}" /></title>
+    <title><fmt:message key="no.page.title" bundle="${damagedOrders}" /></title>
     <link href="<c:url value="/css/bootstrap.min.css" />"
           rel="stylesheet" type="text/css" />
     <link href="<c:url value="/css/bootstrap-responsive.min.css" />"
@@ -31,7 +31,7 @@
     <div class="panel-heading">
         <div class="row">
             <div class="col-lg-6 col-lg-offset-5">
-                <h3><fmt:message key="page.title" bundle="${damagedOrders}" /></h3>
+                <h3><fmt:message key="no.page.title" bundle="${damagedOrders}" /></h3>
             </div>
         </div>
     </div>
@@ -56,7 +56,7 @@
         <c:if test="${fn:length(summaries) > 0}">
             <div class="panel-footer">
                 <div class="alert-warning text-center">
-                    <fmt:message key="wait.confirmation" bundle="${damagedOrders}" />
+                    <fmt:message key="no.wait.confirmation" bundle="${damagedOrders}" />
                 </div>
             </div>
         </c:if>

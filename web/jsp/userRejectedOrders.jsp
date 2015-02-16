@@ -5,12 +5,12 @@
 <fmt:requestEncoding value="UTF-8" />
 <fmt:setLocale value="${sessionScope.locale}" />
 
-<fmt:setBundle basename="l10n.user_rejected_orders" var="rejectedOrders"/>
+<fmt:setBundle basename="l10n.user_captions" var="rejectedOrders"/>
 
 
 <html>
 <head>
-    <title><fmt:message key="page.title" bundle="${rejectedOrders}" /></title>
+    <title><fmt:message key="ro.page.title" bundle="${rejectedOrders}" /></title>
     <link href="<c:url value="/css/bootstrap.min.css" />"
           rel="stylesheet" type="text/css" />
     <link href="<c:url value="/css/bootstrap-responsive.min.css" />"
@@ -30,7 +30,7 @@
     <div class="panel-heading">
         <div class="row">
             <div class="col-lg-6 col-lg-offset-5">
-                <h3><fmt:message key="page.title" bundle="${rejectedOrders}" /></h3>
+                <h3><fmt:message key="ro.page.title" bundle="${rejectedOrders}" /></h3>
             </div>
         </div>
     </div>
@@ -51,7 +51,8 @@
                                 <form role="form">
                                     <div class="form-group">
                                         <label for="reason" class="text-danger">
-                                            <fmt:message key="rejection.reason" bundle="${rejectedOrders}"/>
+                                            <fmt:message key="ro.rejection.reason"
+                                                         bundle="${rejectedOrders}"/>
                                         </label>
                                         <input class="form-control" id="reason"
                                                value="${summary.rejectionReason}" disabled>

@@ -5,12 +5,12 @@
 <fmt:requestEncoding value="UTF-8" />
 <fmt:setLocale value="${sessionScope.locale}" />
 
-<fmt:setBundle basename="l10n.user_active_orders" var="activeOrders"/>
+<fmt:setBundle basename="l10n.user_captions" var="activeOrders"/>
 
 
 <html>
 <head>
-    <title><fmt:message key="page.title" bundle="${activeOrders}" /></title>
+    <title><fmt:message key="aco.page.title" bundle="${activeOrders}" /></title>
     <link href="<c:url value="/css/bootstrap.min.css" />"
           rel="stylesheet" type="text/css" />
     <link href="<c:url value="/css/bootstrap-responsive.min.css" />"
@@ -30,7 +30,7 @@
     <div class="panel-heading">
         <div class="row">
             <div class="col-lg-6 col-lg-offset-5">
-                <h3><fmt:message key="page.title" bundle="${activeOrders}" /></h3>
+                <h3><fmt:message key="aco.page.title" bundle="${activeOrders}" /></h3>
             </div>
         </div>
     </div>

@@ -5,11 +5,11 @@
 <fmt:requestEncoding value="UTF-8" />
 <fmt:setLocale value="${sessionScope.locale}" />
 
-<fmt:setBundle basename="l10n.place_order" var="damagedOrders"/>
+<fmt:setBundle basename="l10n.user_captions" var="damagedOrders"/>
 
 <html>
 <head>
-    <title><fmt:message key="page.title" bundle="${damagedOrders}" /></title>
+    <title><fmt:message key="po.page.title" bundle="${damagedOrders}" /></title>
     <link href="<c:url value="/css/bootstrap.min.css" />"
           rel="stylesheet" type="text/css" />
     <link href="<c:url value="/css/bootstrap-responsive.min.css" />"
@@ -29,7 +29,7 @@
             <div class="col-md-4 col-md-offset-4">
                 <div class="panel panel-default" id="auth-panel-default">
                     <div class="panel-heading">
-                        <fmt:message key="page.title" bundle="${damagedOrders}" />
+                        <fmt:message key="po.page.title" bundle="${damagedOrders}" />
                     </div>
 
                     <div class="panel-body">
@@ -39,7 +39,7 @@
 
                             <div class="form-group">
                                 <label for="car" class="col-sm-4 control-label">
-                                    <fmt:message key="caption.start.date" bundle="${damagedOrders}" />
+                                    <fmt:message key="po.caption.start.date" bundle="${damagedOrders}" />
                                 </label>
                                 <div class="col-sm-8">
                                     <input id="car" type="text"
@@ -49,7 +49,7 @@
 
                             <div class="form-group">
                                 <label for="startDate" class="col-sm-4 control-label">
-                                    <fmt:message key="caption.start.date" bundle="${damagedOrders}" />
+                                    <fmt:message key="po.caption.start.date" bundle="${damagedOrders}" />
                                 </label>
                                 <div class="col-sm-8">
                                     <input id="startDate" type="date" name="startDate"
@@ -59,7 +59,7 @@
 
                             <div class="form-group">
                                 <label for="returnDate" class="col-sm-4 control-label">
-                                    <fmt:message key="caption.return.date" bundle="${damagedOrders}" />
+                                    <fmt:message key="po.caption.return.date" bundle="${damagedOrders}" />
                                 </label>
                                 <div class="col-sm-8">
                                     <input id="returnDate" type="date" name="returnDate"
@@ -69,7 +69,7 @@
 
                             <div class="form-group">
                                 <label for="orderValue" class="col-sm-4 control-label">
-                                    <fmt:message key="caption.value" bundle="${damagedOrders}" />
+                                    <fmt:message key="po.caption.value" bundle="${damagedOrders}" />
                                 </label>
                                 <div class="col-sm-8">
                                     <input id="orderValue" type="text" name="orderValue"
@@ -83,7 +83,7 @@
                             <div class="form-group last">
                                 <div class="col-sm-offset-3 col-sm-9">
                                     <button type="submit" class="btn btn-success btn-sm">
-                                        <fmt:message key="submit.button.txt" bundle="${damagedOrders}"/>
+                                        <fmt:message key="po.submit.button.txt" bundle="${damagedOrders}"/>
                                     </button>
                                 </div>
                             </div>

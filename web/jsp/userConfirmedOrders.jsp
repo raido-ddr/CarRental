@@ -5,11 +5,11 @@
 <fmt:requestEncoding value="UTF-8" />
 <fmt:setLocale value="${sessionScope.locale}" />
 
-<fmt:setBundle basename="l10n.user_confirmed_orders" var="confirmedOrders"/>
+<fmt:setBundle basename="l10n.user_captions" var="confirmedOrders"/>
 
 <html>
 <head>
-    <title><fmt:message key="page.title" bundle="${confirmedOrders}" /></title>
+    <title><fmt:message key="co.page.title" bundle="${confirmedOrders}" /></title>
     <link href="<c:url value="/css/bootstrap.min.css" />"
           rel="stylesheet" type="text/css" />
     <link href="<c:url value="/css/bootstrap-responsive.min.css" />"
@@ -29,7 +29,7 @@
     <div class="panel-heading">
         <div class="row">
             <div class="col-lg-6 col-lg-offset-5">
-                <h3><fmt:message key="page.title" bundle="${confirmedOrders}" /></h3>
+                <h3><fmt:message key="co.page.title" bundle="${confirmedOrders}" /></h3>
             </div>
         </div>
     </div>
@@ -52,9 +52,9 @@
                                     <input type="hidden" name="orderId" value="${summary.orderId}">
                                     <input type="hidden" name="status" value="active" />
                                     <input class="form-control" type="text" name="creditCardNumber"
-                                            placeholder="<fmt:message key="card.number" bundle="${confirmedOrders}" />" />
+                                            placeholder="<fmt:message key="co.card.number" bundle="${confirmedOrders}" />" />
                                     <button class="form-control btn btn-success" type="submit">
-                                        <fmt:message key="pay.button.txt" bundle="${confirmedOrders}"/>
+                                        <fmt:message key="co.pay.button.txt" bundle="${confirmedOrders}"/>
                                     </button>
                                 </form>
                             </div>

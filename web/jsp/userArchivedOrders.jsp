@@ -6,12 +6,12 @@
 <fmt:requestEncoding value="UTF-8" />
 <fmt:setLocale value="${sessionScope.locale}" />
 
-<fmt:setBundle basename="l10n.user_archived_orders" var="archivedOrders"/>
+<fmt:setBundle basename="l10n.user_captions" var="archivedOrders"/>
 
 
 <html>
 <head>
-    <title><fmt:message key="page.title" bundle="${archivedOrders}" /></title>
+    <title><fmt:message key="aro.page.title" bundle="${archivedOrders}" /></title>
     <link href="<c:url value="/css/bootstrap.min.css" />"
           rel="stylesheet" type="text/css" />
     <link href="<c:url value="/css/bootstrap-responsive.min.css" />"
@@ -31,7 +31,7 @@
     <div class="panel-heading">
         <div class="row">
             <div class="col-lg-6 col-lg-offset-5">
-                <h3><fmt:message key="page.title" bundle="${archivedOrders}" /></h3>
+                <h3><fmt:message key="aro.page.title" bundle="${archivedOrders}" /></h3>
             </div>
         </div>
     </div>
@@ -54,13 +54,13 @@
                                     <form role="form">
                                         <div class="form-group">
                                             <label for="description" class="text-warning">
-                                                <fmt:message key="damage.description"
+                                                <fmt:message key="aro.damage.description"
                                                              bundle="${archivedOrders}"/>
                                             </label>
                                             <input class="form-control" id="description"
                                                    value="${summary.damageDescription}" disabled>
                                             <label for="amount" class="text-warning">
-                                                <fmt:message key="penalty.amount"
+                                                <fmt:message key="aro.penalty.amount"
                                                              bundle="${archivedOrders}"/>
                                             </label>
                                             <p id="amount" class="form-control">
@@ -76,7 +76,8 @@
                                     <form role="form">
                                         <div class="form-group">
                                             <label for="reason" class="text-danger">
-                                                <fmt:message key="rejection.reason" bundle="${archivedOrders}"/>
+                                                <fmt:message key="aro.rejection.reason"
+                                                             bundle="${archivedOrders}"/>
                                             </label>
                                             <input class="form-control" id="reason"
                                                    value="${summary.rejectionReason}" disabled>
@@ -94,7 +95,7 @@
         <c:if test="${fn:length(summaries) > 0}">
             <div class="panel-footer">
                 <div class="alert-success text-center">
-                    <fmt:message key="acknowledgement" bundle="${archivedOrders}" />
+                    <fmt:message key="aro.acknowledgement" bundle="${archivedOrders}" />
                 </div>
             </div>
         </c:if>
