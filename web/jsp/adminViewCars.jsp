@@ -5,12 +5,12 @@
 <fmt:requestEncoding value="UTF-8" />
 <fmt:setLocale value="${sessionScope.locale}" />
 
-<fmt:setBundle basename="l10n.admin_captions" var="main" />
+<fmt:setBundle basename="l10n.admin_captions" var="viewCars" />
 
 <html>
 <head>
     <title>
-        <fmt:message key="vc.page.title" bundle="${main}" />
+        <fmt:message key="vc.page.title" bundle="${viewCars}" />
     </title>
     <link href="<c:url value="/css/bootstrap.min.css" />"
           rel="stylesheet" type="text/css" />
@@ -37,7 +37,7 @@
                         <td>
                             <dl class="dl-horizontal">
                                 <dt>
-                                    <fmt:message key="vc.caption.make" bundle="${main}" />
+                                    <fmt:message key="vc.caption.make" bundle="${viewCars}" />
                                 </dt>
                                 <dd>
                                     <c:out value="${car.make}" />
@@ -49,7 +49,7 @@
                         <td>
                             <dl class="dl-horizontal">
                                 <dt>
-                                    <fmt:message key="vc.caption.model" bundle="${main}" />
+                                    <fmt:message key="vc.caption.model" bundle="${viewCars}" />
                                 </dt>
                                 <dd>
                                     <c:out value="${car.model}" />
@@ -61,7 +61,7 @@
                         <td>
                             <dl class="dl-horizontal">
                                 <dt>
-                                    <fmt:message key="vc.caption.mileage" bundle="${main}" />
+                                    <fmt:message key="vc.caption.mileage" bundle="${viewCars}" />
                                 </dt>
                                 <dd>
                                     <c:out value="${car.mileage}" />
@@ -73,7 +73,7 @@
                         <td>
                             <dl class="dl-horizontal">
                                 <dt>
-                                    <fmt:message key="vc.caption.power" bundle="${main}" />
+                                    <fmt:message key="vc.caption.power" bundle="${viewCars}" />
                                 </dt>
                                 <dd>
                                     <c:out value="${car.power}" />
@@ -85,7 +85,7 @@
                         <td>
                             <dl class="dl-horizontal">
                                 <dt>
-                                    <fmt:message key="vc.caption.fuel.type" bundle="${main}" />
+                                    <fmt:message key="vc.caption.fuel.type" bundle="${viewCars}" />
                                 </dt>
                                 <dd>
                                     <c:out value="${car.fuelType.value}" />
@@ -97,7 +97,7 @@
                         <td>
                             <dl class="dl-horizontal">
                                 <dt>
-                                    <fmt:message key="vc.caption.transmission" bundle="${main}" />
+                                    <fmt:message key="vc.caption.transmission" bundle="${viewCars}" />
                                 </dt>
                                 <dd>
                                     <c:out value="${car.transmissionType.value}" />
@@ -109,7 +109,7 @@
                         <td>
                             <dl class="dl-horizontal">
                                 <dt>
-                                    <fmt:message key="vc.caption.body.style" bundle="${main}" />
+                                    <fmt:message key="vc.caption.body.style" bundle="${viewCars}" />
                                 </dt>
                                 <dd>
                                     <c:out value="${car.bodyStyle.value}" />
@@ -121,7 +121,7 @@
                         <td>
                             <dl class="dl-horizontal">
                                 <dt>
-                                    <fmt:message key="vc.caption.seat.count" bundle="${main}" />
+                                    <fmt:message key="vc.caption.seat.count" bundle="${viewCars}" />
                                 </dt>
                                 <dd>
                                     <c:out value="${car.seatCount}" />
@@ -133,7 +133,7 @@
                         <td>
                             <dl class="dl-horizontal">
                                 <dt>
-                                    <fmt:message key="vc.caption.daily.cost" bundle="${main}" />
+                                    <fmt:message key="vc.caption.daily.cost" bundle="${viewCars}" />
                                 </dt>
                                 <dd>
                                     <c:out value="${car.dailyCost}" />
@@ -145,7 +145,7 @@
                         <td>
                             <dl class="dl-horizontal">
                                 <dt>
-                                    <fmt:message key="vc.caption.status" bundle="${main}" />
+                                    <fmt:message key="vc.caption.status" bundle="${viewCars}" />
                                 </dt>
                                 <dd>
                                     <c:out value="${car.status.value}" />
@@ -158,7 +158,7 @@
                     <form name="editActionForm" action="/controller/editCar" method="get" >
                         <input type="hidden" name="carId" value="${car.id}" />
                         <button type="submit">
-                            <fmt:message key="vc.edit.button.txt" bundle="${main}" />
+                            <fmt:message key="vc.edit.button.txt" bundle="${viewCars}" />
                         </button>
                     </form>
                 </div>

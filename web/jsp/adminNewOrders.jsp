@@ -69,8 +69,7 @@
                                         <div class="form-group">
                                             <textarea class="form-control" rows="3" cols="35"
                                                       style="resize:none" name="rejectionReason"
-                                                      placeholder="<fmt:message key="no.rejection.reason" bundle="${damagedOrders}" />">
-                                            </textarea>
+                                                      placeholder="<fmt:message key="no.rejection.reason" bundle="${damagedOrders}" />"></textarea>
                                         </div>
                                         <div class="form-group">
                                             <button class="btn btn-danger" type="submit">
