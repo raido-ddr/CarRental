@@ -6,12 +6,12 @@
 <fmt:requestEncoding value="UTF-8" />
 <fmt:setLocale value="${sessionScope.locale}" />
 
-<fmt:setBundle basename="l10n.user_damaged_orders" var="placeOrder"/>
+<fmt:setBundle basename="l10n.user_damaged_orders" var="damagedOrders"/>
 
 
 <html>
 <head>
-    <title><fmt:message key="page.title" bundle="${placeOrder}" /></title>
+    <title><fmt:message key="page.title" bundle="${damagedOrders}" /></title>
     <link href="<c:url value="/css/bootstrap.min.css" />"
           rel="stylesheet" type="text/css" />
     <link href="<c:url value="/css/bootstrap-responsive.min.css" />"
@@ -31,7 +31,7 @@
     <div class="panel-heading">
         <div class="row">
             <div class="col-lg-6 col-lg-offset-5">
-                <h3><fmt:message key="page.title" bundle="${placeOrder}" /></h3>
+                <h3><fmt:message key="page.title" bundle="${damagedOrders}" /></h3>
             </div>
         </div>
     </div>
@@ -52,12 +52,12 @@
                                 <form role="form">
                                     <div class="form-group">
                                         <label for="description" class="text-warning">
-                                            <fmt:message key="damage.description" bundle="${placeOrder}"/>
+                                            <fmt:message key="damage.description" bundle="${damagedOrders}"/>
                                         </label>
                                         <input class="form-control" id="description"
                                                value="${summary.damageDescription}" disabled>
                                         <label for="amount" class="text-warning">
-                                            <fmt:message key="penalty.amount" bundle="${placeOrder}"/>
+                                            <fmt:message key="penalty.amount" bundle="${damagedOrders}"/>
                                         </label>
                                         <p id="amount" class="form-control">
                                             <c:out value="${summary.penaltyAmount}" />
@@ -70,9 +70,9 @@
                                     <input type="hidden" name="orderId" value="${summary.orderId}">
                                     <input type="hidden" name="status" value="archived" />
                                     <input class="form-control" type="text" name="creditCardNumber"
-                                           placeholder="<fmt:message key="card.number" bundle="${placeOrder}" />" />
+                                           placeholder="<fmt:message key="card.number" bundle="${damagedOrders}" />" />
                                     <button class="form-control btn btn-success" type="submit">
-                                        <fmt:message key="pay.button.txt" bundle="${placeOrder}"/>
+                                        <fmt:message key="pay.button.txt" bundle="${damagedOrders}"/>
                                     </button>
                                 </form>
                             </div>
@@ -85,7 +85,7 @@
         <c:if test="${fn:length(summaries) > 0}">
             <div class="panel-footer">
                 <div class="alert-danger text-center">
-                    <fmt:message key="warning" bundle="${placeOrder}" />
+                    <fmt:message key="warning" bundle="${damagedOrders}" />
                 </div>
             </div>
         </c:if>

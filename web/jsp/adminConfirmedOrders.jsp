@@ -5,12 +5,12 @@
 <fmt:requestEncoding value="UTF-8" />
 <fmt:setLocale value="${sessionScope.locale}" />
 
-<fmt:setBundle basename="l10n.admin_confirmed_orders" var="confirmedOrders"/>
+<fmt:setBundle basename="l10n.admin_captions" var="confirmedOrders"/>
 
 
 <html>
 <head>
-    <title><fmt:message key="page.title" bundle="${confirmedOrders}" /></title>
+    <title><fmt:message key="co.page.title" bundle="${confirmedOrders}" /></title>
     <link href="<c:url value="/css/bootstrap.min.css" />"
           rel="stylesheet" type="text/css" />
     <link href="<c:url value="/css/bootstrap-responsive.min.css" />"
@@ -30,7 +30,7 @@
     <div class="panel-heading">
         <div class="row">
             <div class="col-lg-6 col-lg-offset-5">
-                <h3><fmt:message key="page.title" bundle="${confirmedOrders}" /></h3>
+                <h3><fmt:message key="co.page.title" bundle="${confirmedOrders}" /></h3>
             </div>
         </div>
     </div>
@@ -53,7 +53,7 @@
                                     <input type="hidden" name="orderId" value="${summary.orderId}">
                                     <input type="hidden" name="status" value="archived" />
                                     <button class="btn btn-success" type="submit">
-                                        <fmt:message key="archive.button.txt" bundle="${confirmedOrders}"/>
+                                        <fmt:message key="co.archive.button.txt" bundle="${confirmedOrders}"/>
                                     </button>
                                 </form>
                             </div>

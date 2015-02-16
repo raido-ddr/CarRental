@@ -5,11 +5,11 @@
 <fmt:requestEncoding value="UTF-8" />
 <fmt:setLocale value="${sessionScope.locale}" />
 
-<fmt:setBundle basename="l10n.admin_main" var="main"/>
+<fmt:setBundle basename="l10n.admin_captions" var="main"/>
 
 <html>
 <head>
-    <title><fmt:message key="page.title" bundle="${main}" /></title>
+    <title><fmt:message key="mp.page.title" bundle="${main}" /></title>
     <link href="<c:url value="/css/bootstrap.min.css" />"
           rel="stylesheet" type="text/css" />
     <link href="<c:url value="/css/bootstrap-responsive.min.css" />"

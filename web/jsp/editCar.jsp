@@ -5,13 +5,13 @@
 <fmt:requestEncoding value="UTF-8" />
 <fmt:setLocale value="${sessionScope.locale}" />
 
-<fmt:setBundle basename="l10n.edit_car" var="editCar" />
+<fmt:setBundle basename="l10n.admin_captions" var="editCar" />
 <fmt:setBundle basename="input_errors" var="errors" />
 <fmt:setBundle basename="html_regex" var="regex" />
 
 <html>
 <head>
-    <title><fmt:message key="page.title" bundle="${editCar}" /></title>
+    <title><fmt:message key="ac.page.title" bundle="${editCar}" /></title>
     <link href="<c:url value="/css/bootstrap.min.css" />"
           rel="stylesheet" type="text/css" />
     <link href="<c:url value="/css/bootstrap-responsive.min.css" />"
@@ -32,7 +32,7 @@
         <div class="col-md-6 col-md-offset-4">
             <div class="panel panel-default" id="auth-panel-default">
                 <div class="panel-heading">
-                    <fmt:message key="page.title" bundle="${editCar}" />
+                    <fmt:message key="ac.page.title" bundle="${editCar}" />
                 </div>
 
                 <div class="panel-body">
@@ -42,7 +42,7 @@
 
                         <div class="form-group">
                             <label class="control-label col-sm-4" for="make">
-                                <fmt:message key="enter.make" bundle="${editCar}" />
+                                <fmt:message key="ac.enter.make" bundle="${editCar}" />
                             </label>
                             <input class="col-sm-7" id="make" type="text" name="make"
                                    pattern="<fmt:message key="make.regex" bundle="${regex}" />"
@@ -57,7 +57,7 @@
 
                         <div class="form-group">
                             <label class="control-label col-sm-4" for="model">
-                                <fmt:message key="enter.model" bundle="${editCar}" />
+                                <fmt:message key="ac.enter.model" bundle="${editCar}" />
                             </label>
                             <input class="col-sm-7" id="model" type="text" name="model"
                                    pattern="<fmt:message key="model.regex" bundle="${regex}" />"
@@ -72,7 +72,7 @@
 
                         <div class="form-group">
                             <label class="control-label col-sm-4" for="mileage">
-                                <fmt:message key="enter.mileage" bundle="${editCar}" />
+                                <fmt:message key="ac.enter.mileage" bundle="${editCar}" />
                             </label>
                             <input class="col-sm-7" id="mileage" type="text" name="mileage"
                                    pattern="<fmt:message key="mileage.regex" bundle="${regex}" />"
@@ -87,7 +87,7 @@
 
                         <div class="form-group">
                             <label class="control-label col-sm-4" for="power">
-                                <fmt:message key="enter.power" bundle="${editCar}" />
+                                <fmt:message key="ac.enter.power" bundle="${editCar}" />
                             </label>
                             <input class="col-sm-7" id="power" type="text" name="power"
                                    pattern="<fmt:message key="power.regex" bundle="${regex}" />"
@@ -102,7 +102,7 @@
 
                         <div class="form-group">
                             <label class="control-label col-sm-4" for="fuelType">
-                                <fmt:message key="enter.fuel.type" bundle="${editCar}" />
+                                <fmt:message key="ac.enter.fuel.type" bundle="${editCar}" />
                             </label>
                             <select class="col-sm-7" id="fuelType" name="fuelType">
                                 <c:forEach var="type" items="${fuelTypes}">
@@ -116,7 +116,7 @@
 
                         <div class="form-group">
                             <label class="control-label col-sm-4" for="transmissionType">
-                                <fmt:message key="enter.transmission" bundle="${editCar}" />
+                                <fmt:message key="ac.enter.transmission" bundle="${editCar}" />
                             </label>
                             <select class="col-sm-7" id="transmissionType" name="transmissionType">
                                 <c:forEach var="type" items="${transmissionTypes}">
@@ -130,7 +130,7 @@
 
                         <div class="form-group">
                             <label class="control-label col-sm-4" for="bodyStyle">
-                                <fmt:message key="enter.body.style" bundle="${editCar}" />
+                                <fmt:message key="ac.enter.body.style" bundle="${editCar}" />
                             </label>
                             <select class="col-sm-7" id="bodyStyle" name="bodyStyle">
                                 <c:forEach var="style" items="${bodyStyles}">
@@ -144,7 +144,7 @@
 
                         <div class="form-group">
                             <label class="control-label col-sm-4" for="seatCount">
-                                <fmt:message key="enter.seat.count" bundle="${editCar}" />
+                                <fmt:message key="ac.enter.seat.count" bundle="${editCar}" />
                             </label>
                             <input class="col-sm-7" id="seatCount" type="text" name="seatCount"
                                    pattern="<fmt:message key="seat.count.regex" bundle="${regex}" />"
@@ -159,7 +159,7 @@
 
                         <div class="form-group">
                             <label class="control-label col-sm-4" for="dailyCost">
-                                <fmt:message key="enter.daily.cost" bundle="${editCar}" />
+                                <fmt:message key="ac.enter.daily.cost" bundle="${editCar}" />
                             </label>
                             <input class="col-sm-7" id="dailyCost" type="text" name="dailyCost"
                                    pattern="<fmt:message key="daily.cost.regex" bundle="${regex}" />"
@@ -174,7 +174,7 @@
 
                         <div class="form-group">
                             <label class="control-label col-sm-4" for="status">
-                                <fmt:message key="enter.status" bundle="${editCar}" />
+                                <fmt:message key="ac.enter.status" bundle="${editCar}" />
                             </label>
                             <select class="col-sm-7" id="status" name="status">
                                 <c:forEach var="status" items="${statusOptions}">
@@ -191,7 +191,7 @@
                         <div class="form-group last">
                             <div class="col-sm-offset-2 col-sm-9">
                                 <button type="submit" class="btn btn-info btn-sm">
-                                    <fmt:message key="confirm.button.txt" bundle="${editCar}"/>
+                                    <fmt:message key="ac.confirm.button.txt" bundle="${editCar}"/>
                                 </button>
                             </div>
                         </div>
