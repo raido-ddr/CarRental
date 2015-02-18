@@ -30,6 +30,9 @@ public class MySqlUserDao extends UserDao {
     public static final String SQL_FIND_USER_BY_ID =
             "SELECT * FROM users WHERE id=?";
 
+    public static final String SQL_AUTH_SUPER_ADMIN =
+            "SELECT * FROM super_admin WHERE login=? AND password=?";
+
     private static volatile MySqlUserDao instance;
 
     private static Lock lock = new ReentrantLock();
@@ -196,11 +199,8 @@ public class MySqlUserDao extends UserDao {
         ResultSet resultSet = null;
 
         try {
-            StringBuilder preparedQuery = new StringBuilder();
-            preparedQuery.append("SELECT * FROM super_admin WHERE login=? AND password=?");
-
             preparedStatement =
-                    connection.prepareStatement(preparedQuery.toString(),
+                    connection.prepareStatement(SQL_AUTH_SUPER_ADMIN,
                             ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY);
 
             preparedStatement.setString(1, login);

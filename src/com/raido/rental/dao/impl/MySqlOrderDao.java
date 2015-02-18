@@ -101,15 +101,13 @@ public class MySqlOrderDao extends OrderDao {
 
             int rowsCount = preparedStatement.executeUpdate();
             if(rowsCount != 1) {
-                String exceptionMessage =
-                        MessageBundle.getString("exception_message", "database.error");
-                throw new DaoException(exceptionMessage);
+                throw new DaoException(MessageBundle
+                        .getString("exception_message", "database.error"));
             }
 
         } catch (SQLException e) {
-            String exceptionMessage =
-                    MessageBundle.getString("exception_message", "database.error");
-            throw new DaoException(exceptionMessage,e);
+            throw new DaoException(MessageBundle
+                    .getString("exception_message", "database.error"),e);
         } finally {
             closePooledConnection(connection, preparedStatement);
         }
@@ -137,9 +135,8 @@ public class MySqlOrderDao extends OrderDao {
             return orders;
 
         } catch (SQLException e) {
-            String exceptionMessage =
-                    MessageBundle.getString("exception_message", "database.error");
-            throw new DaoException(exceptionMessage,e);
+            throw new DaoException(MessageBundle
+                    .getString("exception_message", "database.error"),e);
         } finally {
             closePooledConnection(connection, preparedStatement);
         }
@@ -163,15 +160,13 @@ public class MySqlOrderDao extends OrderDao {
             int rowCount = preparedStatement.executeUpdate();
 
             if(rowCount != 1) {
-                String exceptionMessage =
-                        MessageBundle.getString("exception_message", "database.error");
-                throw new DaoException(exceptionMessage);
+                throw new DaoException(MessageBundle
+                        .getString("exception_message", "database.error"));
             }
 
         } catch (SQLException e) {
-            String exceptionMessage =
-                    MessageBundle.getString("exception_message", "database.error");
-            throw new DaoException(exceptionMessage,e);
+            throw new DaoException(MessageBundle
+                    .getString("exception_message", "database.error"),e);
         } finally {
             closePooledConnection(connection, preparedStatement);
         }
@@ -204,9 +199,8 @@ public class MySqlOrderDao extends OrderDao {
             }
 
         } catch (SQLException e) {
-            String exceptionMessage =
-                    MessageBundle.getString("exception_message", "database.error");
-            throw new DaoException(exceptionMessage,e);
+            throw new DaoException(MessageBundle
+                    .getString("exception_message", "database.error"),e);
         } finally {
             closePooledConnection(connection, preparedStatement);
         }
@@ -238,9 +232,8 @@ public class MySqlOrderDao extends OrderDao {
             }
 
         } catch (SQLException e) {
-            String exceptionMessage =
-                    MessageBundle.getString("exception_message", "database.error");
-            throw new DaoException(exceptionMessage,e);
+            throw new DaoException(MessageBundle
+                    .getString("exception_message", "database.error"),e);
         } finally {
             closePooledConnection(connection, preparedStatement);
         }
@@ -270,9 +263,8 @@ public class MySqlOrderDao extends OrderDao {
             return summaries;
 
         } catch (SQLException e) {
-            String exceptionMessage =
-                    MessageBundle.getString("exception_message", "database.error");
-            throw new DaoException(exceptionMessage,e);
+            throw new DaoException(MessageBundle
+                    .getString("exception_message", "database.error"),e);
         } finally {
             closePooledConnection(connection, preparedStatement);
         }

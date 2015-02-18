@@ -1,12 +1,12 @@
 package com.raido.rental.dao.pool;
 
 import com.raido.rental.dao.pool.exception.ConnectionPoolException;
+import com.raido.rental.logic.resourcemanager.MessageBundle;
 import org.apache.log4j.Logger;
 
 import java.sql.*;
 import java.util.Map;
 import java.util.Properties;
-import java.util.ResourceBundle;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executor;
@@ -19,9 +19,6 @@ public final class ConnectionPool {
             Logger.getLogger(ConnectionPool.class);
 
     private static final int DEFAULT_POOL_SIZE = 5;
-
-    private static final ResourceBundle errorBundle =
-            ResourceBundle.getBundle("exception_message");
 
     private static Lock lock = new ReentrantLock();
 
@@ -71,7 +68,6 @@ public final class ConnectionPool {
 
     public void initPoolData() throws ConnectionPoolException {
 
-
         try {
             Class.forName(driverName);
             providedConnections = new ArrayBlockingQueue<>(poolSize);
@@ -86,12 +82,12 @@ public final class ConnectionPool {
             }
 
         } catch (SQLException e) {
-            throw new ConnectionPoolException(
-                    errorBundle.getString("pool.init.failed"), e);
+            throw new ConnectionPoolException(MessageBundle
+                    .getString("exception_message","pool.init.failed"), e);
 
         } catch (ClassNotFoundException e) {
-            throw new ConnectionPoolException(
-                    errorBundle.getString("driver.not.found"), e);
+            throw new ConnectionPoolException(MessageBundle
+                    .getString("exception_message","driver.not.found"), e);
         }
     }
 
@@ -104,7 +100,8 @@ public final class ConnectionPool {
             closeConnectionsQueue(providedConnections);
             closeConnectionsQueue(availableConnections);
         } catch (SQLException e) {
-            LOGGER.error(errorBundle.getString("connection.closing.error"), e);
+            LOGGER.error(MessageBundle.getString("exception_message",
+                    "connection.closing.error"), e);
         }
     }
 
@@ -115,8 +112,8 @@ public final class ConnectionPool {
             connection = availableConnections.take();
             providedConnections.offer(connection);
         } catch (InterruptedException e) {
-            throw new ConnectionPoolException(
-                    errorBundle.getString("db.connection.error"), e);
+            throw new ConnectionPoolException(MessageBundle
+                    .getString("exception_message", "db.connection.error"), e);
         }
         return connection;
     }
@@ -173,7 +170,8 @@ public final class ConnectionPool {
         @Override
         public void close() throws SQLException {
             if (connection.isClosed()) {
-                throw new SQLException(errorBundle.getString("closing.closed.connection"));
+                throw new SQLException(MessageBundle
+                        .getString("exception_message", "closing.closed.connection"));
             }
 
             if (connection.isReadOnly()) {
@@ -181,10 +179,12 @@ public final class ConnectionPool {
             }
 
             if (!providedConnections.remove(this)) {
-                throw new SQLException(errorBundle.getString("pool.release.error"));
+                throw new SQLException(MessageBundle
+                        .getString("exception_message", "pool.release.error"));
             }
             if (!availableConnections.offer(this)) {
-                throw new SQLException(errorBundle.getString("pool.release.error"));
+                throw new SQLException(MessageBundle
+                        .getString("exception_message", "pool.release.error"));
             }
         }
 
