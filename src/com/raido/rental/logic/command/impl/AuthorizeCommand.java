@@ -19,7 +19,7 @@ public class AuthorizeCommand extends UserCommand {
 
     private static AuthorizeCommand instance;
 
-    private static Lock lock = new ReentrantLock();
+    private static final Lock lock = new ReentrantLock();
 
     private AuthorizeCommand() {}
 

@@ -41,10 +41,14 @@ public final class ConnectionPool {
     private ConnectionPool() {
         DatabaseResourceManager databaseResourceManager = DatabaseResourceManager.getInstance();
 
-        this.driverName = databaseResourceManager.getValue(DatabaseParameterName.DB_DRIVER);
-        this.url = databaseResourceManager.getValue(DatabaseParameterName.DB_URL);
-        this.user = databaseResourceManager.getValue(DatabaseParameterName.DB_USER);
-        this.password = databaseResourceManager.getValue(DatabaseParameterName.DB_PASSWORD);
+        this.driverName =
+                databaseResourceManager.getValue(DatabaseParameterName.DB_DRIVER);
+        this.url =
+                databaseResourceManager.getValue(DatabaseParameterName.DB_URL);
+        this.user =
+                databaseResourceManager.getValue(DatabaseParameterName.DB_USER);
+        this.password =
+                databaseResourceManager.getValue(DatabaseParameterName.DB_PASSWORD);
 
         try {
             this.poolSize = Integer.parseInt(databaseResourceManager
@@ -121,13 +125,19 @@ public final class ConnectionPool {
     public void closeConnection(Connection con, Statement st) {
 
         try {
-            st.close();
+            if(st != null)
+            {
+                st.close();
+            }
         } catch (SQLException e) {
             LOGGER.error(e);
         }
 
         try {
-            con.close();
+            if(con != null)
+            {
+                con.close();
+            }
         } catch (SQLException e) {
             LOGGER.error(e);
         }
@@ -178,11 +188,11 @@ public final class ConnectionPool {
                 connection.setReadOnly(false);
             }
 
-            if (!providedConnections.remove(this)) {
+            if (! providedConnections.remove(this)) {
                 throw new SQLException(MessageBundle
                         .getString("exception_message", "pool.release.error"));
             }
-            if (!availableConnections.offer(this)) {
+            if (! availableConnections.offer(this)) {
                 throw new SQLException(MessageBundle
                         .getString("exception_message", "pool.release.error"));
             }

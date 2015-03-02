@@ -19,7 +19,7 @@ public class ChangeOrderStatusCommand extends OrderCommand {
 
     private static ChangeOrderStatusCommand instance;
 
-    private static Lock lock = new ReentrantLock();
+    private static final Lock lock = new ReentrantLock();
 
     private ChangeOrderStatusCommand() {}
 
@@ -87,8 +87,8 @@ public class ChangeOrderStatusCommand extends OrderCommand {
         Locale locale = getCurrentLocale(request);
         switch (getCurrentUserRole(request)) {
         case "user":
-            request.setAttribute("successMessage",
-                    MessageBundle.getString("success_message", "successful.payment", locale));
+            request.setAttribute("successMessage", MessageBundle
+                    .getString("success_message", "successful.payment", locale));
             return PAGE_NAME_BUNDLE.getString("user.main.page");
         case "admin":
             return PAGE_NAME_BUNDLE.getString("admin.main.page");
@@ -142,8 +142,8 @@ public class ChangeOrderStatusCommand extends OrderCommand {
 
         changeOrderStatus(request, OrderStatus.ACTIVE);
         Locale locale = getCurrentLocale(request);
-        request.setAttribute("successMessage",
-                MessageBundle.getString("success_message", "successful.payment", locale));
+        request.setAttribute("successMessage",MessageBundle
+                .getString("success_message", "successful.payment", locale));
         return PAGE_NAME_BUNDLE.getString("user.main.page");
     }
 

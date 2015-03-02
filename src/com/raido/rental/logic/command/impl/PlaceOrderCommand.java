@@ -19,7 +19,7 @@ public class PlaceOrderCommand extends OrderCommand {
 
     private static PlaceOrderCommand instance;
 
-    private static Lock lock = new ReentrantLock();
+    private static final Lock lock = new ReentrantLock();
 
     private PlaceOrderCommand() {}
 

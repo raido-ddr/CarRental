@@ -23,7 +23,7 @@ public class ChooseRentalPeriodCommand extends OrderCommand {
 
     private static ChooseRentalPeriodCommand instance;
 
-    private static Lock lock = new ReentrantLock();
+    private static final Lock lock = new ReentrantLock();
 
     private ChooseRentalPeriodCommand() {}
 

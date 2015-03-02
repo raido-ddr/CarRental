@@ -18,7 +18,7 @@ public class ViewOrdersCommand extends OrderCommand {
 
     private static ViewOrdersCommand instance;
 
-    private static Lock lock = new ReentrantLock();
+    private static final Lock lock = new ReentrantLock();
 
     private ViewOrdersCommand() {}
 

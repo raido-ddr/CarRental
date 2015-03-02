@@ -12,7 +12,7 @@ public class ActionNotFoundCommand extends ActionCommand {
 
     private static ActionNotFoundCommand instance;
 
-    private static Lock lock = new ReentrantLock();
+    private static final Lock lock = new ReentrantLock();
 
     private ActionNotFoundCommand() {}
 

@@ -16,7 +16,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class EditCarCommand extends CarCommand {
 
-    private static Lock lock = new ReentrantLock();
+    private static final Lock lock = new ReentrantLock();
 
     private static EditCarCommand instance;
 

@@ -18,7 +18,7 @@ public class RegisterCommand extends UserCommand {
 
     private static RegisterCommand instance;
 
-    private static Lock lock = new ReentrantLock();
+    private static final Lock lock = new ReentrantLock();
 
     private RegisterCommand () {}
 

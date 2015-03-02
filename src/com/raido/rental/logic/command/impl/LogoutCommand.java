@@ -11,7 +11,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class LogoutCommand extends UserCommand {
 
-    private static Lock lock = new ReentrantLock();
+    private static final Lock lock = new ReentrantLock();
 
     private static LogoutCommand instance;
 
