@@ -1,6 +1,5 @@
 package com.raido.rental.listener;
 
-import com.raido.rental.dao.exception.DaoException;
 import com.raido.rental.logic.command.resolver.CommandResolver;
 import com.raido.rental.logic.exception.LogicalException;
 import com.raido.rental.logic.exception.TechnicalException;
@@ -11,7 +10,6 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
-import java.util.ResourceBundle;
 
 @WebListener
 public class CommandResolverContextListener

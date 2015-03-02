@@ -5,6 +5,7 @@ import com.raido.rental.logic.command.exception.CommandException;
 import com.raido.rental.logic.resourcemanager.MessageBundle;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.Locale;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -32,7 +33,8 @@ public class LogoutCommand extends UserCommand {
 
     @Override
     protected String processGetRequest(HttpServletRequest request) throws CommandException {
-        clearAuthorizationAttributes(request);
+        HttpSession session = request.getSession();
+        session.invalidate();
         return PAGE_NAME_BUNDLE.getString("welcome.page");
     }
 

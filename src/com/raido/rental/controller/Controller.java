@@ -3,6 +3,7 @@ package com.raido.rental.controller;
 import com.raido.rental.logic.command.ActionCommand;
 import com.raido.rental.logic.command.exception.CommandException;
 import com.raido.rental.logic.command.resolver.CommandResolver;
+import com.raido.rental.logic.resourcemanager.MessageBundle;
 import org.apache.log4j.Level;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -58,15 +59,13 @@ public class Controller extends HttpServlet {
         ActionCommand command =
                 commandResolver.resolveCommand(request.getPathInfo());
 
-        //String commandName = command.getName();
-        //request.setAttribute("command", commandName);
-
         try {
-            String nextPage = command.execute(request);
-            request.getRequestDispatcher(nextPage).forward(request, response);
+            String nextPageName = command.execute(request);
+            request.getRequestDispatcher(nextPageName).forward(request, response);
         } catch (CommandException e) {
             LOGGER.fatal(e);
-            throw new RuntimeException(e);
+            String errorPageName = MessageBundle.getString("page_names", "error.page");
+            request.getRequestDispatcher(errorPageName).forward(request, response);
         }
 
     }

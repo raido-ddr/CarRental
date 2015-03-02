@@ -43,12 +43,4 @@ public abstract class UserCommand extends ActionCommand {
     }
 
 
-    protected void clearAuthorizationAttributes(HttpServletRequest request)
-    {
-        HttpSession session = request.getSession();
-        session.removeAttribute("userId");
-        session.setAttribute("role", DEFAULT_AUTHORIZATION_ROLE);
-    }
-
-
 }
