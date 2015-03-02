@@ -22,17 +22,15 @@
     <script src="/js/bootstrap.min.js"></script>
 </head>
 <body>
-<p>Error</p>
-    <div><c:out value="${pageContext.errorData.statusCode}" />: </div>
-    <div><c:out value="${pageContext.exception.message}" /></div>
 
-    <%@include file="welcomeNavbar.jsp"%>
-
-    <div class="jumbotron" id="welcome_jumbotron">
+    <div class="jumbotron" id="error_jumbotron">
         <div class="container">
             <h2><fmt:message key="er.error" bundle="${captions}" /></h2>
-            <p><fmt:message key="er.code" bundle="${captions}" />:
-                <c:out value="${pageContext.exception.message}" /></p>
+            <div>
+                <a href="/jsp/welcome.jsp" class="btn btn-info" role="button">
+                    <fmt:message key="er.main" bundle="${captions}" />
+                </a>
+            </div>
         </div>
     </div>
 </body>
