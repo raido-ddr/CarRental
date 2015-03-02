@@ -64,12 +64,19 @@ public class Controller extends HttpServlet {
             request.getRequestDispatcher(nextPageName).forward(request, response);
         } catch (CommandException e) {
             LOGGER.fatal(e);
-            request.getSession().invalidate();
-            String errorPageName = MessageBundle.getString("page_names", "error.page");
-            request.getRequestDispatcher(errorPageName).forward(request, response);
+            processFatalError(request, response);
         }
 
     }
+
+    private void processFatalError(HttpServletRequest request,
+            HttpServletResponse response) throws ServletException, IOException {
+
+        request.getSession().invalidate();
+        String errorPageName = MessageBundle.getString("page_names", "error.page");
+        request.getRequestDispatcher(errorPageName).forward(request, response);
+    }
+
 
 
 }
