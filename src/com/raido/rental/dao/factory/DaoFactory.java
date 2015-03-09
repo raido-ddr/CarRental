@@ -4,14 +4,15 @@ import com.raido.rental.dao.CarDao;
 import com.raido.rental.dao.OrderDao;
 import com.raido.rental.dao.UserDao;
 import com.raido.rental.dao.factory.impl.MySqlDaoFactory;
+import com.raido.rental.logic.resourcemanager.MessageBundle;
 
 import java.util.ResourceBundle;
 
 public abstract class DaoFactory {
 
     public static DaoFactory getInstance() {
-        ResourceBundle bundle = ResourceBundle.getBundle("dao_type");
-        String daoType = bundle.getString("current.dao.type");
+        String daoType =
+                MessageBundle.getString("config", "current.dao.type");
 
         switch(daoType) {
         case "mysql.dao":

@@ -7,7 +7,6 @@
 
 <fmt:setBundle basename="l10n.common_captions" var="register" />
 <fmt:setBundle basename="input_errors" var="errors" />
-<fmt:setBundle basename="html_regex" var="regex" />
 
 <html>
 <head>
@@ -49,7 +48,6 @@
                             <fmt:message key="rg.enter.fname" bundle="${register}" />
                         </label>
                         <input class="col-sm-6" id="fName" type="text" name="firstName"
-                               pattern="<fmt:message key="first.name.regex" bundle="${regex}" />"
                                title="<fmt:message key="first.name.rule" bundle="${errors}" />"
                                value="${param.firstName}"/>
                     </div>
@@ -63,7 +61,6 @@
                             <fmt:message key="rg.enter.lname" bundle="${register}" />
                         </label>
                         <input class="col-sm-6" id="lName" type="text" name="lastName"
-                               pattern="<fmt:message key="last.name.regex" bundle="${regex}" />"
                                title="<fmt:message key="last.name.rule" bundle="${errors}" />"
                                value="${param.lastName} "/>
                     </div>
@@ -76,7 +73,6 @@
                             <fmt:message key="rg.enter.login" bundle="${register}" />
                         </label>
                         <input class="col-sm-6" id="login" type="text" name="login"
-                               pattern="<fmt:message key="login.regex" bundle="${regex}" />"
                                title="<fmt:message key="login.rule" bundle="${errors}" />"
                                value="${param.login} "/>
                     </div>
@@ -90,7 +86,6 @@
                             <fmt:message key="rg.enter.password" bundle="${register}" />
                         </label>
                         <input class="col-sm-6" id="password" type="password" name="password"
-                               pattern="<fmt:message key="password.regex" bundle="${regex}" />"
                                title="<fmt:message key="password.rule" bundle="${errors}" />"
                                value="${param.password}"/>
                     </div>
@@ -103,7 +98,6 @@
                             <fmt:message key="rg.enter.email" bundle="${register}" />
                         </label>
                         <input class="col-sm-6" id="email" type="text" name="email"
-                               pattern="<fmt:message key="email.regex" bundle="${regex}" />"
                                title="<fmt:message key="email.rule" bundle="${errors}" />"
                                value="${param.email}" />
                     </div>
@@ -126,7 +120,6 @@
                             <fmt:message key="rg.enter.passport" bundle="${register}" />
                         </label>
                         <input class="col-sm-6" id="passport" type="text" name="passport"
-                               pattern="<fmt:message key="passport.regex" bundle="${regex}" />"
                                title="<fmt:message key="passport.rule" bundle="${errors}" />"
                                value="${param.passport}" />
                     </div>

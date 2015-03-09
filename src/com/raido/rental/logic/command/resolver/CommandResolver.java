@@ -23,7 +23,7 @@ public class CommandResolver {
         commandBuilder.buildCommandsMap(configFileName);
         commandMap = commandBuilder.getCommandsMap();
 
-        ResourceBundle bundle = ResourceBundle.getBundle("regex");
+        ResourceBundle bundle = ResourceBundle.getBundle("config");
         commandNameRegex = bundle.getString("command.name.regex");
     }
 

@@ -26,7 +26,7 @@ public class UserValidationStrategy extends ValidationStrategy {
 
     static {
         ResourceBundle bundle =
-                ResourceBundle.getBundle("regex");
+                ResourceBundle.getBundle("config");
 
         FIRST_NAME_REGEX = bundle.getString("first.name.regex");
         LAST_NAME_REGEX = bundle.getString("last.name.regex");

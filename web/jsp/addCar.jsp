@@ -7,7 +7,6 @@
 
 <fmt:setBundle basename="l10n.admin_captions" var="addCar" />
 <fmt:setBundle basename="input_errors" var="errors" />
-<fmt:setBundle basename="html_regex" var="regex" />
 
 <html>
 <head>
@@ -45,7 +44,6 @@
                                     <fmt:message key="ac.enter.make" bundle="${addCar}" />
                                 </label>
                                 <input class="col-sm-7" id="make" type="text" name="make"
-                                       pattern="<fmt:message key="make.regex" bundle="${regex}" />"
                                        title="<fmt:message key="make.rule" bundle="${errors}" />"
                                        value="${param.make}"/>
                             </div>
@@ -60,7 +58,6 @@
                                     <fmt:message key="ac.enter.model" bundle="${addCar}" />
                                 </label>
                                 <input class="col-sm-7" id="model" type="text" name="model"
-                                       pattern="<fmt:message key="model.regex" bundle="${regex}" />"
                                        title="<fmt:message key="model.rule" bundle="${errors}" />"
                                        value="${param.model}"/>
                             </div>
@@ -75,7 +72,6 @@
                                     <fmt:message key="ac.enter.mileage" bundle="${addCar}" />
                                 </label>
                                 <input class="col-sm-7" id="mileage" type="text" name="mileage"
-                                       pattern="<fmt:message key="mileage.regex" bundle="${regex}" />"
                                        title="<fmt:message key="mileage.rule" bundle="${errors}" />"
                                        value="${param.mileage}"/>
                             </div>
@@ -90,7 +86,6 @@
                                     <fmt:message key="ac.enter.power" bundle="${addCar}" />
                                 </label>
                                 <input class="col-sm-7" id="power" type="text" name="power"
-                                       pattern="<fmt:message key="power.regex" bundle="${regex}" />"
                                        title="<fmt:message key="power.rule" bundle="${errors}" />"
                                        value="${param.power}"/>
                             </div>
@@ -147,7 +142,6 @@
                                     <fmt:message key="ac.enter.seat.count" bundle="${addCar}" />
                                 </label>
                                 <input class="col-sm-7" id="seatCount" type="text" name="seatCount"
-                                       pattern="<fmt:message key="seat.count.regex" bundle="${regex}" />"
                                        title="<fmt:message key="seat.count.rule" bundle="${errors}" />"
                                        value="${param.seatCount}"/>
                             </div>
@@ -162,7 +156,6 @@
                                     <fmt:message key="ac.enter.daily.cost" bundle="${addCar}" />
                                 </label>
                                 <input class="col-sm-7" id="dailyCost" type="text" name="dailyCost"
-                                       pattern="<fmt:message key="daily.cost.regex" bundle="${regex}" />"
                                        title="<fmt:message key="daily.cost.rule" bundle="${errors}" />"
                                        value="${param.dailyCost}"/>
                             </div>

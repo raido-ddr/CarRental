@@ -73,7 +73,7 @@ public class Controller extends HttpServlet {
             HttpServletResponse response) throws ServletException, IOException {
 
         request.getSession().invalidate();
-        String errorPageName = MessageBundle.getString("page_names", "error.page");
+        String errorPageName = MessageBundle.getString("config", "error.page");
         request.getRequestDispatcher(errorPageName).forward(request, response);
     }
 

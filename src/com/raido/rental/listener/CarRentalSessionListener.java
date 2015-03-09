@@ -1,5 +1,7 @@
 package com.raido.rental.listener;
 
+import com.raido.rental.logic.resourcemanager.MessageBundle;
+
 import javax.servlet.annotation.WebListener;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionEvent;
@@ -14,10 +16,9 @@ public class CarRentalSessionListener implements HttpSessionListener {
     public void sessionCreated(HttpSessionEvent httpSessionEvent) {
         HttpSession session = httpSessionEvent.getSession();
 
-        ResourceBundle bundle = ResourceBundle.getBundle("locale");
-
         session.setAttribute("locale",
-                Locale.forLanguageTag(bundle.getString("default.locale")));
+                Locale.forLanguageTag(MessageBundle
+                        .getString("config","default.locale")));
 
         session.setAttribute("role", "guest");
 

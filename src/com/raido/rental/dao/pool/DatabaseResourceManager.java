@@ -29,6 +29,6 @@ public class DatabaseResourceManager {
 
 
     public String getValue(String key){
-        return MessageBundle.getString("database", key);
+        return MessageBundle.getString("config", key);
     }
 }

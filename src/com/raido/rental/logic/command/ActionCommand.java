@@ -15,7 +15,7 @@ public abstract class ActionCommand {
     public static final String METHOD_GET = "GET";
 
     protected static final ResourceBundle PAGE_NAME_BUNDLE =
-            ResourceBundle.getBundle("page_names");
+            ResourceBundle.getBundle("config");
 
     protected RequestParameterHelper parameterHelper =
             RequestParameterHelper.getInstance();

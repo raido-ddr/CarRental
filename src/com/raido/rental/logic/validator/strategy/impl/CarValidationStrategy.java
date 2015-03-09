@@ -30,7 +30,7 @@ public class CarValidationStrategy extends ValidationStrategy {
 
     static {
         ResourceBundle bundle =
-                ResourceBundle.getBundle("regex");
+                ResourceBundle.getBundle("config");
 
         MAKE_REGEX = bundle.getString("make.regex");
         MODEL_REGEX = bundle.getString("model.regex");

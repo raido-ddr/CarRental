@@ -45,7 +45,7 @@ public class PermissionFilter implements Filter {
         String commandName = request.getPathInfo();
         if(! permissionResolver.isActionAllowed(commandName, userRole)) {
             RequestDispatcher requestDispatcher = request.getServletContext()
-                            .getRequestDispatcher(MessageBundle.getString("page_names",
+                            .getRequestDispatcher(MessageBundle.getString("config",
                                     "welcome.page"));
 
             requestDispatcher.forward(request, response);

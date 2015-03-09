@@ -8,12 +8,10 @@ import java.util.ResourceBundle;
 public abstract class ValidationStrategy {
 
     protected static final String DATE_FORMAT =
-            ResourceBundle.getBundle("date").getString("date.format");
+            ResourceBundle.getBundle("config").getString("date.format");
 
     protected RequestParameterHelper parameterHelper =
             RequestParameterHelper.getInstance();
-
-
 
     public abstract boolean validate(HttpServletRequest request);
 }
