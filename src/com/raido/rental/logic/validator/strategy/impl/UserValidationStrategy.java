@@ -1,6 +1,6 @@
 package com.raido.rental.logic.validator.strategy.impl;
 
-import com.raido.rental.logic.util.hash.MessageDigestHelper;
+import com.raido.rental.logic.resourcemanager.MessageBundle;
 import com.raido.rental.logic.validator.strategy.ValidationStrategy;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,30 +12,23 @@ import java.util.ResourceBundle;
 
 public class UserValidationStrategy extends ValidationStrategy {
 
-    private static final String FIRST_NAME_REGEX;
+    private static final String FIRST_NAME_REGEX  =
+            MessageBundle.getString("config", "first.name.regex");
 
-    private static final String LAST_NAME_REGEX;
+    private static final String LAST_NAME_REGEX =
+            MessageBundle.getString("config", "last.name.regex");
 
-    private static final String LOGIN_REGEX;
+    private static final String LOGIN_REGEX  =
+            MessageBundle.getString("config", "login.regex");
 
-    private static final String PASSWORD_REGEX;
+    private static final String PASSWORD_REGEX  =
+            MessageBundle.getString("config", "password.regex");
 
-    private static final String EMAIL_REGEX;
+    private static final String EMAIL_REGEX =
+            MessageBundle.getString("config", "email.regex");
 
-    private static final String PASSPORT_REGEX;
-
-    static {
-        ResourceBundle bundle =
-                ResourceBundle.getBundle("config");
-
-        FIRST_NAME_REGEX = bundle.getString("first.name.regex");
-        LAST_NAME_REGEX = bundle.getString("last.name.regex");
-        LOGIN_REGEX = bundle.getString("login.regex");
-        PASSWORD_REGEX = bundle.getString("password.regex");
-        EMAIL_REGEX = bundle.getString("email.regex");
-        PASSPORT_REGEX = bundle.getString("passport.regex");
-
-    }
+    private static final String PASSPORT_REGEX =
+            MessageBundle.getString("config", "passport.regex");
 
     private static class Holder {
         static final UserValidationStrategy INSTANCE

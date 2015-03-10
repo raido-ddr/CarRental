@@ -3,6 +3,7 @@ package com.raido.rental.logic.validator.strategy.impl;
 import com.raido.rental.entity.dbenum.BodyStyle;
 import com.raido.rental.entity.dbenum.FuelType;
 import com.raido.rental.entity.dbenum.TransmissionType;
+import com.raido.rental.logic.resourcemanager.MessageBundle;
 import com.raido.rental.logic.validator.strategy.ValidationStrategy;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,30 +17,23 @@ public class CarValidationStrategy extends ValidationStrategy {
                 = new CarValidationStrategy();
     }
 
-    private static final String MAKE_REGEX;
+    private static final String MAKE_REGEX =
+            MessageBundle.getString("config", "make.regex");
 
-    private static final String MODEL_REGEX;
+    private static final String MODEL_REGEX =
+            MessageBundle.getString("config", "model.regex");
 
-    private static final String MILEAGE_REGEX;
+    private static final String MILEAGE_REGEX =
+            MessageBundle.getString("config", "mileage.regex");
 
-    private static final String POWER_REGEX;
+    private static final String POWER_REGEX =
+            MessageBundle.getString("config", "power.regex");
 
-    private static final String SEAT_COUNT_REGEX;
+    private static final String SEAT_COUNT_REGEX =
+            MessageBundle.getString("config", "seat.count.regex");
 
-    private static final String DAILY_COST_REGEX;
-
-    static {
-        ResourceBundle bundle =
-                ResourceBundle.getBundle("config");
-
-        MAKE_REGEX = bundle.getString("make.regex");
-        MODEL_REGEX = bundle.getString("model.regex");
-        MILEAGE_REGEX = bundle.getString("mileage.regex");
-        POWER_REGEX = bundle.getString("power.regex");
-        SEAT_COUNT_REGEX = bundle.getString("seat.count.regex");
-        DAILY_COST_REGEX = bundle.getString("daily.cost.regex");
-
-    }
+    private static final String DAILY_COST_REGEX =
+            MessageBundle.getString("config", "daily.cost.regex");
 
     private CarValidationStrategy() {}
 
