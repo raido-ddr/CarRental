@@ -7,6 +7,8 @@ import com.raido.rental.entity.Car;
 import com.raido.rental.logic.command.CarCommand;
 import com.raido.rental.logic.command.exception.CommandException;
 import com.raido.rental.logic.resourcemanager.MessageBundle;
+import com.raido.rental.logic.resourcemanager.PageName;
+import com.raido.rental.logic.resourcemanager.ResourceName;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Locale;
@@ -48,18 +50,18 @@ public class AddCarCommand extends CarCommand {
                 Locale locale =
                         (Locale) request.getSession().getAttribute("locale");
                 throw new CommandException(MessageBundle
-                        .getString("exception_message", "database.error", locale));
+                        .getString(ResourceName.COMMON_CAPTIONS, "database.error", locale));
             }
 
             Locale locale = getCurrentLocale(request);
             request.setAttribute("successMessage",
-                    MessageBundle.getString("success_message", "add.car", locale));
+                    MessageBundle.getString(ResourceName.COMMON_CAPTIONS, "add.car", locale));
 
-            return PAGE_NAME_BUNDLE.getString("admin.main.page");
+            return PAGE_NAME_BUNDLE.getString(PageName.ADMIN_MAIN);
 
         } else {
             setEnumAttributes(request);
-            return PAGE_NAME_BUNDLE.getString("add.car.page");
+            return PAGE_NAME_BUNDLE.getString(PageName.ADD_CAR);
         }
 
 
@@ -68,7 +70,7 @@ public class AddCarCommand extends CarCommand {
     @Override
     protected String processGetRequest(HttpServletRequest request) {
         setEnumAttributes(request);
-        return PAGE_NAME_BUNDLE.getString("add.car.page");
+        return PAGE_NAME_BUNDLE.getString(PageName.ADD_CAR);
     }
 
 

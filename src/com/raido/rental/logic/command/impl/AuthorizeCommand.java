@@ -7,6 +7,8 @@ import com.raido.rental.entity.User;
 import com.raido.rental.logic.command.UserCommand;
 import com.raido.rental.logic.command.exception.CommandException;
 import com.raido.rental.logic.resourcemanager.MessageBundle;
+import com.raido.rental.logic.resourcemanager.PageName;
+import com.raido.rental.logic.resourcemanager.ResourceName;
 import com.raido.rental.logic.util.hash.MessageDigestHelper;
 
 import javax.servlet.http.HttpServletRequest;
@@ -56,20 +58,20 @@ public class AuthorizeCommand extends UserCommand {
 
                 switch (getCurrentUserRole(request)) {
                 case "user":
-                    return PAGE_NAME_BUNDLE.getString("user.main.page");
+                    return PAGE_NAME_BUNDLE.getString(PageName.USER_MAIN);
                 case "admin":
-                    return PAGE_NAME_BUNDLE.getString("admin.main.page");
+                    return PAGE_NAME_BUNDLE.getString(PageName.ADMIN_MAIN);
                 default:
                     Locale locale = getCurrentLocale(request);
-                    ResourceBundle bundle =
-                            ResourceBundle.getBundle("exception_message", locale);
-                    throw new CommandException(bundle.getString("permission.denied"));
+                    String message = MessageBundle.getString(ResourceName.COMMON_CAPTIONS,
+                            "permission.denied", locale);
+                    throw new CommandException(message);
                 }
 
             } else {
                 Locale locale = getCurrentLocale(request);
                 request.setAttribute("authorizationError",
-                        MessageBundle.getString("input_errors", "auth.error", locale));
+                        MessageBundle.getString(ResourceName.COMMON_CAPTIONS, "auth.error", locale));
                 return PAGE_NAME_BUNDLE.getString("authorization.page");
             }
 

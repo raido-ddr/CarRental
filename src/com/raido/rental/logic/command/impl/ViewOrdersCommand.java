@@ -8,6 +8,9 @@ import com.raido.rental.entity.dbenum.OrderStatus;
 import com.raido.rental.logic.command.OrderCommand;
 import com.raido.rental.logic.command.exception.CommandException;
 import com.raido.rental.logic.resourcemanager.MessageBundle;
+import com.raido.rental.logic.resourcemanager.PageName;
+import com.raido.rental.logic.resourcemanager.ResourceName;
+
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.concurrent.locks.Lock;
@@ -37,7 +40,7 @@ public class ViewOrdersCommand extends OrderCommand {
     @Override
     protected String processGetRequest(HttpServletRequest request)
             throws CommandException {
-        return PAGE_NAME_BUNDLE.getString("admin.main.page");
+        return PAGE_NAME_BUNDLE.getString(PageName.ADMIN_MAIN);
     }
 
     @Override
@@ -50,7 +53,7 @@ public class ViewOrdersCommand extends OrderCommand {
         case "admin":
             return processAdminRequest(request);
         default:
-            return PAGE_NAME_BUNDLE.getString("welcome.page");
+            return PAGE_NAME_BUNDLE.getString(PageName.WELCOME);
         }
     }
 
@@ -66,14 +69,15 @@ public class ViewOrdersCommand extends OrderCommand {
             summaries = orderDao.getOrderSummariesByStatus(status);
         } catch (DaoException e) {
             throw new CommandException(MessageBundle
-                    .getString("exception_message", "database.error"));
+                    .getString(ResourceName.COMMON_CAPTIONS, "database.error"));
         }
 
         if(! summaries.isEmpty()) {
             request.setAttribute("summaries", summaries);
         } else {
-            request.setAttribute("emptyCategoryMessage", MessageBundle
-                            .getString("success_message", "empty.order.category"));
+            String message =  MessageBundle.getString(ResourceName.COMMON_CAPTIONS,
+                    "empty.order.category");
+            request.setAttribute("emptyCategoryMessage", message);
         }
         return resolveAdminViewPage(status);
 
@@ -92,15 +96,15 @@ public class ViewOrdersCommand extends OrderCommand {
             summaries = orderDao.getOrderSummariesForUser(status, userId);
         } catch (DaoException e) {
             throw new CommandException(MessageBundle
-                    .getString("exception_message", "database.error"));
+                    .getString(ResourceName.COMMON_CAPTIONS, "database.error"));
         }
 
         if(! summaries.isEmpty()) {
             request.setAttribute("summaries", summaries);
         } else {
-            request.setAttribute("emptyCategoryMessage",
-                    MessageBundle
-                            .getString("success_message", "empty.order.category"));
+            String message =  MessageBundle.getString(ResourceName.COMMON_CAPTIONS,
+                    "empty.order.category");
+            request.setAttribute("emptyCategoryMessage", message);
         }
         return resolveUserViewPage(status);
     }
@@ -109,19 +113,19 @@ public class ViewOrdersCommand extends OrderCommand {
         switch (status) {
 
         case NEW:
-            return PAGE_NAME_BUNDLE.getString("user.new.orders.page");
+            return PAGE_NAME_BUNDLE.getString(PageName.USER_NEW_ORDERS);
         case CONFIRMED:
-            return PAGE_NAME_BUNDLE.getString("user.confirmed.orders.page");
+            return PAGE_NAME_BUNDLE.getString(PageName.USER_CONFIRMED_ORDERS);
         case ACTIVE:
-            return PAGE_NAME_BUNDLE.getString("user.active.orders.page");
+            return PAGE_NAME_BUNDLE.getString(PageName.USER_ACTIVE_ORDERS);
         case REJECTED:
-            return PAGE_NAME_BUNDLE.getString("user.rejected.orders.page");
+            return PAGE_NAME_BUNDLE.getString(PageName.USER_REJECTED_ORDERS);
         case DAMAGED:
-            return PAGE_NAME_BUNDLE.getString("user.damaged.orders.page");
+            return PAGE_NAME_BUNDLE.getString(PageName.USER_DAMAGED_ORDERS);
         case ARCHIVED:
-            return PAGE_NAME_BUNDLE.getString("user.archived.orders.page");
+            return PAGE_NAME_BUNDLE.getString(PageName.USER_ARCHIVED_ORDERS);
         default:
-            return PAGE_NAME_BUNDLE.getString("user.main.page");
+            return PAGE_NAME_BUNDLE.getString(PageName.USER_MAIN);
         }
     }
 
@@ -129,21 +133,19 @@ public class ViewOrdersCommand extends OrderCommand {
         switch (status) {
 
         case NEW:
-            return PAGE_NAME_BUNDLE.getString("admin.new.orders.page");
+            return PAGE_NAME_BUNDLE.getString(PageName.ADMIN_NEW_ORDERS);
         case CONFIRMED:
-            return PAGE_NAME_BUNDLE.getString("admin.confirmed.orders.page");
+            return PAGE_NAME_BUNDLE.getString(PageName.ADMIN_CONFIRMED_ORDERS);
         case ACTIVE:
-            return PAGE_NAME_BUNDLE.getString("admin.active.orders.page");
+            return PAGE_NAME_BUNDLE.getString(PageName.ADMIN_ACTIVE_ORDERS);
         case REJECTED:
-            return PAGE_NAME_BUNDLE.getString("admin.rejected.orders.page");
+            return PAGE_NAME_BUNDLE.getString(PageName.ADMIN_REJECTED_ORDERS);
         case DAMAGED:
-            return PAGE_NAME_BUNDLE.getString("admin.damaged.orders.page");
+            return PAGE_NAME_BUNDLE.getString(PageName.ADMIN_DAMAGED_ORDERS);
         case ARCHIVED:
-            return PAGE_NAME_BUNDLE.getString("admin.archived.orders.page");
-        case DELETED:
-            return PAGE_NAME_BUNDLE.getString("admin.deleted.orders.page");
+            return PAGE_NAME_BUNDLE.getString(PageName.ADMIN_ARCHIVED_ORDERS);
         default:
-            return PAGE_NAME_BUNDLE.getString("admin.main.page");
+            return PAGE_NAME_BUNDLE.getString(PageName.ADMIN_MAIN);
         }
     }
 

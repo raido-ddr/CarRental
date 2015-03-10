@@ -4,6 +4,8 @@ import com.raido.rental.logic.command.ActionCommand;
 import com.raido.rental.logic.command.exception.CommandException;
 import com.raido.rental.logic.command.resolver.CommandResolver;
 import com.raido.rental.logic.resourcemanager.MessageBundle;
+import com.raido.rental.logic.resourcemanager.PageName;
+import com.raido.rental.logic.resourcemanager.ResourceName;
 import org.apache.log4j.Level;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -73,7 +75,8 @@ public class Controller extends HttpServlet {
             HttpServletResponse response) throws ServletException, IOException {
 
         request.getSession().invalidate();
-        String errorPageName = MessageBundle.getString("config", "error.page");
+        String errorPageName = MessageBundle.getString(ResourceName.CONFIG,
+                PageName.ERROR);
         request.getRequestDispatcher(errorPageName).forward(request, response);
     }
 

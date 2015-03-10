@@ -7,6 +7,8 @@ import com.raido.rental.entity.Car;
 import com.raido.rental.logic.command.CarCommand;
 import com.raido.rental.logic.command.exception.CommandException;
 import com.raido.rental.logic.resourcemanager.MessageBundle;
+import com.raido.rental.logic.resourcemanager.PageName;
+import com.raido.rental.logic.resourcemanager.ResourceName;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Locale;
@@ -45,10 +47,10 @@ public class EditCarCommand extends CarCommand {
             Car car = carDao.findCarById(id);
             setEnumAttributes(request);
             request.setAttribute("car", car);
-            return PAGE_NAME_BUNDLE.getString("edit.car.page");
+            return PAGE_NAME_BUNDLE.getString(PageName.EDIT_CAR);
         } catch (DaoException e) {
             throw new CommandException(MessageBundle
-                    .getString("exception_message", "database.error"));
+                    .getString(ResourceName.COMMON_CAPTIONS, "database.error"));
         }
     }
 
@@ -66,18 +68,19 @@ public class EditCarCommand extends CarCommand {
                 carDao.editCar(car);
             } catch (DaoException e) {
                 throw new CommandException(MessageBundle
-                        .getString("exception_message", "database.error"));
+                        .getString(ResourceName.COMMON_CAPTIONS, "database.error"));
             }
 
             Locale locale = getCurrentLocale(request);
-            request.setAttribute("successMessage",
-                    MessageBundle.getString("success_message", "save.car", locale));
+            String message = MessageBundle.getString(ResourceName.COMMON_CAPTIONS,
+                    "save.car", locale);
+            request.setAttribute("successMessage", message);
 
-            return PAGE_NAME_BUNDLE.getString("admin.main.page");
+            return PAGE_NAME_BUNDLE.getString(PageName.ADMIN_MAIN);
 
         } else {
             setEnumAttributes(request);
-            return PAGE_NAME_BUNDLE.getString("add.car.page");
+            return PAGE_NAME_BUNDLE.getString(PageName.ADD_CAR);
         }
     }
 

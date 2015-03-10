@@ -9,6 +9,8 @@ import com.raido.rental.entity.User;
 import com.raido.rental.logic.command.OrderCommand;
 import com.raido.rental.logic.command.exception.CommandException;
 import com.raido.rental.logic.resourcemanager.MessageBundle;
+import com.raido.rental.logic.resourcemanager.PageName;
+import com.raido.rental.logic.resourcemanager.ResourceName;
 import com.raido.rental.logic.validator.DataValidator;
 
 import javax.servlet.http.HttpServletRequest;
@@ -43,7 +45,7 @@ public class ChooseRentalPeriodCommand extends OrderCommand {
     protected String processGetRequest(HttpServletRequest request)
             throws CommandException {
 
-        return PAGE_NAME_BUNDLE.getString("rental.period.page");
+        return PAGE_NAME_BUNDLE.getString(PageName.RENTAL_PERIOD);
     }
 
     @Override
@@ -57,8 +59,8 @@ public class ChooseRentalPeriodCommand extends OrderCommand {
             if(! checkLicenseValidity(request)) {
                 Locale locale = getCurrentLocale(request);
                 request.setAttribute("rentalPeriodRule",
-                        MessageBundle.getString("input_errors", "invalid.license", locale));
-                return PAGE_NAME_BUNDLE.getString("rental.period.page");
+                        MessageBundle.getString(ResourceName.COMMON_CAPTIONS, "invalid.license", locale));
+                return PAGE_NAME_BUNDLE.getString(PageName.RENTAL_PERIOD);
             }
 
             //look for cars available for requested period
@@ -69,7 +71,7 @@ public class ChooseRentalPeriodCommand extends OrderCommand {
             } catch (DaoException e) {
                 Locale locale = getCurrentLocale(request);
                 throw new CommandException(MessageBundle
-                        .getString("exception_message", "database.error", locale));
+                        .getString(ResourceName.COMMON_CAPTIONS, "database.error", locale));
             }
 
             if(! cars.isEmpty()) {
@@ -77,18 +79,18 @@ public class ChooseRentalPeriodCommand extends OrderCommand {
                 request.setAttribute("cars", cars);
                 request.setAttribute("startDate", startDate);
                 request.setAttribute("returnDate", returnDate);
-                return PAGE_NAME_BUNDLE.getString("user.view.cars.page");
+                return PAGE_NAME_BUNDLE.getString(PageName.USER_VIEW_CARS);
             } else {
                 //no cars available for requested period
                 Locale locale = getCurrentLocale(request);
                 request.setAttribute("resultMessage",
-                        MessageBundle.getString("input_errors", "no.cars.available", locale));
-                return PAGE_NAME_BUNDLE.getString("rental.period.page");
+                        MessageBundle.getString(ResourceName.COMMON_CAPTIONS, "no.cars.available", locale));
+                return PAGE_NAME_BUNDLE.getString(PageName.RENTAL_PERIOD);
             }
 
         } else {
             //invalid rental period requested
-            return PAGE_NAME_BUNDLE.getString("rental.period.page");
+            return PAGE_NAME_BUNDLE.getString(PageName.RENTAL_PERIOD);
         }
 
     }
@@ -104,7 +106,7 @@ public class ChooseRentalPeriodCommand extends OrderCommand {
             user = userDao.findUserById(userId);
         } catch (DaoException e) {
             throw new CommandException(MessageBundle
-                    .getString("exception_message", "database.error"));
+                    .getString(ResourceName.COMMON_CAPTIONS, "database.error"));
         }
 
         Date returnDate = parameterHelper.getDate(request, "returnDate");

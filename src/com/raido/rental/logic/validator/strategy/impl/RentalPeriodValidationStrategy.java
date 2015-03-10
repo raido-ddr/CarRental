@@ -1,5 +1,6 @@
 package com.raido.rental.logic.validator.strategy.impl;
 
+import com.raido.rental.logic.resourcemanager.ResourceName;
 import com.raido.rental.logic.validator.strategy.ValidationStrategy;
 
 import javax.servlet.http.HttpServletRequest;
@@ -34,7 +35,7 @@ public class RentalPeriodValidationStrategy extends ValidationStrategy {
         Locale locale =
                 (Locale) request.getSession().getAttribute("locale");
         ResourceBundle bundle =
-                ResourceBundle.getBundle("input_errors", locale);
+                ResourceBundle.getBundle(ResourceName.COMMON_CAPTIONS, locale);
 
         SimpleDateFormat formatter = new SimpleDateFormat(DATE_FORMAT);
         try {

@@ -2,6 +2,7 @@ package com.raido.rental.logic.command;
 
 import com.raido.rental.logic.command.exception.CommandException;
 import com.raido.rental.logic.resourcemanager.MessageBundle;
+import com.raido.rental.logic.resourcemanager.ResourceName;
 import com.raido.rental.logic.util.requestparam.RequestParameterHelper;
 
 import javax.servlet.http.HttpServletRequest;
@@ -31,7 +32,7 @@ public abstract class ActionCommand {
         default:
             Locale locale = getCurrentLocale(request);
             throw new CommandException(MessageBundle
-                    .getString("exception_message", "unsupported.method"));
+                    .getString(ResourceName.COMMON_CAPTIONS, "unsupported.method"));
         }
     }
 

@@ -2,6 +2,7 @@ package com.raido.rental.dao.pool;
 
 import com.raido.rental.dao.pool.exception.ConnectionPoolException;
 import com.raido.rental.logic.resourcemanager.MessageBundle;
+import com.raido.rental.logic.resourcemanager.ResourceName;
 import org.apache.log4j.Logger;
 
 import java.sql.*;
@@ -87,11 +88,11 @@ public final class ConnectionPool {
 
         } catch (SQLException e) {
             throw new ConnectionPoolException(MessageBundle
-                    .getString("exception_message","pool.init.failed"), e);
+                    .getString(ResourceName.COMMON_CAPTIONS,"pool.init.failed"), e);
 
         } catch (ClassNotFoundException e) {
             throw new ConnectionPoolException(MessageBundle
-                    .getString("exception_message","driver.not.found"), e);
+                    .getString(ResourceName.COMMON_CAPTIONS,"driver.not.found"), e);
         }
     }
 
@@ -104,7 +105,7 @@ public final class ConnectionPool {
             closeConnectionsQueue(providedConnections);
             closeConnectionsQueue(availableConnections);
         } catch (SQLException e) {
-            LOGGER.error(MessageBundle.getString("exception_message",
+            LOGGER.error(MessageBundle.getString(ResourceName.COMMON_CAPTIONS,
                     "connection.closing.error"), e);
         }
     }
@@ -117,7 +118,7 @@ public final class ConnectionPool {
             providedConnections.offer(connection);
         } catch (InterruptedException e) {
             throw new ConnectionPoolException(MessageBundle
-                    .getString("exception_message", "db.connection.error"), e);
+                    .getString(ResourceName.COMMON_CAPTIONS, "db.connection.error"), e);
         }
         return connection;
     }
@@ -181,7 +182,7 @@ public final class ConnectionPool {
         public void close() throws SQLException {
             if (connection.isClosed()) {
                 throw new SQLException(MessageBundle
-                        .getString("exception_message", "closing.closed.connection"));
+                        .getString(ResourceName.COMMON_CAPTIONS, "closing.closed.connection"));
             }
 
             if (connection.isReadOnly()) {
@@ -190,11 +191,11 @@ public final class ConnectionPool {
 
             if (! providedConnections.remove(this)) {
                 throw new SQLException(MessageBundle
-                        .getString("exception_message", "pool.release.error"));
+                        .getString(ResourceName.COMMON_CAPTIONS, "pool.release.error"));
             }
             if (! availableConnections.offer(this)) {
                 throw new SQLException(MessageBundle
-                        .getString("exception_message", "pool.release.error"));
+                        .getString(ResourceName.COMMON_CAPTIONS, "pool.release.error"));
             }
         }
 

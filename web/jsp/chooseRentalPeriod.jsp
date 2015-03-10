@@ -6,7 +6,7 @@
 <fmt:setLocale value="${sessionScope.locale}" />
 
 <fmt:setBundle basename="l10n.user_captions" var="rentalPeriod" />
-<fmt:setBundle basename="input_errors" var="errors" />
+<fmt:setBundle basename="l10n.common_caption" var="errors" />
 
 <html>
 <head>

@@ -4,6 +4,7 @@ import com.raido.rental.dao.UserDao;
 import com.raido.rental.dao.exception.DaoException;
 import com.raido.rental.entity.User;
 import com.raido.rental.logic.resourcemanager.MessageBundle;
+import com.raido.rental.logic.resourcemanager.ResourceName;
 import org.apache.log4j.Logger;
 
 import java.sql.*;
@@ -84,7 +85,7 @@ public class MySqlUserDao extends UserDao {
             int rowsCount = preparedStatement.executeUpdate();
             if(rowsCount != 1) {
                 throw new DaoException(MessageBundle
-                        .getString("exception_message", "database.error"));
+                        .getString(ResourceName.COMMON_CAPTIONS, "database.error"));
             }
 
             ResultSet keys = preparedStatement.getGeneratedKeys();
@@ -93,7 +94,7 @@ public class MySqlUserDao extends UserDao {
 
         } catch (SQLException e) {
             throw new DaoException(MessageBundle
-                    .getString("exception_message", "database.error"),e);
+                    .getString(ResourceName.COMMON_CAPTIONS, "database.error"),e);
         } finally {
             closePooledConnection(connection, preparedStatement);
         }
@@ -132,7 +133,7 @@ public class MySqlUserDao extends UserDao {
 
         } catch (SQLException e) {
             throw new DaoException(MessageBundle
-                    .getString("exception_message", "database.error"),e);
+                    .getString(ResourceName.COMMON_CAPTIONS, "database.error"),e);
         } finally {
             closePooledConnection(connection, preparedStatement);
         }
@@ -185,7 +186,7 @@ public class MySqlUserDao extends UserDao {
 
         } catch (SQLException e) {
             throw new DaoException(MessageBundle
-                    .getString("exception_message", "database.error"),e);
+                    .getString(ResourceName.COMMON_CAPTIONS, "database.error"),e);
         } finally {
             closePooledConnection(connection, preparedStatement);
         }
@@ -217,7 +218,7 @@ public class MySqlUserDao extends UserDao {
 
         } catch (SQLException e) {
             throw new DaoException(MessageBundle
-                    .getString("exception_message", "database.error"),e);
+                    .getString(ResourceName.COMMON_CAPTIONS, "database.error"),e);
         } finally {
             closePooledConnection(connection, preparedStatement);
         }
@@ -251,7 +252,7 @@ public class MySqlUserDao extends UserDao {
 
         } catch (SQLException e) {
             throw new DaoException(MessageBundle
-                    .getString("exception_message", "database.error"),e);
+                    .getString(ResourceName.COMMON_CAPTIONS, "database.error"),e);
         } finally {
             closePooledConnection(connection, preparedStatement);
         }

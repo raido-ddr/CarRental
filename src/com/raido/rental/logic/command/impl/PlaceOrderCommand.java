@@ -7,6 +7,8 @@ import com.raido.rental.entity.Order;
 import com.raido.rental.logic.command.OrderCommand;
 import com.raido.rental.logic.command.exception.CommandException;
 import com.raido.rental.logic.resourcemanager.MessageBundle;
+import com.raido.rental.logic.resourcemanager.PageName;
+import com.raido.rental.logic.resourcemanager.ResourceName;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Date;
@@ -45,7 +47,7 @@ public class PlaceOrderCommand extends OrderCommand {
         float orderValue = calculateOrderValue(dailyCost, startDate, returnDate);
         request.setAttribute("orderValue", orderValue);
 
-        return PAGE_NAME_BUNDLE.getString("place.order.page");
+        return PAGE_NAME_BUNDLE.getString(PageName.PLACE_ORDER);
     }
 
     @Override
@@ -66,12 +68,14 @@ public class PlaceOrderCommand extends OrderCommand {
             orderDao.createOrder(order);
         } catch (DaoException e) {
             throw new CommandException(MessageBundle
-                    .getString("exception_message", "database.error"));
+                    .getString(ResourceName.COMMON_CAPTIONS, "database.error"));
         }
 
-        request.setAttribute("successMessage",
-                MessageBundle.getString("success_message", "place.order.success", locale));
-        return PAGE_NAME_BUNDLE.getString("user.main.page");
+        String message = MessageBundle.getString(ResourceName.COMMON_CAPTIONS,
+                "place.order.success", locale);
+        request.setAttribute("successMessage", message);
+
+        return PAGE_NAME_BUNDLE.getString(PageName.USER_MAIN);
     }
 
 

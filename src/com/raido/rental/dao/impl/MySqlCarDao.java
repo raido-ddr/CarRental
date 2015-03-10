@@ -11,6 +11,7 @@ import com.raido.rental.entity.dbenum.CarStatus;
 import com.raido.rental.entity.dbenum.FuelType;
 import com.raido.rental.entity.dbenum.TransmissionType;
 import com.raido.rental.logic.resourcemanager.MessageBundle;
+import com.raido.rental.logic.resourcemanager.ResourceName;
 import org.apache.log4j.Logger;
 
 import java.sql.*;
@@ -92,12 +93,12 @@ public class MySqlCarDao extends CarDao {
             int rowsCount = preparedStatement.executeUpdate();
             if(rowsCount != 1) {
                 throw new DaoException(MessageBundle
-                        .getString("exception_message", "database.error"));
+                        .getString(ResourceName.COMMON_CAPTIONS, "database.error"));
             }
 
         } catch (SQLException e) {
             throw new DaoException(MessageBundle
-                    .getString("exception_message", "database.error"),e);
+                    .getString(ResourceName.COMMON_CAPTIONS, "database.error"),e);
         } finally {
             closePooledConnection(connection, preparedStatement);
         }
@@ -127,7 +128,7 @@ public class MySqlCarDao extends CarDao {
 
         } catch (SQLException e) {
             throw new DaoException(MessageBundle
-                    .getString("exception_message", "database.error"),e);
+                    .getString(ResourceName.COMMON_CAPTIONS, "database.error"),e);
         } finally {
             closePooledConnection(connection, preparedStatement);
         }
@@ -155,7 +156,7 @@ public class MySqlCarDao extends CarDao {
 
         } catch (SQLException e) {
             throw new DaoException(MessageBundle
-                    .getString("exception_message", "database.error"),e);
+                    .getString(ResourceName.COMMON_CAPTIONS, "database.error"),e);
         } finally {
             closePooledConnection(connection, preparedStatement);
         }
@@ -184,7 +185,7 @@ public class MySqlCarDao extends CarDao {
 
         } catch (SQLException e) {
             throw new DaoException(MessageBundle
-                    .getString("exception_message", "database.error"),e);
+                    .getString(ResourceName.COMMON_CAPTIONS, "database.error"),e);
         } finally {
             closePooledConnection(connection, preparedStatement);
         }
@@ -216,12 +217,12 @@ public class MySqlCarDao extends CarDao {
             int rowsCount = preparedStatement.executeUpdate();
             if(rowsCount != 1) {
                 throw new DaoException(MessageBundle
-                        .getString("exception_message", "database.error"));
+                        .getString(ResourceName.COMMON_CAPTIONS, "database.error"));
             }
 
         } catch (SQLException e) {
             throw new DaoException(MessageBundle
-                    .getString("exception_message", "database.error"),e);
+                    .getString(ResourceName.COMMON_CAPTIONS, "database.error"),e);
         } finally {
             closePooledConnection(connection, preparedStatement);
         }

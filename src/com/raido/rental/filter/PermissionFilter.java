@@ -3,6 +3,7 @@ package com.raido.rental.filter;
 
 import com.raido.rental.logic.command.resolver.PermissionResolver;
 import com.raido.rental.logic.resourcemanager.MessageBundle;
+import com.raido.rental.logic.resourcemanager.PageName;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -46,7 +47,7 @@ public class PermissionFilter implements Filter {
         if(! permissionResolver.isActionAllowed(commandName, userRole)) {
             RequestDispatcher requestDispatcher = request.getServletContext()
                             .getRequestDispatcher(MessageBundle.getString("config",
-                                    "welcome.page"));
+                                    PageName.WELCOME));
 
             requestDispatcher.forward(request, response);
             return;

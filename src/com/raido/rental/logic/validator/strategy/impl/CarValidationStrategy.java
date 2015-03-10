@@ -4,6 +4,7 @@ import com.raido.rental.entity.dbenum.BodyStyle;
 import com.raido.rental.entity.dbenum.FuelType;
 import com.raido.rental.entity.dbenum.TransmissionType;
 import com.raido.rental.logic.resourcemanager.MessageBundle;
+import com.raido.rental.logic.resourcemanager.ResourceName;
 import com.raido.rental.logic.validator.strategy.ValidationStrategy;
 
 import javax.servlet.http.HttpServletRequest;
@@ -58,7 +59,7 @@ public class CarValidationStrategy extends ValidationStrategy {
         Locale locale =
                 (Locale) request.getSession().getAttribute("locale");
         ResourceBundle bundle =
-                ResourceBundle.getBundle("input_errors", locale);
+                ResourceBundle.getBundle(ResourceName.COMMON_CAPTIONS, locale);
 
         boolean dataIsCorrect = true;
 

@@ -7,6 +7,8 @@ import com.raido.rental.entity.dbenum.OrderStatus;
 import com.raido.rental.logic.command.OrderCommand;
 import com.raido.rental.logic.command.exception.CommandException;
 import com.raido.rental.logic.resourcemanager.MessageBundle;
+import com.raido.rental.logic.resourcemanager.PageName;
+import com.raido.rental.logic.resourcemanager.ResourceName;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Locale;
@@ -41,7 +43,7 @@ public class ChangeOrderStatusCommand extends OrderCommand {
             throws CommandException {
         Locale locale = getCurrentLocale(request);
         throw new CommandException(MessageBundle
-                .getString("exception_message", "unsupported.method", locale));
+                .getString(ResourceName.COMMON_CAPTIONS, "unsupported.method", locale));
 
     }
 
@@ -67,7 +69,7 @@ public class ChangeOrderStatusCommand extends OrderCommand {
         case DELETED:
             return processDeletedOrder(request);
         default:
-            return PAGE_NAME_BUNDLE.getString("admin.main.page");
+            return PAGE_NAME_BUNDLE.getString(PageName.ADMIN_MAIN);
         }
 
     }
@@ -76,7 +78,7 @@ public class ChangeOrderStatusCommand extends OrderCommand {
             throws CommandException {
 
         changeOrderStatus(request, OrderStatus.DELETED);
-        return PAGE_NAME_BUNDLE.getString("admin.main.page");
+        return PAGE_NAME_BUNDLE.getString(PageName.ADMIN_MAIN);
     }
 
     private String processArchivedOrder(HttpServletRequest request)
@@ -87,14 +89,16 @@ public class ChangeOrderStatusCommand extends OrderCommand {
         Locale locale = getCurrentLocale(request);
         switch (getCurrentUserRole(request)) {
         case "user":
-            request.setAttribute("successMessage", MessageBundle
-                    .getString("success_message", "successful.payment", locale));
-            return PAGE_NAME_BUNDLE.getString("user.main.page");
+            String message = MessageBundle.getString(ResourceName.COMMON_CAPTIONS,
+                    "successful.payment", locale);
+            request.setAttribute("successMessage", message);
+            return PAGE_NAME_BUNDLE.getString(PageName.USER_MAIN);
         case "admin":
-            return PAGE_NAME_BUNDLE.getString("admin.main.page");
+            return PAGE_NAME_BUNDLE.getString(PageName.ADMIN_MAIN);
         default:
-            throw new CommandException(MessageBundle
-                    .getString("exception_message", "permission.denied", locale));
+            String errorMessage = MessageBundle.getString(ResourceName.COMMON_CAPTIONS,
+                    "permission.denied", locale);
+            throw new CommandException(errorMessage);
         }
 
     }
@@ -113,10 +117,10 @@ public class ChangeOrderStatusCommand extends OrderCommand {
             orderDao.reportDamage(orderId, damageDescription, penaltyAmount);
         } catch (DaoException e) {
             throw new CommandException(MessageBundle
-                    .getString("exception_message", "database.error"));
+                    .getString(ResourceName.COMMON_CAPTIONS, "database.error"));
         }
 
-        return PAGE_NAME_BUNDLE.getString("admin.main.page");
+        return PAGE_NAME_BUNDLE.getString(PageName.ADMIN_MAIN);
     }
 
     private String  processRejectedOrder(HttpServletRequest request)
@@ -131,10 +135,10 @@ public class ChangeOrderStatusCommand extends OrderCommand {
             orderDao.rejectOrder(orderId, rejectionReason);
         } catch (DaoException e) {
             throw new CommandException(MessageBundle
-                    .getString("exception_message", "database.error"));
+                    .getString(ResourceName.COMMON_CAPTIONS, "database.error"));
         }
 
-        return PAGE_NAME_BUNDLE.getString("admin.main.page");
+        return PAGE_NAME_BUNDLE.getString(PageName.ADMIN_MAIN);
     }
 
     private String processActiveOrder(HttpServletRequest request)
@@ -142,16 +146,17 @@ public class ChangeOrderStatusCommand extends OrderCommand {
 
         changeOrderStatus(request, OrderStatus.ACTIVE);
         Locale locale = getCurrentLocale(request);
-        request.setAttribute("successMessage",MessageBundle
-                .getString("success_message", "successful.payment", locale));
-        return PAGE_NAME_BUNDLE.getString("user.main.page");
+        String message = MessageBundle.getString(ResourceName.COMMON_CAPTIONS,
+                "successful.payment", locale);
+        request.setAttribute("successMessage", message);
+        return PAGE_NAME_BUNDLE.getString(PageName.USER_MAIN);
     }
 
     private String processConfirmedOrder(HttpServletRequest request)
             throws CommandException {
 
         changeOrderStatus(request, OrderStatus.CONFIRMED);
-        return PAGE_NAME_BUNDLE.getString("admin.main.page");
+        return PAGE_NAME_BUNDLE.getString(PageName.ADMIN_MAIN);
     }
 
     private void changeOrderStatus(HttpServletRequest request,
@@ -164,7 +169,7 @@ public class ChangeOrderStatusCommand extends OrderCommand {
             orderDao.changeOrderStatus(orderId, status);
         } catch (DaoException e) {
             throw new CommandException(MessageBundle
-                    .getString("exception_message", "database.error"));
+                    .getString(ResourceName.COMMON_CAPTIONS, "database.error"));
         }
 
     }

@@ -4,6 +4,7 @@ import com.raido.rental.logic.command.exception.CommandException;
 import com.raido.rental.logic.exception.LogicalException;
 import com.raido.rental.logic.exception.TechnicalException;
 import com.raido.rental.logic.resourcemanager.MessageBundle;
+import com.raido.rental.logic.resourcemanager.ResourceName;
 import org.apache.log4j.Logger;
 
 import javax.xml.stream.XMLInputFactory;
@@ -60,16 +61,16 @@ public class XmlCommandInitializer {
                 }
             }
         } catch (FileNotFoundException e) {
-            throw new LogicalException(MessageBundle.getString("exception_message", "file_not_found"));
+            throw new LogicalException(MessageBundle.getString(ResourceName.COMMON_CAPTIONS, "file_not_found"));
         } catch (XMLStreamException e1) {
-            throw new TechnicalException(MessageBundle.getString("exception_message", "parsing_failed"));
+            throw new TechnicalException(MessageBundle.getString(ResourceName.COMMON_CAPTIONS, "parsing_failed"));
         } finally {
             try {
                 if (inputStream != null) {
                     inputStream.close();
                 }
             } catch (IOException e) {
-                LOGGER.error(MessageBundle.getString("exception_message", "closing_failed"));
+                LOGGER.error(MessageBundle.getString(ResourceName.COMMON_CAPTIONS, "closing_failed"));
             }
         }
     }
@@ -103,7 +104,7 @@ public class XmlCommandInitializer {
                 break;
             }
         }
-        throw new LogicalException(MessageBundle.getString("exception_message", "unknown_tag"));
+        throw new LogicalException(MessageBundle.getString(ResourceName.COMMON_CAPTIONS, "unknown_tag"));
     }
 
     private String getXmlText(XMLStreamReader reader)

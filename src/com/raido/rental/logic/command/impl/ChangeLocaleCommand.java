@@ -2,6 +2,7 @@ package com.raido.rental.logic.command.impl;
 
 import com.raido.rental.logic.command.ActionCommand;
 import com.raido.rental.logic.command.exception.CommandException;
+import com.raido.rental.logic.resourcemanager.PageName;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Locale;
@@ -56,11 +57,11 @@ public class ChangeLocaleCommand extends ActionCommand {
         switch (role)
         {
         case "user":
-            return "user.main.page";
+            return PageName.USER_MAIN;
         case "admin":
-            return "admin.main.page";
+            return PageName.ADMIN_MAIN;
         default:
-            return "welcome.page";
+            return PageName.WELCOME;
         }
     }
 

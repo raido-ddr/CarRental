@@ -4,6 +4,7 @@ import com.raido.rental.dao.exception.DaoException;
 import com.raido.rental.dao.pool.ConnectionPool;
 import com.raido.rental.dao.pool.exception.ConnectionPoolException;
 import com.raido.rental.logic.resourcemanager.MessageBundle;
+import com.raido.rental.logic.resourcemanager.ResourceName;
 
 import java.sql.Statement;
 import java.sql.Connection;
@@ -27,7 +28,7 @@ public abstract class Dao {
             return connectionPool.takeConnection();
         } catch (ConnectionPoolException e) {
             throw new DaoException( MessageBundle
-                    .getString("exception_message", "database.error"),e);
+                    .getString(ResourceName.COMMON_CAPTIONS, "database.error"),e);
         }
     }
 

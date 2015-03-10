@@ -7,6 +7,8 @@ import com.raido.rental.entity.User;
 import com.raido.rental.logic.command.UserCommand;
 import com.raido.rental.logic.command.exception.CommandException;
 import com.raido.rental.logic.resourcemanager.MessageBundle;
+import com.raido.rental.logic.resourcemanager.PageName;
+import com.raido.rental.logic.resourcemanager.ResourceName;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Locale;
@@ -37,7 +39,7 @@ public class RegisterCommand extends UserCommand {
     @Override
     protected String processGetRequest(HttpServletRequest request)
             throws CommandException {
-        return PAGE_NAME_BUNDLE.getString("registration.page");
+        return PAGE_NAME_BUNDLE.getString(PageName.REGISTRATION);
     }
 
     @Override
@@ -57,20 +59,21 @@ public class RegisterCommand extends UserCommand {
                     Locale locale =
                             (Locale) request.getSession().getAttribute("locale");
                     request.setAttribute("duplicateLoginError",
-                            MessageBundle.getString("input_errors", "duplicate.login", locale));
-                    return PAGE_NAME_BUNDLE.getString("registration.page");
+                            MessageBundle.getString(ResourceName.COMMON_CAPTIONS,
+                            "duplicate.login", locale));
+                    return PAGE_NAME_BUNDLE.getString(PageName.REGISTRATION);
                 }
             } catch (DaoException e) {
                 Locale locale = getCurrentLocale(request);
                 throw new CommandException(MessageBundle
-                        .getString("exception_message", "database.error"));
+                        .getString(ResourceName.COMMON_CAPTIONS, "database.error"));
             }
 
             setAuthorizationAttributes(request, user);
-            return PAGE_NAME_BUNDLE.getString("user.main.page");
+            return PAGE_NAME_BUNDLE.getString(PageName.USER_MAIN);
 
         } else {
-            return PAGE_NAME_BUNDLE.getString("registration.page");
+            return PAGE_NAME_BUNDLE.getString(PageName.REGISTRATION);
         }
     }
 

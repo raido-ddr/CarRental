@@ -7,6 +7,7 @@ import com.raido.rental.entity.Order;
 import com.raido.rental.entity.OrderSummary;
 import com.raido.rental.entity.dbenum.OrderStatus;
 import com.raido.rental.logic.resourcemanager.MessageBundle;
+import com.raido.rental.logic.resourcemanager.ResourceName;
 import org.apache.log4j.Logger;
 
 import java.sql.Connection;
@@ -102,12 +103,12 @@ public class MySqlOrderDao extends OrderDao {
             int rowsCount = preparedStatement.executeUpdate();
             if(rowsCount != 1) {
                 throw new DaoException(MessageBundle
-                        .getString("exception_message", "database.error"));
+                        .getString(ResourceName.COMMON_CAPTIONS, "database.error"));
             }
 
         } catch (SQLException e) {
             throw new DaoException(MessageBundle
-                    .getString("exception_message", "database.error"),e);
+                    .getString(ResourceName.COMMON_CAPTIONS, "database.error"),e);
         } finally {
             closePooledConnection(connection, preparedStatement);
         }
@@ -136,7 +137,7 @@ public class MySqlOrderDao extends OrderDao {
 
         } catch (SQLException e) {
             throw new DaoException(MessageBundle
-                    .getString("exception_message", "database.error"),e);
+                    .getString(ResourceName.COMMON_CAPTIONS, "database.error"),e);
         } finally {
             closePooledConnection(connection, preparedStatement);
         }
@@ -161,12 +162,12 @@ public class MySqlOrderDao extends OrderDao {
 
             if(rowCount != 1) {
                 throw new DaoException(MessageBundle
-                        .getString("exception_message", "database.error"));
+                        .getString(ResourceName.COMMON_CAPTIONS, "database.error"));
             }
 
         } catch (SQLException e) {
             throw new DaoException(MessageBundle
-                    .getString("exception_message", "database.error"),e);
+                    .getString(ResourceName.COMMON_CAPTIONS, "database.error"),e);
         } finally {
             closePooledConnection(connection, preparedStatement);
         }
@@ -194,13 +195,13 @@ public class MySqlOrderDao extends OrderDao {
 
             if(rowCount != 1) {
                 String exceptionMessage =
-                        MessageBundle.getString("exception_message", "database.error");
+                        MessageBundle.getString(ResourceName.COMMON_CAPTIONS, "database.error");
                 throw new DaoException(exceptionMessage);
             }
 
         } catch (SQLException e) {
             throw new DaoException(MessageBundle
-                    .getString("exception_message", "database.error"),e);
+                    .getString(ResourceName.COMMON_CAPTIONS, "database.error"),e);
         } finally {
             closePooledConnection(connection, preparedStatement);
         }
@@ -227,13 +228,13 @@ public class MySqlOrderDao extends OrderDao {
 
             if(rowCount != 1) {
                 String exceptionMessage =
-                        MessageBundle.getString("exception_message", "database.error");
+                        MessageBundle.getString(ResourceName.COMMON_CAPTIONS, "database.error");
                 throw new DaoException(exceptionMessage);
             }
 
         } catch (SQLException e) {
             throw new DaoException(MessageBundle
-                    .getString("exception_message", "database.error"),e);
+                    .getString(ResourceName.COMMON_CAPTIONS, "database.error"),e);
         } finally {
             closePooledConnection(connection, preparedStatement);
         }
@@ -264,7 +265,7 @@ public class MySqlOrderDao extends OrderDao {
 
         } catch (SQLException e) {
             throw new DaoException(MessageBundle
-                    .getString("exception_message", "database.error"),e);
+                    .getString(ResourceName.COMMON_CAPTIONS, "database.error"),e);
         } finally {
             closePooledConnection(connection, preparedStatement);
         }
@@ -297,7 +298,7 @@ public class MySqlOrderDao extends OrderDao {
 
         } catch (SQLException e) {
             throw new DaoException(MessageBundle
-                    .getString("exception_message", "database.error"),e);
+                    .getString(ResourceName.COMMON_CAPTIONS, "database.error"),e);
         } finally {
             closePooledConnection(connection, preparedStatement);
         }
