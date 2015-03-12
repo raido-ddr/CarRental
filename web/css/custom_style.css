@@ -12,10 +12,11 @@
     height: 100%;
 }
 
-.form-background {
-    background-image: url(../images/form_black.png);
-    background-repeat: repeat;
+#error_box {
+    background-color: #0e90d2;
+    opacity: 0.7;
 }
+
 
 .car_description {
     border: solid #0088cc 5px;
@@ -37,10 +38,6 @@
 }
 
 body { padding-top: 50px; }
-
-/**
-Sign in form
-**/
 
 #auth-panel-default {
     opacity: 0.9;

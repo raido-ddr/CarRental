@@ -25,11 +25,13 @@
 
     <div class="jumbotron" id="error_jumbotron">
         <div class="container">
-            <h2><fmt:message key="er.error" bundle="${captions}" /></h2>
-            <div>
-                <a href="/jsp/welcome.jsp" class="btn btn-info" role="button">
-                    <fmt:message key="er.main" bundle="${captions}" />
-                </a>
+            <div class="col-md-4">
+                <h2 id="error_box"><fmt:message key="er.error" bundle="${captions}" /></h2>
+                <div>
+                    <a href="/jsp/welcome.jsp" class="btn btn-info" role="button">
+                        <fmt:message key="er.main" bundle="${captions}" />
+                    </a>
+                </div>
             </div>
         </div>
     </div>
