@@ -15,7 +15,7 @@ public class CommandResolver {
 
     private Map<String, String> commandMap;
 
-    private String commandNameRegex;
+
 
     public CommandResolver(String configFileName)
             throws TechnicalException, LogicalException {
@@ -23,34 +23,24 @@ public class CommandResolver {
         commandBuilder.buildCommandsMap(configFileName);
         commandMap = commandBuilder.getCommandsMap();
 
-        ResourceBundle bundle = ResourceBundle.getBundle("config");
-        commandNameRegex = bundle.getString("command.name.regex");
     }
 
     public ActionCommand resolveCommand(String commandName) {
-
-        //Pattern pattern = Pattern.compile(commandNameRegex);
-        //Matcher matcher = pattern.matcher(commandPath);
-        //String commandName = matcher.group(0);
 
         String commandClassName = commandMap.get(commandName);
         if(commandClassName == null) {
             return ActionNotFoundCommand.getInstance();
         }
 
-
         ActionCommand command;
         try {
             Class commandClass = Class.forName(commandClassName);
-                    //(ActionCommand) Class.forName(commandClassName).newInstance();
             Method getInstanceMethod = commandClass.getDeclaredMethod("getInstance");
             command = (ActionCommand) getInstanceMethod.invoke(null, null);
         } catch (ClassNotFoundException
-                | IllegalAccessException e) {
-            command =  ActionNotFoundCommand.getInstance();
-        } catch (NoSuchMethodException e) {
-            command =  ActionNotFoundCommand.getInstance();
-        } catch (InvocationTargetException e) {
+                | IllegalAccessException
+                | NoSuchMethodException
+                | InvocationTargetException e) {
             command =  ActionNotFoundCommand.getInstance();
         }
 

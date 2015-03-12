@@ -21,6 +21,13 @@ public class PermissionResolver {
 
     public boolean isActionAllowed(String commandName, String userRole) {
         Set<String> eligibleRoles = permissionMap.get(commandName);
-        return eligibleRoles.contains(userRole);
+
+        if(eligibleRoles != null) {
+            return eligibleRoles.contains(userRole);
+        } else {
+            return false;
+        }
+
+
     }
 }

@@ -1,7 +1,7 @@
 package com.raido.rental.logic.command.impl;
 
 import com.raido.rental.logic.command.ActionCommand;
-import com.raido.rental.logic.command.exception.CommandException;
+import com.raido.rental.logic.resourcemanager.PageName;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.concurrent.locks.Lock;
@@ -30,13 +30,19 @@ public class ActionNotFoundCommand extends ActionCommand {
 
     @Override
     protected String processPostRequest(HttpServletRequest request) {
-        return null;
+        return processRequest(request);
     }
 
     @Override
     protected String processGetRequest(HttpServletRequest request) {
-        return null;
+        return processRequest(request);
     }
+
+    private String processRequest(HttpServletRequest request)
+    {
+        return PAGE_NAME_BUNDLE.getString(PageName.ERROR);
+    }
+
 
     @Override
     public String getName() {

@@ -54,4 +54,6 @@
         <name>/changeOrderStatus</name>
         <class-name>com.raido.rental.logic.command.impl.ChangeOrderStatusCommand</class-name>
     </command>
+
+
 </commands>

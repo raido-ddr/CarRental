@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+    <appender name="FileAppender" class="org.apache.log4j.FileAppender">
+        <param name="File" value="${catalina.home}/logs/errors.log" />
+        <param name="Threshold" value="ERROR" />
+        <param name="Append" value="false"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{dd.MM.yyyy HH:mm}  %-5p %c{1} %F:%n%m%n%n"/>
+        </layout>
+    </appender>
+
+    <root>
+        <priority value="ERROR"/>
+        <appender-ref ref="FileAppender"/>
+    </root>
+
+</log4j:configuration>

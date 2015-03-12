@@ -4,6 +4,7 @@ package com.raido.rental.filter;
 import com.raido.rental.logic.command.resolver.PermissionResolver;
 import com.raido.rental.logic.resourcemanager.MessageBundle;
 import com.raido.rental.logic.resourcemanager.PageName;
+import com.raido.rental.logic.resourcemanager.ResourceName;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -13,7 +14,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ResourceBundle;
 
-@WebFilter(urlPatterns = {"/controller/*"},
+@WebFilter(urlPatterns = {"/controller"},
         servletNames = {"ControllerServlet"}
     )
 public class PermissionFilter implements Filter {
@@ -46,8 +47,8 @@ public class PermissionFilter implements Filter {
         String commandName = request.getPathInfo();
         if(! permissionResolver.isActionAllowed(commandName, userRole)) {
             RequestDispatcher requestDispatcher = request.getServletContext()
-                            .getRequestDispatcher(MessageBundle.getString("config",
-                                    PageName.WELCOME));
+                            .getRequestDispatcher(MessageBundle.getString(ResourceName.CONFIG,
+                                    PageName.ERROR));
 
             requestDispatcher.forward(request, response);
             return;
