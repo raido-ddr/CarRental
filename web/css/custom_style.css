@@ -17,6 +17,13 @@
     background-repeat: repeat;
 }
 
+.car_description {
+    border: solid #0088cc 5px;
+    border-radius: 5px;
+    padding: 7px;
+    margin:  5px;
+}
+
 #admin_main {
     background-image: url(../images/admin_main.jpg);
 }

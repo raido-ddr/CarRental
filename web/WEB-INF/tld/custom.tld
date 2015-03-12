@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<taglib version="2.1"
+        xmlns="http://java.sun.com/xml/ns/javaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd">
+    <tlib-version>1.0</tlib-version>
+    <short-name>cstl</short-name>
+    <uri>customtaglib</uri>
+
+    <tag>
+        <name>car-description</name>
+        <tag-class>com.raido.rental.customtag.CarDescriptionTag</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <name>subject</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>com.raido.rental.entity.Car</type>
+        </attribute>
+    </tag>
+    
+</taglib>
