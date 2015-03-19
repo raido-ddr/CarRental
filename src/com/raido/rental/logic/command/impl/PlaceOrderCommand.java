@@ -6,14 +6,13 @@ import com.raido.rental.dao.factory.DaoFactory;
 import com.raido.rental.entity.Order;
 import com.raido.rental.logic.command.OrderCommand;
 import com.raido.rental.logic.command.exception.CommandException;
-import com.raido.rental.logic.resourcemanager.MessageBundle;
-import com.raido.rental.logic.resourcemanager.PageName;
-import com.raido.rental.logic.resourcemanager.ResourceName;
+import com.raido.rental.logic.util.resourcemanager.MessageBundle;
+import com.raido.rental.controller.PageName;
+import com.raido.rental.logic.ResourceName;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Date;
 import java.util.Locale;
-import java.util.ResourceBundle;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 

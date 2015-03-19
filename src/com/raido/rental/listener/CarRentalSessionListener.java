@@ -1,13 +1,12 @@
 package com.raido.rental.listener;
 
-import com.raido.rental.logic.resourcemanager.MessageBundle;
+import com.raido.rental.logic.util.resourcemanager.MessageBundle;
 
 import javax.servlet.annotation.WebListener;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 import java.util.Locale;
-import java.util.ResourceBundle;
 
 @WebListener
 public class CarRentalSessionListener implements HttpSessionListener {

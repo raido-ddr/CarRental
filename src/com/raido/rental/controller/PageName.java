@@ -1,4 +1,4 @@
-package com.raido.rental.logic.resourcemanager;
+package com.raido.rental.controller;
 
 
 public class PageName {

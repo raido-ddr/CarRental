@@ -1,10 +1,13 @@
-package com.raido.rental.logic.resourcemanager;
+package com.raido.rental.logic.util.resourcemanager;
 
 
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-public class MessageBundle {
+public final class MessageBundle {
+
+    private MessageBundle() {
+    }
 
     public static String getString(String bundleName,
             String propertyName) {

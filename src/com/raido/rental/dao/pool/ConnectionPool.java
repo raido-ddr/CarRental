@@ -1,8 +1,8 @@
 package com.raido.rental.dao.pool;
 
 import com.raido.rental.dao.pool.exception.ConnectionPoolException;
-import com.raido.rental.logic.resourcemanager.MessageBundle;
-import com.raido.rental.logic.resourcemanager.ResourceName;
+import com.raido.rental.logic.util.resourcemanager.MessageBundle;
+import com.raido.rental.logic.ResourceName;
 import org.apache.log4j.Logger;
 
 import java.sql.*;

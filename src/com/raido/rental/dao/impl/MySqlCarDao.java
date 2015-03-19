@@ -10,14 +10,13 @@ import com.raido.rental.entity.dbenum.BodyStyle;
 import com.raido.rental.entity.dbenum.CarStatus;
 import com.raido.rental.entity.dbenum.FuelType;
 import com.raido.rental.entity.dbenum.TransmissionType;
-import com.raido.rental.logic.resourcemanager.MessageBundle;
-import com.raido.rental.logic.resourcemanager.ResourceName;
+import com.raido.rental.logic.util.resourcemanager.MessageBundle;
+import com.raido.rental.logic.ResourceName;
 import org.apache.log4j.Logger;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ResourceBundle;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 

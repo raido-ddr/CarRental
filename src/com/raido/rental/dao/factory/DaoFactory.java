@@ -4,9 +4,7 @@ import com.raido.rental.dao.CarDao;
 import com.raido.rental.dao.OrderDao;
 import com.raido.rental.dao.UserDao;
 import com.raido.rental.dao.factory.impl.MySqlDaoFactory;
-import com.raido.rental.logic.resourcemanager.MessageBundle;
-
-import java.util.ResourceBundle;
+import com.raido.rental.logic.util.resourcemanager.MessageBundle;
 
 public abstract class DaoFactory {
 

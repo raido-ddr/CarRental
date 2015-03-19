@@ -1,6 +1,6 @@
 package com.raido.rental.logic.validator.strategy.impl;
 
-import com.raido.rental.logic.resourcemanager.ResourceName;
+import com.raido.rental.logic.ResourceName;
 import com.raido.rental.logic.validator.strategy.ValidationStrategy;
 
 import javax.servlet.http.HttpServletRequest;

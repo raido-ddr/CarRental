@@ -1,4 +1,4 @@
-package com.raido.rental.logic.resourcemanager;
+package com.raido.rental.logic;
 
 /**
  * Created by Raido_DDR on 3/10/2015.

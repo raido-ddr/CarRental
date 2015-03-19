@@ -3,9 +3,8 @@ package com.raido.rental.controller;
 import com.raido.rental.logic.command.ActionCommand;
 import com.raido.rental.logic.command.exception.CommandException;
 import com.raido.rental.logic.command.resolver.CommandResolver;
-import com.raido.rental.logic.resourcemanager.MessageBundle;
-import com.raido.rental.logic.resourcemanager.PageName;
-import com.raido.rental.logic.resourcemanager.ResourceName;
+import com.raido.rental.logic.util.resourcemanager.MessageBundle;
+import com.raido.rental.logic.ResourceName;
 import org.apache.log4j.Level;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -31,9 +30,9 @@ public class Controller extends HttpServlet {
 
     static {
         LOGGER = Logger.getLogger(Controller.class);
-        new DOMConfigurator().doConfigure("log4j.xml",
+        new DOMConfigurator().doConfigure("WEB-INF/classes/log4j.xml",
                 LogManager.getLoggerRepository());
-        LOGGER.setLevel(Level.INFO);
+        LOGGER.setLevel(Level.DEBUG);
     }
 
     @Override

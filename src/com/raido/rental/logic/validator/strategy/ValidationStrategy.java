@@ -1,10 +1,9 @@
 package com.raido.rental.logic.validator.strategy;
 
-import com.raido.rental.logic.resourcemanager.MessageBundle;
+import com.raido.rental.logic.util.resourcemanager.MessageBundle;
 import com.raido.rental.logic.util.requestparam.RequestParameterHelper;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.ResourceBundle;
 
 public abstract class ValidationStrategy {
 

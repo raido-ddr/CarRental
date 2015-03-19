@@ -1,8 +1,8 @@
 package com.raido.rental.customtag;
 
 import com.raido.rental.entity.Car;
-import com.raido.rental.logic.resourcemanager.MessageBundle;
-import com.raido.rental.logic.resourcemanager.ResourceName;
+import com.raido.rental.logic.util.resourcemanager.MessageBundle;
+import com.raido.rental.logic.ResourceName;
 
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspWriter;

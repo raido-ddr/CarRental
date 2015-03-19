@@ -3,8 +3,8 @@ package com.raido.rental.dao;
 import com.raido.rental.dao.exception.DaoException;
 import com.raido.rental.dao.pool.ConnectionPool;
 import com.raido.rental.dao.pool.exception.ConnectionPoolException;
-import com.raido.rental.logic.resourcemanager.MessageBundle;
-import com.raido.rental.logic.resourcemanager.ResourceName;
+import com.raido.rental.logic.util.resourcemanager.MessageBundle;
+import com.raido.rental.logic.ResourceName;
 
 import java.sql.Statement;
 import java.sql.Connection;

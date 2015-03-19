@@ -1,10 +1,9 @@
 package com.raido.rental.logic.util.xml;
 
-import com.raido.rental.logic.command.exception.CommandException;
 import com.raido.rental.logic.exception.LogicalException;
 import com.raido.rental.logic.exception.TechnicalException;
-import com.raido.rental.logic.resourcemanager.MessageBundle;
-import com.raido.rental.logic.resourcemanager.ResourceName;
+import com.raido.rental.logic.util.resourcemanager.MessageBundle;
+import com.raido.rental.logic.ResourceName;
 import org.apache.log4j.Logger;
 
 import javax.xml.stream.XMLInputFactory;
@@ -18,7 +17,6 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.ResourceBundle;
 
 public class XmlCommandInitializer {
 

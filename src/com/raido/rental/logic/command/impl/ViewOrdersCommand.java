@@ -7,9 +7,9 @@ import com.raido.rental.entity.OrderSummary;
 import com.raido.rental.entity.dbenum.OrderStatus;
 import com.raido.rental.logic.command.OrderCommand;
 import com.raido.rental.logic.command.exception.CommandException;
-import com.raido.rental.logic.resourcemanager.MessageBundle;
-import com.raido.rental.logic.resourcemanager.PageName;
-import com.raido.rental.logic.resourcemanager.ResourceName;
+import com.raido.rental.logic.util.resourcemanager.MessageBundle;
+import com.raido.rental.controller.PageName;
+import com.raido.rental.logic.ResourceName;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;

@@ -3,14 +3,13 @@ package com.raido.rental.listener;
 import com.raido.rental.logic.command.resolver.PermissionResolver;
 import com.raido.rental.logic.exception.LogicalException;
 import com.raido.rental.logic.exception.TechnicalException;
-import com.raido.rental.logic.resourcemanager.MessageBundle;
+import com.raido.rental.logic.util.resourcemanager.MessageBundle;
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
-import java.util.ResourceBundle;
 
 @WebListener
 public class PermissionContextListener implements ServletContextListener {
@@ -25,11 +24,12 @@ public class PermissionContextListener implements ServletContextListener {
     public void contextInitialized(ServletContextEvent servletContextEvent) {
 
         ServletContext context = servletContextEvent.getServletContext();
+        LOGGER.debug(context.getRealPath("/permissions.xml"));
 
         PermissionResolver permissionResolver;
         try {
             permissionResolver =
-                    new PermissionResolver(context.getRealPath("permissions.xml"));
+                    new PermissionResolver(context.getRealPath("/permissions.xml"));
         } catch (TechnicalException | LogicalException e) {
             LOGGER.fatal(e);
             throw new RuntimeException(MessageBundle

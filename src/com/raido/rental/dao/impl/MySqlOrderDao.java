@@ -2,12 +2,11 @@ package com.raido.rental.dao.impl;
 
 import com.raido.rental.dao.OrderDao;
 import com.raido.rental.dao.exception.DaoException;
-import com.raido.rental.entity.Car;
 import com.raido.rental.entity.Order;
 import com.raido.rental.entity.OrderSummary;
 import com.raido.rental.entity.dbenum.OrderStatus;
-import com.raido.rental.logic.resourcemanager.MessageBundle;
-import com.raido.rental.logic.resourcemanager.ResourceName;
+import com.raido.rental.logic.util.resourcemanager.MessageBundle;
+import com.raido.rental.logic.ResourceName;
 import org.apache.log4j.Logger;
 
 import java.sql.Connection;
@@ -16,7 +15,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ResourceBundle;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 

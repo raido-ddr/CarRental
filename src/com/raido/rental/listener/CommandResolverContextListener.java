@@ -3,7 +3,7 @@ package com.raido.rental.listener;
 import com.raido.rental.logic.command.resolver.CommandResolver;
 import com.raido.rental.logic.exception.LogicalException;
 import com.raido.rental.logic.exception.TechnicalException;
-import com.raido.rental.logic.resourcemanager.MessageBundle;
+import com.raido.rental.logic.util.resourcemanager.MessageBundle;
 import org.apache.log4j.Logger;
 
 import javax.servlet.ServletContext;
@@ -24,13 +24,15 @@ public class CommandResolverContextListener
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
 
+
         //Create command resolver for routing purposes
         ServletContext context = servletContextEvent.getServletContext();
-
+        LOGGER.debug(context.getRealPath("/commands_mapping.xml"));
         CommandResolver commandResolver;
         try {
+
             commandResolver =
-                    new CommandResolver(context.getRealPath("commands_mapping.xml"));
+                    new CommandResolver(context.getRealPath("/commands_mapping.xml"));
         } catch (TechnicalException | LogicalException e) {
             LOGGER.fatal(e);
             throw new RuntimeException( MessageBundle

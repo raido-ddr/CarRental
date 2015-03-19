@@ -2,9 +2,9 @@ package com.raido.rental.filter;
 
 
 import com.raido.rental.logic.command.resolver.PermissionResolver;
-import com.raido.rental.logic.resourcemanager.MessageBundle;
-import com.raido.rental.logic.resourcemanager.PageName;
-import com.raido.rental.logic.resourcemanager.ResourceName;
+import com.raido.rental.logic.util.resourcemanager.MessageBundle;
+import com.raido.rental.controller.PageName;
+import com.raido.rental.logic.ResourceName;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.ResourceBundle;
 
 @WebFilter(urlPatterns = {"/controller"},
         servletNames = {"ControllerServlet"}

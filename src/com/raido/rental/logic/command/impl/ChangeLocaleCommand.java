@@ -2,7 +2,7 @@ package com.raido.rental.logic.command.impl;
 
 import com.raido.rental.logic.command.ActionCommand;
 import com.raido.rental.logic.command.exception.CommandException;
-import com.raido.rental.logic.resourcemanager.PageName;
+import com.raido.rental.controller.PageName;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Locale;
