@@ -19,8 +19,8 @@
           rel="stylesheet" type="text/css" />
     <link href="<c:url value="/css/custom_style.css" />"
           rel="stylesheet" type="text/css" />
-    <script src="/js/jquery-1.9.1.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
+    <script src="<c:url value="/js/jquery-1.9.1.min.js" />" ></script>
+    <script src="<c:url value="/js/bootstrap.min.js" />" ></script>
 </head>
 
 <body>
@@ -37,7 +37,7 @@
                 <div class="panel-body">
 
                     <form role="form" class="form-horizontal" name="addCarForm"
-                          action="/controller/editCar" method="post" >
+                          action="<c:url value="/controller/editCar" />" method="post" >
 
                         <div class="form-group">
                             <label class="control-label col-sm-4" for="make">

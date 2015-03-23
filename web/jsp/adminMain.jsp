@@ -18,8 +18,8 @@
           rel="stylesheet" type="text/css" />
     <link href="<c:url value="/css/custom_style.css" />"
           rel="stylesheet" type="text/css" />
-    <script src="/js/jquery-1.9.1.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
+    <script src="<c:url value="/js/jquery-1.9.1.min.js" />" ></script>
+    <script src="<c:url value="/js/bootstrap.min.js" />" ></script>
 </head>
 
 <body id="admin_main">

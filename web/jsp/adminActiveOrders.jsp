@@ -18,8 +18,8 @@
           rel="stylesheet" type="text/css" />
     <link href="<c:url value="/css/custom_style.css" />"
           rel="stylesheet" type="text/css" />
-    <script src="/js/jquery-1.9.1.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
+    <script src="<c:url value="/js/jquery-1.9.1.min.js" />" ></script>
+    <script src="<c:url value="/js/bootstrap.min.js" />" ></script>
 </head>
 <body>
 
@@ -50,7 +50,7 @@
                         <div class="form-group">
                             <div class="form-group">
                                 <form  role="form" name="archiveOrderForm"
-                                      action="/controller/changeOrderStatus"
+                                      action="<c:url value="/controller/changeOrderStatus" />"
                                       method="post">
                                     <input type="hidden" name="orderId" value="${summary.orderId}">
                                     <input type="hidden" name="status" value="archived" />
@@ -62,7 +62,8 @@
                             </div>
 
                             <form role="form" name="reportDamageForm"
-                                  action="/controller/changeOrderStatus" method="post">
+                                  action="<c:url value="/controller/changeOrderStatus" />"
+                                  method="post">
                                 <div>
                                     <input type="hidden" name="orderId" value="${summary.orderId}">
                                     <input type="hidden" name="status" value="damaged" />

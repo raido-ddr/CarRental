@@ -1,14 +1,20 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <fmt:requestEncoding value="UTF-8" />
 <fmt:setLocale value="${sessionScope.locale}" />
 
 <fmt:setBundle basename="l10n.common_captions" var="register" />
 
+<c:set var="req" value="${pageContext.request}" />
+<c:set var="url">${req.requestURL}</c:set>
+<c:set var="uri" value="${req.requestURI}" />
+
 <html>
 <head>
+    <base href="${fn:substring(url, 0, fn:length(url) - fn:length(uri))}${req.contextPath}/" />
     <title><fmt:message key="rg.page.title" bundle="${register}" /></title>
     <link href="<c:url value="/css/bootstrap.min.css" />"
           rel="stylesheet" type="text/css" />
@@ -18,8 +24,8 @@
           rel="stylesheet" type="text/css" />
     <link href="<c:url value="/css/custom_style.css" />"
           rel="stylesheet" type="text/css" />
-    <script src="/js/jquery-1.9.1.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
+    <script src="<c:url value="/js/jquery-1.9.1.min.js" />" ></script>
+    <script src="<c:url value="/js/bootstrap.min.js" />" ></script>
 </head>
 
 <body>
@@ -40,7 +46,7 @@
                 <div class="panel-body">
 
                 <form class="form-horizontal" role="form" name="registerForm"
-                      action="/controller/register" method="post">
+                      action="<c:url value="/controller/register" />" method="post">
 
                     <div class="form-group">
                         <label for="fName" class="control-label col-sm-4">

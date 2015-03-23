@@ -19,8 +19,8 @@
           rel="stylesheet" type="text/css" />
     <link href="<c:url value="/css/custom_style.css" />"
           rel="stylesheet" type="text/css" />
-    <script src="/js/jquery-1.9.1.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
+    <script src="<c:url value="/js/jquery-1.9.1.min.js" />" ></script>
+    <script src="<c:url value="/js/bootstrap.min.js" />" ></script>
 </head>
 
 <body>
@@ -50,7 +50,7 @@
 
                         <div role="form">
                             <div class="form-group">
-                                <form name="confirmOrderForm" action="/controller/changeOrderStatus"
+                                <form name="confirmOrderForm" action="<c:url value="/controller/changeOrderStatus" />"
                                       method="post">
                                     <input type="hidden" name="orderId" value="${summary.orderId}">
                                     <input type="hidden" name="status" value="confirmed" />
@@ -62,7 +62,8 @@
 
                             <div class="form-group">
                                 <form role="form" name="submitOrderForm"
-                                      action="/controller/changeOrderStatus" method="post">
+                                      action="<c:url value="/controller/changeOrderStatus" />"
+                                      method="post">
                                     <div>
                                         <input type="hidden" name="orderId" value="${summary.orderId}">
                                         <input type="hidden" name="status" value="rejected" />

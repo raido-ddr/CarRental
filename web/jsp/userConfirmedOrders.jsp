@@ -16,10 +16,10 @@
           rel="stylesheet" type="text/css" />
     <link href="<c:url value="/css/bootstrap-theme.min.css" />"
           rel="stylesheet" type="text/css" />
-    <link href="/css/custom_style.css"
+    <link href="<c:url value="/css/custom_style.css" />"
           rel="stylesheet" type="text/css" />
-    <script src="/js/jquery-1.9.1.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
+    <script src="<c:url value="/js/jquery-1.9.1.min.js" />" ></script>
+    <script src="<c:url value="/js/bootstrap.min.js" />" ></script>
 </head>
 
 <body>
@@ -48,7 +48,7 @@
 
                             <div class="form-group">
                                 <form role="form" name="payOrderForm"
-                                      action="/controller/changeOrderStatus" method="post">
+                                      action="<c:url value="/controller/changeOrderStatus" />" method="post">
                                     <input type="hidden" name="orderId" value="${summary.orderId}">
                                     <input type="hidden" name="status" value="active" />
                                     <input class="form-control" type="text" name="creditCardNumber"

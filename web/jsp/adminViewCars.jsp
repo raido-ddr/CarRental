@@ -21,8 +21,8 @@
           rel="stylesheet" type="text/css" />
     <link href="<c:url value="/css/custom_style.css" />"
           rel="stylesheet" type="text/css" />
-    <script src="/js/jquery-1.9.1.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
+    <script src="<c:url value="/js/jquery-1.9.1.min.js" />" ></script>
+    <script src="<c:url value="/js/bootstrap.min.js" />" ></script>
 </head>
 
 <body>
@@ -36,7 +36,7 @@
                 <div class="car_description">
                     <cstl:car-description subject="${car}" />
                     <div>
-                        <form name="editActionForm" action="/controller/editCar" method="get" >
+                        <form name="editActionForm" action="<c:url value="/controller/editCar" />" method="get" >
                             <input type="hidden" name="carId" value="${car.id}" />
                             <button type="submit" role="button" class="btn btn-info">
                                 <fmt:message key="vc.edit.button.txt" bundle="${viewCars}" />

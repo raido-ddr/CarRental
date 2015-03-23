@@ -19,8 +19,8 @@
           rel="stylesheet" type="text/css" />
     <link href="<c:url value="/css/custom_style.css" />"
           rel="stylesheet" type="text/css" />
-    <script src="/js/jquery-1.9.1.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
+    <script src="<c:url value="/js/jquery-1.9.1.min.js" />" ></script>
+    <script src="<c:url value="/js/bootstrap.min.js" />" ></script>
 </head>
 
 <body>
@@ -35,7 +35,7 @@
                     <div class="panel-body">
 
                         <form class="form-horizontal" role="form" name="rentalPeriodForm"
-                              action="/controller/chooseRentalPeriod" method="post">
+                              action="<c:url value="/controller/chooseRentalPeriod" />"  method="post">
 
                             <div class="form-group">
                                 <label for="startDate" class="col-sm-4 control-label">
