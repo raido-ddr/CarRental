@@ -2,7 +2,6 @@
 
 <taglib version="2.1"
         xmlns="http://java.sun.com/xml/ns/javaee"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         >
     <tlib-version>1.0</tlib-version>
     <short-name>cstl</short-name>
