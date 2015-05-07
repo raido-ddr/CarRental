@@ -1,10 +1,10 @@
 package com.raido.rental.logic.command.impl;
 
+import com.raido.rental.controller.PageName;
+import com.raido.rental.logic.ResourceName;
 import com.raido.rental.logic.command.UserCommand;
 import com.raido.rental.logic.command.exception.CommandException;
 import com.raido.rental.logic.util.resourcemanager.MessageBundle;
-import com.raido.rental.controller.PageName;
-import com.raido.rental.logic.ResourceName;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;

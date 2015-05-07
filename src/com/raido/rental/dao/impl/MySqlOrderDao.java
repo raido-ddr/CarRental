@@ -5,8 +5,8 @@ import com.raido.rental.dao.exception.DaoException;
 import com.raido.rental.entity.Order;
 import com.raido.rental.entity.OrderSummary;
 import com.raido.rental.entity.dbenum.OrderStatus;
-import com.raido.rental.logic.util.resourcemanager.MessageBundle;
 import com.raido.rental.logic.ResourceName;
+import com.raido.rental.logic.util.resourcemanager.MessageBundle;
 import org.apache.log4j.Logger;
 
 import java.sql.Connection;

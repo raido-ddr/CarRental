@@ -1,10 +1,10 @@
 package com.raido.rental.logic.util.xml;
 
 
+import com.raido.rental.logic.ResourceName;
 import com.raido.rental.logic.exception.LogicalException;
 import com.raido.rental.logic.exception.TechnicalException;
 import com.raido.rental.logic.util.resourcemanager.MessageBundle;
-import com.raido.rental.logic.ResourceName;
 import org.apache.log4j.Logger;
 
 import javax.xml.stream.XMLInputFactory;

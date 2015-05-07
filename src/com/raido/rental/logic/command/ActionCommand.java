@@ -1,9 +1,9 @@
 package com.raido.rental.logic.command;
 
-import com.raido.rental.logic.command.exception.CommandException;
-import com.raido.rental.logic.util.resourcemanager.MessageBundle;
 import com.raido.rental.logic.ResourceName;
+import com.raido.rental.logic.command.exception.CommandException;
 import com.raido.rental.logic.util.requestparam.RequestParameterHelper;
+import com.raido.rental.logic.util.resourcemanager.MessageBundle;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Locale;

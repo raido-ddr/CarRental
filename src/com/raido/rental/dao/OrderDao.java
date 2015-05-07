@@ -2,7 +2,6 @@ package com.raido.rental.dao;
 
 
 import com.raido.rental.dao.exception.DaoException;
-import com.raido.rental.dao.factory.DaoFactory;
 import com.raido.rental.entity.Order;
 import com.raido.rental.entity.OrderSummary;
 import com.raido.rental.entity.dbenum.OrderStatus;

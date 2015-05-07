@@ -2,7 +2,6 @@ package com.raido.rental.logic.command;
 
 import com.raido.rental.entity.Order;
 import com.raido.rental.entity.dbenum.OrderStatus;
-import com.raido.rental.logic.validator.DataValidator;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Date;

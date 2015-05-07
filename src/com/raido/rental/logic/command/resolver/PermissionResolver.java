@@ -1,8 +1,8 @@
 package com.raido.rental.logic.command.resolver;
 
-import com.raido.rental.logic.util.xml.XmlPermissionInitializer;
 import com.raido.rental.logic.exception.LogicalException;
 import com.raido.rental.logic.exception.TechnicalException;
+import com.raido.rental.logic.util.xml.XmlPermissionInitializer;
 
 import java.util.Map;
 import java.util.Set;

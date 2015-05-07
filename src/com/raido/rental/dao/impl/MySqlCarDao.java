@@ -10,8 +10,8 @@ import com.raido.rental.entity.dbenum.BodyStyle;
 import com.raido.rental.entity.dbenum.CarStatus;
 import com.raido.rental.entity.dbenum.FuelType;
 import com.raido.rental.entity.dbenum.TransmissionType;
-import com.raido.rental.logic.util.resourcemanager.MessageBundle;
 import com.raido.rental.logic.ResourceName;
+import com.raido.rental.logic.util.resourcemanager.MessageBundle;
 import org.apache.log4j.Logger;
 
 import java.sql.*;

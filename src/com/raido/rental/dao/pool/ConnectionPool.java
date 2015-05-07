@@ -1,8 +1,8 @@
 package com.raido.rental.dao.pool;
 
 import com.raido.rental.dao.pool.exception.ConnectionPoolException;
-import com.raido.rental.logic.util.resourcemanager.MessageBundle;
 import com.raido.rental.logic.ResourceName;
+import com.raido.rental.logic.util.resourcemanager.MessageBundle;
 import org.apache.log4j.Logger;
 
 import java.sql.*;
@@ -53,7 +53,7 @@ public final class ConnectionPool {
 
         try {
             this.poolSize = Integer.parseInt(databaseResourceManager
-                    .getValue(DatabaseParameterName.DB_POLL_SIZE));
+                    .getValue(DatabaseParameterName.DB_POOL_SIZE));
         } catch (NumberFormatException e) {
             poolSize = DEFAULT_POOL_SIZE;
         }
@@ -71,7 +71,7 @@ public final class ConnectionPool {
         return instance;
     }
 
-    public void initPoolData() throws ConnectionPoolException {
+    public void initialize() throws ConnectionPoolException {
 
         try {
             Class.forName(driverName);
@@ -123,27 +123,29 @@ public final class ConnectionPool {
         return connection;
     }
 
-    public void closeConnection(Connection con, Statement st) {
+    public void closeConnection(Connection connection) {
 
         try {
-            if(st != null)
+            if (connection != null) {
+                connection.close();
+            }
+        } catch (SQLException e) {
+            LOGGER.error(e);
+        }
+    }
+
+    public void closeConnection(Connection connection, Statement statement) {
+
+        try {
+            if(statement != null)
             {
-                st.close();
+                statement.close();
             }
         } catch (SQLException e) {
             LOGGER.error(e);
         }
 
-        try {
-            if(con != null)
-            {
-                con.close();
-            }
-        } catch (SQLException e) {
-            LOGGER.error(e);
-        }
-
-
+        closeConnection(connection);
     }
 
     private void closeConnectionsQueue(BlockingQueue<Connection> queue)
@@ -489,15 +491,15 @@ public final class ConnectionPool {
         }
 
         @Override
-        public void setNetworkTimeout(Executor arg0, int arg1)
+        public void setNetworkTimeout(Executor executor, int arg1)
                 throws SQLException {
-            connection.setNetworkTimeout(arg0, arg1);
+            connection.setNetworkTimeout(executor, arg1);
         }
 
         @Override
-        public void setSchema(String arg0)
+        public void setSchema(String schema)
                 throws SQLException {
-            connection.setSchema(arg0);
+            connection.setSchema(schema);
         }
 
         @Override

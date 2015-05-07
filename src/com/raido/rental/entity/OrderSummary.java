@@ -1,6 +1,5 @@
 package com.raido.rental.entity;
 
-import java.nio.channels.Pipe;
 import java.sql.Date;
 
 /**

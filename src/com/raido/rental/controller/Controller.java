@@ -1,10 +1,10 @@
 package com.raido.rental.controller;
 
+import com.raido.rental.logic.ResourceName;
 import com.raido.rental.logic.command.ActionCommand;
 import com.raido.rental.logic.command.exception.CommandException;
 import com.raido.rental.logic.command.resolver.CommandResolver;
 import com.raido.rental.logic.util.resourcemanager.MessageBundle;
-import com.raido.rental.logic.ResourceName;
 import org.apache.log4j.Level;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;

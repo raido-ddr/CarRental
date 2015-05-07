@@ -1,16 +1,16 @@
 package com.raido.rental.logic.command.impl;
 
+import com.raido.rental.controller.PageName;
 import com.raido.rental.dao.CarDao;
 import com.raido.rental.dao.UserDao;
 import com.raido.rental.dao.exception.DaoException;
 import com.raido.rental.dao.factory.DaoFactory;
 import com.raido.rental.entity.Car;
 import com.raido.rental.entity.User;
+import com.raido.rental.logic.ResourceName;
 import com.raido.rental.logic.command.OrderCommand;
 import com.raido.rental.logic.command.exception.CommandException;
 import com.raido.rental.logic.util.resourcemanager.MessageBundle;
-import com.raido.rental.controller.PageName;
-import com.raido.rental.logic.ResourceName;
 import com.raido.rental.logic.validator.DataValidator;
 
 import javax.servlet.http.HttpServletRequest;

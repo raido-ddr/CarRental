@@ -6,8 +6,6 @@ import com.raido.rental.logic.validator.strategy.impl.RentalPeriodValidationStra
 import com.raido.rental.logic.validator.strategy.impl.UserValidationStrategy;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.xml.crypto.Data;
-import java.sql.Date;
 
 public class DataValidator {
 

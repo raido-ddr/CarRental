@@ -1,7 +1,7 @@
 package com.raido.rental.logic.validator.strategy;
 
-import com.raido.rental.logic.util.resourcemanager.MessageBundle;
 import com.raido.rental.logic.util.requestparam.RequestParameterHelper;
+import com.raido.rental.logic.util.resourcemanager.MessageBundle;
 
 import javax.servlet.http.HttpServletRequest;
 

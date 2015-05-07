@@ -27,7 +27,7 @@ public class ConnectionPoolContextListener
                 Allows to detect connection pool errors before client
                 attempts to use it.
              */
-            connectionPool.initPoolData();
+            connectionPool.initialize();
         } catch (ConnectionPoolException e) {
             LOGGER.fatal(e);
             throw new RuntimeException(MessageBundle

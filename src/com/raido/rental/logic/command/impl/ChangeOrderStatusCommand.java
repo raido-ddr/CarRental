@@ -1,14 +1,14 @@
 package com.raido.rental.logic.command.impl;
 
+import com.raido.rental.controller.PageName;
 import com.raido.rental.dao.OrderDao;
 import com.raido.rental.dao.exception.DaoException;
 import com.raido.rental.dao.factory.DaoFactory;
 import com.raido.rental.entity.dbenum.OrderStatus;
+import com.raido.rental.logic.ResourceName;
 import com.raido.rental.logic.command.OrderCommand;
 import com.raido.rental.logic.command.exception.CommandException;
 import com.raido.rental.logic.util.resourcemanager.MessageBundle;
-import com.raido.rental.controller.PageName;
-import com.raido.rental.logic.ResourceName;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Locale;
